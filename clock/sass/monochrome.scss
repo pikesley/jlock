@@ -1,0 +1,21 @@
+$white: rgb(255, 255, 255);
+
+$background-colour: darken($white, 10%);
+$active-colour: darken($white, 60%);
+$inactive-colour: darken($white, 20%);
+
+@mixin activated {
+    color: $active-colour;
+}
+
+@mixin deactivated {
+    color: $inactive-colour;
+}
+
+@import 'base/faders';
+
+body {
+    background-color: $background-colour;
+    font-weight: bold;
+    font-size: 5.9em;
+}

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
+body {
+  overflow: hidden;
+  font-family: "Courier Prime";
+  font-size: 4.5em;
+  letter-spacing: 0.2em;
+  line-height: 0.9em;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin-left: 6px;
+}
+
+.row {
+  display: block;
+}
+
+body {
+  color: #143300;
+  text-shadow: none;
+}
+
+.inactive {
+  color: #143300;
+  text-shadow: none;
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #66ff00;
+  font-weight: bold;
+  text-shadow: #3d9900 4px 0 4px;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: #143300;
+    text-shadow: none;
+  }
+  100% {
+    color: #66ff00;
+    font-weight: bold;
+    text-shadow: #3d9900 4px 0 4px;
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #66ff00;
+    font-weight: bold;
+    text-shadow: #3d9900 4px 0 4px;
+  }
+  100% {
+    color: #143300;
+    text-shadow: none;
+  }
+}
+body {
+  background-color: black;
+  font-family: VT323;
+  letter-spacing: 0.4em;
+}
+
+/*# sourceMappingURL=vt100.css.map */

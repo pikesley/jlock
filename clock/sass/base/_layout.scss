@@ -1,0 +1,24 @@
+@use 'typography';
+
+$left-shim: 6px; // this fuckery is something to do with fixed-width fonts I think
+
+body {
+    overflow: hidden;
+    font-family: typography.$primary;
+    font-size: typography.$font-size;
+    letter-spacing: typography.$letter-spacing;
+    line-height: typography.$line-height;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    margin-left: $left-shim;
+}
+
+.row {
+    display: block;
+}

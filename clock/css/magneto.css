@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
+body {
+  overflow: hidden;
+  font-family: "Courier Prime";
+  font-size: 4.5em;
+  letter-spacing: 0.2em;
+  line-height: 0.9em;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin-left: 6px;
+}
+
+.row {
+  display: block;
+}
+
+body {
+  color: #75079c;
+  background-color: #85086d;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.inactive {
+  color: #75079c;
+  background-color: #85086d;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #c5015a;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), -1px -1px 1px rgba(255, 255, 255, 0.3);
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: #75079c;
+    background-color: #85086d;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    color: #c5015a;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), -1px -1px 1px rgba(255, 255, 255, 0.3);
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #c5015a;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), -1px -1px 1px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    color: #75079c;
+    background-color: #85086d;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  }
+}
+body {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=magneto.css.map */

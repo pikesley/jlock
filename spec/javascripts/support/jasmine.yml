@@ -1,0 +1,13 @@
+    src_files:
+      - https://code.jquery.com/jquery-3.6.0.min.js
+      - clock/js/*.js
+
+    stylesheets:
+
+    helpers:
+      - "helpers/**/*.js"
+
+    spec_files:
+      - "**/*[Ss]pec.js"
+
+    spec_dir: spec/javascripts

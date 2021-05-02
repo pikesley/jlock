@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
+body {
+  overflow: hidden;
+  font-family: "Courier Prime";
+  font-size: 4.5em;
+  letter-spacing: 0.2em;
+  line-height: 0.9em;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin-left: 6px;
+}
+
+.row {
+  display: block;
+}
+
+body {
+  color: #d1d0d6;
+  text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
+}
+
+.inactive {
+  color: #d1d0d6;
+  text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #f9fd01;
+  text-shadow: 0px 1px 0px #c7ca01, 0px 2px 0px #aeb101, 0px 3px 0px #959701, 0px 4px 0px #7c7e00, 0px 5px 0px #636500, 0px 6px 0px #4a4b00, 0px 7px 0px #313200, 0px 8px 15px #181800;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: #d1d0d6;
+    text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
+  }
+  100% {
+    color: #f9fd01;
+    text-shadow: 0px 1px 0px #c7ca01, 0px 2px 0px #aeb101, 0px 3px 0px #959701, 0px 4px 0px #7c7e00, 0px 5px 0px #636500, 0px 6px 0px #4a4b00, 0px 7px 0px #313200, 0px 8px 15px #181800;
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #f9fd01;
+    text-shadow: 0px 1px 0px #c7ca01, 0px 2px 0px #aeb101, 0px 3px 0px #959701, 0px 4px 0px #7c7e00, 0px 5px 0px #636500, 0px 6px 0px #4a4b00, 0px 7px 0px #313200, 0px 8px 15px #181800;
+  }
+  100% {
+    color: #d1d0d6;
+    text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
+  }
+}
+body {
+  background-image: url("../images/backgrounds/concrete.jpg");
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=concrete.css.map */

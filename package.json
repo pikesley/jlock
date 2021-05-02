@@ -1,0 +1,11 @@
+{
+  "name": "qlock",
+  "version": "0.1.0",
+  "author": "pikesley",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "geckodriver": "^1.22.3",
+    "nightwatch": "^1.6.3"
+  }
+}
