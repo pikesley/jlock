@@ -199,7 +199,7 @@ make test
 
 The designs are built using [Dart SASS](https://sass-lang.com/dart-sass). Each `.scss` file in the root of [clock/sass](clock/sass) becomes part of the list of designs that are cycled-through when the screen is clicked, and they have a very particular layout:
 
-```sass
+```css
 $white: rgb(255, 255, 255); // define some colours
 
 $background-colour: darken($white, 10%);
