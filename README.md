@@ -154,7 +154,7 @@ sudo reboot
 
 ## Development
 
-This was all devleoped on a Docker container. To run it:
+This was all developed on a Docker container. To run it:
 
 ```bash
 git clone https://github.com/pikesley/qlock
