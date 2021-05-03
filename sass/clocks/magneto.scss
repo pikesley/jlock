@@ -1,0 +1,27 @@
+@use '../base/mixins';
+
+$red: rgb(197, 1, 90);
+$mauve: rgb(117, 7, 156);
+$pink: rgb(133, 8, 109);
+
+$background-colour: $pink;
+$inactive-colour: $mauve;
+$active-colour: $red;
+
+@mixin activated {
+    color: $active-colour;
+    @include mixins.emboss;
+}
+
+@mixin deactivated {
+    color: $inactive-colour;
+    background-color: $background-colour;
+    @include mixins.engrave;
+}
+
+@import '../base/faders';
+
+body {
+    font-size: 3em;
+    font-weight: bold;
+}

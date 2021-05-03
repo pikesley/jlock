@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Krona+One");
+$primary-font: "Krona One";
+
+$background-colour: black;
+$primary-colour: rgb(213, 4, 255);
+
+body {
+  font-family: $primary-font;
+  text-align: center;
+  background-color: $background-colour;
+  color: $primary-colour;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 8em;
+
+}
+
+#next-button {
+  max-width: 80%;
+  fill: $primary-colour
+}
+

@@ -1,0 +1,17 @@
+
+[Unit]
+Description=Qlock Control Webserver
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/qlock/
+ExecStart=/bin/bash -lc '/home/pi/.local/bin/gunicorn -b 0.0.0.0:5000 controller:app'
+Restart=always
+StandardInput=null
+StandardOutput=file:/var/log/controller/controller.log
+StandardError=file:/var/log/controller/controller.err
+KillMode=mixed
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

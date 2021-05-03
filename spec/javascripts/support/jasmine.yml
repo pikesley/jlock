@@ -1,6 +1,6 @@
     src_files:
       - https://code.jquery.com/jquery-3.6.0.min.js
-      - clock/js/*.js
+      - static/js/*.js
 
     stylesheets:
 

@@ -4,7 +4,7 @@ PIHOST = 192.168.68.109
 
 PLATFORM ?= laptop
 
-all: test
+all: format lint test
 
 build: laptop-only
 	docker build \
@@ -17,7 +17,7 @@ serve: docker-only
 	service nginx start
 
 sass: docker-only
-	sass --watch clock/sass:clock/css static:static
+	sass --watch sass:static/css
 
 push-code: docker-only
 	rsync --archive \
@@ -28,6 +28,9 @@ push-code: docker-only
 		  pi@${PIHOST}:
 
 test: jasmine-ci nightwatch-tests
+
+lint: docker-only
+	python -m pylama
 
 jasmine: docker-only
 	jasmine server --host 0.0.0.0
@@ -57,16 +60,16 @@ apt-installs: pi-only
 	sudo apt-get install -y python3-pip
 
 prepare-logs: pi-only
-	sudo mkdir -p /var/log/control-server/
-	sudo chown pi /var/log/control-server/
+	sudo mkdir -p /var/log/controller/
+	sudo chown pi /var/log/controller/
 
 system-install: systemd restart-services
 
 systemd: pi-only prepare-logs
-	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/control-server.service
+	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/controller.service
 
 restart-services:
-	sudo service control-server restart
+	sudo service controller restart
 
 ###
 

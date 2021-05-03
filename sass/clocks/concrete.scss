@@ -1,0 +1,22 @@
+@use '../base/mixins';
+@use '../base/vars';
+
+$inactive-colour: rgb(209, 208, 214);
+$active-colour: rgb(249, 253, 1);
+
+@mixin activated {
+    color: $active-colour;
+    @include mixins.step-shadow($active-colour);
+}
+
+@mixin deactivated {
+    color: $inactive-colour;
+    @include mixins.step-shadow($inactive-colour);
+}
+
+@import '../base/faders';
+
+body {
+    background-image: url(vars.$background-root + "concrete.jpg");
+    font-weight: bold;
+}
