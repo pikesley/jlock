@@ -27,7 +27,7 @@ RUN cd /tmp && \
         tar xzvf sass.tgz && \
         mv dart-sass/sass /usr/local/bin/
 
-RUN pip install --upgrade pip jasmine
+RUN pip install --upgrade pip jasmine ipdb black sort
 
 RUN ln -sf /opt/${PROJECT}/nginx/dev-site.conf /etc/nginx/sites-enabled/default
 
