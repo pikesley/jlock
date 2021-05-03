@@ -11,9 +11,14 @@ h1 {
   font-size: 8em;
 }
 
+h2 {
+  font-size: 2em;
+}
+
 #next-button {
   max-width: 80%;
   fill: #d504ff;
+  margin: 100px;
 }
 
 /*# sourceMappingURL=controller.css.map */

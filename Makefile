@@ -51,13 +51,36 @@ format: black isort
 
 ###
 
+setup: pi-only set-python apt-installs install system-install configure-shell
+
+configure-shell: pi-only set-autologin disable-power-warning
+	cp shell-config/bash_profile /home/pi/.bash_profile
+	cp shell-config/xinitrc /home/pi/.xinitrc
+
+set-autologin: pi-only
+	sudo raspi-config nonint do_boot_behaviour B2
+
+disable-power-warning: pi-only
+	echo "avoid_warnings=2" | sudo tee -a /boot/config.txt
+
 set-python: pi-only
 	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python2 1
 	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python3 2
 
 apt-installs: pi-only
 	sudo apt-get update
-	sudo apt-get install -y python3-pip
+	sudo apt-get install \
+		--no-install-recommends \
+		--yes \
+		xserver-xorg-video-all \
+		xserver-xorg-input-all \
+		xserver-xorg-core \
+		xinit x11-xserver-utils \
+		chromium-browser \
+		unclutter \
+		nginx \
+		xdotool \
+		python3-pip
 
 prepare-logs: pi-only
 	sudo mkdir -p /var/log/controller/
@@ -68,7 +91,10 @@ system-install: systemd restart-services
 systemd: pi-only prepare-logs
 	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/controller.service
 
-restart-services:
+virtual-host: pi-only
+	sudo ln -sf /home/pi/qlock/nginx/site.conf /etc/nginx/sites-enabled/default
+
+restart-services: pi-only
 	sudo service controller restart
 
 ###

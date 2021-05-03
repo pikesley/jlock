@@ -14,11 +14,15 @@ body {
 
 h1 {
   font-size: 8em;
+}
 
+h2 {
+  font-size: 2em;
 }
 
 #next-button {
   max-width: 80%;
-  fill: $primary-colour
+  fill: $primary-colour;
+  margin: 100px;
 }
 
