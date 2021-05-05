@@ -2,8 +2,8 @@
 body {
   font-family: "Courier Prime";
   text-align: center;
-  background-color: #252525;
-  color: #3a8523;
+  background-color: #111111;
+  color: #5f1eda;
   margin: 4em;
 }
 
@@ -29,17 +29,17 @@ h3 {
 em {
   font-weight: bold;
   font-size: 1.2em;
-  color: #83d869;
-  text-shadow: 0 0 16px rgba(58, 133, 35, 0.9);
+  color: #bc9ff2;
+  text-shadow: 0 0 16px rgba(95, 30, 218, 0.9);
 }
 
 #next-button {
-  fill: #3a8523;
+  fill: #5f1eda;
   margin: 4em;
 }
 
 .active {
-  fill: #285d18;
+  fill: #4b18ad;
 }
 
 /*# sourceMappingURL=controller.css.map */

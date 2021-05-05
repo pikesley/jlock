@@ -1,0 +1,27 @@
+@use '../base/mixins';
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display");
+
+$blue: rgb(55, 0, 255);
+
+$background-colour: black;
+$active-colour: $blue;
+$inactive-colour: darken($active-colour, 35%);
+$shadow-colour: darken($active-colour, 0%);
+
+@mixin activated {
+    color: $active-colour;
+    font-weight: bold;
+    @include mixins.step-shadow($active-colour);
+}
+
+@mixin deactivated {
+    color: $inactive-colour;
+}
+
+@import '../base/faders';
+
+body {
+    background-color: $background-colour;
+    font-family: "Major Mono Display";
+    letter-spacing: 0.1em;
+}

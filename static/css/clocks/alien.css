@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
+body {
+  overflow: hidden;
+  font-family: "Courier Prime";
+  font-size: 4.5em;
+  letter-spacing: 0.2em;
+  line-height: 0.9em;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin-left: 6px;
+}
+
+.row {
+  display: block;
+}
+
+body {
+  color: #11004d;
+}
+
+.inactive {
+  color: #11004d;
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #3700ff;
+  font-weight: bold;
+  text-shadow: 0px 1px 0px #2c00cc, 0px 2px 0px #2700b3, 0px 3px 0px #210099, 0px 4px 0px #1c0080, 0px 5px 0px #160066, 0px 6px 0px #11004d, 0px 7px 0px #0b0033, 0px 8px 15px #06001a;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: #11004d;
+  }
+  100% {
+    color: #3700ff;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px #2c00cc, 0px 2px 0px #2700b3, 0px 3px 0px #210099, 0px 4px 0px #1c0080, 0px 5px 0px #160066, 0px 6px 0px #11004d, 0px 7px 0px #0b0033, 0px 8px 15px #06001a;
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #3700ff;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px #2c00cc, 0px 2px 0px #2700b3, 0px 3px 0px #210099, 0px 4px 0px #1c0080, 0px 5px 0px #160066, 0px 6px 0px #11004d, 0px 7px 0px #0b0033, 0px 8px 15px #06001a;
+  }
+  100% {
+    color: #11004d;
+  }
+}
+body {
+  background-color: black;
+  font-family: "Major Mono Display";
+  letter-spacing: 0.1em;
+}
+
+/*# sourceMappingURL=alien.css.map */

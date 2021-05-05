@@ -25,7 +25,9 @@ def cycle_style():
     """Send a click to the screen to move to the next stylesheet."""
     os.environ["DISPLAY"] = ":0"
     subprocess.run(("xdotool click 1").split(" "), check=True)
-    sleep(1)
+
+    # the clock has a 1-second fade-out / 1-second fade-in
+    sleep(2)
 
     return {"status": "OK"}
 

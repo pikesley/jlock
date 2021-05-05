@@ -1,6 +1,11 @@
 let validStyles = [];
+let fadeTime = 1000; // ms
 
 $(document).ready(function () {
+  // fade in
+  $("html").css("display", "none");
+  $("html").fadeIn(fadeTime);
+
   populateClock();
 
   $.get("/css/clocks/", function (data) {
@@ -57,7 +62,11 @@ let cycleStyle = function () {
 
   style = validStyles[styleIndex];
   localStorage.styleIndex = styleIndex;
-  location.replace(`?style=${style}`);
+
+  // fade out and go to new location
+  $("html").fadeOut(fadeTime, function () {
+    location.replace(`?style=${style}`);
+  });
 };
 
 let setStyles = function () {

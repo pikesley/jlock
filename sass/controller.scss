@@ -1,7 +1,7 @@
 @use 'base/typography';
 
-$background-colour: rgb(37, 37, 37);
-$primary-colour: rgb(58, 133, 35);
+$background-colour: rgb(17, 17, 17);
+$primary-colour: rgb(95, 30, 218);
 $lighter: lighten($primary-colour, 30%);
 $darker: darken($primary-colour, 10%);
 
