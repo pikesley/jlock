@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 URL=http://localhost
-SCREEN_SIZE=720
+RESOLUTION=$(DISPLAY=:0 xrandr --query 2>/dev/null | grep "^ *[0-9]" | awk '{ print $1 }' | tr -s 'x' ',')
 
 xset -dpms
 xset s off
@@ -9,7 +9,7 @@ xset s noblank
 
 unclutter &
 chromium-browser ${URL} \
-  --window-size=${SCREEN_SIZE},${SCREEN_SIZE} \
+  --window-size=${RESOLUTION} \
   --window-position=0,0 \
   --start-fullscreen \
   --kiosk \

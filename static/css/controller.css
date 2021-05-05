@@ -1,24 +1,45 @@
-@import url("https://fonts.googleapis.com/css2?family=Krona+One");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
 body {
-  font-family: "Krona One";
+  font-family: "Courier Prime";
   text-align: center;
-  background-color: black;
-  color: #d504ff;
-  min-height: 100vh;
+  background-color: #252525;
+  color: #3a8523;
+  margin: 4em;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-  font-size: 8em;
+  font-size: 10em;
 }
 
 h2 {
   font-size: 2em;
 }
 
+h3 {
+  font-size: 1.5em;
+}
+
+em {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #83d869;
+  text-shadow: 0 0 16px rgba(58, 133, 35, 0.9);
+}
+
 #next-button {
-  max-width: 80%;
-  fill: #d504ff;
-  margin: 100px;
+  fill: #3a8523;
+  margin: 4em;
+}
+
+.active {
+  fill: #285d18;
 }
 
 /*# sourceMappingURL=controller.css.map */

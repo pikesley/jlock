@@ -1,28 +1,49 @@
-@import url("https://fonts.googleapis.com/css2?family=Krona+One");
-$primary-font: "Krona One";
+@use 'base/typography';
 
-$background-colour: black;
-$primary-colour: rgb(213, 4, 255);
+$background-colour: rgb(37, 37, 37);
+$primary-colour: rgb(58, 133, 35);
+$lighter: lighten($primary-colour, 30%);
+$darker: darken($primary-colour, 10%);
 
 body {
-  font-family: $primary-font;
+  font-family: typography.$primary;
   text-align: center;
   background-color: $background-colour;
   color: $primary-colour;
-  min-height: 100vh;
+  margin: 4em;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-  font-size: 8em;
+  font-size: 10em;
 }
 
 h2 {
   font-size: 2em;
 }
 
-#next-button {
-  max-width: 80%;
-  fill: $primary-colour;
-  margin: 100px;
+h3 {
+  font-size: 1.5em;
 }
 
+em {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: $lighter;
+  text-shadow: 0 0 16px transparentize($primary-colour, 0.1);
+}
+
+#next-button {
+  fill: $primary-colour;
+  margin: 4em;
+}
+
+.active {
+  fill: $darker;
+}

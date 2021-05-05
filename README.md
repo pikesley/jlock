@@ -45,6 +45,13 @@ Once you've done this you should be able to get to the Pi with
 ssh pi@raspberrypi.local
 ```
 
+(Optionally) change the hostname:
+
+```bash
+sudo raspi-config nonint do_hostname qlock
+sudo reboot
+```
+
 Presuming this works, power it off, and attach the Hyperpixel (or move the card to the Pi which has the Hyperpixel on it). When you boot it, the screen won't work, but we'll fix that in a minute.
 
 ### Install the screen drivers
@@ -57,99 +64,16 @@ curl https://get.pimoroni.com/hyperpixel4 | bash
 
 Select the correct screen and Pi combination (in my case it's `3 : Weirdly Square - Pi 3B+ or older`) and let it do its thing. When it's done it will reboot, and the screen should work. Now
 
-### Make it boot into Chromium
-
-Per [this](https://blog.r0b.io/post/minimal-rpi-kiosk/) blogpost:
-
-Install some stuff:
-
-```bash
-sudo apt-get update
-sudo apt-get install \
-  --no-install-recommends \
-  --yes \
-  xserver-xorg-video-all \
-  xserver-xorg-input-all \
-  xserver-xorg-core \
-  xinit x11-xserver-utils \
-  chromium-browser \
-  unclutter \
-  nginx \
-  xdotool
-```
-
-Start X on login:
-
-```bash
-cat << EOF > ~/.bash_profile
-if [ -z $DISPLAY ] && [ \$(tty) = /dev/tty1 ]
-then
-  startx
-fi
-EOF
-```
-
-Run Chromium when X starts:
-
-```bash
-cat << EOF > ~/.xinitrc
-#!/usr/bin/env sh
-
-URL=http://localhost
-SCREEN_SIZE=720
-
-xset -dpms
-xset s off
-xset s noblank
-
-unclutter &
-chromium-browser \${URL} \\
-  --window-size=\${SCREEN_SIZE},\${SCREEN_SIZE} \\
-  --window-position=0,0 \\
-  --start-fullscreen \\
-  --kiosk \\
-  --incognito \\
-  --noerrdialogs \\
-  --disable-translate \\
-  --no-first-run \\
-  --fast \\
-  --fast-start \\
-  --disable-infobars \\
-  --disable-features=TranslateUI \\
-  --disk-cache-dir=/dev/null \\
-  --overscroll-history-navigation=0 \\
-  --disable-pinch
-EOF
-```
-
-And now make it auto-login:
-
-```bash
-sudo raspi-config nonint do_boot_behaviour B2
-```
-
 ### Clone this repo
 
 ```bash
 git clone https://github.com/pikesley/qlock
 ```
 
-### Enable the virtualhost
+### And configure everything
 
 ```bash
-sudo ln -sf /home/pi/qlock/nginx/site.conf /etc/nginx/sites-enabled/default
-```
-
-### (Optionally) disable the low-power warnings
-
-```bash
-echo "avoid_warnings=2" | sudo tee -a /boot/config.txt
-```
-
-### Reboot
-
-```bash
-sudo reboot
+make setup
 ```
 
 ## Development

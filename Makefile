@@ -1,10 +1,14 @@
 PROJECT = $(shell basename $$(pwd))
 ID = pikesley/${PROJECT}
-PIHOST = 192.168.68.109
+PIHOST = hyperpixel.local
 
 PLATFORM ?= laptop
 
-all: format lint test
+# default
+
+all: docker-only format lint test
+
+# laptop targets
 
 build: laptop-only
 	docker build \
@@ -13,8 +17,7 @@ build: laptop-only
 run: laptop-only
 	docker-compose exec ${PROJECT} bash
 
-serve: docker-only
-	service nginx start
+# docker dev targets
 
 sass: docker-only
 	sass --watch sass:static/css
@@ -49,9 +52,10 @@ isort:
 
 format: black isort
 
-###
+# pi targets
 
-setup: pi-only set-python apt-installs install system-install configure-shell
+setup: pi-only set-python apt-installs install virtualhost system-install configure-shell
+	sudo reboot
 
 configure-shell: pi-only set-autologin disable-power-warning
 	cp shell-config/bash_profile /home/pi/.bash_profile
@@ -82,6 +86,9 @@ apt-installs: pi-only
 		xdotool \
 		python3-pip
 
+install: pi-only
+	python -m pip install -r requirements.txt
+
 prepare-logs: pi-only
 	sudo mkdir -p /var/log/controller/
 	sudo chown pi /var/log/controller/
@@ -91,16 +98,11 @@ system-install: systemd restart-services
 systemd: pi-only prepare-logs
 	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/controller.service
 
-virtual-host: pi-only
+virtualhost: pi-only
 	sudo ln -sf /home/pi/qlock/nginx/site.conf /etc/nginx/sites-enabled/default
 
 restart-services: pi-only
 	sudo service controller restart
-
-###
-
-install:
-	python -m pip install -r requirements.txt
 
 ###
 
