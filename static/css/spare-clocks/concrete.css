@@ -2,9 +2,9 @@
 body {
   overflow: hidden;
   font-family: "Courier Prime";
-  font-size: 4.5em;
-  letter-spacing: 0.2em;
-  line-height: 0.9em;
+  font-size: 9vh;
+  letter-spacing: 2vh;
+  line-height: 8vh;
 }
 
 #container {
@@ -13,7 +13,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  margin-left: 6px;
+  margin-left: 1vh;
 }
 
 .row {

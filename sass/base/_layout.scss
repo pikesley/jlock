@@ -1,6 +1,6 @@
 @use 'typography';
 
-$left-shim: 6px; // this fuckery is something to do with fixed-width fonts I think
+$left-shim: 1vh; // this fuckery is something to do with fixed-width fonts I think
 
 body {
     overflow: hidden;

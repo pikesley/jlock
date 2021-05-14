@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
+body {
+  overflow: hidden;
+  font-family: "Courier Prime";
+  font-size: 9vh;
+  letter-spacing: 2vh;
+  line-height: 8vh;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin-left: 1vh;
+}
+
+.row {
+  display: block;
+}
+
+body {
+  background-color: #424242;
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.inactive {
+  background-color: #424242;
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #fad7fd;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    background-color: #424242;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    color: #fad7fd;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #fad7fd;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
+  }
+  100% {
+    background-color: #424242;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  }
+}
+body {
+  background-image: url("../../images/backgrounds/rust.jpg");
+}
+
+/*# sourceMappingURL=rust.css.map */

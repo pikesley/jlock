@@ -2,9 +2,9 @@
 body {
   overflow: hidden;
   font-family: "Courier Prime";
-  font-size: 4.5em;
-  letter-spacing: 0.2em;
-  line-height: 0.9em;
+  font-size: 9vh;
+  letter-spacing: 2vh;
+  line-height: 8vh;
 }
 
 #container {
@@ -13,7 +13,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  margin-left: 6px;
+  margin-left: 1vh;
 }
 
 .row {
@@ -21,7 +21,7 @@ body {
 }
 
 body {
-  background-color: #8e8f4b;
+  background-color: #424242;
   color: transparent;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -30,7 +30,7 @@ body {
 }
 
 .inactive {
-  background-color: #8e8f4b;
+  background-color: #424242;
   color: transparent;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -40,17 +40,17 @@ body {
 }
 
 .active {
-  color: #f700ff;
+  color: #faec30;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(247, 0, 255, 0.9);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 236, 48, 0.9);
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
   0% {
-    background-color: #8e8f4b;
+    background-color: #424242;
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -58,23 +58,23 @@ body {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
   }
   100% {
-    color: #f700ff;
+    color: #faec30;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(247, 0, 255, 0.9);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 236, 48, 0.9);
   }
 }
 @keyframes fade-out {
   0% {
-    color: #f700ff;
+    color: #faec30;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(247, 0, 255, 0.9);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 236, 48, 0.9);
   }
   100% {
-    background-color: #8e8f4b;
+    background-color: #424242;
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -83,7 +83,7 @@ body {
   }
 }
 body {
-  background-image: url("../../images/backgrounds/wood.jpg");
+  background-image: url("../../images/backgrounds/verdigris.png");
 }
 
-/*# sourceMappingURL=wood.css.map */
+/*# sourceMappingURL=verdigris.css.map */

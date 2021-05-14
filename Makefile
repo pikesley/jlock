@@ -1,6 +1,6 @@
 PROJECT = $(shell basename $$(pwd))
 ID = pikesley/${PROJECT}
-PIHOST = hyperpixel.local
+PIHOST = hp.local
 
 PLATFORM ?= laptop
 
@@ -22,13 +22,13 @@ run: laptop-only
 sass: docker-only
 	sass --watch sass:static/css
 
-push-code: docker-only
+push-code:
 	rsync --archive \
 		  --verbose \
 		  --delete \
 			--exclude node_modules \
-		  /opt/${PROJECT} \
-		  pi@${PIHOST}:
+		  . \
+		  pi@${PIHOST}:qlock
 
 test: jasmine-ci nightwatch-tests
 
@@ -86,9 +86,6 @@ apt-installs: pi-only
 		xdotool \
 		python3-pip
 
-install: pi-only
-	python -m pip install -r requirements.txt
-
 prepare-logs: pi-only
 	sudo mkdir -p /var/log/controller/
 	sudo chown pi /var/log/controller/
@@ -103,6 +100,11 @@ virtualhost: pi-only
 
 restart-services: pi-only
 	sudo service controller restart
+
+###
+
+install:
+	python -m pip install -r requirements.txt
 
 ###
 

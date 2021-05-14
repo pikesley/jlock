@@ -26,9 +26,10 @@ clockParts = [
 ];
 
 let populateClock = function () {
+  $("#clock").append(addDots([1, 2]));
   clockParts.forEach(function (row, index) {
     $("#clock").append($("<span/>", { class: "row" }));
-
+    $("#clock").children().last().append("<span>&nbsp;</span>");
     row.forEach(function (cell) {
       let span = $("<span/>");
 
@@ -42,5 +43,19 @@ let populateClock = function () {
 
       $("#clock").children().last().append(span);
     });
+    $("#clock").children().last().append("<span>&nbsp;</span>");
   });
+  $("#clock").append(addDots([4, 3]));
+};
+
+let addDots = function (minutes) {
+  let dotsRow = `<span id=m-${minutes[0]}>`;
+  dotsRow += "·";
+  dotsRow += "</span>";
+  dotsRow += "&nbsp".repeat(11);
+  dotsRow += `<span id=m-${minutes[1]}>`;
+  dotsRow += "·";
+  dotsRow += "</span>";
+
+  return dotsRow;
 };

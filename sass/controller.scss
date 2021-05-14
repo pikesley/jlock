@@ -10,7 +10,7 @@ body {
   text-align: center;
   background-color: $background-colour;
   color: $primary-colour;
-  margin: 4em;
+  margin: 4vh;
 }
 
 h1,
@@ -21,27 +21,27 @@ h3 {
 }
 
 h1 {
-  font-size: 10em;
+  font-size: 10vh;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2vh;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1vh;
 }
 
 em {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 2.5vh;
   color: $lighter;
   text-shadow: 0 0 16px transparentize($primary-colour, 0.1);
 }
 
 #next-button {
   fill: $primary-colour;
-  margin: 4em;
+  margin: 4vh;
 }
 
 .active {

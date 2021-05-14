@@ -1,11 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=VT323");
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
 body {
   overflow: hidden;
   font-family: "Courier Prime";
-  font-size: 4.5em;
-  letter-spacing: 0.2em;
-  line-height: 0.9em;
+  font-size: 9vh;
+  letter-spacing: 2vh;
+  line-height: 8vh;
 }
 
 #container {
@@ -14,7 +13,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  margin-left: 6px;
+  margin-left: 1vh;
 }
 
 .row {
@@ -63,8 +62,6 @@ body {
 }
 body {
   background-color: black;
-  font-family: VT323;
-  letter-spacing: 0.4em;
 }
 
 /*# sourceMappingURL=vt100.css.map */

@@ -2,9 +2,9 @@
 body {
   overflow: hidden;
   font-family: "Courier Prime";
-  font-size: 4.5em;
-  letter-spacing: 0.2em;
-  line-height: 0.9em;
+  font-size: 9vh;
+  letter-spacing: 2vh;
+  line-height: 8vh;
 }
 
 #container {
@@ -13,7 +13,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  margin-left: 6px;
+  margin-left: 1vh;
 }
 
 .row {
@@ -21,37 +21,37 @@ body {
 }
 
 body {
-  color: #cccccc;
+  color: #242424;
 }
 
 .inactive {
-  color: #cccccc;
+  color: #242424;
   animation: fade-out ease 3s;
 }
 
 .active {
-  color: #666666;
+  color: white;
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
   0% {
-    color: #cccccc;
+    color: #242424;
   }
   100% {
-    color: #666666;
+    color: white;
   }
 }
 @keyframes fade-out {
   0% {
-    color: #666666;
+    color: white;
   }
   100% {
-    color: #cccccc;
+    color: #242424;
   }
 }
 body {
-  background-color: #e6e6e6;
+  background-color: black;
   font-weight: bold;
 }
 

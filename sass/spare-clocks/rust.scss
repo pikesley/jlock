@@ -1,0 +1,22 @@
+@use '../base/mixins';
+@use '../base/vars';
+
+$active-colour: rgb(250, 215, 253);
+$inactive-colour: rgb(66, 66, 66);
+
+@mixin activated {
+  color: $active-colour;
+  @include mixins.engrave-with-bloom($active-colour);
+}
+
+@mixin deactivated {
+  background-color: $inactive-colour;
+  color: transparent;
+  @include mixins.engrave;
+}
+
+@import '../base/faders';
+
+body {
+  background-image: url(vars.$background-root + "rust.jpg");
+}

@@ -25,6 +25,10 @@ spanIDs = [
   "#h-9",
   "#h-10",
   "#h-11",
+  "#m-1",
+  "#m-2",
+  "#m-3",
+  "#m-4",
 ];
 
 module.exports = {
@@ -32,16 +36,18 @@ module.exports = {
     browser
       .url(url)
       .waitForElementVisible("body", timeout)
-      .verify.containsText("#clock", "ITLISASAMPM")
-      .verify.containsText("#clock", "ACQUARTERDC")
-      .verify.containsText("#clock", "TWENTYFIVEX")
-      .verify.containsText("#clock", "HALFSTENFTO")
-      .verify.containsText("#clock", "PASTERUNINE")
-      .verify.containsText("#clock", "ONESIXTHREE")
-      .verify.containsText("#clock", "FOURFIVETWO")
-      .verify.containsText("#clock", "EIGHTELEVEN")
-      .verify.containsText("#clock", "SEVENTWELVE")
-      .verify.containsText("#clock", "TENSEOCLOCK");
+      .verify.containsText("#clock", "·           ·")
+      .verify.containsText("#clock", " ITLISASAMPM ")
+      .verify.containsText("#clock", " ACQUARTERDC ")
+      .verify.containsText("#clock", " TWENTYFIVEX ")
+      .verify.containsText("#clock", " HALFSTENFTO ")
+      .verify.containsText("#clock", " PASTERUNINE ")
+      .verify.containsText("#clock", " ONESIXTHREE ")
+      .verify.containsText("#clock", " FOURFIVETWO ")
+      .verify.containsText("#clock", " EIGHTELEVEN ")
+      .verify.containsText("#clock", " SEVENTWELVE ")
+      .verify.containsText("#clock", " TENSEOCLOCK ")
+      .verify.containsText("#clock", "·           ·");
   },
 
   "The spans have the correct content": function (browser) {
@@ -63,12 +69,12 @@ module.exports = {
         spans: ["#it", "#is", "#h-0", "#oclock"],
       },
       {
-        timestamp: "17:43",
-        spans: ["#it", "#is", "#a", "#quarter", "#to", "#h-6"],
+        timestamp: "17:46",
+        spans: ["#it", "#is", "#a", "#quarter", "#to", "#h-6", "#m-1"],
       },
       {
         timestamp: "03:27",
-        spans: ["#it", "#is", "#twenty", "#five", "#past", "#h-3"],
+        spans: ["#it", "#is", "#twenty", "#five", "#past", "#h-3", "#m-1", "#m-2"],
       },
       {
         timestamp: "20:35",
@@ -80,7 +86,7 @@ module.exports = {
   },
 
   "It correctly populates localStorage": function (browser) {
-    let timestamp = "19:24";
+    let timestamp = "19:26";
 
     // https://stackoverflow.com/a/41969326
     browser.url(`${url}?faketime=${timestamp}`).execute(
@@ -89,7 +95,7 @@ module.exports = {
       function (result) {
         browser
           .expect(result.value["active-ids"])
-          .to.equal('["#it","#is","#twenty","#five","#past","#h-7"]');
+          .to.equal('["#it","#is","#twenty","#five","#past","#h-7","#m-1"]');
       }
     );
   },

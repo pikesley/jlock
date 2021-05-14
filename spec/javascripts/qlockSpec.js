@@ -21,13 +21,13 @@ describe("attenuatedIndex", function () {
 
 describe("intervalNameForValue", function () {
   it("returns 'oclock'", function () {
-    [58, 59, 00, 01, 02].forEach(function (minutes) {
+    fiveMinutes(0).forEach(function (minutes) {
       expect(intervalNameForValue(minutes)).toEqual("oclock");
     });
   });
 
   it("returns 'five' for 'past'", function () {
-    [03, 04, 05, 06, 07].forEach(function (minutes) {
+    fiveMinutes(5).forEach(function (minutes) {
       expect(intervalNameForValue(minutes)).toEqual("five");
     });
   });
@@ -48,51 +48,51 @@ describe("intervalNameForValue", function () {
 describe("minutesIDs", function () {
   expectations = [
     {
-      minutes: [58, 59, 00, 01, 02],
+      minutes: fiveMinutes(0),
       ids: ["#oclock"],
     },
     {
-      minutes: [03, 04, 05, 06, 07],
+      minutes: fiveMinutes(5),
       ids: ["#five", "#past"],
     },
     {
-      minutes: [08, 09, 10, 11, 12],
+      minutes: fiveMinutes(10),
       ids: ["#ten", "#past"],
     },
     {
-      minutes: [13, 14, 15, 16, 17],
+      minutes: fiveMinutes(15),
       ids: ["#a", "#quarter", "#past"],
     },
     {
-      minutes: [18, 19, 20, 21, 22],
+      minutes: fiveMinutes(20),
       ids: ["#twenty", "#past"],
     },
     {
-      minutes: [23, 24, 25, 26, 27],
+      minutes: fiveMinutes(25),
       ids: ["#twenty", "#five", "#past"],
     },
     {
-      minutes: [28, 29, 30, 31, 32],
+      minutes: fiveMinutes(30),
       ids: ["#half", "#past"],
     },
     {
-      minutes: [33, 34, 35, 36, 37],
+      minutes: fiveMinutes(35),
       ids: ["#twenty", "#five", "#to"],
     },
     {
-      minutes: [38, 39, 40, 41, 42],
+      minutes: fiveMinutes(40),
       ids: ["#twenty", "#to"],
     },
     {
-      minutes: [43, 44, 45, 46, 47],
+      minutes: fiveMinutes(45),
       ids: ["#a", "#quarter", "#to"],
     },
     {
-      minutes: [48, 49, 50, 51, 52],
+      minutes: fiveMinutes(50),
       ids: ["#ten", "#to"],
     },
     {
-      minutes: [53, 54, 55, 56, 57],
+      minutes: fiveMinutes(55),
       ids: ["#five", "#to"],
     },
   ];
@@ -106,6 +106,21 @@ describe("minutesIDs", function () {
   });
 });
 
+describe("dotsForMinutes", function () {
+  it("returns `m-1` for 1 minute past", function () {
+    expect(dotsForMinutes(1)).toEqual(["#m-1"]);
+  });
+  it("returns `m-1/2/3` for 3 minutes past", function () {
+    expect(dotsForMinutes(3)).toEqual(["#m-1", "#m-2", "#m-3"]);
+  });
+  it("returns `m-1/2` for 22 minutes past", function () {
+    expect(dotsForMinutes(22)).toEqual(["#m-1", "#m-2"]);
+  });
+  it("returns `m-1/2/3/4` for 39 minutes past", function () {
+    expect(dotsForMinutes(39)).toEqual(["#m-1", "#m-2", "#m-3", "#m-4"]);
+  });
+});
+
 describe("hoursID", function () {
   expectations = [
     {
@@ -115,9 +130,9 @@ describe("hoursID", function () {
         [13, 0],
         [12, 59],
         [0, 59],
-        [12, 34],
-        [0, 34],
-        [12, 33],
+        [12, 35],
+        [0, 35],
+        [12, 36],
       ],
     },
     {
@@ -127,8 +142,8 @@ describe("hoursID", function () {
         [18, 0],
         [17, 58],
         [5, 59],
-        [17, 33],
-        [5, 34],
+        [17, 35],
+        [5, 36],
       ],
     },
     {
@@ -139,8 +154,8 @@ describe("hoursID", function () {
         [12, 25],
         [11, 59],
         [23, 59],
-        [11, 34],
-        [23, 34],
+        [11, 35],
+        [23, 36],
       ],
     },
   ];
@@ -177,14 +192,16 @@ describe("IDsToBeActivatedFor", function () {
       "#five",
       "#to",
       "#h-4",
+      "#m-1",
+      "#m-2",
     ]);
-    expect(IDsToBeActivatedFor({ hours: 03, minutes: 58 })).toEqual([
+    expect(IDsToBeActivatedFor({ hours: 04, minutes: 00 })).toEqual([
       "#it",
       "#is",
       "#h-4",
       "#oclock",
     ]);
-    expect(IDsToBeActivatedFor({ hours: 03, minutes: 33 })).toEqual([
+    expect(IDsToBeActivatedFor({ hours: 03, minutes: 35 })).toEqual([
       "#it",
       "#is",
       "#twenty",
@@ -201,24 +218,11 @@ describe("IDsToBeActivatedFor", function () {
       "#five",
       "#to",
       "#h-7",
+      "#m-1",
+      "#m-2",
     ]);
-    [58, 59].forEach(function (minutes) {
-      expect(IDsToBeActivatedFor({ hours: 06, minutes: minutes })).toEqual([
-        "#it",
-        "#is",
-        "#h-7",
-        "#oclock",
-      ]);
-    });
-    [00, 01, 02].forEach(function (minutes) {
-      expect(IDsToBeActivatedFor({ hours: 07, minutes: minutes })).toEqual([
-        "#it",
-        "#is",
-        "#h-7",
-        "#oclock",
-      ]);
-    });
-    expect(IDsToBeActivatedFor({ hours: 07, minutes: 03 })).toEqual([
+
+    expect(IDsToBeActivatedFor({ hours: 07, minutes: 05 })).toEqual([
       "#it",
       "#is",
       "#five",
@@ -235,17 +239,11 @@ describe("IDsToBeActivatedFor", function () {
       "#five",
       "#past",
       "#h-0",
+      "#m-1",
+      "#m-2",
     ]);
-    [28, 29, 30, 31, 32].forEach(function (minutes) {
-      expect(IDsToBeActivatedFor({ hours: 12, minutes: minutes })).toEqual([
-        "#it",
-        "#is",
-        "#half",
-        "#past",
-        "#h-0",
-      ]);
-    });
-    expect(IDsToBeActivatedFor({ hours: 12, minutes: 33 })).toEqual([
+
+    expect(IDsToBeActivatedFor({ hours: 12, minutes: 35 })).toEqual([
       "#it",
       "#is",
       "#twenty",

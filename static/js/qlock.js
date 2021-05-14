@@ -8,7 +8,7 @@ let intervalNames = [
   "half",
 ];
 
-let leeway = 2; // minutes ahead of the actual time that we change the clock
+let leeway = 0; // minutes ahead of the actual time that we change the clock
 
 let attenuatedIndex = function (index) {
   // bounce off the end of intervalNames and go back up
@@ -91,5 +91,16 @@ let IDsToBeActivatedFor = function (time) {
     ids = ids.concat(hour);
   }
 
+  ids = ids.concat(dotsForMinutes(time.minutes))
+
   return ids;
 };
+
+let dotsForMinutes = function (minutes) {
+  ids = []
+  for(i = 0; i < minutes % 5; i++) {
+    ids.push(`#m-${i + 1}`)
+  }
+
+  return ids
+}

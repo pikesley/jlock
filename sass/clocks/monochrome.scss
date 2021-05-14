@@ -1,8 +1,10 @@
-$white: rgb(255, 255, 255);
+@use '../base/mixins';
 
-$background-colour: darken($white, 10%);
-$active-colour: darken($white, 60%);
-$inactive-colour: darken($white, 20%);
+$grey: rgb(36, 36, 36);
+
+$active-colour: white;
+$background-colour: black;
+$inactive-colour: $grey;
 
 @mixin activated {
     color: $active-colour;
@@ -17,5 +19,4 @@ $inactive-colour: darken($white, 20%);
 body {
     background-color: $background-colour;
     font-weight: bold;
-    // font-size: 4.9em;
 }

@@ -1,8 +1,8 @@
 @use '../base/mixins';
 @use '../base/vars';
 
-$active-colour: rgb(247, 0, 255);
-$inactive-colour: rgb(142, 143, 75);
+$active-colour: rgb(250, 236, 48);
+$inactive-colour: rgb(66, 66, 66);
 
 @mixin activated {
   color: $active-colour;
@@ -18,5 +18,5 @@ $inactive-colour: rgb(142, 143, 75);
 @import '../base/faders';
 
 body {
-  background-image: url(vars.$background-root + "wood.jpg");
+  background-image: url(vars.$background-root + "verdigris.png");
 }
