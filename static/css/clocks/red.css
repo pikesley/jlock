@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Codystar");
+body {
+  overflow: hidden;
+  font-size: 6vh;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 0em 0em;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  max-width: 100vh;
+  margin: 0 auto;
+}
+
+#clock span {
+  text-align: center;
+}
+
+body {
+  color: rgba(166, 77, 77, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.inactive {
+  color: rgba(166, 77, 77, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #e3c011;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(227, 192, 17, 0.9);
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: rgba(166, 77, 77, 0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    color: #e3c011;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(227, 192, 17, 0.9);
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #e3c011;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(227, 192, 17, 0.9);
+  }
+  100% {
+    color: rgba(166, 77, 77, 0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  }
+}
+body {
+  background-color: #9f1313;
+  font-family: "Codystar";
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=red.css.map */

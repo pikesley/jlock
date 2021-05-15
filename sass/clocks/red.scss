@@ -1,0 +1,26 @@
+@use '../base/mixins';
+
+@import url("https://fonts.googleapis.com/css2?family=Codystar");
+
+$active-colour: rgb(227, 192, 17);
+$inactive-colour: rgba(166, 77, 77, 0.5);
+$background-colour: rgb(159, 19, 19);
+
+@mixin activated {
+  color: $active-colour;
+  @include mixins.engrave-with-bloom($active-colour)
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+  @include mixins.engrave
+}
+
+@import '../base/faders';
+
+body {
+  background-color: $background-colour;
+  font-family: "Codystar";
+  font-weight: bold;
+  // font-size: 2em;
+}
