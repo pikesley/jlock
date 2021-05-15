@@ -1,10 +1,10 @@
 @use '../base/mixins';
 
-@import url("https://fonts.googleapis.com/css2?family=Codystar");
+@import url("https://fonts.googleapis.com/css2?family=Manjari");
 
-$active-colour: rgb(227, 192, 17);
-$inactive-colour: rgba(166, 77, 77, 0.5);
-$background-colour: rgb(159, 19, 19);
+$active-colour: rgb(227, 17, 153);
+$inactive-colour: rgba(57, 31, 31, 0.5);
+$background-colour: rgb(62, 12, 117);
 
 @mixin activated {
   color: $active-colour;
@@ -20,6 +20,5 @@ $background-colour: rgb(159, 19, 19);
 
 body {
   background-color: $background-colour;
-  font-family: "Codystar";
-  font-weight: bold;
+  font-family: "Manjari";
 }

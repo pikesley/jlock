@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Elite");
+@import url("https://fonts.googleapis.com/css2?family=Manjari");
 body {
   overflow: hidden;
   font-size: 6vh;
@@ -21,7 +21,7 @@ body {
 }
 
 body {
-  color: transparent;
+  color: rgba(57, 31, 31, 0.5);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -29,7 +29,7 @@ body {
 }
 
 .inactive {
-  color: transparent;
+  color: rgba(57, 31, 31, 0.5);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -38,40 +38,40 @@ body {
 }
 
 .active {
-  color: #faec30;
+  color: #e31199;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 236, 48, 0.9);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(227, 17, 153, 0.9);
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
   0% {
-    color: transparent;
+    color: rgba(57, 31, 31, 0.5);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
   }
   100% {
-    color: #faec30;
+    color: #e31199;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 236, 48, 0.9);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(227, 17, 153, 0.9);
   }
 }
 @keyframes fade-out {
   0% {
-    color: #faec30;
+    color: #e31199;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 236, 48, 0.9);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(227, 17, 153, 0.9);
   }
   100% {
-    color: transparent;
+    color: rgba(57, 31, 31, 0.5);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -79,9 +79,8 @@ body {
   }
 }
 body {
-  background-image: url("../../images/backgrounds/verdigris.jpg");
-  font-family: "Special Elite";
-  font-size: 2.5em;
+  background-color: #3e0c75;
+  font-family: "Manjari";
 }
 
-/*# sourceMappingURL=verdigris.css.map */
+/*# sourceMappingURL=purple.css.map */
