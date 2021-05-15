@@ -21,7 +21,6 @@ body {
 }
 
 body {
-  background-color: black;
   color: transparent;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -30,7 +29,6 @@ body {
 }
 
 .inactive {
-  background-color: black;
   color: transparent;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -50,7 +48,6 @@ body {
 
 @keyframes fade-in {
   0% {
-    background-color: black;
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -74,7 +71,6 @@ body {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
   }
   100% {
-    background-color: black;
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;

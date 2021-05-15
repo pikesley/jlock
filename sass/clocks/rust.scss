@@ -2,7 +2,6 @@
 @use '../base/vars';
 
 $active-colour: rgb(250, 215, 253);
-$inactive-colour: rgb(66, 66, 66);
 
 @mixin activated {
   color: $active-colour;
@@ -10,7 +9,6 @@ $inactive-colour: rgb(66, 66, 66);
 }
 
 @mixin deactivated {
-  background-color: $inactive-colour;
   color: transparent;
   @include mixins.engrave;
 }
