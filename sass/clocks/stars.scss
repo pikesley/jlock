@@ -1,0 +1,22 @@
+@use '../base/vars';
+
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots");
+
+$active-colour: rgb(255, 148, 18);
+$inactive-colour: rgba(21, 60, 24, 0.538);
+
+@mixin activated {
+  color: $active-colour;
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+}
+
+@import '../base/faders';
+
+body {
+  background-image: url(vars.$background-root + "stars.jpg");
+  font-family: "Zen Dots";
+  font-size: 2.5em;
+}

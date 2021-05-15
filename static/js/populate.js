@@ -26,43 +26,36 @@ let clockParts = [
 ];
 
 let populateClock = function () {
-  addDots("#clock", [1, 2]);
-  clockParts.forEach(function (row, index) {
-    $("#clock").append($("<span/>", { class: "row" }));
-    attachSpace("#clock");
+  addDots([1, 2]);
+
+  clockParts.forEach(function (row) {
+    $("#clock").append($("<span/>"));
     row.forEach(function (cell) {
-      let span = $("<span/>");
-
-      $(span).attr("id", function () {
-        return cell.id;
-      });
-
-      $(span).text(function () {
-        return (cell.text || cell.id).toUpperCase();
-      });
-
-      $("#clock").children().last().append(span);
+      content = (cell.text || cell.id).toUpperCase();
+      for (character of content) {
+        let span = $("<span/>", { text: character });
+        if (cell.id) {
+          $(span).attr("class", cell.id);
+        }
+        $("#clock").append(span);
+      }
     });
-    attachSpace("#clock");
+    $("#clock").append($("<span/>"));
   });
-  addDots("#clock", [4, 3]);
+
+  addDots([4, 3]);
 };
 
-let attachSpace = function (el) {
-  $(el).children().last().append("<span>&nbsp;</span>");
-};
+let addDots = function (minutes) {
+  $("#clock").append(dotSpan(minutes[0]));
 
-let addDots = function (el, minutes) {
-  $(el).append($("<span/>", { class: "row" }));
+  for (i = 0; i < 11; i++) {
+    $("#clock").append($("<span/>"));
+  }
 
-  $(el)
-    .children()
-    .last()
-    .append(dotSpan(minutes[0]))
-    .append($("<span/>", { text: "\xa0".repeat(11) }))
-    .append(dotSpan(minutes[1]));
+  $("#clock").append(dotSpan(minutes[1]));
 };
 
 let dotSpan = function (index) {
-  return $("<span/>", { id: `m-${index}`, text: "·" });
+  return $("<span/>", { class: `m-${index}`, text: "·" });
 };

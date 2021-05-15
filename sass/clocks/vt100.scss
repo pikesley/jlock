@@ -1,5 +1,6 @@
 @use '../base/mixins';
-// @import url("https://fonts.googleapis.com/css2?family=VT323");
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P");
 
 $green: rgb(102, 255, 0);
 
@@ -23,6 +24,6 @@ $shadow-colour: darken($active-colour, 20%);
 
 body {
     background-color: $background-colour;
-    // font-family: VT323;
-    // letter-spacing: 4vh;
+    font-family: "Press Start 2P";
+    font-size: 5vh;
 }

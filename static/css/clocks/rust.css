@@ -1,23 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime");
+@import url("https://fonts.googleapis.com/css2?family=KoHo");
 body {
   overflow: hidden;
-  font-family: "Courier Prime";
-  font-size: 9vh;
-  letter-spacing: 2vh;
-  line-height: 8vh;
+  font-size: 6vh;
 }
 
-#container {
-  display: flex;
+#clock {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 0em 0em;
   justify-content: center;
-  align-items: center;
+  align-content: center;
   height: 100vh;
-  width: 100%;
-  margin-left: 1vh;
+  max-width: 100vh;
+  margin: 0 auto;
 }
 
-.row {
-  display: block;
+#clock span {
+  text-align: center;
 }
 
 body {
@@ -80,6 +80,7 @@ body {
 }
 body {
   background-image: url("../../images/backgrounds/rust.jpg");
+  font-family: "KoHo";
 }
 
 /*# sourceMappingURL=rust.css.map */

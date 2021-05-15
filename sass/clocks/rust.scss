@@ -1,6 +1,8 @@
 @use '../base/mixins';
 @use '../base/vars';
 
+@import url("https://fonts.googleapis.com/css2?family=KoHo");
+
 $active-colour: rgb(250, 215, 253);
 
 @mixin activated {
@@ -17,4 +19,5 @@ $active-colour: rgb(250, 215, 253);
 
 body {
   background-image: url(vars.$background-root + "rust.jpg");
+  font-family: "KoHo";
 }

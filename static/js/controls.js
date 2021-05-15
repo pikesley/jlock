@@ -19,7 +19,7 @@ $(document).ready(function () {
   });
 
   // force it to update on the first load
-  localStorage["active-ids"] = null;
+  localStorage["active-classes"] = null;
   refreshClock();
 
   // check for updates every second
@@ -33,22 +33,24 @@ $(document).ready(function () {
 
 let refreshClock = function () {
   // update the clock
-  currentIDs = JSON.parse(localStorage["active-ids"] || "[]");
-  nextIDs = IDsToBeActivatedFor(getTime());
-  IDsToBeSwitched = diffIDs(currentIDs, nextIDs);
+  currentClasses = JSON.parse(localStorage["active-classes"] || "[]");
+  nextClasses = ClassesToBeActivatedFor(getTime());
+  ClassesToBeSwitched = diffClasses(currentClasses, nextClasses);
 
-  if (IDsToBeSwitched.diffs) {
-    applyClass(IDsToBeSwitched.activate, "active");
-    applyClass(IDsToBeSwitched.deactivate, "inactive");
+  if (ClassesToBeSwitched.diffs) {
+    applyClass(ClassesToBeSwitched.activate, "active", "inactive");
+    applyClass(ClassesToBeSwitched.deactivate, "inactive", "active");
 
-    localStorage["active-ids"] = JSON.stringify(nextIDs);
-    console.log(localStorage["active-ids"]);
+    localStorage["active-classes"] = JSON.stringify(nextClasses);
+    console.log(localStorage["active-classes"]);
   }
 };
 
-let applyClass = function (ids, cls) {
-  ids.forEach(function (id) {
-    $(id).removeClass().addClass(cls);
+let applyClass = function (classes, appliable, removable) {
+  classes.forEach(function (kls) {
+    $(kls).each(function (element) {
+      $(this).removeClass(removable).addClass(appliable);
+    })
   });
 };
 
@@ -81,8 +83,8 @@ let setStyles = function () {
   }
 };
 
-let diffIDs = function (current, next) {
-  // find out which IDs we need to switch on and off
+let diffClasses = function (current, next) {
+  // find out which Classes we need to switch on and off
   // https://stackoverflow.com/a/15386005
 
   activate = $(next).not(current).get();

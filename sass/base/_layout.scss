@@ -1,24 +1,22 @@
-@use 'typography';
-
-$left-shim: 1vh; // this fuckery is something to do with fixed-width fonts I think
+@use 'vars';
 
 body {
-    overflow: hidden;
-    font-family: typography.$primary;
-    font-size: typography.$font-size;
-    letter-spacing: typography.$letter-spacing;
-    line-height: typography.$line-height;
+  overflow: hidden;
+  font-size: vars.$font-size;
 }
 
-#container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    margin-left: $left-shim;
-}
+#clock {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: vars.$grid-gap vars.$grid-gap;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  max-width: 100vh;
+  margin: 0 auto;
 
-.row {
-    display: block;
+  span {
+    text-align: center;
+  }
 }

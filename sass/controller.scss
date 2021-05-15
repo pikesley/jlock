@@ -1,4 +1,4 @@
-@use 'base/typography';
+@import url("https://fonts.googleapis.com/css2?family=Teko");
 
 $background-colour: rgb(17, 17, 17);
 $primary-colour: rgb(95, 30, 218);
@@ -6,7 +6,7 @@ $lighter: lighten($primary-colour, 30%);
 $darker: darken($primary-colour, 10%);
 
 body {
-  font-family: typography.$primary;
+  font-family: "Teko";
   text-align: center;
   background-color: $background-colour;
   color: $primary-colour;

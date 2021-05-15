@@ -1,11 +1,11 @@
 @use '../base/mixins';
 
-@import url("https://fonts.googleapis.com/css2?family=Neucha");
+@import url("https://fonts.googleapis.com/css2?family=Righteous");
 
-$grey: rgb(36, 36, 36);
+$grey: rgba(4, 4, 4, 0.216);
 
-$active-colour: white;
-$background-colour: black;
+$active-colour: black;
+$background-colour: white;
 $inactive-colour: $grey;
 
 @mixin activated {
@@ -20,7 +20,6 @@ $inactive-colour: $grey;
 
 body {
     background-color: $background-colour;
-    font-weight: bold;
-    font-family: "Neucha";
-    font-size: 3em;
+    font-family: "Righteous";
+    font-size: 2m;
 }

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat");
+@import url("https://fonts.googleapis.com/css2?family=Righteous");
 body {
   overflow: hidden;
   font-size: 6vh;
@@ -21,45 +21,39 @@ body {
 }
 
 body {
-  color: #002752;
-  text-shadow: none;
+  color: rgba(4, 4, 4, 0.216);
 }
 
 .inactive {
-  color: #002752;
-  text-shadow: none;
+  color: rgba(4, 4, 4, 0.216);
   animation: fade-out ease 3s;
 }
 
 .active {
-  color: #fa8100;
-  text-shadow: #fa8100 0 0 16px;
+  color: black;
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
   0% {
-    color: #002752;
-    text-shadow: none;
+    color: rgba(4, 4, 4, 0.216);
   }
   100% {
-    color: #fa8100;
-    text-shadow: #fa8100 0 0 16px;
+    color: black;
   }
 }
 @keyframes fade-out {
   0% {
-    color: #fa8100;
-    text-shadow: #fa8100 0 0 16px;
+    color: black;
   }
   100% {
-    color: #002752;
-    text-shadow: none;
+    color: rgba(4, 4, 4, 0.216);
   }
 }
 body {
-  background-color: #001b38;
-  font-family: "Montserrat";
+  background-color: white;
+  font-family: "Righteous";
+  font-size: 2m;
 }
 
-/*# sourceMappingURL=blue-orange.css.map */
+/*# sourceMappingURL=black-on-white.css.map */
