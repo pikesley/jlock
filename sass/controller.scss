@@ -40,8 +40,10 @@ em {
 }
 
 #next-button {
+  width: 20em;
   fill: $primary-colour;
   margin: 4vh;
+  cursor: pointer;
 }
 
 .active {

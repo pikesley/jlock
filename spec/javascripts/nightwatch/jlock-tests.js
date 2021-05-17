@@ -1,5 +1,5 @@
 const timeout = 10;
-const url = "http://qlock";
+const url = "http://jlock";
 
 let spanClasses = [
   ".it",
@@ -36,7 +36,7 @@ module.exports = {
     browser
       .url(url)
       .waitForElementVisible("body", timeout)
-      .verify.containsText("#clock", "·")
+      .verify.containsText("#clock", "•")
       .verify.containsText("#clock", "I\nT\nL\nI\nS\nA\nS\nA\nM\nP\nM")
       .verify.containsText("#clock", "A\nC\nQ\nU\nA\nR\nT\nE\nR\nD\nC")
       .verify.containsText("#clock", "T\nW\nE\nN\nT\nY\nF\nI\nV\nE\nX")

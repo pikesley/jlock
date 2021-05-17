@@ -1,10 +1,10 @@
 
 [Unit]
-Description=Qlock Control Webserver
+Description=Jlock Control Webserver
 
 [Service]
 User=pi
-WorkingDirectory=/home/pi/qlock/
+WorkingDirectory=/home/pi/jlock/
 ExecStart=/bin/bash -lc '/home/pi/.local/bin/gunicorn -b 0.0.0.0:5000 controller:app'
 Restart=always
 StandardInput=null

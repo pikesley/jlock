@@ -1,6 +1,6 @@
 FROM python:3.7
 
-ENV PROJECT qlock
+ENV PROJECT jlock
 ENV PLATFORM docker
 ENV SASS_VERSION 1.32.10
 WORKDIR /opt/${PROJECT}
@@ -15,9 +15,6 @@ RUN apt-get update && apt-get install -y \
                                         nodejs \
                                         firefox-esr
 
-RUN npm install -g npm
-RUN npm install
-
 RUN cd /tmp && \
     curl \
         --silent \
@@ -29,10 +26,13 @@ RUN cd /tmp && \
         mv dart-sass/sass /usr/local/bin/
 
 COPY ./ /opt/${PROJECT}
+COPY docker-config/bashrc /root/.bashrc
+
+RUN npm install -g npm
+RUN npm install
 
 RUN pip install --upgrade pip jasmine ipdb black isort pylama pylint
 RUN make install
 
 RUN ln -sf /opt/${PROJECT}/nginx/dev-site.conf /etc/nginx/sites-enabled/default
 
-COPY docker-config/bashrc /root/.bashrc

@@ -1,4 +1,5 @@
 @use '../base/mixins';
+@use '../base/vars';
 
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P");
 
@@ -25,5 +26,5 @@ $shadow-colour: darken($active-colour, 20%);
 body {
     background-color: $background-colour;
     font-family: "Press Start 2P";
-    font-size: 5vh;
+    font-size: 4vh;
 }

@@ -3,20 +3,24 @@
 body {
   overflow: hidden;
   font-size: vars.$font-size;
+  margin: vars.$outer-margin;
+  padding: 0;
 }
 
 #clock {
   display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(vars.$clock-width + 2 + vars.$clock-spacers * 2, 1fr);
+  grid-template-rows: repeat(vars.$clock-height + 2 + vars.$clock-spacers * 2, 1fr);
+
   gap: vars.$grid-gap vars.$grid-gap;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  max-width: 100vh;
+  // justify-content: center;
+  align-items: center;
+  height: vars.$clock-dimension;
+  width: vars.$clock-dimension;
   margin: 0 auto;
 
   span {
     text-align: center;
+    // border: 1px grey solid;
   }
 }

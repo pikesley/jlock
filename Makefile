@@ -6,7 +6,7 @@ PLATFORM ?= laptop
 
 # default
 
-all: docker-only format lint test
+all: docker-only format lint test clean
 
 # laptop targets
 
@@ -22,18 +22,21 @@ run: laptop-only
 sass: docker-only
 	sass --watch sass:static/css
 
-push-code:
+push-code: docker-only
 	rsync --archive \
 		  --verbose \
 		  --delete \
 			--exclude node_modules \
 		  . \
-		  pi@${PIHOST}:qlock
+		  pi@${PIHOST}:jlock
 
-test: jasmine-ci nightwatch-tests
+test: docker-only jasmine-ci nightwatch-tests
 
 lint: docker-only
 	python -m pylama
+
+clean: docker-only
+	@find . -depth -name __pycache__ -exec rm -fr {} \;
 
 jasmine: docker-only
 	jasmine server --host 0.0.0.0
@@ -96,7 +99,7 @@ systemd: pi-only prepare-logs
 	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/controller.service
 
 virtualhost: pi-only
-	sudo ln -sf /home/pi/qlock/nginx/site.conf /etc/nginx/sites-enabled/default
+	sudo ln -sf /home/pi/jlock/nginx/site.conf /etc/nginx/sites-enabled/default
 
 restart-services: pi-only
 	sudo service controller restart

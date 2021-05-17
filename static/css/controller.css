@@ -34,8 +34,10 @@ em {
 }
 
 #next-button {
+  width: 20em;
   fill: #5f1eda;
   margin: 4vh;
+  cursor: pointer;
 }
 
 .active {

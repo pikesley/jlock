@@ -1,18 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Codystar");
 body {
   overflow: hidden;
-  font-size: 6vh;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
 }
 
 #clock {
   display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  gap: 0em 0em;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  max-width: 100vh;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
   margin: 0 auto;
 }
 

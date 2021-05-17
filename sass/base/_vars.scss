@@ -1,3 +1,12 @@
 $background-root: "../../images/backgrounds/";
-$grid-gap: 0em;
-$font-size: 6vh;
+$grid-gap: 0;
+$font-size: 5vh;
+$outer-margin: 1vh;
+
+$clock-width: 11;
+$clock-height: 10;
+$clock-spacers: 1; // this should match `spacers` in `static/js/populate.js`
+
+///
+
+$clock-dimension: 100vh - ($outer-margin * 2);

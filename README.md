@@ -1,16 +1,16 @@
-# Qlock
+# Jlock
 
 _A new clock, running on the [station-clock](https://github.com/pikesley/station-clock) hardware_
 
-![qlock](assets/images/qlock.png)
+![jlock](assets/images/jlock.png)
 
 The Model-A Pi was really struggling with the demands of the [Station Clock](https://github.com/pikesley/station-clock), so I was looking around for something less demanding and I stumbled across [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd). That's all done using [d3.js](https://d3js.org/), but thinking about it, I realised that I should be able to reimplement it with HTML, CSS and some JavaScript.
 
 If you just want to see it in action, then:
 
 ```bash
-git clone https://github.com/pikesley/qlock
-cd qlock
+git clone https://github.com/pikesley/jlock
+cd jlock
 make build
 make docker-compose
 ```
@@ -48,7 +48,7 @@ ssh pi@raspberrypi.local
 (Optionally) change the hostname:
 
 ```bash
-sudo raspi-config nonint do_hostname qlock
+sudo raspi-config nonint do_hostname jlock
 sudo reboot
 ```
 
@@ -67,7 +67,7 @@ Select the correct screen and Pi combination (in my case it's `3 : Weirdly Squar
 ### Clone this repo
 
 ```bash
-git clone https://github.com/pikesley/qlock
+git clone https://github.com/pikesley/jlock
 ```
 
 ### And configure everything
@@ -81,8 +81,8 @@ make setup
 This was all developed on a Docker container. To run it:
 
 ```bash
-git clone https://github.com/pikesley/qlock
-cd qlock
+git clone https://github.com/pikesley/jlock
+cd jlock
 make build
 make docker-compose
 ```
@@ -105,7 +105,7 @@ make jasmine
 
 and they should be running at [http://localhost:8888/](http://localhost:8888/).
 
-There are also some [Nightwatch](https://nightwatchjs.org/) [tests](spec/javascripts/nightwatch/qlock-tests.js). Run these with:
+There are also some [Nightwatch](https://nightwatchjs.org/) [tests](spec/javascripts/nightwatch/jlock-tests.js). Run these with:
 
 ```bash
 make nightwatch-tests
