@@ -32,6 +32,7 @@ body {
 
 .active {
   color: #ff9412;
+  text-shadow: #006bed 0 0 16px;
   animation: fade-in ease 3s;
 }
 
@@ -41,11 +42,13 @@ body {
   }
   100% {
     color: #ff9412;
+    text-shadow: #006bed 0 0 16px;
   }
 }
 @keyframes fade-out {
   0% {
     color: #ff9412;
+    text-shadow: #006bed 0 0 16px;
   }
   100% {
     color: rgba(21, 60, 24, 0.538);

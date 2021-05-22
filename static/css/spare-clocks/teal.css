@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=KoHo");
+@import "https://fonts.googleapis.com/css2?family=Aldrich";
 body {
   overflow: hidden;
   font-size: 5vh;
@@ -22,7 +22,7 @@ body {
 }
 
 body {
-  color: transparent;
+  color: #8acdea;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -30,7 +30,7 @@ body {
 }
 
 .inactive {
-  color: transparent;
+  color: #8acdea;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -39,40 +39,40 @@ body {
 }
 
 .active {
-  color: #fad7fd;
+  color: #af3b6e;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(175, 59, 110, 0.9);
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
   0% {
-    color: transparent;
+    color: #8acdea;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
   }
   100% {
-    color: #fad7fd;
+    color: #af3b6e;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(175, 59, 110, 0.9);
   }
 }
 @keyframes fade-out {
   0% {
-    color: #fad7fd;
+    color: #af3b6e;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(250, 215, 253, 0.9);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7), 0 0 16px rgba(175, 59, 110, 0.9);
   }
   100% {
-    color: transparent;
+    color: #8acdea;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -80,8 +80,8 @@ body {
   }
 }
 body {
-  background-image: url("../../images/backgrounds/rust.jpg");
-  font-family: "KoHo";
+  background-color: #4a6c6f;
+  font-family: "Aldrich";
 }
 
-/*# sourceMappingURL=rust.css.map */
+/*# sourceMappingURL=teal.css.map */

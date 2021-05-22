@@ -4,33 +4,33 @@ $fade-time: 3s;
 $fade-type: ease;
 
 body {
-    @include deactivated;
+  @include deactivated;
 }
 
 .inactive {
-    @include deactivated;
-    animation: fade-out $fade-type $fade-time;
+  @include deactivated;
+  animation: fade-out $fade-type $fade-time;
 }
 
 .active {
-    @include activated;
-    animation: fade-in $fade-type $fade-time;
+  @include activated;
+  animation: fade-in $fade-type $fade-time;
 }
 
 @keyframes fade-in {
-    0% {
-        @include deactivated;
-    }
-    100% {
-        @include activated;
-    }
+  0% {
+    @include deactivated;
+  }
+  100% {
+    @include activated;
+  }
 }
 
 @keyframes fade-out {
-    0% {
-        @include activated;
-    }
-    100% {
-        @include deactivated;
-    }
+  0% {
+    @include activated;
+  }
+  100% {
+    @include deactivated;
+  }
 }

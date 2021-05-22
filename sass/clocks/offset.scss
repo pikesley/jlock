@@ -1,0 +1,34 @@
+// https://codepen.io/markmead/pen/YjQKeZ
+@use '../base/mixins';
+
+@import url("https://fonts.googleapis.com/css2?family=Lalezar");
+
+$background-colour: rgb(250, 129, 0);
+$stroke-colour: darken($background-colour, 60%);
+
+$active-colour: rgb(43, 214, 226);
+$inactive-colour: darken($background-colour, 5%);
+
+$stroke-width: 1px;
+$offset: 0.5vh;
+
+
+
+@mixin activated {
+  text-shadow: $offset $offset $active-colour;
+}
+
+@mixin deactivated {
+  text-shadow: $offset $offset $inactive-colour;
+}
+
+@import "../base/faders";
+
+body {
+  font-family: "Lalezar";
+  background-color: $background-colour;
+  @include mixins.stroke-width($stroke-width);
+  @include mixins.stroke-colour($stroke-colour);
+  color: transparent;
+  text-shadow: $offset $offset $inactive-colour;
+}

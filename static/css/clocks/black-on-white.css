@@ -21,40 +21,38 @@ body {
   text-align: center;
 }
 
-body {
-  color: rgba(4, 4, 4, 0.216);
-}
-
 .inactive {
-  color: rgba(4, 4, 4, 0.216);
   animation: fade-out ease 3s;
 }
 
 .active {
-  color: black;
+  color: rgba(4, 4, 4, 0.216);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
-  0% {
-    color: rgba(4, 4, 4, 0.216);
-  }
   100% {
-    color: black;
+    color: rgba(4, 4, 4, 0.216);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
   }
 }
 @keyframes fade-out {
   0% {
-    color: black;
-  }
-  100% {
     color: rgba(4, 4, 4, 0.216);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
   }
 }
 body {
   background-color: white;
   font-family: "Righteous";
   font-size: 2m;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(4, 4, 4, 0.216);
+  color: transparent;
 }
 
 /*# sourceMappingURL=black-on-white.css.map */

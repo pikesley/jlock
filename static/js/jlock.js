@@ -19,23 +19,6 @@ let attenuatedIndex = function (index) {
   }
 };
 
-let getTime = function () {
-  // retrieve the current hours and minutes
-  let current = new Date();
-  let hours = current.getHours();
-  let minutes = current.getMinutes();
-
-  // so we can test without selenium fuckery
-  let urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get("faketime")) {
-    faketime = urlParams.get('faketime').split(":");
-    hours = faketime[0];
-    minutes = faketime[1];
-  }
-
-  return { hours: parseInt(hours), minutes: parseInt(minutes) };
-};
-
 let intervalNameForValue = function (value) {
   // retrieve e.g. "quarter" for 15 or 45
   let index = parseInt((value / 5) % 12);
@@ -73,7 +56,7 @@ let hoursClass = function (hours, minutes) {
   return `.h-${hours % 12}`;
 };
 
-let ClassesToBeActivatedFor = function (time) {
+let classesToBeActivatedFor = function (time) {
   // compile all the Classes for this particular time
   intervals = minutesClasses(time.minutes);
   hour = hoursClass(time.hours, time.minutes);
@@ -89,16 +72,16 @@ let ClassesToBeActivatedFor = function (time) {
     classes = classes.concat(hour);
   }
 
-  classes = classes.concat(dotsForMinutes(time.minutes))
+  classes = classes.concat(dotsForMinutes(time.minutes));
 
   return classes;
 };
 
 let dotsForMinutes = function (minutes) {
-  classes = []
-  for(i = 0; i < minutes % 5; i++) {
-    classes.push(`.m-${i + 1}`)
+  classes = [];
+  for (i = 0; i < minutes % 5; i++) {
+    classes.push(`.m-${i + 1}`);
   }
 
-  return classes
-}
+  return classes;
+};

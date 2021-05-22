@@ -5,26 +5,36 @@
 
 $green: rgb(102, 255, 0);
 
-$background-colour: black;
 $active-colour: $green;
-$inactive-colour: darken($active-colour, 40%);
+$inactive-colour: darken($active-colour, 30%);
 $shadow-colour: darken($active-colour, 20%);
 
+$background-colour: black;
+$gradient-colour: darken($active-colour, 40%);
+
 @mixin activated {
-    color: $active-colour;
-    font-weight: bold;
-    text-shadow: $shadow-colour 4px 0 4px;
+  color: $active-colour;
+  font-weight: bold;
+  text-shadow: $shadow-colour 4px 0 4px;
 }
 
 @mixin deactivated {
-    color: $inactive-colour;
-    text-shadow: none;
+//   color: $inactive-colour;
+  text-shadow: none;
+//   @include mixins.stroke-colour($inactive-colour);
+//   @include mixins.stroke-width(1px);
+//   color: transparent;
 }
 
-@import '../base/faders';
+@import "../base/faders";
 
 body {
-    background-color: $background-colour;
-    font-family: "Press Start 2P";
-    font-size: 4vh;
+  background: url(vars.$background-root + "scanlines.png"),
+    radial-gradient($gradient-colour, $background-colour);
+
+  font-family: "Press Start 2P";
+  font-size: 3.5vh;
+  @include mixins.stroke-colour($inactive-colour);
+  @include mixins.stroke-width(1px);
+  color: transparent;
 }

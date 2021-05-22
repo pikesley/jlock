@@ -1,10 +1,10 @@
 @use '../base/mixins';
 
-@import url("https://fonts.googleapis.com/css2?family=Manjari");
+@import "https://fonts.googleapis.com/css2?family=Aldrich";
 
-$active-colour: rgb(227, 17, 153);
-$inactive-colour: rgba(57, 31, 31, 0.5);
-$background-colour: rgb(62, 12, 117);
+$active-colour: rgb(175, 59, 110);
+$inactive-colour: rgb(138, 205, 234);
+$background-colour: rgb(74, 108, 111);
 
 @mixin activated {
   color: $active-colour;
@@ -20,5 +20,5 @@ $background-colour: rgb(62, 12, 117);
 
 body {
   background-color: $background-colour;
-  font-family: "Manjari";
+  font-family: "Aldrich";
 }

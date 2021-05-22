@@ -15,7 +15,26 @@ build: laptop-only
 		--tag ${ID} .
 
 run: laptop-only
-	docker-compose exec ${PROJECT} bash
+	docker run \
+		--name ${PROJECT} \
+		--volume $(shell pwd):/opt/${PROJECT} \
+		--volume ${HOME}/.ssh:/root/.ssh \
+		--interactive \
+		--tty \
+		--rm \
+		--publish 8888:8888 \
+		--publish 5000:5000 \
+		--publish 8000:80 \
+		${ID} \
+		bash
+
+exec: laptop-only
+	docker exec \
+		--interactive \
+		--tty \
+		${PROJECT} \
+		bash
+
 
 # docker dev targets
 
@@ -30,22 +49,21 @@ push-code: docker-only
 		  . \
 		  pi@${PIHOST}:jlock
 
-test: docker-only jasmine-ci nightwatch-tests
+test: docker-only jasmine-ci
 
 lint: docker-only
 	python -m pylama
 
 clean: docker-only
-	@find . -depth -name __pycache__ -exec rm -fr {} \;
+	@find . -name __pycache__ -exec rm -fr {} \;
+	@rm -fr reports
+	@rm -f geckodriver.log
 
 jasmine: docker-only
 	jasmine server --host 0.0.0.0
 
 jasmine-ci: docker-only
 	@MOZ_HEADLESS=true jasmine ci -b firefox | grep -v "Mozilla/5.0" | grep -v Warning
-
-nightwatch-tests: docker-only
-	@nightwatch
 
 black:
 	black .

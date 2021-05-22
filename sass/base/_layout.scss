@@ -13,7 +13,6 @@ body {
   grid-template-rows: repeat(vars.$clock-height + 2 + vars.$clock-spacers * 2, 1fr);
 
   gap: vars.$grid-gap vars.$grid-gap;
-  // justify-content: center;
   align-items: center;
   height: vars.$clock-dimension;
   width: vars.$clock-dimension;

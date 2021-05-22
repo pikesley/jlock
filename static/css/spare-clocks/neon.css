@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Arimo");
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+}
+
+#clock span {
+  text-align: center;
+}
+
+body {
+  color: #323232;
+}
+
+.inactive {
+  color: #323232;
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: white;
+  text-shadow: -1px -1px 1px white, -1px 1px 1px white, 1px -1px 1px white, 1px 1px 1px white, 0 0 3px white, 0 0 10px white, 0 0 20px white, 0 0 30px #ff9e9e, 0 0 40px #ff9e9e, 0 0 50px #ff9e9e, 0 0 70px #ff9e9e, 0 0 100px #ff9e9e, 0 0 200px #ff9e9e;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: #323232;
+  }
+  100% {
+    color: white;
+    text-shadow: -1px -1px 1px white, -1px 1px 1px white, 1px -1px 1px white, 1px 1px 1px white, 0 0 3px white, 0 0 10px white, 0 0 20px white, 0 0 30px #ff9e9e, 0 0 40px #ff9e9e, 0 0 50px #ff9e9e, 0 0 70px #ff9e9e, 0 0 100px #ff9e9e, 0 0 200px #ff9e9e;
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: white;
+    text-shadow: -1px -1px 1px white, -1px 1px 1px white, 1px -1px 1px white, 1px 1px 1px white, 0 0 3px white, 0 0 10px white, 0 0 20px white, 0 0 30px #ff9e9e, 0 0 40px #ff9e9e, 0 0 50px #ff9e9e, 0 0 70px #ff9e9e, 0 0 100px #ff9e9e, 0 0 200px #ff9e9e;
+  }
+  100% {
+    color: #323232;
+  }
+}
+body {
+  font-family: "Arimo";
+  color: #323232;
+  background: black;
+}
+
+/*# sourceMappingURL=neon.css.map */

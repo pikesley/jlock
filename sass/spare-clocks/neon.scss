@@ -1,0 +1,32 @@
+// https://codepen.io/fossheim/pen/PoqKoLY
+@import url("https://fonts.googleapis.com/css2?family=Arimo");
+
+$shadow-colour: rgb(255, 158, 158);
+$shadow-colour-light: rgb(255, 255, 255);
+
+$active-colour: rgb(255, 255, 255);
+$inactive-colour: rgb(50, 50, 50);
+
+$background-colour: rgb(0, 0, 0);
+
+@mixin deactivated {
+  color: $inactive-colour;
+}
+
+@mixin activated {
+  color: $active-colour;
+  text-shadow: -1px -1px 1px $shadow-colour-light,
+    -1px 1px 1px $shadow-colour-light, 1px -1px 1px $shadow-colour-light,
+    1px 1px 1px $shadow-colour-light, 0 0 3px $shadow-colour-light,
+    0 0 10px $shadow-colour-light, 0 0 20px $shadow-colour-light,
+    0 0 30px $shadow-colour, 0 0 40px $shadow-colour, 0 0 50px $shadow-colour,
+    0 0 70px $shadow-colour, 0 0 100px $shadow-colour, 0 0 200px $shadow-colour;
+}
+
+@import "../base/faders";
+
+body {
+  font-family: "Arimo";
+  color: $inactive-colour;
+  background: $background-colour;
+}

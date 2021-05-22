@@ -1,0 +1,26 @@
+// https://codepen.io/maxnguyen/pen/BzneE
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
+
+$gradient-colour-0: rgb(0, 0, 0);
+$gradient-colour-1: rgb(36, 51, 66);
+
+$active-colour: rgb(255, 255, 255);
+$inactive-colour: rgb(0, 0, 0);
+
+@mixin activated {
+  color: $active-colour;
+  text-shadow: rgb(187, 187, 187) 0 0 1px, $active-colour 0 -1px 2px,
+  $active-colour 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+  text-shadow: rgb(17, 17, 17) 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+}
+
+@import "../base/faders";
+
+body {
+  font-family: "Red Hat Display";
+  background: radial-gradient($gradient-colour-1, $gradient-colour-0);
+}

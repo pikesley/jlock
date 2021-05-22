@@ -1,12 +1,10 @@
 let validStyles = [];
 let fadeTime = 1000; // ms
 
-$(document).ready(function () {
+let initialise = function () {
   // fade in
   $("html").css("display", "none");
   $("html").fadeIn(fadeTime);
-
-  populateClock();
 
   $.get("/css/clocks/", function (data) {
     // discover the available stylesheets
@@ -17,6 +15,8 @@ $(document).ready(function () {
     });
     setStyles();
   });
+
+  populateClock();
 
   // force it to update on the first load
   localStorage["active-classes"] = null;
@@ -29,29 +29,16 @@ $(document).ready(function () {
   $("body").click(function () {
     cycleStyle();
   });
-});
+};
 
 let refreshClock = function () {
   // update the clock
-  currentClasses = JSON.parse(localStorage["active-classes"] || "[]");
-  nextClasses = ClassesToBeActivatedFor(getTime());
-  ClassesToBeSwitched = diffClasses(currentClasses, nextClasses);
+  sm = new SpanManager(
+    JSON.parse(localStorage["active-classes"] || "[]"),
+    classesToBeActivatedFor(new TimeFinder())
+  );
 
-  if (ClassesToBeSwitched.diffs) {
-    applyClass(ClassesToBeSwitched.activate, "active", "inactive");
-    applyClass(ClassesToBeSwitched.deactivate, "inactive", "active");
-
-    localStorage["active-classes"] = JSON.stringify(nextClasses);
-    console.log(localStorage["active-classes"]);
-  }
-};
-
-let applyClass = function (classes, appliable, removable) {
-  classes.forEach(function (kls) {
-    $(kls).each(function (element) {
-      $(this).removeClass(removable).addClass(appliable);
-    })
-  });
+  sm.yeet();
 };
 
 let cycleStyle = function () {
@@ -83,22 +70,59 @@ let setStyles = function () {
   }
 };
 
-let diffClasses = function (current, next) {
-  // find out which Classes we need to switch on and off
-  // https://stackoverflow.com/a/15386005
+let SpanManager = class {
+  constructor(current, next) {
+    this.current = current;
+    this.next = next;
 
-  activate = $(next).not(current).get();
-  deactivate = $(current).not(next).get();
+    this.activate = $(next).not(current).get();
+    this.deactivate = $(current).not(next).get();
+    this.diffs = false;
 
-  if (activate.length || deactivate.length) {
-    return {
-      diffs: true,
-      deactivate: $(current).not(next).get(),
-      activate: $(next).not(current).get(),
-    };
-  } else {
-    return {
-      diffs: false,
-    };
+    if (this.activate.length || this.deactivate.length) {
+      this.diffs = true;
+    }
+  }
+
+  yeet() {
+    if (this.diffs) {
+      this.activate.forEach(function (spans) {
+        $(spans).each(function () {
+          $(this).removeClass("inactive").addClass("active");
+        });
+      });
+
+      this.deactivate.forEach(function (spans) {
+        $(spans).each(function () {
+          $(this).removeClass("active").addClass("inactive");
+        });
+      });
+
+      this.save();
+    }
+  }
+
+  save() {
+    console.log(this.next.join(" "));
+    localStorage["active-classes"] = JSON.stringify(this.next);
   }
 };
+
+let TimeFinder = class {
+  constructor() {
+    this.actual = new Date()
+    this.hours = this.actual.getHours()
+    this.minutes = this.actual.getMinutes()
+
+    this.checkForFakeTime()
+  }
+
+  checkForFakeTime() {
+    let urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("faketime")) {
+      faketime = urlParams.get("faketime").split(":");
+      this.hours = faketime[0];
+      this.minutes = faketime[1];
+    }
+  }
+}

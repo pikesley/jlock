@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans");
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+}
+
+#clock span {
+  text-align: center;
+}
+
+.inactive {
+  animation: fade-out ease 3s;
+}
+
+.active {
+  text-shadow: 0.2vh 0.2vh 0px #4b9aea;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  100% {
+    text-shadow: 0.2vh 0.2vh 0px #4b9aea;
+  }
+}
+@keyframes fade-out {
+  0% {
+    text-shadow: 0.2vh 0.2vh 0px #4b9aea;
+  }
+}
+body {
+  font-family: "Josefin Sans";
+  font-weight: 900;
+  background-color: black;
+  text-shadow: 0.2vh 0.2vh 0px #111f2d;
+}
+
+/*# sourceMappingURL=shadows.css.map */

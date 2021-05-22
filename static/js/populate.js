@@ -1,8 +1,9 @@
+let spacers = 1; // this should match `clock-spacers` in `sass/base/_vars.scss`
+
 let dot = "•";
 
 let width = 11;
 let height = 10;
-let spacers = 1; // this should match `clock-spacers` in `sass/base/_vars.scss`
 
 let clockParts = [
   [{ class: "it" }, { text: "l" }, { class: "is" }, { text: "asampm" }],
@@ -37,13 +38,13 @@ let clockParts = [
   [{ class: "h-10", text: "ten" }, { text: "se" }, { class: "oclock" }],
 ];
 
-let populateClock = function () {
-  addDots([1, 2]);
+let populateClock = function (element = '#clock') {
+  addDots(element, [1, 2]);
 
-  addBlankRows();
+  addBlankRows(element);
 
   clockParts.forEach(function (row, index) {
-    addSpacerSpans();
+    addSpacerSpans(element);
 
     let count = 0;
     row.forEach(function (cell) {
@@ -56,51 +57,45 @@ let populateClock = function () {
         $(span).attr("id", `cell-${count}-${index}`);
         count++;
 
-        $("#clock").append(span);
+        $(element).append(span);
       }
     });
-    addSpacerSpans();
+    addSpacerSpans(element);
   });
 
-  addBlankRows();
+  addBlankRows(element);
 
-  addDots([4, 3]);
-
-  // indexEachCell()
+  addDots(element, [4, 3]);
 };
 
-let indexEachCell = function () {
-  let count = 0;
-  $("span").each(function () {
-    $(this).attr("id", `cell-${count}`);
-    count++;
-  });
-};
-
-let addSpacerSpans = function () {
+let addSpacerSpans = function (element) {
   for (i = 0; i < spacers + 1; i++) {
-    $("#clock").append($("<span/>"));
+    $(element).append($("<span/>"));
   }
 };
 
-let addBlankRows = function (count = spacers) {
+let addBlankRows = function (element, count = spacers) {
   for (i = 0; i < spacers; i++) {
     for (j = 0; j < width + count * 2 + 2; j++) {
-      $("#clock").append($("<span/>"));
+      $(element).append($("<span/>"));
     }
   }
 };
 
-let addDots = function (minutes) {
-  $("#clock").append(dotSpan(minutes[0]));
+let addDots = function (element, minutes) {
+  $(element).append(dotSpan(minutes[0]));
 
   for (i = 0; i < width + spacers * 2; i++) {
-    $("#clock").append($("<span/>"));
+    $(element).append($("<span/>"));
   }
 
-  $("#clock").append(dotSpan(minutes[1]));
+  $(element).append(dotSpan(minutes[1]));
 };
 
 let dotSpan = function (index) {
-  return $("<span/>", { class: `m-${index}`, text: dot });
+  return $("<span/>", {
+    class: `m-${index}`,
+    id: `corner-${index}`,
+    text: dot,
+  });
 };

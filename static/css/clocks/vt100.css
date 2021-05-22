@@ -22,12 +22,10 @@ body {
 }
 
 body {
-  color: #143300;
   text-shadow: none;
 }
 
 .inactive {
-  color: #143300;
   text-shadow: none;
   animation: fade-out ease 3s;
 }
@@ -41,7 +39,6 @@ body {
 
 @keyframes fade-in {
   0% {
-    color: #143300;
     text-shadow: none;
   }
   100% {
@@ -57,14 +54,16 @@ body {
     text-shadow: #3d9900 4px 0 4px;
   }
   100% {
-    color: #143300;
     text-shadow: none;
   }
 }
 body {
-  background-color: black;
+  background: url("../../images/backgrounds/scanlines.png"), radial-gradient(#143300, black);
   font-family: "Press Start 2P";
-  font-size: 4vh;
+  font-size: 3.5vh;
+  -webkit-text-stroke-color: #296600;
+  -webkit-text-stroke-width: 1px;
+  color: transparent;
 }
 
 /*# sourceMappingURL=vt100.css.map */

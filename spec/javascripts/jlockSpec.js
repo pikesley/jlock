@@ -169,16 +169,16 @@ describe("hoursClass", function () {
   });
 });
 
-describe("ClassesToBeActivatedFor", function () {
-  it("compiles the ID which should be activated", function () {
-    expect(ClassesToBeActivatedFor({ hours: 12, minutes: 30 })).toEqual([
+describe("classesToBeActivatedFor", function () {
+  it("compiles the classes which should be activated", function () {
+    expect(classesToBeActivatedFor({ hours: 12, minutes: 30 })).toEqual([
       ".it",
       ".is",
       ".half",
       ".past",
       ".h-0",
     ]);
-    expect(ClassesToBeActivatedFor({ hours: 15, minutes: 45 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 15, minutes: 45 })).toEqual([
       ".it",
       ".is",
       ".a",
@@ -186,7 +186,7 @@ describe("ClassesToBeActivatedFor", function () {
       ".to",
       ".h-4",
     ]);
-    expect(ClassesToBeActivatedFor({ hours: 03, minutes: 57 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 03, minutes: 57 })).toEqual([
       ".it",
       ".is",
       ".five",
@@ -195,13 +195,13 @@ describe("ClassesToBeActivatedFor", function () {
       ".m-1",
       ".m-2",
     ]);
-    expect(ClassesToBeActivatedFor({ hours: 04, minutes: 00 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 04, minutes: 00 })).toEqual([
       ".it",
       ".is",
       ".h-4",
       ".oclock",
     ]);
-    expect(ClassesToBeActivatedFor({ hours: 03, minutes: 35 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 03, minutes: 35 })).toEqual([
       ".it",
       ".is",
       ".twenty",
@@ -212,7 +212,7 @@ describe("ClassesToBeActivatedFor", function () {
   });
 
   it("correctly compiles the intervals around the top of the hour", function () {
-    expect(ClassesToBeActivatedFor({ hours: 06, minutes: 57 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 06, minutes: 57 })).toEqual([
       ".it",
       ".is",
       ".five",
@@ -222,7 +222,7 @@ describe("ClassesToBeActivatedFor", function () {
       ".m-2",
     ]);
 
-    expect(ClassesToBeActivatedFor({ hours: 07, minutes: 05 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 07, minutes: 05 })).toEqual([
       ".it",
       ".is",
       ".five",
@@ -232,7 +232,7 @@ describe("ClassesToBeActivatedFor", function () {
   });
 
   it("correctly compiles the intervals around the half-hour", function () {
-    expect(ClassesToBeActivatedFor({ hours: 12, minutes: 27 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 12, minutes: 27 })).toEqual([
       ".it",
       ".is",
       ".twenty",
@@ -243,7 +243,7 @@ describe("ClassesToBeActivatedFor", function () {
       ".m-2",
     ]);
 
-    expect(ClassesToBeActivatedFor({ hours: 12, minutes: 35 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 12, minutes: 35 })).toEqual([
       ".it",
       ".is",
       ".twenty",

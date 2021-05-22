@@ -1,0 +1,25 @@
+@use '../base/mixins';
+
+@import "https://fonts.googleapis.com/css2?family=Kelly+Slab";
+
+$active-colour: rgb(105, 143, 63);
+$background-colour: rgb(228, 150, 175);
+$inactive-colour: $background-colour;
+
+@mixin activated {
+  color: $active-colour;
+  @include mixins.emboss;
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+  @include mixins.engrave
+}
+
+@import '../base/faders';
+
+body {
+  background-color: $background-colour;
+  font-family: "Kelly Slab";
+  font-size: 3.5em;
+}

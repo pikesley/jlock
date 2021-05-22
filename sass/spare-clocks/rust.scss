@@ -1,7 +1,7 @@
 @use '../base/mixins';
 @use '../base/vars';
 
-@import url("https://fonts.googleapis.com/css2?family=KoHo");
+@import url("https://fonts.googleapis.com/css2?family=Quantico");
 
 $active-colour: rgb(250, 215, 253);
 
@@ -19,5 +19,5 @@ $active-colour: rgb(250, 215, 253);
 
 body {
   background-image: url(vars.$background-root + "rust.jpg");
-  font-family: "KoHo";
+  font-family: "Quantico";
 }

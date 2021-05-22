@@ -8,18 +8,24 @@ $active-colour: black;
 $background-colour: white;
 $inactive-colour: $grey;
 
+$stroke-width: 1px;
+
 @mixin activated {
-    color: $active-colour;
+  color: $inactive-colour;
+  @include mixins.stroke-width($stroke-width);
+  @include mixins.stroke-colour($active-colour);
 }
 
 @mixin deactivated {
-    color: $inactive-colour;
 }
 
-@import '../base/faders';
+@import "../base/faders";
 
 body {
-    background-color: $background-colour;
-    font-family: "Righteous";
-    font-size: 2m;
+  background-color: $background-colour;
+  font-family: "Righteous";
+  font-size: 2m;
+  @include mixins.stroke-width($stroke-width);
+  @include mixins.stroke-colour($inactive-colour);
+  color: transparent;
 }

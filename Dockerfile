@@ -35,4 +35,3 @@ RUN pip install --upgrade pip jasmine ipdb black isort pylama pylint
 RUN make install
 
 RUN ln -sf /opt/${PROJECT}/nginx/dev-site.conf /etc/nginx/sites-enabled/default
-

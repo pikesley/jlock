@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+}
+
+#clock span {
+  text-align: center;
+}
+
+body {
+  color: black;
+  text-shadow: #111111 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+}
+
+.inactive {
+  color: black;
+  text-shadow: #111111 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: white;
+  text-shadow: #bbbbbb 0 0 1px, white 0 -1px 2px, white 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: black;
+    text-shadow: #111111 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+  }
+  100% {
+    color: white;
+    text-shadow: #bbbbbb 0 0 1px, white 0 -1px 2px, white 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: white;
+    text-shadow: #bbbbbb 0 0 1px, white 0 -1px 2px, white 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
+  }
+  100% {
+    color: black;
+    text-shadow: #111111 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+  }
+}
+body {
+  font-family: "Red Hat Display";
+  background: radial-gradient(#243342, black);
+}
+
+/*# sourceMappingURL=fridge-letters.css.map */

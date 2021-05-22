@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Delius");
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+}
+
+#clock span {
+  text-align: center;
+}
+
+body {
+  color: #4d0032;
+  text-shadow: 0px 1px 0px #090210, 0px 2px 0px black, 0px 3px 0px black, 0px 4px 0px black, 0px 5px 0px black, 0px 6px 0px black, 0px 7px 0px black, 0px 8px 15px black;
+}
+
+.inactive {
+  color: #4d0032;
+  text-shadow: 0px 1px 0px #090210, 0px 2px 0px black, 0px 3px 0px black, 0px 4px 0px black, 0px 5px 0px black, 0px 6px 0px black, 0px 7px 0px black, 0px 8px 15px black;
+  animation: fade-out ease 3s;
+}
+
+.active {
+  color: #ff00a6;
+  text-shadow: 0px 1px 0px #cc0085, 0px 2px 0px #b30074, 0px 3px 0px #990064, 0px 4px 0px #800053, 0px 5px 0px #660042, 0px 6px 0px #4d0032, 0px 7px 0px #330021, 0px 8px 15px #1a0011;
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color: #4d0032;
+    text-shadow: 0px 1px 0px #090210, 0px 2px 0px black, 0px 3px 0px black, 0px 4px 0px black, 0px 5px 0px black, 0px 6px 0px black, 0px 7px 0px black, 0px 8px 15px black;
+  }
+  100% {
+    color: #ff00a6;
+    text-shadow: 0px 1px 0px #cc0085, 0px 2px 0px #b30074, 0px 3px 0px #990064, 0px 4px 0px #800053, 0px 5px 0px #660042, 0px 6px 0px #4d0032, 0px 7px 0px #330021, 0px 8px 15px #1a0011;
+  }
+}
+@keyframes fade-out {
+  0% {
+    color: #ff00a6;
+    text-shadow: 0px 1px 0px #cc0085, 0px 2px 0px #b30074, 0px 3px 0px #990064, 0px 4px 0px #800053, 0px 5px 0px #660042, 0px 6px 0px #4d0032, 0px 7px 0px #330021, 0px 8px 15px #1a0011;
+  }
+  100% {
+    color: #4d0032;
+    text-shadow: 0px 1px 0px #090210, 0px 2px 0px black, 0px 3px 0px black, 0px 4px 0px black, 0px 5px 0px black, 0px 6px 0px black, 0px 7px 0px black, 0px 8px 15px black;
+  }
+}
+body {
+  background-color: #21083d;
+  font-family: "Delius";
+  font-size: 4em;
+}
+
+/*# sourceMappingURL=purple.css.map */

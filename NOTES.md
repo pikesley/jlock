@@ -1,1 +1,1 @@
-NEED SOME PROPER BORDERS!!!
+https://freefrontend.com/css-text-effects/

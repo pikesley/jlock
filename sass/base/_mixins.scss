@@ -1,48 +1,63 @@
+@mixin stroke-width($property) {
+  -webkit-text-stroke-width: $property;
+}
+
+@mixin stroke-colour($property) {
+  -webkit-text-stroke-color: $property;
+}
+
+// legacy crap below here
+
 $highlight-colour: rgba(255, 255, 255, 0.3);
 $shadow-colour: rgba(0, 0, 0, 0.7);
 
 $engrave-depth: 1;
-$base-engrave: "#{$engrave-depth}px #{$engrave-depth}px #{$engrave-depth}px #{$highlight-colour}, -#{$engrave-depth}px -#{$engrave-depth}px #{$engrave-depth}px #{$shadow-colour}";
 
-$base-emboss: "#{$engrave-depth}px #{$engrave-depth}px #{$engrave-depth}px #{$shadow-colour}, -#{$engrave-depth}px -#{$engrave-depth}px #{$engrave-depth}px #{$highlight-colour}";
+@function stamp($first, $second) {
+  $o: "#{$engrave-depth}px";
+
+  @return #{$o} #{$o} #{$o} #{$first}, -#{$o} -#{$o} #{$o} #{$second};
+}
+
+@function base-engrave() {
+  @return stamp($highlight-colour, $shadow-colour);
+}
+
+@function base-emboss() {
+  @return stamp($shadow-colour, $highlight-colour);
+}
 
 @mixin clip {
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
 }
 
 @mixin engrave {
-    @include clip;
-    text-shadow: #{$base-engrave};
-}
-
-@mixin emboss {
-    @include clip;
-    text-shadow: #{$base-emboss};
+  @include clip;
+  text-shadow: base-engrave();
 }
 
 @mixin engrave-with-bloom($bloom-colour) {
-    @include clip;
-    text-shadow: #{$base-engrave},
-                0 0 16px transparentize($bloom-colour, 0.1);
+  @include clip;
+  text-shadow: base-engrave(), 0 0 16px transparentize($bloom-colour, 0.1);
+}
+
+@mixin emboss {
+  @include clip;
+  text-shadow: base-emboss();
 }
 
 @mixin emboss-with-bloom($bloom-colour) {
-    @include clip;
-    text-shadow: #{$base-emboss},
-                0 0 16px transparentize($bloom-colour, 0.1);
+  @include clip;
+  text-shadow: base-emboss(), 0 0 16px transparentize($bloom-colour, 0.1);
 }
 
 @mixin step-shadow($colour) {
-    text-shadow:
-                0px 1px 0px  darken($colour, 10%),
-                0px 2px 0px  darken($colour, 15%),
-                0px 3px 0px  darken($colour, 20%),
-                0px 4px 0px  darken($colour, 25%),
-                0px 5px 0px  darken($colour, 30%),
-                0px 6px 0px  darken($colour, 35%),
-                0px 7px 0px  darken($colour, 40%),
-                // this one is a blurry shadow around the whole thing
-                0px 8px 15px darken($colour, 45%);
+  text-shadow: 0px 1px 0px darken($colour, 10%),
+    0px 2px 0px darken($colour, 15%), 0px 3px 0px darken($colour, 20%),
+    0px 4px 0px darken($colour, 25%), 0px 5px 0px darken($colour, 30%),
+    0px 6px 0px darken($colour, 35%), 0px 7px 0px darken($colour, 40%),
+    // this one is a blurry shadow around the whole thing
+    0px 8px 15px darken($colour, 45%);
 }

@@ -1,0 +1,25 @@
+@use '../base/mixins';
+
+@import url("https://fonts.googleapis.com/css2?family=Delius");
+
+$active-colour: rgb(255, 0, 166);
+$inactive-colour: darken($active-colour, 35%);
+$background-colour: rgb(33, 8, 61);
+
+@mixin activated {
+  color: $active-colour;
+  @include mixins.step-shadow($active-colour);
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+  @include mixins.step-shadow($background-colour);
+}
+
+@import '../base/faders';
+
+body {
+  background-color: $background-colour;
+  font-family: "Delius";
+  font-size: 4em;
+}
