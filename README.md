@@ -1,37 +1,28 @@
 # Jlock
 
-_A new clock, running on the [station-clock](https://github.com/pikesley/station-clock) hardware_
+![jlock](https://j.gifs.com/MZ8goP.gif)
 
-![jlock](assets/images/jlock.png)
+(full demo video on [YouTube](https://www.youtube.com/watch?v=X-VtmaGDBU8))
 
-The Model-A Pi was really struggling with the demands of the [Station Clock](https://github.com/pikesley/station-clock), so I was looking around for something less demanding and I stumbled across [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd). That's all done using [d3.js](https://d3js.org/), but thinking about it, I realised that I should be able to reimplement it with HTML, CSS and some JavaScript.
+## Make your own text clock
 
-If you just want to see it in action, then:
+Things you will need:
 
-```bash
-git clone https://github.com/pikesley/jlock
-cd jlock
-make build
-make docker-compose
-```
+### A Raspberry Pi
 
-then in a different terminal:
+*At least* a Pi 3 A+. A tried it with a Zero, but it doesn't have enough grunt to handle the CSS animations. Anything beefier than a Model A would obviously work too, but the A is at the sweet spot for power-consumption versus performance.
 
-```bash
-make run
-```
+### A 4x3 monitor
 
-and it should be running at [http://localhost:8000/](http://localhost:8000/). Click on it anywhere to cycle through the available stylesheets.
+Ideally you'd want a fully-square one, but these seem to be few and far between - a [search on eBay for "square monitor" yields a whole load of 4x3s](https://www.ebay.co.uk/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw=square+monitor&_sacat=0) claiming to be square, but 4x3 is close enough.
 
-The clock is perforce a bit vague, and I currently have it running with a 2-minute offset, so it will display e.g. `IT IS A QUARTER TO FOUR` from `15:43` to `15:48`, whereupon it changes to `TEN TO FOUR` for the following five minutes. I'm not sure if this is good, maybe it should be a 1-minute offset, so `15:44` to `15:49`.
+### A cable
 
-To actually get it running on the Pi with the [HyperPixel](https://shop.pimoroni.com/products/hyperpixel-4-square?variant=30138251444307):
+HDMI to whatever's on the monitor. The Model A has a full-size HDMI port, the Pi 4 has micro-HDMI, and the Zero has mini-HDMI. The monitor I got has a DVI port, and such cables are [easy to come by](https://www.ebay.co.uk/sch/i.html?_from=R40&_trksid=p2380057.m570.l1311&_nkw=hdmi+dvi+cable&_sacat=0).
 
-## Software
+## Install it
 
 This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via [NOOBS 3.5](https://www.raspberrypi.org/downloads/noobs/).
-
-You'll need to use a proper screen for the install because the Hyperpixel won't work until you've installed the drivers.
 
 After the first boot, you need to enable SSH:
 
@@ -39,35 +30,30 @@ After the first boot, you need to enable SSH:
 sudo raspi-config nonint do_ssh 0
 ```
 
-Once you've done this you should be able to get to the Pi with
-
-```bash
-ssh pi@raspberrypi.local
-```
-
-(Optionally) change the hostname:
+And (optionally) change the hostname:
 
 ```bash
 sudo raspi-config nonint do_hostname jlock
 sudo reboot
 ```
 
-Presuming this works, power it off, and attach the Hyperpixel (or move the card to the Pi which has the Hyperpixel on it). When you boot it, the screen won't work, but we'll fix that in a minute.
-
-### Install the screen drivers
-
-SSH onto the Pi, and then, per [this](https://github.com/pimoroni/hyperpixel4):
+Once you've done this you should be able to get to the Pi with
 
 ```bash
-curl https://get.pimoroni.com/hyperpixel4 | bash
+ssh pi@jlock.local
 ```
 
-Select the correct screen and Pi combination (in my case it's `3 : Weirdly Square - Pi 3B+ or older`) and let it do its thing. When it's done it will reboot, and the screen should work. Now
+Git probably isn't installed out-the-box, so:
+
+```bash
+sudo apt-get update && apt-get install git
+```
 
 ### Clone this repo
 
 ```bash
 git clone https://github.com/pikesley/jlock
+cd jlock
 ```
 
 ### And configure everything
@@ -75,6 +61,12 @@ git clone https://github.com/pikesley/jlock
 ```bash
 make setup
 ```
+
+This will install and configure everything, and then reboot into a running clock.
+
+![running jlock](assets/images/jlock.png)
+
+There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can cycle through the available clock designs.
 
 ## Development
 
@@ -84,12 +76,6 @@ This was all developed on a Docker container. To run it:
 git clone https://github.com/pikesley/jlock
 cd jlock
 make build
-make docker-compose
-```
-
-then in a different terminal:
-
-```bash
 make run
 ```
 
@@ -103,21 +89,7 @@ There are some [Jasmine](https://jasmine.github.io/) [JavaScript tests](spec/jav
 make jasmine
 ```
 
-and they should be running at [http://localhost:8888/](http://localhost:8888/).
-
-There are also some [Nightwatch](https://nightwatchjs.org/) [tests](spec/javascripts/nightwatch/jlock-tests.js). Run these with:
-
-```bash
-make nightwatch-tests
-```
-
-These tests run against a [Selenium](https://www.selenium.dev/) server started when you ran `make docker-compose`.
-
-Or to run all the tests together (with the Jasmine tests running in a headless browser):
-
-```bash
-make test
-```
+and they should be visible at [http://localhost:8888/](http://localhost:8888/).
 
 ### Designs
 
@@ -138,7 +110,7 @@ $inactive-colour: darken($white, 20%);
     color: $inactive-colour;
 }
 
-@import 'base/faders';  // this contains the fade-in and -out animations
+@import 'base/default';  // this contains the grid layout plus the fade-in and -out animations
 
 body {  // add additional body styles here
     background-color: $background-colour;
@@ -147,7 +119,9 @@ body {  // add additional body styles here
 }
 ```
 
-You need to run
+The two `@mixin`s and the `@import 'base/default';` are *absolutely required* or the SASS will not compile.
+
+Run
 
 ```bash
 make sass
@@ -176,6 +150,21 @@ or generate a fake click to cycle through the designs with
 DISPLAY=:0 xdotool click 1
 ```
 
-## Next steps
+(this is all the `controller` webserver is doing tbh)
 
-I've just bought an old square monitor off eBay to make a full-size clock, pictures soon I guess.
+## Notes
+
+* This was developed *specifically on and for Chrome/Chromium*. It kind of works on Firefox, it does odd things on Safari, and it makes no sense at all on a (portrait-orientated) phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
+* There are some incredible people doing some [amazing CSS text trickery](https://freefrontend.com/css-text-effects/).
+* This owes a great debt to [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd), written in [d3.js](https://d3js.org/).
+* Any similarity to a clock you can actually buy for thousands of pounds is entirely coincedental.
+
+
+
+
+
+
+
+
+
+
