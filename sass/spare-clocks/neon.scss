@@ -23,7 +23,7 @@ $background-colour: rgb(0, 0, 0);
     0 0 70px $shadow-colour, 0 0 100px $shadow-colour, 0 0 200px $shadow-colour;
 }
 
-@import "../base/faders";
+@import "../base/default";
 
 body {
   font-family: "Arimo";

@@ -26,7 +26,7 @@ $gradient-colour: darken($active-colour, 40%);
 //   color: transparent;
 }
 
-@import "../base/faders";
+@import "../base/default";
 
 body {
   background: url(vars.$background-root + "scanlines.png"),

@@ -15,7 +15,7 @@ $inactive-colour: rgba(21, 60, 24, 0.538);
   color: $inactive-colour;
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
   background-image: url(vars.$background-root + "stars.jpg");

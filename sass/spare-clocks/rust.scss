@@ -15,7 +15,7 @@ $active-colour: rgb(250, 215, 253);
   @include mixins.engrave;
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
   background-image: url(vars.$background-root + "rust.jpg");

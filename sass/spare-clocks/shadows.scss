@@ -14,7 +14,7 @@ $shadow-depth: 0.2vh;
 @mixin deactivated {
 }
 
-@import "../base/faders";
+@import "../base/default";
 
 body {
   font-family: "Josefin Sans";

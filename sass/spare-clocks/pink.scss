@@ -16,7 +16,7 @@ $inactive-colour: $background-colour;
   @include mixins.engrave
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
   background-color: $background-colour;

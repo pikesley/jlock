@@ -19,7 +19,7 @@ $active-colour: $red;
     @include mixins.engrave;
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
     font-weight: bold;

@@ -14,7 +14,7 @@ $active-colour: rgb(249, 253, 1);
     @include mixins.step-shadow($inactive-colour);
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
     background-image: url(vars.$background-root + "concrete.jpg");

@@ -19,7 +19,7 @@ $stroke-width: 1px;
 @mixin deactivated {
 }
 
-@import "../base/faders";
+@import "../base/default";
 
 body {
   background-color: $background-colour;

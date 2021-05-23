@@ -18,7 +18,7 @@ $shadow-colour: darken($active-colour, 0%);
     color: $inactive-colour;
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
     background-color: $background-colour;

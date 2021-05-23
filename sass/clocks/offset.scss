@@ -22,7 +22,7 @@ $offset: 0.5vh;
   text-shadow: $offset $offset $inactive-colour;
 }
 
-@import "../base/faders";
+@import "../base/default";
 
 body {
   font-family: "Lalezar";

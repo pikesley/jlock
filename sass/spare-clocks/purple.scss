@@ -16,7 +16,7 @@ $background-colour: rgb(33, 8, 61);
   @include mixins.step-shadow($background-colour);
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
   background-color: $background-colour;

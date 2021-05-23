@@ -16,7 +16,7 @@ $background-colour: rgb(74, 108, 111);
   @include mixins.engrave
 }
 
-@import '../base/faders';
+@import '../base/default';
 
 body {
   background-color: $background-colour;
