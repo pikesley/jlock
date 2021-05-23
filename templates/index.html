@@ -29,11 +29,13 @@
       <h2>on <em>{{host_name }}</em></h2>
 
       {{ arrow_svg | safe }}
-
-      <h3>Click the arrow to cycle through the available clock styles</h3>
     </main>
 
-    <script>
+    <footer>
+      <a href="https://github.com/pikesley/jlock">Github</a>
+    </footer>
+
+  <script>
       $(document).ready(function () {
         $("#next-button").click(function () {
           cycle();

@@ -1,10 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Teko");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
 body {
-  font-family: "Teko";
+  font-family: "Red Hat Display";
   text-align: center;
   background-color: #111111;
   color: #5f1eda;
   margin: 4vh;
+  text-shadow: #bbbbbb 0 0 1px, #5f1eda 0 -1px 2px, #5f1eda 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
+}
+
+main {
+  height: 90vh;
 }
 
 h1,
@@ -30,7 +35,6 @@ em {
   font-weight: bold;
   font-size: 2.5vh;
   color: #bc9ff2;
-  text-shadow: 0 0 16px rgba(95, 30, 218, 0.9);
 }
 
 #next-button {
@@ -42,6 +46,16 @@ em {
 
 .active {
   fill: #4b18ad;
+}
+
+footer {
+  height: 2vh;
+  font-size: 4em;
+  text-align: center;
+  text-shadow: none;
+}
+footer a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=controller.css.map */
