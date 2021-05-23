@@ -43,7 +43,7 @@ Once you've done this you should be able to get to the Pi with
 ssh pi@jlock.local
 ```
 
-Git probably isn't installed out-the-box, so:
+Git isn't installed out-of-the-box, so:
 
 ```bash
 sudo apt-get update && apt-get install git
@@ -62,7 +62,7 @@ cd jlock
 make setup
 ```
 
-This will install and configure everything, and then reboot into a running clock.
+This will install everything, and then reboot into a running clock.
 
 ![running jlock](assets/images/jlock.png)
 
@@ -119,7 +119,7 @@ body {  // add additional body styles here
 }
 ```
 
-The two `@mixin`s and the `@import 'base/default';` are *absolutely required* or the SASS will not compile.
+The two `@mixin`s and the `@import 'base/default';` are *absolutely required* or undefined things will happen.
 
 Run
 
