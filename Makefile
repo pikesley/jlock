@@ -1,5 +1,6 @@
 PROJECT = $(shell basename $$(pwd))
 ID = pikesley/${PROJECT}
+PIHOST = hyperpixel.local
 PIHOST = hp.local
 
 PLATFORM ?= laptop
@@ -34,7 +35,6 @@ exec: laptop-only
 		--tty \
 		${PROJECT} \
 		bash
-
 
 # docker dev targets
 

@@ -1,26 +1,41 @@
 // https://codepen.io/maxnguyen/pen/BzneE
-@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
+@use '../base/mixins';
+@use '../base/vars';
 
-$gradient-colour-0: rgb(0, 0, 0);
-$gradient-colour-1: rgb(36, 51, 66);
+$font: "Fredoka One";
 
-$active-colour: rgb(255, 255, 255);
-$inactive-colour: rgb(0, 0, 0);
+$orange: rgb(255, 145, 0);
+$mauve: rgb(192, 22, 214);
+$black: rgb(0, 0, 0);
+
+$active-colour: $orange;
+$inactive-colour: $black;
+
+$gradient-colour-0: $inactive-colour;
+$gradient-colour-1: lighten($gradient-colour-0, 50%);
+
+$light-grey: darken($active-colour, 20%);
+
+$dark-grey: lighten($inactive-colour, 20%);
+
+$shadow: rgba(0, 0, 0, 0.8);
+$highlight: rgba(255, 255, 255, 0.4);
 
 @mixin activated {
   color: $active-colour;
-  text-shadow: rgb(187, 187, 187) 0 0 1px, $active-colour 0 -1px 2px,
-  $active-colour 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
+  text-shadow: $light-grey 0 0 0.1vh, $active-colour 0 -0.1vh 0.2vh,
+    $active-colour 0 -0.3vh 0.2vh, $shadow 0 2vh 2vh;
 }
 
 @mixin deactivated {
   color: $inactive-colour;
-  text-shadow: rgb(17, 17, 17) 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+  text-shadow: $dark-grey 0 0 0.1vh, $highlight 0 0.1vh 0.3vh;
 }
 
 @import "../base/default";
 
 body {
-  font-family: "Red Hat Display";
-  background: radial-gradient($gradient-colour-1, $gradient-colour-0);
+  font-size: 5.5vh;
+  background: url(vars.$background-root + "linen.png"),
+    radial-gradient($gradient-colour-1, $gradient-colour-0);
 }

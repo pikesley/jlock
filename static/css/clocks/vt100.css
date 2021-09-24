@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css2?family=Press Start 2P");
 body {
   overflow: hidden;
   font-size: 5vh;
@@ -19,6 +19,10 @@ body {
 
 #clock span {
   text-align: center;
+}
+
+body {
+  font-family: "Press Start 2P";
 }
 
 body {
@@ -59,7 +63,6 @@ body {
 }
 body {
   background: url("../../images/backgrounds/scanlines.png"), radial-gradient(#143300, black);
-  font-family: "Press Start 2P";
   font-size: 3.5vh;
   -webkit-text-stroke-color: #296600;
   -webkit-text-stroke-width: 1px;

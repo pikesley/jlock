@@ -22,11 +22,15 @@ body {
 }
 
 body {
-  text-shadow: 0.5vh 0.5vh #e17400;
+  font-family: "Lalezar";
+}
+
+body {
+  text-shadow: 0.5vh 0.5vh rgba(225, 116, 0, 0.2);
 }
 
 .inactive {
-  text-shadow: 0.5vh 0.5vh #e17400;
+  text-shadow: 0.5vh 0.5vh rgba(225, 116, 0, 0.2);
   animation: fade-out ease 3s;
 }
 
@@ -37,7 +41,7 @@ body {
 
 @keyframes fade-in {
   0% {
-    text-shadow: 0.5vh 0.5vh #e17400;
+    text-shadow: 0.5vh 0.5vh rgba(225, 116, 0, 0.2);
   }
   100% {
     text-shadow: 0.5vh 0.5vh #2bd6e2;
@@ -48,16 +52,15 @@ body {
     text-shadow: 0.5vh 0.5vh #2bd6e2;
   }
   100% {
-    text-shadow: 0.5vh 0.5vh #e17400;
+    text-shadow: 0.5vh 0.5vh rgba(225, 116, 0, 0.2);
   }
 }
 body {
-  font-family: "Lalezar";
-  background-color: #fa8100;
+  background: radial-gradient(#fad400, #fa8100);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   color: transparent;
-  text-shadow: 0.5vh 0.5vh #e17400;
+  text-shadow: 0.5vh 0.5vh rgba(225, 116, 0, 0.2);
 }
 
 /*# sourceMappingURL=offset.css.map */

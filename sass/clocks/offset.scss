@@ -1,18 +1,22 @@
 // https://codepen.io/markmead/pen/YjQKeZ
 @use '../base/mixins';
+@use '../base/vars';
 
-@import url("https://fonts.googleapis.com/css2?family=Lalezar");
+$font: "Lalezar";
 
-$background-colour: rgb(250, 129, 0);
+$orange: rgb(250, 129, 0);
+$yellow: rgb(250, 212, 0);
+$cyan: rgb(43, 214, 226);
+
+$background-colour: $orange;
+$gradient-colour: $yellow;
 $stroke-colour: darken($background-colour, 60%);
 
-$active-colour: rgb(43, 214, 226);
-$inactive-colour: darken($background-colour, 5%);
+$active-colour: $cyan;
+$inactive-colour: transparentize(darken($background-colour, 5%), 0.8);
 
 $stroke-width: 1px;
 $offset: 0.5vh;
-
-
 
 @mixin activated {
   text-shadow: $offset $offset $active-colour;
@@ -25,8 +29,7 @@ $offset: 0.5vh;
 @import "../base/default";
 
 body {
-  font-family: "Lalezar";
-  background-color: $background-colour;
+  background: radial-gradient($gradient-colour, $background-colour);
   @include mixins.stroke-width($stroke-width);
   @include mixins.stroke-colour($stroke-colour);
   color: transparent;

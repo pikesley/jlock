@@ -1,7 +1,7 @@
 @use '../base/mixins';
 @use '../base/vars';
 
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P");
+$font: "Press Start 2P";
 
 $green: rgb(102, 255, 0);
 
@@ -19,11 +19,7 @@ $gradient-colour: darken($active-colour, 40%);
 }
 
 @mixin deactivated {
-//   color: $inactive-colour;
   text-shadow: none;
-//   @include mixins.stroke-colour($inactive-colour);
-//   @include mixins.stroke-width(1px);
-//   color: transparent;
 }
 
 @import "../base/default";
@@ -31,8 +27,6 @@ $gradient-colour: darken($active-colour, 40%);
 body {
   background: url(vars.$background-root + "scanlines.png"),
     radial-gradient($gradient-colour, $background-colour);
-
-  font-family: "Press Start 2P";
   font-size: 3.5vh;
   @include mixins.stroke-colour($inactive-colour);
   @include mixins.stroke-width(1px);

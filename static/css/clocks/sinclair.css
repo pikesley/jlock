@@ -25,37 +25,48 @@ body {
   font-family: "Righteous";
 }
 
+body {
+  color: #bfbfbf;
+}
+
 .inactive {
+  color: #bfbfbf;
   animation: fade-out ease 3s;
 }
 
 .active {
-  color: rgba(4, 4, 4, 0.445);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  color: #0000bf;
   animation: fade-in ease 3s;
 }
 
 @keyframes fade-in {
+  0% {
+    color: #bfbfbf;
+  }
   100% {
-    color: rgba(4, 4, 4, 0.445);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    color: #0000bf;
   }
 }
 @keyframes fade-out {
   0% {
-    color: rgba(4, 4, 4, 0.445);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    color: #0000bf;
+  }
+  100% {
+    color: #bfbfbf;
   }
 }
+@font-face {
+  font-family: "Sinclair";
+  src: url("../../fonts/sinclair.ttf") format("truetype");
+}
 body {
-  background: url("../../images/backgrounds/wall.png"), white;
+  font-family: "Sinclair";
+  background: white;
+  background-image: url("../../images/backgrounds/1982.png");
+  background-repeat: no-repeat;
+  background-size: auto 3vh;
+  background-position: center bottom 3vh;
   font-size: 6vh;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
-  color: transparent;
 }
 
-/*# sourceMappingURL=black-on-white.css.map */
+/*# sourceMappingURL=sinclair.css.map */

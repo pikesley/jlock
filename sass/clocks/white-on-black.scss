@@ -1,0 +1,29 @@
+@use "../base/mixins";
+@use "../base/vars";
+
+$font: "Saira";
+
+$white: rgb(255, 255, 255);
+
+$active-colour: $white;
+$inactive-colour: invert($active-colour);
+$background-colour: darken($inactive-colour, 15%);
+
+$stroke-width: 0.1vh;
+$stroke-colour: transparentize($active-colour, 0.6);
+
+@mixin activated {
+  color: $active-colour;
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+  @include mixins.stroke-width($stroke-width);
+  @include mixins.stroke-colour($stroke-colour);
+}
+
+@import "../base/default";
+
+body {
+  background: url(vars.$background-root + "texture.png"), $background-colour;
+}

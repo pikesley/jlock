@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "author": "pikesley",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "geckodriver": "^1.22.3"
   }
 }

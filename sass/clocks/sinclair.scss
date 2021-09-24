@@ -1,0 +1,39 @@
+@use '../base/vars';
+
+$font: "Righteous";
+
+$grey: rgba(4, 4, 4, 0.445);
+$magenta: rgb(255, 0, 255);
+$white: rgb(255, 255, 255);
+$off-white: rgb(191, 191, 191);
+$black: rgb(0, 0, 191);
+
+$active-colour: $black;
+$background-colour: $white;
+$inactive-colour: $off-white;
+
+@mixin activated {
+  color: $active-colour;
+}
+
+@mixin deactivated {
+  color: $inactive-colour;
+}
+
+@import "../base/default";
+
+@font-face {
+  // do `_fonts` like this
+  font-family: "Sinclair";
+  src: url("../../fonts/sinclair.ttf") format("truetype");
+}
+
+body {
+  font-family: "Sinclair";
+  background: $background-colour;
+  background-image: url(vars.$background-root + "1982.png");
+  background-repeat: no-repeat;
+  background-size: auto 3vh;
+  background-position: center bottom 3vh;
+  font-size: 6vh;
+}

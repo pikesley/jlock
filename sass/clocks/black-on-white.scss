@@ -1,11 +1,12 @@
 @use '../base/mixins';
+@use '../base/vars';
 
-@import url("https://fonts.googleapis.com/css2?family=Righteous");
+$font: "Righteous";
 
-$grey: rgba(4, 4, 4, 0.216);
+$grey: rgba(4, 4, 4, 0.445);
 
 $active-colour: black;
-$background-colour: white;
+$background-colour: rgb(255, 255, 255);
 $inactive-colour: $grey;
 
 $stroke-width: 1px;
@@ -22,9 +23,8 @@ $stroke-width: 1px;
 @import "../base/default";
 
 body {
-  background-color: $background-colour;
-  font-family: "Righteous";
-  font-size: 2m;
+  background: url(vars.$background-root + "wall.png"), $background-colour;
+  font-size: 6vh;
   @include mixins.stroke-width($stroke-width);
   @include mixins.stroke-colour($inactive-colour);
   color: transparent;

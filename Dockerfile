@@ -2,10 +2,10 @@ FROM python:3.7
 
 ENV PROJECT jlock
 ENV PLATFORM docker
-ENV SASS_VERSION 1.32.10
+ENV SASS_VERSION 1.42.1
 WORKDIR /opt/${PROJECT}
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 
 RUN apt-get update && apt-get install -y \
                                         curl \

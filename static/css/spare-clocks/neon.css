@@ -1,63 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Arimo");
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
+/* Error: Undefined variable.
+ *   ,
+ * 1 | @import url("https://fonts.googleapis.com/css2?family=#{$font}");
+ *   |                                                         ^^^^^
+ *   '
+ *   sass/base/_font.scss 1:57         @import
+ *   sass/base/_default.scss 3:9       @import
+ *   sass/spare-clocks/neon.scss 26:9  root stylesheet */
 
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined variable.\a   \2577 \a 1 \2502  @import url("https://fonts.googleapis.com/css2?family=#{$font}");\a   \2502                                                          ^^^^^\a   \2575 \a   sass/base/_font.scss 1:57         @import\a   sass/base/_default.scss 3:9       @import\a   sass/spare-clocks/neon.scss 26:9  root stylesheet';
 }
-
-#clock span {
-  text-align: center;
-}
-
-body {
-  color: #323232;
-}
-
-.inactive {
-  color: #323232;
-  animation: fade-out ease 3s;
-}
-
-.active {
-  color: white;
-  text-shadow: -1px -1px 1px white, -1px 1px 1px white, 1px -1px 1px white, 1px 1px 1px white, 0 0 3px white, 0 0 10px white, 0 0 20px white, 0 0 30px #ff9e9e, 0 0 40px #ff9e9e, 0 0 50px #ff9e9e, 0 0 70px #ff9e9e, 0 0 100px #ff9e9e, 0 0 200px #ff9e9e;
-  animation: fade-in ease 3s;
-}
-
-@keyframes fade-in {
-  0% {
-    color: #323232;
-  }
-  100% {
-    color: white;
-    text-shadow: -1px -1px 1px white, -1px 1px 1px white, 1px -1px 1px white, 1px 1px 1px white, 0 0 3px white, 0 0 10px white, 0 0 20px white, 0 0 30px #ff9e9e, 0 0 40px #ff9e9e, 0 0 50px #ff9e9e, 0 0 70px #ff9e9e, 0 0 100px #ff9e9e, 0 0 200px #ff9e9e;
-  }
-}
-@keyframes fade-out {
-  0% {
-    color: white;
-    text-shadow: -1px -1px 1px white, -1px 1px 1px white, 1px -1px 1px white, 1px 1px 1px white, 0 0 3px white, 0 0 10px white, 0 0 20px white, 0 0 30px #ff9e9e, 0 0 40px #ff9e9e, 0 0 50px #ff9e9e, 0 0 70px #ff9e9e, 0 0 100px #ff9e9e, 0 0 200px #ff9e9e;
-  }
-  100% {
-    color: #323232;
-  }
-}
-body {
-  font-family: "Arimo";
-  color: #323232;
-  background: black;
-}
-
-/*# sourceMappingURL=neon.css.map */

@@ -1,65 +1,19 @@
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
+/* Error: Undefined variable.
+ *   ,
+ * 1 | @import url("https://fonts.googleapis.com/css2?family=#{$font}");
+ *   |                                                         ^^^^^
+ *   '
+ *   sass/base/_font.scss 1:57             @import
+ *   sass/base/_default.scss 3:9           @import
+ *   sass/spare-clocks/concrete.scss 17:9  root stylesheet */
 
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined variable.\a   \2577 \a 1 \2502  @import url("https://fonts.googleapis.com/css2?family=#{$font}");\a   \2502                                                          ^^^^^\a   \2575 \a   sass/base/_font.scss 1:57             @import\a   sass/base/_default.scss 3:9           @import\a   sass/spare-clocks/concrete.scss 17:9  root stylesheet';
 }
-
-#clock span {
-  text-align: center;
-}
-
-body {
-  color: #d1d0d6;
-  text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
-}
-
-.inactive {
-  color: #d1d0d6;
-  text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
-  animation: fade-out ease 3s;
-}
-
-.active {
-  color: #f9fd01;
-  text-shadow: 0px 1px 0px #c7ca01, 0px 2px 0px #aeb101, 0px 3px 0px #959701, 0px 4px 0px #7c7e00, 0px 5px 0px #636500, 0px 6px 0px #4a4b00, 0px 7px 0px #313200, 0px 8px 15px #181800;
-  animation: fade-in ease 3s;
-}
-
-@keyframes fade-in {
-  0% {
-    color: #d1d0d6;
-    text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
-  }
-  100% {
-    color: #f9fd01;
-    text-shadow: 0px 1px 0px #c7ca01, 0px 2px 0px #aeb101, 0px 3px 0px #959701, 0px 4px 0px #7c7e00, 0px 5px 0px #636500, 0px 6px 0px #4a4b00, 0px 7px 0px #313200, 0px 8px 15px #181800;
-  }
-}
-@keyframes fade-out {
-  0% {
-    color: #f9fd01;
-    text-shadow: 0px 1px 0px #c7ca01, 0px 2px 0px #aeb101, 0px 3px 0px #959701, 0px 4px 0px #7c7e00, 0px 5px 0px #636500, 0px 6px 0px #4a4b00, 0px 7px 0px #313200, 0px 8px 15px #181800;
-  }
-  100% {
-    color: #d1d0d6;
-    text-shadow: 0px 1px 0px #b6b5be, 0px 2px 0px #a9a7b2, 0px 3px 0px #9c9aa6, 0px 4px 0px #8e8c9b, 0px 5px 0px #817e8f, 0px 6px 0px #747182, 0px 7px 0px #686674, 0px 8px 15px #5c5a67;
-  }
-}
-body {
-  background-image: url("../../images/backgrounds/concrete.jpg");
-  font-weight: bold;
-}
-
-/*# sourceMappingURL=concrete.css.map */

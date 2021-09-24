@@ -22,6 +22,10 @@ body {
 }
 
 body {
+  font-family: "Montserrat";
+}
+
+body {
   color: #002752;
   text-shadow: none;
 }
@@ -60,7 +64,6 @@ body {
 }
 body {
   background-color: #001b38;
-  font-family: "Montserrat";
 }
 
 /*# sourceMappingURL=blue-orange.css.map */

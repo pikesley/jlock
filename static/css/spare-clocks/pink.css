@@ -1,88 +1,19 @@
-@import "https://fonts.googleapis.com/css2?family=Kelly+Slab";
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
+/* Error: Undefined variable.
+ *   ,
+ * 1 | @import url("https://fonts.googleapis.com/css2?family=#{$font}");
+ *   |                                                         ^^^^^
+ *   '
+ *   sass/base/_font.scss 1:57         @import
+ *   sass/base/_default.scss 3:9       @import
+ *   sass/spare-clocks/pink.scss 19:9  root stylesheet */
 
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined variable.\a   \2577 \a 1 \2502  @import url("https://fonts.googleapis.com/css2?family=#{$font}");\a   \2502                                                          ^^^^^\a   \2575 \a   sass/base/_font.scss 1:57         @import\a   sass/base/_default.scss 3:9       @import\a   sass/spare-clocks/pink.scss 19:9  root stylesheet';
 }
-
-#clock span {
-  text-align: center;
-}
-
-body {
-  color: #e496af;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
-}
-
-.inactive {
-  color: #e496af;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
-  animation: fade-out ease 3s;
-}
-
-.active {
-  color: #698f3f;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), -1px -1px 1px rgba(255, 255, 255, 0.3);
-  animation: fade-in ease 3s;
-}
-
-@keyframes fade-in {
-  0% {
-    color: #e496af;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
-  }
-  100% {
-    color: #698f3f;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), -1px -1px 1px rgba(255, 255, 255, 0.3);
-  }
-}
-@keyframes fade-out {
-  0% {
-    color: #698f3f;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7), -1px -1px 1px rgba(255, 255, 255, 0.3);
-  }
-  100% {
-    color: #e496af;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.7);
-  }
-}
-body {
-  background-color: #e496af;
-  font-family: "Kelly Slab";
-  font-size: 3.5em;
-}
-
-/*# sourceMappingURL=pink.css.map */

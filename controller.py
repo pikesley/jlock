@@ -16,7 +16,7 @@ def index():
         return render_template(
             "index.html",
             host_name=socket.gethostname(),
-            arrow_svg=Path("templates/images/arrow.svg").read_text(),
+            arrow_svg=Path("templates/images/arrow.svg").read_text(encoding="UTF-8"),
         )
 
 
