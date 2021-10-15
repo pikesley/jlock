@@ -1,6 +1,10 @@
+import { SpanManager } from "modules/spanManager.js";
+
+const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
+
 describe("SpanManager", function () {
   it("has the correct data", function () {
-    sm = new SpanManager(
+    let sm = new SpanManager(
       [".it", ".is", ".h-6", ".oclock"],
       [".it", ".is", ".h-6", ".oclock", ".m-1"]
     );
@@ -10,19 +14,19 @@ describe("SpanManager", function () {
   });
 
   it("knows when it has diffs", function () {
-    sm = new SpanManager(["foo"], ["foo", "bar"]);
+    let sm = new SpanManager(["foo"], ["foo", "bar"]);
 
     expect(sm.diffs).toEqual(true);
   });
 
   it("knows when it has no diffs", function () {
-    sm = new SpanManager(["foo"], ["foo"]);
+    let sm = new SpanManager(["foo"], ["foo"]);
 
     expect(sm.diffs).toEqual(false);
   });
 
   it("knows which spans to (de)activate", function () {
-    sm = new SpanManager(
+    let sm = new SpanManager(
       [
         ".it",
         ".is",
@@ -50,9 +54,31 @@ describe("SpanManager", function () {
   });
 
   it("diffs correctly when there's no `current` list", function () {
-    sm = new SpanManager([], ["#it", "#is", "#half", "#past", "#h-2"]);
+    let sm = new SpanManager([], ["#it", "#is", "#half", "#past", "#h-2"]);
 
     expect(sm.diffs).toEqual(true);
     expect(sm.activate).toEqual(["#it", "#is", "#half", "#past", "#h-2"]);
+  });
+
+  it("(de)activates spans correctly", function () {
+    let sm = new SpanManager(
+      [
+        ".it",
+        ".is",
+        ".twenty",
+        ".five",
+        ".past",
+        ".h-6",
+        ".m-1",
+        ".m-2",
+        ".m-3",
+        ".m-4",
+      ],
+      [".it", ".is", ".half", ".past", ".h-6"]
+    );
+
+    sm.yeet();
+
+    expect(consoleLogMock).toBeCalledWith(".it .is .half .past .h-6");
   });
 });

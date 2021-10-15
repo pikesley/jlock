@@ -83,17 +83,15 @@ The container starts `nginx` when you connect to it, so it should be running at 
 
 ### Tests
 
-There are some [Jasmine](https://jasmine.github.io/) [JavaScript tests](spec/javascripts). To run them, do
+There are some [tests](tests/). To run them (and the linters), do
 
 ```bash
-make jasmine
+make
 ```
-
-and they should be visible at [http://localhost:8888/](http://localhost:8888/).
 
 ### Designs
 
-The designs are built using [Dart SASS](https://sass-lang.com/dart-sass). Each `.scss` file in the root of [clock/sass](clock/sass) becomes part of the list of designs that are cycled-through when the screen is clicked, and they have a very particular layout:
+The designs are built using [SASS](https://sass-lang.com/dart-sass). Each `.scss` file in the root of [clock/sass](clock/sass) becomes part of the list of designs that are cycled-through when the screen is clicked, and they have a very particular layout:
 
 ```css
 $white: rgb(255, 255, 255); // define some colours

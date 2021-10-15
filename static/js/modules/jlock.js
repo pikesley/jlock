@@ -26,7 +26,7 @@ let intervalNameForValue = function (value) {
 };
 
 let minutesClasses = function (minutes) {
-  // compose all the ID the minutes, e.g. [".a", ".quarter", ".past"]
+  // compose all the IDs for the minutes, e.g. [".a", ".quarter", ".past"]
   let principalInterval = intervalNameForValue(minutes);
   let output = [`.${principalInterval}`];
 
@@ -58,10 +58,10 @@ let hoursClass = function (hours, minutes) {
 
 let classesToBeActivatedFor = function (time) {
   // compile all the Classes for this particular time
-  intervals = minutesClasses(time.minutes);
-  hour = hoursClass(time.hours, time.minutes);
+  let intervals = minutesClasses(time.minutes);
+  let hour = hoursClass(time.hours, time.minutes);
 
-  classes = [".it", ".is"];
+  let classes = [".it", ".is"];
 
   // this is a stupid aesthetic choice
   if (intervals[0] == ".oclock") {
@@ -78,10 +78,19 @@ let classesToBeActivatedFor = function (time) {
 };
 
 let dotsForMinutes = function (minutes) {
-  classes = [];
-  for (i = 0; i < minutes % 5; i++) {
+  let classes = [];
+  for (let i = 0; i < minutes % 5; i++) {
     classes.push(`.m-${i + 1}`);
   }
 
   return classes;
+};
+
+export {
+  attenuatedIndex,
+  dotsForMinutes,
+  classesToBeActivatedFor,
+  hoursClass,
+  intervalNameForValue,
+  minutesClasses,
 };

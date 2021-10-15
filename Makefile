@@ -1,4 +1,4 @@
-PROJECT = $(shell basename $$(pwd))
+PROJECT = jlock
 ID = pikesley/${PROJECT}
 PIHOST = hyperpixel.local
 PIHOST = hp.local
@@ -23,7 +23,7 @@ run: laptop-only
 		--interactive \
 		--tty \
 		--rm \
-		--publish 8888:8888 \
+		--publish 9229:9229 \
 		--publish 5000:5000 \
 		--publish 8000:80 \
 		${ID} \
@@ -35,6 +35,12 @@ exec: laptop-only
 		--tty \
 		${PROJECT} \
 		bash
+
+ci:
+		docker run \
+		--rm \
+		${ID} \
+		make
 
 # docker dev targets
 
@@ -49,21 +55,17 @@ push-code: docker-only
 		  . \
 		  pi@${PIHOST}:jlock
 
-test: docker-only jasmine-ci
+test: docker-only
+	npm run test
 
 lint: docker-only
 	python -m pylama
+	npm run lint
 
 clean: docker-only
 	@find . -name __pycache__ -exec rm -fr {} \;
 	@rm -fr reports
 	@rm -f geckodriver.log
-
-jasmine: docker-only
-	jasmine server --host 0.0.0.0
-
-jasmine-ci: docker-only
-	@MOZ_HEADLESS=true jasmine ci -b firefox | grep -v "Mozilla/5.0" | grep -v Warning
 
 black:
 	black .
@@ -126,6 +128,9 @@ restart-services: pi-only
 
 install:
 	python -m pip install -r requirements.txt
+
+dev-install:
+	python -m pip install -r requirements-dev.txt
 
 ###
 

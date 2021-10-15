@@ -1,3 +1,13 @@
+import {
+  attenuatedIndex,
+  classesToBeActivatedFor,
+  dotsForMinutes,
+  hoursClass,
+  intervalNameForValue,
+  minutesClasses,
+} from "modules/jlock.js";
+import { fiveMinutes } from "support/helpers.js";
+
 describe("attenuatedIndex", function () {
   it("generates indeces to traverse the intervalNames backwards", function () {
     [
@@ -46,7 +56,7 @@ describe("intervalNameForValue", function () {
 });
 
 describe("minutesClasses", function () {
-  expectations = [
+  let expectations = [
     {
       minutes: fiveMinutes(0),
       ids: [".oclock"],
@@ -122,7 +132,7 @@ describe("dotsForMinutes", function () {
 });
 
 describe("hoursClass", function () {
-  expectations = [
+  let expectations = [
     {
       result: ".h-1",
       times: [
@@ -186,7 +196,7 @@ describe("classesToBeActivatedFor", function () {
       ".to",
       ".h-4",
     ]);
-    expect(classesToBeActivatedFor({ hours: 03, minutes: 57 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 3, minutes: 57 })).toEqual([
       ".it",
       ".is",
       ".five",
@@ -195,13 +205,13 @@ describe("classesToBeActivatedFor", function () {
       ".m-1",
       ".m-2",
     ]);
-    expect(classesToBeActivatedFor({ hours: 04, minutes: 00 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 4, minutes: 0 })).toEqual([
       ".it",
       ".is",
       ".h-4",
       ".oclock",
     ]);
-    expect(classesToBeActivatedFor({ hours: 03, minutes: 35 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 3, minutes: 35 })).toEqual([
       ".it",
       ".is",
       ".twenty",
@@ -212,7 +222,7 @@ describe("classesToBeActivatedFor", function () {
   });
 
   it("correctly compiles the intervals around the top of the hour", function () {
-    expect(classesToBeActivatedFor({ hours: 06, minutes: 57 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 6, minutes: 57 })).toEqual([
       ".it",
       ".is",
       ".five",
@@ -222,7 +232,7 @@ describe("classesToBeActivatedFor", function () {
       ".m-2",
     ]);
 
-    expect(classesToBeActivatedFor({ hours: 07, minutes: 05 })).toEqual([
+    expect(classesToBeActivatedFor({ hours: 7, minutes: 5 })).toEqual([
       ".it",
       ".is",
       ".five",
