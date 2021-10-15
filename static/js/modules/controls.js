@@ -1,3 +1,7 @@
+import { SpanManager } from "./spanManager.js";
+import { populateClock } from "./populate.js";
+import { classesToBeActivatedFor } from "./jlock.js";
+
 var validStyles = [];
 var fadeIncrement = 0.01;
 var html = document.querySelector("html");
@@ -51,7 +55,7 @@ let cycleStyle = function () {
   }
   styleIndex = (styleIndex + 1) % validStyles.length;
 
-  style = validStyles[styleIndex];
+  let style = validStyles[styleIndex];
   localStorage.styleIndex = styleIndex;
 
   // fade out and go to new location
@@ -71,56 +75,56 @@ let setStyles = function () {
   }
 };
 
-let SpanManager = class {
-  constructor(current, next) {
-    this.current = current || [];
-    this.next = next || [];
+// let SpanManager = class {
+//   constructor(current, next) {
+//     this.current = current || [];
+//     this.next = next || [];
 
-    this.activate = this.difference(this.next, this.current);
-    this.deactivate = this.difference(this.current, this.next);
+//     this.activate = this.difference(this.next, this.current);
+//     this.deactivate = this.difference(this.current, this.next);
 
-    this.diffs = false;
+//     this.diffs = false;
 
-    if (this.activate.length || this.deactivate.length) {
-      this.diffs = true;
-    }
-  }
+//     if (this.activate.length || this.deactivate.length) {
+//       this.diffs = true;
+//     }
+//   }
 
-  yeet() {
-    if (this.diffs) {
-      this.activate.forEach(function (span) {
-        let elements = document.querySelectorAll(span);
-        elements.forEach(function (element) {
-          element.classList.remove("inactive");
-          element.classList.add("active");
-        });
-      });
+//   yeet() {
+//     if (this.diffs) {
+//       this.activate.forEach(function (span) {
+//         let elements = document.querySelectorAll(span);
+//         elements.forEach(function (element) {
+//           element.classList.remove("inactive");
+//           element.classList.add("active");
+//         });
+//       });
 
-      this.deactivate.forEach(function (span) {
-        let elements = document.querySelectorAll(span);
-        elements.forEach(function (element) {
-          element.classList.remove("active");
-          element.classList.add("inactive");
-        });
-      });
+//       this.deactivate.forEach(function (span) {
+//         let elements = document.querySelectorAll(span);
+//         elements.forEach(function (element) {
+//           element.classList.remove("active");
+//           element.classList.add("inactive");
+//         });
+//       });
 
-      this.save();
-    }
-  }
+//       this.save();
+//     }
+//   }
 
-  save() {
-    console.log(this.next.join(" "));
-    localStorage["active-classes"] = JSON.stringify(this.next);
-  }
+//   save() {
+//     console.log(this.next.join(" "));
+//     localStorage["active-classes"] = JSON.stringify(this.next);
+//   }
 
-  // https://stackoverflow.com/a/30288946
-  difference(left, right) {
-    right = new Set(right);
-    return left.filter(function (x) {
-      return !right.has(x);
-    });
-  }
-};
+//   // https://stackoverflow.com/a/30288946
+//   difference(left, right) {
+//     right = new Set(right);
+//     return left.filter(function (x) {
+//       return !right.has(x);
+//     });
+//   }
+// };
 
 let TimeFinder = class {
   constructor() {
@@ -167,3 +171,4 @@ function fadeIn() {
   })();
 }
 
+export { initialise };

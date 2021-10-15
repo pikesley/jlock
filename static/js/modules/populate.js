@@ -1,9 +1,6 @@
 let spacers = 1; // this should match `clock-spacers` in `sass/base/_vars.scss`
-
 let dot = "•";
-
 let width = 11;
-let height = 10;
 
 let clockParts = [
   [{ class: "it" }, { text: "l" }, { class: "is" }, { text: "asampm" }],
@@ -39,7 +36,7 @@ let clockParts = [
 ];
 
 let populateClock = function (elementID = "#clock") {
-  element = document.querySelector(elementID);
+  let element = document.querySelector(elementID);
   addDots(element, [1, 2]);
 
   addBlankRows(element);
@@ -49,8 +46,8 @@ let populateClock = function (elementID = "#clock") {
 
     let count = 0;
     row.forEach(function (cell) {
-      content = (cell.text || cell.class).toUpperCase();
-      for (character of content) {
+      let content = (cell.text || cell.class).toUpperCase();
+      for (let character of content) {
         let span = getSpan();
         let content = document.createTextNode(character);
         span.appendChild(content);
@@ -72,15 +69,15 @@ let populateClock = function (elementID = "#clock") {
 };
 
 let addSpacerSpans = function (element) {
-  for (i = 0; i < spacers + 1; i++) {
+  for (let i = 0; i < spacers + 1; i++) {
     let span = getSpan();
     element.append(span);
   }
 };
 
 let addBlankRows = function (element, count = spacers) {
-  for (i = 0; i < spacers; i++) {
-    for (j = 0; j < width + count * 2 + 2; j++) {
+  for (let i = 0; i < spacers; i++) {
+    for (let j = 0; j < width + count * 2 + 2; j++) {
       let span = getSpan();
       element.append(span);
     }
@@ -90,7 +87,7 @@ let addBlankRows = function (element, count = spacers) {
 let addDots = function (element, minutes) {
   element.append(dotSpan(minutes[0]));
 
-  for (i = 0; i < width + spacers * 2; i++) {
+  for (let i = 0; i < width + spacers * 2; i++) {
     let span = getSpan();
     element.append(span);
   }
@@ -111,3 +108,5 @@ let dotSpan = function (index) {
 let getSpan = function () {
   return document.createElement("span");
 };
+
+export { populateClock };

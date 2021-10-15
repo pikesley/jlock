@@ -1,3 +1,7 @@
+import { SpanManager } from "modules/spanManager.js";
+
+const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
+
 describe("SpanManager", function () {
   it("has the correct data", function () {
     let sm = new SpanManager(
@@ -54,5 +58,27 @@ describe("SpanManager", function () {
 
     expect(sm.diffs).toEqual(true);
     expect(sm.activate).toEqual(["#it", "#is", "#half", "#past", "#h-2"]);
+  });
+
+  it("(de)activates spans correctly", function () {
+    let sm = new SpanManager(
+      [
+        ".it",
+        ".is",
+        ".twenty",
+        ".five",
+        ".past",
+        ".h-6",
+        ".m-1",
+        ".m-2",
+        ".m-3",
+        ".m-4",
+      ],
+      [".it", ".is", ".half", ".past", ".h-6"]
+    );
+
+    sm.yeet();
+
+    expect(consoleLogMock).toBeCalledWith(".it .is .half .past .h-6");
   });
 });
