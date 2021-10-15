@@ -26,7 +26,7 @@ let intervalNameForValue = function (value) {
 };
 
 let minutesClasses = function (minutes) {
-  // compose all the ID the minutes, e.g. [".a", ".quarter", ".past"]
+  // compose all the IDs for the minutes, e.g. [".a", ".quarter", ".past"]
   let principalInterval = intervalNameForValue(minutes);
   let output = [`.${principalInterval}`];
 

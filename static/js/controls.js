@@ -1,20 +1,22 @@
-let validStyles = [];
-let fadeTime = 1000; // ms
+var validStyles = [];
+var fadeIncrement = 0.01;
+var html = document.querySelector("html");
 
 let initialise = function () {
-  // fade in
-  $("html").css("display", "none");
-  $("html").fadeIn(fadeTime);
+  fadeIn();
 
-  $.get("/css/clocks/", function (data) {
-    // discover the available stylesheets
-    data.forEach(function (entry) {
-      if (entry.name.endsWith("css")) {
-        validStyles.push(entry.name.replace(/\.[^/.]+$/, ""));
-      }
+  fetch("/css/clocks/")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      json.forEach(function (entry) {
+        if (entry.name.endsWith("css")) {
+          validStyles.push(entry.name.replace(/\.[^/.]+$/, ""));
+        }
+      });
+      setStyles();
     });
-    setStyles();
-  });
 
   populateClock();
 
@@ -26,14 +28,14 @@ let initialise = function () {
   setInterval(refreshClock, 1000);
 
   // call cycleStyle when we get a click anywhere
-  $("body").click(function () {
+  document.addEventListener("click", function () {
     cycleStyle();
   });
 };
 
 let refreshClock = function () {
   // update the clock
-  sm = new SpanManager(
+  let sm = new SpanManager(
     JSON.parse(localStorage["active-classes"] || "[]"),
     classesToBeActivatedFor(new TimeFinder())
   );
@@ -53,30 +55,30 @@ let cycleStyle = function () {
   localStorage.styleIndex = styleIndex;
 
   // fade out and go to new location
-  $("html").fadeOut(fadeTime, function () {
-    location.replace(`?style=${style}`);
-  });
+  fadeOutAndRedirect(style);
 };
 
 let setStyles = function () {
   // extract the stylesheet from the querystring and apply it to the element
   let urlParams = new URLSearchParams(window.location.search);
   let style = urlParams.get("style");
+  let element = document.querySelector("#styles");
 
   if (style && validStyles.includes(style)) {
-    $("#styles").attr("href", `css/clocks/${style}.css`);
+    element.setAttribute("href", `css/clocks/${style}.css`);
   } else {
-    $("#styles").attr("href", `css/clocks/${validStyles[0]}.css`);
+    element.setAttribute("href", `css/clocks/${validStyles[0]}.css`);
   }
 };
 
 let SpanManager = class {
   constructor(current, next) {
-    this.current = current;
-    this.next = next;
+    this.current = current || [];
+    this.next = next || [];
 
-    this.activate = $(next).not(current).get();
-    this.deactivate = $(current).not(next).get();
+    this.activate = this.difference(this.next, this.current);
+    this.deactivate = this.difference(this.current, this.next);
+
     this.diffs = false;
 
     if (this.activate.length || this.deactivate.length) {
@@ -86,15 +88,19 @@ let SpanManager = class {
 
   yeet() {
     if (this.diffs) {
-      this.activate.forEach(function (spans) {
-        $(spans).each(function () {
-          $(this).removeClass("inactive").addClass("active");
+      this.activate.forEach(function (span) {
+        let elements = document.querySelectorAll(span);
+        elements.forEach(function (element) {
+          element.classList.remove("inactive");
+          element.classList.add("active");
         });
       });
 
-      this.deactivate.forEach(function (spans) {
-        $(spans).each(function () {
-          $(this).removeClass("active").addClass("inactive");
+      this.deactivate.forEach(function (span) {
+        let elements = document.querySelectorAll(span);
+        elements.forEach(function (element) {
+          element.classList.remove("active");
+          element.classList.add("inactive");
         });
       });
 
@@ -106,23 +112,58 @@ let SpanManager = class {
     console.log(this.next.join(" "));
     localStorage["active-classes"] = JSON.stringify(this.next);
   }
+
+  // https://stackoverflow.com/a/30288946
+  difference(left, right) {
+    right = new Set(right);
+    return left.filter(function (x) {
+      return !right.has(x);
+    });
+  }
 };
 
 let TimeFinder = class {
   constructor() {
-    this.actual = new Date()
-    this.hours = this.actual.getHours()
-    this.minutes = this.actual.getMinutes()
+    this.actual = new Date();
+    this.hours = this.actual.getHours();
+    this.minutes = this.actual.getMinutes();
 
-    this.checkForFakeTime()
+    this.checkForFakeTime();
   }
 
   checkForFakeTime() {
     let urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get("faketime")) {
-      faketime = urlParams.get("faketime").split(":");
+      let faketime = urlParams.get("faketime").split(":");
       this.hours = faketime[0];
       this.minutes = faketime[1];
     }
   }
+};
+
+// https://codepen.io/chrisbuttery/pen/hvDKi
+
+function fadeOutAndRedirect(style) {
+  html.style.opacity = 1;
+
+  (function fade() {
+    if (!((html.style.opacity -= fadeIncrement) < 0)) {
+      requestAnimationFrame(fade);
+    } else {
+      location.replace(`?style=${style}`);
+    }
+  })();
 }
+
+function fadeIn() {
+  html.style.opacity = 0;
+
+  (function fade() {
+    var val = parseFloat(html.style.opacity);
+    if (!((val += fadeIncrement) > 1)) {
+      html.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+

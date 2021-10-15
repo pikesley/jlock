@@ -1,0 +1,8 @@
+flask
+ipdb 
+black
+isort
+pylama 
+pylint
+selenium==3.141.0
+# jasmine 

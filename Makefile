@@ -127,6 +127,9 @@ restart-services: pi-only
 install:
 	python -m pip install -r requirements.txt
 
+dev-install:
+	python -m pip install -r requirements-dev.txt
+
 ###
 
 docker-only:

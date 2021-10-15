@@ -16,7 +16,7 @@ $active-colour: $cyan;
 $inactive-colour: transparentize(darken($background-colour, 5%), 0.8);
 
 $stroke-width: 1px;
-$offset: 0.5vh;
+$offset: 0.7vh;
 
 @mixin activated {
   text-shadow: $offset $offset $active-colour;
@@ -34,4 +34,11 @@ body {
   @include mixins.stroke-colour($stroke-colour);
   color: transparent;
   text-shadow: $offset $offset $inactive-colour;
+  font-size: 9vh;
+}
+
+#clock {
+  span {
+    margin: -4vh;
+  }
 }

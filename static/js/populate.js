@@ -38,7 +38,8 @@ let clockParts = [
   [{ class: "h-10", text: "ten" }, { text: "se" }, { class: "oclock" }],
 ];
 
-let populateClock = function (element = '#clock') {
+let populateClock = function (elementID = "#clock") {
+  element = document.querySelector(elementID);
   addDots(element, [1, 2]);
 
   addBlankRows(element);
@@ -50,14 +51,16 @@ let populateClock = function (element = '#clock') {
     row.forEach(function (cell) {
       content = (cell.text || cell.class).toUpperCase();
       for (character of content) {
-        let span = $("<span/>", { text: character });
+        let span = getSpan();
+        let content = document.createTextNode(character);
+        span.appendChild(content);
         if (cell.class) {
-          $(span).attr("class", cell.class);
+          span.setAttribute("class", cell.class);
         }
-        $(span).attr("id", `cell-${count}-${index}`);
+        span.setAttribute("id", `cell-${count}-${index}`);
         count++;
 
-        $(element).append(span);
+        element.append(span);
       }
     });
     addSpacerSpans(element);
@@ -70,32 +73,41 @@ let populateClock = function (element = '#clock') {
 
 let addSpacerSpans = function (element) {
   for (i = 0; i < spacers + 1; i++) {
-    $(element).append($("<span/>"));
+    let span = getSpan();
+    element.append(span);
   }
 };
 
 let addBlankRows = function (element, count = spacers) {
   for (i = 0; i < spacers; i++) {
     for (j = 0; j < width + count * 2 + 2; j++) {
-      $(element).append($("<span/>"));
+      let span = getSpan();
+      element.append(span);
     }
   }
 };
 
 let addDots = function (element, minutes) {
-  $(element).append(dotSpan(minutes[0]));
+  element.append(dotSpan(minutes[0]));
 
   for (i = 0; i < width + spacers * 2; i++) {
-    $(element).append($("<span/>"));
+    let span = getSpan();
+    element.append(span);
   }
 
-  $(element).append(dotSpan(minutes[1]));
+  element.append(dotSpan(minutes[1]));
 };
 
 let dotSpan = function (index) {
-  return $("<span/>", {
-    class: `m-${index}`,
-    id: `corner-${index}`,
-    text: dot,
-  });
+  let span = getSpan();
+  let content = document.createTextNode(dot);
+  span.appendChild(content);
+  span.setAttribute("class", `m-${index}`);
+  span.setAttribute("id", `corner-${index}`);
+
+  return span;
+};
+
+let getSpan = function () {
+  return document.createElement("span");
 };

@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-
     <link
       rel="shortcut icon"
       type="image/png"
@@ -35,17 +28,20 @@
       <a href="https://github.com/pikesley/jlock">Github</a>
     </footer>
 
-  <script>
-      $(document).ready(function () {
-        $("#next-button").click(function () {
-          cycle();
-        });
+    <script>
+      let button = document.querySelector("#next-button");
+      button.addEventListener("click", (event) => {
+        cycle();
       });
 
       let cycle = function () {
-        $("#arrow").addClass("active");
-        $.post("/controller/cycle-style").done(function () {
-          $("#arrow").removeClass("active");
+        let arrow = document.querySelector("#arrow");
+        arrow.classList.add("active");
+        fetch("/controller/cycle-style", {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        }).then(function () {
+          arrow.classList.remove("active");
         });
       };
     </script>
