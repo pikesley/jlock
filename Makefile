@@ -1,4 +1,4 @@
-PROJECT = $(shell basename $$(pwd))
+PROJECT = jlock
 ID = pikesley/${PROJECT}
 PIHOST = hyperpixel.local
 PIHOST = hp.local
@@ -35,6 +35,12 @@ exec: laptop-only
 		--tty \
 		${PROJECT} \
 		bash
+
+ci:
+		docker run \
+		--rm \
+		${ID} \
+		make
 
 # docker dev targets
 
