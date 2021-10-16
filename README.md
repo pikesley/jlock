@@ -1,3 +1,5 @@
+![build badge](https://github.com/pikesley/jlock/actions/workflows/main.yml/badge.svg?style=square)
+
 # Jlock
 
 ![jlock](https://j.gifs.com/MZ8goP.gif)
@@ -10,7 +12,7 @@ Things you will need:
 
 ### A Raspberry Pi
 
-*At least* a Pi 3 A+. A tried it with a Zero, but it doesn't have enough grunt to handle the CSS animations. Anything beefier than a Model A would obviously work too, but the A is at the sweet spot for power-consumption versus performance.
+*At least* a Pi 3 A+. A tried it with a Zero, but it doesn't have enough grunt to handle the CSS animations. Anything beefier than a Model 3A+ would obviously work too, but the 3A+ is at the sweet spot for power-consumption versus performance.
 
 ### A 4x3 monitor
 
@@ -22,15 +24,9 @@ HDMI to whatever's on the monitor. The Model A has a full-size HDMI port, the Pi
 
 ## Install it
 
-This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via [NOOBS 3.5](https://www.raspberrypi.org/downloads/noobs/).
+This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/). Presuming you can SSH into the Pi,
 
-After the first boot, you need to enable SSH:
-
-```bash
-sudo raspi-config nonint do_ssh 0
-```
-
-And (optionally) change the hostname:
+(optionally) change the hostname:
 
 ```bash
 sudo raspi-config nonint do_hostname jlock
@@ -43,10 +39,22 @@ Once you've done this you should be able to get to the Pi with
 ssh pi@jlock.local
 ```
 
-Git isn't installed out-of-the-box, so:
+### Install the screen drivers
+
+If you're using a [HyperPixel](https://shop.pimoroni.com/products/hyperpixel-4-square?variant=30138251444307) screen, then you need to install the drivers. Per [this](https://github.com/pimoroni/hyperpixel4):
 
 ```bash
-sudo apt-get update && apt-get install git
+curl https://get.pimoroni.com/hyperpixel4 | bash
+```
+
+Select the correct screen and Pi combination (in my case it's `3 : Weirdly Square - Pi 3B+ or older` and `1: 2020 or earlier`) and let it do its thing. When it's done it will reboot, and the screen should work. Then:
+
+### Install Git
+
+Git isn't installed out-of-the-box (although it is a dependency of the screen-drivers above), so:
+
+```bash
+sudo apt update && apt install git
 ```
 
 ### Clone this repo
@@ -59,7 +67,8 @@ cd jlock
 ### And configure everything
 
 ```bash
-make setup
+./configure
+make
 ```
 
 This will install everything, and then reboot into a running clock.
