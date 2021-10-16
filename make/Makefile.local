@@ -28,5 +28,7 @@ exec:
 		bash
 
 ci:
-		docker run --rm ${ID} make
+		docker run --rm ${ID} test
+
+
 

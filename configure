@@ -15,6 +15,7 @@ pi)
   echo "Assuming we're on a Raspberry Pi, setting appropriate Makefile"
   ln -sf make/Makefile.pi Makefile
   ;;
+
 *)
   echo "Assuming we're on your laptop, setting appropriate Makefile"
   ln -sf make/Makefile.local Makefile
