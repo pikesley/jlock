@@ -1,0 +1,34 @@
+include make/Makefile.common
+
+ID = pikesley/${PROJECT}
+
+build:
+	docker build \
+		--tag ${ID} .
+
+run:
+	docker run \
+		--name ${PROJECT} \
+		--volume $(shell pwd):/opt/${PROJECT} \
+		--volume ${HOME}/.ssh:/root/.ssh \
+		--interactive \
+		--tty \
+		--rm \
+		--publish 9229:9229 \
+		--publish 5000:5000 \
+		--publish 8000:80 \
+		${ID} \
+		bash
+
+exec:
+	docker exec \
+		--interactive \
+		--tty \
+		${PROJECT} \
+		bash
+
+ci:
+		docker run --rm ${ID} test
+
+
+

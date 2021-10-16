@@ -14,6 +14,10 @@ COPY docker-config/bashrc /root/.bashrc
 
 RUN npm install
 
-RUN make dev-install
+RUN python -m pip install -r requirements-dev.txt
 
 RUN ln -sf /opt/${PROJECT}/nginx/dev-site.conf /etc/nginx/sites-enabled/default
+
+COPY ./docker-config/entrypoint.sh /usr/local/bin/entrypoint
+RUN chmod +x /usr/local/bin/entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
