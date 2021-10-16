@@ -1,0 +1,54 @@
+include make/Makefile.common
+
+default: setup
+
+setup: set-python apt-installs install virtualhost system-install configure-shell
+	sudo reboot
+
+configure-shell: set-autologin disable-power-warning
+	cp shell-config/bash_profile /home/pi/.bash_profile
+	cp shell-config/xinitrc /home/pi/.xinitrc
+
+set-autologin:
+	sudo raspi-config nonint do_boot_behaviour B2
+
+disable-power-warning:
+	echo "avoid_warnings=2" | sudo tee -a /boot/config.txt
+
+set-python:
+	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python2 1
+	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python3 2
+
+apt-installs:
+	sudo apt update
+	sudo apt install \
+		--no-install-recommends \
+		--yes \
+		xserver-xorg-video-all \
+		xserver-xorg-input-all \
+		xserver-xorg-core \
+		xinit x11-xserver-utils \
+		chromium-browser \
+		unclutter \
+		nginx \
+		xdotool \
+		python3-pip
+
+prepare-logs:
+	sudo mkdir -p /var/log/controller/
+	sudo chown pi /var/log/controller/
+
+system-install: systemd restart-services
+
+systemd: prepare-logs
+	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/controller.service
+
+virtualhost:
+	sudo ln -sf /home/pi/jlock/nginx/site.conf /etc/nginx/sites-enabled/default
+
+restart-services:
+	sudo service controller restart
+
+install:
+	python -m pip install -r requirements.txt
+

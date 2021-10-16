@@ -1,0 +1,41 @@
+include make/Makefile.common
+
+PIHOST = hyperpixel.local
+# PIHOST = hp.local
+
+default: format lint test clean
+
+sass:
+	sass --watch sass:static/css
+
+push-code:
+	rsync --archive \
+		  --verbose \
+		  --delete \
+			--exclude node_modules \
+			--exclude .git \
+			--exclude coverage \
+		  . \
+		  pi@${PIHOST}:${PROJECT}
+
+		ssh pi@${PIHOST} "cd jlock && ./configure"
+
+test:
+	npm run test
+
+lint:
+	python -m pylama
+	npm run lint
+
+clean:
+	@find . -name __pycache__ -exec rm -fr {} \;
+	@rm -fr reports
+	@rm -f geckodriver.log
+
+format: black isort
+
+black:
+	black .
+
+isort:
+	isort .
