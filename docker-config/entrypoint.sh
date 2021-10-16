@@ -15,8 +15,7 @@ case ${1} in
 
   test )
     cd /opt/jlock
-    ./configure
-    make
+    make --makefile make/Makefile.docker
     ;;
 
   * )
