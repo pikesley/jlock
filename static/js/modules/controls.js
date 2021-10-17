@@ -88,8 +88,8 @@ let TimeFinder = class {
     let urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get("faketime")) {
       let faketime = urlParams.get("faketime").split(":");
-      this.hours = faketime[0];
-      this.minutes = faketime[1];
+      this.hours = parseInt(faketime[0]);
+      this.minutes = parseInt(faketime[1]);
     }
   }
 };
