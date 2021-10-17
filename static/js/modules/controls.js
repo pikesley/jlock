@@ -77,7 +77,8 @@ let setStyles = function () {
 
 let TimeFinder = class {
   constructor() {
-    this.actual = new Date();
+    // so we can test this, by mocking `Date.now()`
+    this.actual = new Date(Date.now());
     this.hours = this.actual.getHours();
     this.minutes = this.actual.getMinutes();
 
