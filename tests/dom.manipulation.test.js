@@ -1,5 +1,6 @@
 import { populateClock } from "modules/populate.js";
 import { SpanManager } from "modules/spanManager.js";
+import { gatherSpanIDs } from "./support/helpers.js";
 
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
@@ -19,29 +20,17 @@ describe("DOM manipulation", function () {
   });
 
   it("starts with a clean slate", function () {
-    let actives = [];
+    let spans = gatherSpanIDs(div);
 
-    div.childNodes.forEach(function (child) {
-      if (child.classList.contains("active")) {
-        actives.push(child);
-      }
-    });
-
-    expect(actives.length).toEqual(0);
+    expect(spans.actives.length).toEqual(0);
   });
 
   it("activates the correct spans", function () {
     let sm = new SpanManager([], [".it"]);
     sm.yeet();
-    let actives = [];
+    let spans = gatherSpanIDs(div);
 
-    div.childNodes.forEach(function (child) {
-      if (child.classList.contains("active")) {
-        actives.push(child);
-      }
-    });
-
-    expect(actives.map((x) => x.id)).toEqual(["cell-0-0", "cell-1-0"]);
+    expect(spans.actives).toEqual(["cell-0-0", "cell-1-0"]);
   });
 
   it("yeets the correct spans", function () {
@@ -52,21 +41,12 @@ describe("DOM manipulation", function () {
       [".it", ".is", ".half", ".past", ".h-2", ".m-1"]
     );
     sm.yeet();
-    let actives = [];
-    let inactives = [];
-
-    div.childNodes.forEach(function (child) {
-      if (child.classList.contains("active")) {
-        actives.push(child);
-      }
-      if (child.classList.contains("inactive")) {
-        inactives.push(child);
-      }
-    });
 
     expect(consoleLogMock).toBeCalledWith(".it .is .half .past .h-2 .m-1");
 
-    expect(actives.map((x) => x.id)).toEqual([
+    let spans = gatherSpanIDs(div);
+
+    expect(spans.actives).toEqual([
       // 1 minute
       "corner-1",
       // it
@@ -90,7 +70,7 @@ describe("DOM manipulation", function () {
       "cell-9-6",
       "cell-10-6",
     ]);
-    expect(inactives.map((x) => x.id)).toEqual([
+    expect(spans.inactives).toEqual([
       // twelve
       "cell-5-8",
       "cell-6-8",
