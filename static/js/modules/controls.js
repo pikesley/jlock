@@ -9,18 +9,22 @@ var html = document.querySelector("html");
 let initialise = function () {
   fadeIn();
 
-  fetch("/css/clocks/")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      json.forEach(function (entry) {
-        if (entry.name.endsWith("css")) {
-          validStyles.push(entry.name.replace(/\.[^/.]+$/, ""));
-        }
+  try {
+    fetch("/css/clocks/")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        json.forEach(function (entry) {
+          if (entry.name.endsWith("css")) {
+            validStyles.push(entry.name.replace(/\.[^/.]+$/, ""));
+          }
+        });
+        setStyles();
       });
-      setStyles();
-    });
+  } catch (ReferenceError) {
+    null;
+  }
 
   populateClock();
 
