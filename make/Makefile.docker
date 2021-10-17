@@ -5,6 +5,7 @@ PIHOST = hyperpixel.local
 
 default: format lint test clean
 
+.PHONY: sass
 sass:
 	sass --watch sass:static/css
 
