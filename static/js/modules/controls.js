@@ -6,7 +6,7 @@ var validStyles = [];
 var fadeIncrement = 0.01;
 var html = document.querySelector("html");
 
-let initialise = function () {
+let initialise = function (element = "#clock") {
   fadeIn();
 
   try {
@@ -26,7 +26,7 @@ let initialise = function () {
     null;
   }
 
-  populateClock();
+  populateClock(element);
 
   // force it to update on the first load
   localStorage["active-classes"] = null;
