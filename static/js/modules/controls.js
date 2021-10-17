@@ -21,6 +21,9 @@ let initialise = function (element = "#clock") {
           }
         });
         setStyles();
+      })
+      .catch(function () {
+        setStyles("01-offset");
       });
   } catch (ReferenceError) {
     null;
@@ -66,11 +69,17 @@ let cycleStyle = function () {
   fadeOutAndRedirect(style);
 };
 
-let setStyles = function () {
+let setStyles = function (specified = null) {
   // extract the stylesheet from the querystring and apply it to the element
+  let element = document.querySelector("#styles");
+
+  if (specified) {
+    element.setAttribute("href", `css/clocks/${specified}.css`);
+    return;
+  }
+
   let urlParams = new URLSearchParams(window.location.search);
   let style = urlParams.get("style");
-  let element = document.querySelector("#styles");
 
   if (style && validStyles.includes(style)) {
     element.setAttribute("href", `css/clocks/${style}.css`);
