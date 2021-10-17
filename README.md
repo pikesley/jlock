@@ -84,6 +84,7 @@ This was all developed on a Docker container. To run it:
 ```bash
 git clone https://github.com/pikesley/jlock
 cd jlock
+./configure
 make build
 make run
 ```
