@@ -91,6 +91,12 @@ make run
 
 The container starts `nginx` when you connect to it, so it should be running at [http://localhost:8080/](http://localhost:8080/).
 
+### Install the node dependencies from inside the container
+
+```bash
+npm install
+```
+
 ### Tests
 
 There are some [tests](tests/). To run them (and the linters), do

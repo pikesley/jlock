@@ -12,8 +12,6 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 COPY ./ /opt/${PROJECT}
 COPY docker-config/bashrc /root/.bashrc
 
-RUN npm install
-
 RUN python -m pip install -r requirements-dev.txt
 
 RUN ln -sf /opt/${PROJECT}/nginx/dev-site.conf /etc/nginx/sites-enabled/default
