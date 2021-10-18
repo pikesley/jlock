@@ -54,7 +54,7 @@ Select the correct screen and Pi combination (in my case it's `3 : Weirdly Squar
 Git isn't installed out-of-the-box (although it is a dependency of the screen-drivers above), so:
 
 ```bash
-sudo apt update && apt install git
+sudo apt update && sudo apt install -y git
 ```
 
 ### Clone this repo
