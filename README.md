@@ -168,17 +168,8 @@ DISPLAY=:0 xdotool click 1
 
 ## Notes
 
-* This was developed *specifically on and for Chrome/Chromium*. It kind of works on Firefox, it does odd things on Safari, and it makes no sense at all on a (portrait-orientated) phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
+* This was developed *specifically on and for Chrome/Chromium*. It works OK on Firefox and Safari, and it makes no sense at all on a portrait-orientated phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
+* For more about running a Pi in Kiosk Mode, see [station-clock](https://github.com/pikesley/station-clock/blob/master/README.md#make-it-boot-into-chromium).
 * There are some incredible people doing some [amazing CSS text trickery](https://freefrontend.com/css-text-effects/).
 * This owes a great debt to [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd), written in [d3.js](https://d3js.org/).
 * Any similarity to a clock you can actually buy for thousands of pounds is entirely coincedental.
-
-
-
-
-
-
-
-
-
-
