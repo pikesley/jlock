@@ -78,6 +78,7 @@ let classesToBeActivatedFor = function (time) {
 };
 
 let dotsForMinutes = function (minutes) {
+  // which dots to activate for these minutes
   let classes = [];
   for (let i = 0; i < minutes % 5; i++) {
     classes.push(`.m-${i + 1}`);

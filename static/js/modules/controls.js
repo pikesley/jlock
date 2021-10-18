@@ -10,6 +10,7 @@ var html = document.querySelector("html");
 let initialise = function (element = "#clock") {
   fadeIn();
 
+  // this will not work in jest
   try {
     fetch("/css/clocks/")
       .then(function (response) {
@@ -27,6 +28,7 @@ let initialise = function (element = "#clock") {
         setStyles("01-offset");
       });
   } catch (ReferenceError) {
+    // but I don't really care
     null;
   }
 
