@@ -3,6 +3,12 @@ let dot = "•";
 let width = 11;
 
 let clockParts = [
+  // members can be one of three types:
+  //
+  // class-only: these will be rendered like <span class="foo">foo</span>
+  // text-only: these will be rendered like <span>foo</span>
+  // class-and-text: these will be rendered like <span class="the-class">the text</span>
+
   [{ class: "it" }, { text: "l" }, { class: "is" }, { text: "asampm" }],
   [{ class: "a" }, { text: "c" }, { class: "quarter" }, { text: "dc" }],
   [{ class: "twenty" }, { class: "five" }, { text: "x" }],
