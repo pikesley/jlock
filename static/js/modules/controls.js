@@ -1,9 +1,10 @@
 import { SpanManager } from "./spanManager.js";
+import { TimeFinder } from "./timeFinder.js";
 import { populateClock } from "./populate.js";
 import { classesToBeActivatedFor } from "./jlock.js";
+import { conf } from "../conf.js";
 
 var validStyles = [];
-var fadeIncrement = 0.01;
 var html = document.querySelector("html");
 
 let initialise = function (element = "#clock") {
@@ -88,33 +89,13 @@ let setStyles = function (specified = null) {
   }
 };
 
-let TimeFinder = class {
-  constructor() {
-    // so we can test this, by mocking `Date.now()`
-    this.actual = new Date(Date.now());
-    this.hours = this.actual.getHours();
-    this.minutes = this.actual.getMinutes();
-
-    this.checkForFakeTime();
-  }
-
-  checkForFakeTime() {
-    let urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("faketime")) {
-      let faketime = urlParams.get("faketime").split(":");
-      this.hours = parseInt(faketime[0]);
-      this.minutes = parseInt(faketime[1]);
-    }
-  }
-};
-
 // https://codepen.io/chrisbuttery/pen/hvDKi
 
 function fadeOutAndRedirect(style) {
   html.style.opacity = 1;
 
   (function fade() {
-    if (!((html.style.opacity -= fadeIncrement) < 0)) {
+    if (!((html.style.opacity -= conf.fadeIncrement) < 0)) {
       requestAnimationFrame(fade);
     } else {
       location.replace(`?style=${style}`);
@@ -127,7 +108,7 @@ function fadeIn() {
 
   (function fade() {
     var val = parseFloat(html.style.opacity);
-    if (!((val += fadeIncrement) > 1)) {
+    if (!((val += conf.fadeIncrement) > 1)) {
       html.style.opacity = val;
       requestAnimationFrame(fade);
     }

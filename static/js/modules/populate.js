@@ -1,8 +1,12 @@
-let spacers = 1; // this should match `clock-spacers` in `sass/base/_vars.scss`
-let dot = "•";
-let width = 11;
+import { conf } from "../conf.js";
 
 let clockParts = [
+  // members can be one of three types:
+  //
+  // class-only: these will be rendered like <span class="foo">foo</span>
+  // text-only: these will be rendered like <span>foo</span>
+  // class-and-text: these will be rendered like <span class="the-class">the text</span>
+
   [{ class: "it" }, { text: "l" }, { class: "is" }, { text: "asampm" }],
   [{ class: "a" }, { text: "c" }, { class: "quarter" }, { text: "dc" }],
   [{ class: "twenty" }, { class: "five" }, { text: "x" }],
@@ -34,6 +38,13 @@ let clockParts = [
   ],
   [{ class: "h-10", text: "ten" }, { text: "se" }, { class: "oclock" }],
 ];
+
+let width = 0;
+for (const [, member] of Object.entries(clockParts[0])) {
+  for (const [, text] of Object.entries(member)) {
+    width += text.length;
+  }
+}
 
 let populateClock = function (elementID = "#clock") {
   let element = document.querySelector(elementID);
@@ -69,15 +80,15 @@ let populateClock = function (elementID = "#clock") {
 };
 
 let addSpacerSpans = function (element) {
-  for (let i = 0; i < spacers + 1; i++) {
+  for (let i = 0; i < conf.spacers + 1; i++) {
     let span = getSpan();
     element.append(span);
   }
 };
 
-let addBlankRows = function (element, count = spacers) {
-  for (let i = 0; i < spacers; i++) {
-    for (let j = 0; j < width + count * 2 + 2; j++) {
+let addBlankRows = function (element) {
+  for (let i = 0; i < conf.spacers; i++) {
+    for (let j = 0; j < width + conf.spacers * 2 + 2; j++) {
       let span = getSpan();
       element.append(span);
     }
@@ -87,7 +98,7 @@ let addBlankRows = function (element, count = spacers) {
 let addDots = function (element, minutes) {
   element.append(dotSpan(minutes[0]));
 
-  for (let i = 0; i < width + spacers * 2; i++) {
+  for (let i = 0; i < width + conf.spacers * 2; i++) {
     let span = getSpan();
     element.append(span);
   }
@@ -97,7 +108,7 @@ let addDots = function (element, minutes) {
 
 let dotSpan = function (index) {
   let span = getSpan();
-  let content = document.createTextNode(dot);
+  let content = document.createTextNode(conf.dot);
   span.appendChild(content);
   span.setAttribute("class", `m-${index}`);
   span.setAttribute("id", `corner-${index}`);
