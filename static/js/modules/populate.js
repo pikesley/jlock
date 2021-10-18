@@ -41,6 +41,12 @@ let clockParts = [
   [{ class: "h-10", text: "ten" }, { text: "se" }, { class: "oclock" }],
 ];
 
+let width = 0;
+for (const [, member] of Object.entries(clockParts[0])) {
+  for (const [, text] of Object.entries(member)) {
+    width += text.length;
+  }
+}
 let populateClock = function (elementID = "#clock") {
   let element = document.querySelector(elementID);
   addDots(element, [1, 2]);
