@@ -12,7 +12,7 @@ fi
 
 case ${PLATFORM} in
 pi)
-  echo "Assuming we're on a Raspberry Pi, setting appropriate Makefile"
+  echo "Looks like we're on a Raspberry Pi, setting appropriate Makefile"
   ln -sf make/Makefile.pi Makefile
   ;;
 
