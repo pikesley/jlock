@@ -1,8 +1,5 @@
 include make/Makefile.common
 
-PIHOST = hyperpixel.local
-# PIHOST = hp.local
-
 default: format lint test clean
 
 .PHONY: sass
