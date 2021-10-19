@@ -8,17 +8,17 @@ $background-colour: darken($inactive-colour, 5%);
 $shadow-colour: darken($active-colour, 0%);
 
 @mixin activated {
-    color: $active-colour;
-    text-shadow: $shadow-colour 0 0 16px;
+  color: $active-colour;
+  text-shadow: $shadow-colour 0 0 16px;
 }
 
 @mixin deactivated {
-    color: $inactive-colour;
-    text-shadow: none;
+  color: $inactive-colour;
+  text-shadow: none;
 }
 
-@import '../base/default';
+@import "../base/default";
 
 body {
-    background-color: $background-colour;
+  background-color: $background-colour;
 }

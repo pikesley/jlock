@@ -1,4 +1,4 @@
-@use '../base/vars';
+@use "../base/vars";
 
 $font: "Righteous";
 
@@ -23,7 +23,6 @@ $inactive-colour: $off-white;
 @import "../base/default";
 
 @font-face {
-  // do `_fonts` like this
   font-family: "Sinclair";
   src: url("../../fonts/sinclair.ttf") format("truetype");
 }
