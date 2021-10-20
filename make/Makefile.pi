@@ -27,7 +27,8 @@ apt-installs:
 		xserver-xorg-video-all \
 		xserver-xorg-input-all \
 		xserver-xorg-core \
-		xinit x11-xserver-utils \
+		xinit \
+		x11-xserver-utils \
 		chromium-browser \
 		unclutter \
 		nginx \
@@ -51,4 +52,3 @@ restart-services:
 
 install:
 	python -m pip install -r requirements.txt
-
