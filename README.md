@@ -12,7 +12,7 @@ Things you will need:
 
 ### A Raspberry Pi
 
-*At least* a Pi 3 A+. A tried it with a Zero, but it doesn't have enough grunt to handle the CSS animations. Anything beefier than a Model 3A+ would obviously work too, but the 3A+ is at the sweet spot for power-consumption versus performance.
+_At least_ a Pi 3 A+. A tried it with a Zero, but it doesn't have enough grunt to handle the CSS animations. Anything beefier than a Model 3A+ would obviously work too, but the 3A+ is at the sweet spot for power-consumption versus performance (and price).
 
 ### A 4x3 monitor
 
@@ -116,24 +116,26 @@ $background-colour: darken($white, 10%);
 $active-colour: darken($white, 60%);
 $inactive-colour: darken($white, 20%);
 
-@mixin activated {  // these two mixins will be applied when the text is faded in or out
-    color: $active-colour;
+@mixin activated {
+  // these two mixins will be applied when the text is faded in or out
+  color: $active-colour;
 }
 
 @mixin deactivated {
-    color: $inactive-colour;
+  color: $inactive-colour;
 }
 
-@import 'base/default';  // this contains the grid layout plus the fade-in and -out animations
+@import "base/default"; // this contains the grid layout plus the fade-in and -out animations
 
-body {  // add additional body styles here
-    background-color: $background-colour;
-    font-weight: bold;
-    font-size: 4.9em;
+body {
+  // add additional body styles here
+  background-color: $background-colour;
+  font-weight: bold;
+  font-size: 4.9em;
 }
 ```
 
-The two `@mixin`s and the `@import 'base/default';` are *absolutely required* or undefined things will happen.
+The two `@mixin`s and the `@import 'base/default';` are _absolutely required_ or undefined things will happen.
 
 Run
 
@@ -148,7 +150,6 @@ to get the designs building. Note that this is probably a terrible misuse of SAS
 As long as `PIHOST` at the top of the [Makefile](Makefile) resolves to the address of your Pi, you should ba able to push new code to it with:
 
 ```bash
-cd ../
 make push-code
 ```
 
@@ -168,8 +169,8 @@ DISPLAY=:0 xdotool click 1
 
 ## Notes
 
-* This was developed *specifically on and for Chrome/Chromium*. It works OK on Firefox and Safari, and it makes no sense at all on a portrait-orientated phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
-* For more about running a Pi in Kiosk Mode, see [station-clock](https://github.com/pikesley/station-clock/blob/master/README.md#make-it-boot-into-chromium).
-* There are some incredible people doing some [amazing CSS text trickery](https://freefrontend.com/css-text-effects/).
-* This owes a great debt to [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd), written in [d3.js](https://d3js.org/).
-* Any similarity to a clock you can actually buy for thousands of pounds is entirely coincedental.
+- This was developed _specifically on and for Chrome/Chromium_. It works OK on Firefox and Safari, and it makes no sense at all on a portrait-orientated phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
+- For more about running a Pi in Kiosk Mode, see the `configure-shell` target [in this Makefile](make/Makefile.pi).
+- There are some incredible people doing some [amazing CSS text trickery](https://freefrontend.com/css-text-effects/).
+- This owes a great debt to [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd), written in [d3.js](https://d3js.org/).
+- Any similarity to a clock you can actually buy for thousands of pounds is entirely coincidental.
