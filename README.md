@@ -1,4 +1,4 @@
-![build badge](https://github.com/pikesley/jlock/actions/workflows/main.yml/badge.svg?style=square)
+[![CI](https://github.com/pikesley/jlock/actions/workflows/main.yml/badge.svg)](https://github.com/pikesley/jlock/actions/workflows/main.yml)
 
 # Jlock
 
