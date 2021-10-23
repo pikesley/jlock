@@ -33,13 +33,13 @@ body {
 .inactive {
   color: black;
   text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
-  animation: fade-out ease 3s;
+  animation: fade-out ease-in-out 3s;
 }
 
 .active {
   color: #ff9100;
   text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
-  animation: fade-in ease 3s;
+  animation: fade-in ease-in-out 3s;
 }
 
 @keyframes fade-in {
@@ -58,6 +58,30 @@ body {
     text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
   }
   100% {
+    color: black;
+    text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
+  }
+}
+@keyframes rotate-in {
+  0% {
+    transform: rotate3d(0);
+    color: black;
+    text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    color: #ff9100;
+    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
+  }
+}
+@keyframes rotate-out {
+  0% {
+    transform: rotate3d(0);
+    color: #ff9100;
+    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
     color: black;
     text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
   }

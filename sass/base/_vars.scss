@@ -8,6 +8,10 @@ $outer-margin: 1vh;
 $clock-width: 11;
 $clock-height: 10;
 
+$animation: fade; // default style
+$anim-time: 3s;
+$anim-type: ease-in-out;
+
 ///
 
 $clock-dimension: 100vh - ($outer-margin * 2);

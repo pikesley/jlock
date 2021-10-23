@@ -25,18 +25,32 @@ body {
   font-family: "Righteous";
 }
 
+body {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+  color: transparent;
+}
+
 .inactive {
-  animation: fade-out ease 3s;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+  color: transparent;
+  animation: rotate-out ease 2s;
 }
 
 .active {
   color: rgba(4, 4, 4, 0.445);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  animation: fade-in ease 3s;
+  animation: rotate-in ease 2s;
 }
 
 @keyframes fade-in {
+  0% {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+    color: transparent;
+  }
   100% {
     color: rgba(4, 4, 4, 0.445);
     -webkit-text-stroke-width: 1px;
@@ -48,6 +62,39 @@ body {
     color: rgba(4, 4, 4, 0.445);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+  }
+  100% {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+    color: transparent;
+  }
+}
+@keyframes rotate-in {
+  0% {
+    transform: rotate3d(0);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+    color: transparent;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    color: rgba(4, 4, 4, 0.445);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+}
+@keyframes rotate-out {
+  0% {
+    transform: rotate3d(0);
+    color: rgba(4, 4, 4, 0.445);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+    color: transparent;
   }
 }
 body {

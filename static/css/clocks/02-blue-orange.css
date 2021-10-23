@@ -33,13 +33,13 @@ body {
 .inactive {
   color: #002752;
   text-shadow: none;
-  animation: fade-out ease 3s;
+  animation: fade-out ease-in-out 3s;
 }
 
 .active {
   color: #fa8100;
   text-shadow: #fa8100 0 0 16px;
-  animation: fade-in ease 3s;
+  animation: fade-in ease-in-out 3s;
 }
 
 @keyframes fade-in {
@@ -58,6 +58,30 @@ body {
     text-shadow: #fa8100 0 0 16px;
   }
   100% {
+    color: #002752;
+    text-shadow: none;
+  }
+}
+@keyframes rotate-in {
+  0% {
+    transform: rotate3d(0);
+    color: #002752;
+    text-shadow: none;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    color: #fa8100;
+    text-shadow: #fa8100 0 0 16px;
+  }
+}
+@keyframes rotate-out {
+  0% {
+    transform: rotate3d(0);
+    color: #fa8100;
+    text-shadow: #fa8100 0 0 16px;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
     color: #002752;
     text-shadow: none;
   }

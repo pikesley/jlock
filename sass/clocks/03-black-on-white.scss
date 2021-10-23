@@ -11,6 +11,10 @@ $inactive-colour: $grey;
 
 $stroke-width: 1px;
 
+vars.$animation: rotate;
+vars.$anim-time: 2s;
+vars.$anim-type: ease;
+
 @mixin activated {
   color: $inactive-colour;
   @include mixins.stroke-width($stroke-width);
@@ -18,6 +22,9 @@ $stroke-width: 1px;
 }
 
 @mixin deactivated {
+  @include mixins.stroke-width($stroke-width);
+  @include mixins.stroke-colour($inactive-colour);
+  color: transparent;
 }
 
 @import "../base/default";
