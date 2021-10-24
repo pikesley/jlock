@@ -35,12 +35,12 @@ body {
   color: black;
   -webkit-text-stroke-width: 0.1vh;
   -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
-  animation: fade-out ease 3s;
+  animation: fade-out ease-in-out 3s;
 }
 
 .active {
   color: white;
-  animation: fade-in ease 3s;
+  animation: fade-in ease-in-out 3s;
 }
 
 @keyframes fade-in {
@@ -58,6 +58,30 @@ body {
     color: white;
   }
   100% {
+    color: black;
+    -webkit-text-stroke-width: 0.1vh;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
+  }
+}
+@keyframes rotate-in {
+  0% {
+    transform: rotate3d(0);
+    color: black;
+    -webkit-text-stroke-width: 0.1vh;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    color: white;
+  }
+}
+@keyframes rotate-out {
+  0% {
+    transform: rotate3d(0);
+    color: white;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
     color: black;
     -webkit-text-stroke-width: 0.1vh;
     -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);

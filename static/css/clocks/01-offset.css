@@ -31,12 +31,12 @@ body {
 
 .inactive {
   text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-  animation: fade-out ease 3s;
+  animation: fade-out ease-in-out 3s;
 }
 
 .active {
   text-shadow: 0.7vh 0.7vh #2bd6e2;
-  animation: fade-in ease 3s;
+  animation: fade-in ease-in-out 3s;
 }
 
 @keyframes fade-in {
@@ -52,6 +52,26 @@ body {
     text-shadow: 0.7vh 0.7vh #2bd6e2;
   }
   100% {
+    text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
+  }
+}
+@keyframes rotate-in {
+  0% {
+    transform: rotate3d(0);
+    text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    text-shadow: 0.7vh 0.7vh #2bd6e2;
+  }
+}
+@keyframes rotate-out {
+  0% {
+    transform: rotate3d(0);
+    text-shadow: 0.7vh 0.7vh #2bd6e2;
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
     text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
   }
 }

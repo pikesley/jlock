@@ -1,9 +1,6 @@
 @use "layout";
-
+@use "vars";
 @import "font";
-
-$fade-time: 3s;
-$fade-type: ease;
 
 body {
   @include deactivated;
@@ -11,12 +8,12 @@ body {
 
 .inactive {
   @include deactivated;
-  animation: fade-out $fade-type $fade-time;
+  animation: #{vars.$animation}-out vars.$anim-type vars.$anim-time;
 }
 
 .active {
   @include activated;
-  animation: fade-in $fade-type $fade-time;
+  animation: #{vars.$animation}-in vars.$anim-type vars.$anim-time;
 }
 
 @keyframes fade-in {
@@ -33,6 +30,30 @@ body {
     @include activated;
   }
   100% {
+    @include deactivated;
+  }
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotate3d(0);
+    @include deactivated;
+  }
+
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
+    @include activated;
+  }
+}
+
+@keyframes rotate-out {
+  0% {
+    transform: rotate3d(0);
+    @include activated;
+  }
+
+  100% {
+    transform: rotate3d(1, 0, 0, 1turn) translateZ(5vh);
     @include deactivated;
   }
 }
