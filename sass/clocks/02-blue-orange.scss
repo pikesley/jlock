@@ -1,3 +1,5 @@
+@use "../base/vars";
+
 $font: "Montserrat";
 
 $orange: rgb(250, 129, 0);
@@ -6,6 +8,9 @@ $active-colour: $orange;
 $inactive-colour: darken(invert($active-colour), 35%);
 $background-colour: darken($inactive-colour, 5%);
 $shadow-colour: darken($active-colour, 0%);
+
+vars.$animation: rotate;
+vars.$anim-time: 2s;
 
 @mixin activated {
   color: $active-colour;

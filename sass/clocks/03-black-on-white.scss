@@ -13,7 +13,6 @@ $stroke-width: 1px;
 
 vars.$animation: rotate;
 vars.$anim-time: 2s;
-vars.$anim-type: ease;
 
 @mixin activated {
   color: $inactive-colour;
