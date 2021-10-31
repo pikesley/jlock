@@ -1,50 +1,47 @@
 @use "sass:math";
-@use "layout";
-@use "vars";
 
-@import "font";
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
+
+$background-colour: rgb(252, 252, 252);
+$primary-colour: rgb(218, 162, 30);
+$lighter: lighten($primary-colour, 30%);
+$darker: darken($primary-colour, 10%);
 
 body {
-  @include deactivated;
+  font-family: "Red Hat Display";
+  text-align: center;
+  background-color: $background-colour;
+  color: $primary-colour;
+  margin: 40vh;
 }
 
-#clock {
-  perspective: 4000vh;
-  perspective-origin: center;
+main {
+  height: 90vh;
 }
 
-.inactive {
-  @include deactivated;
-  animation: #{vars.$animation}-out vars.$anim-time vars.$anim-type;
+span {
+  display: block;
+  font-size: 10vh;
 }
 
-.active {
-  @include activated;
-  animation: #{vars.$animation}-in vars.$anim-time vars.$anim-type;
+@mixin activated {
+  color: red;
 }
 
-@keyframes fade-in {
-  0% {
-    @include deactivated;
-  }
-  100% {
-    @include activated;
-  }
+@mixin deactivated {
+  color: blue;
 }
 
-@keyframes fade-out {
-  0% {
-    @include activated;
-  }
-  100% {
-    @include deactivated;
-  }
+.in {
+  animation: rotate-in 2s linear 0s infinite;
 }
 
-////
+.out {
+  animation: rotate-out 2s linear 0s infinite;
+}
 
 $perspective: 40vh;
-$y-distance: 10vh;
+$y-distance: 15vh;
 $z-distance: 10vh;
 $rotation: 1turn;
 
