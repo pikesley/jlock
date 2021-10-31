@@ -38,23 +38,23 @@ $anims: "in", "out";
           translateZ(z-value($i, $z-distance, $z-distance))
           rotateX(rotation($i));
 
-        // @if #{$anim} == "in" {
-        //   @if $i == 0 {
-        //     @include deactivated;
-        //   }
-        //   @if $i == 100 {
-        //     @include activated;
-        //   }
-        // }
+        @if #{$anim} == "in" {
+          @if $i == 0 {
+            @include deactivated;
+          }
+          @if $i == 100 {
+            @include activated;
+          }
+        }
 
-        // @if #{$anim} == "out" {
-        //   @if $i == 0 {
-        //     @include activated;
-        //   }
-        //   @if $i == 100 {
-        //     @include deactivated;
-        //   }
-        // }
+        @if #{$anim} == "out" {
+          @if $i == 0 {
+            @include activated;
+          }
+          @if $i == 100 {
+            @include deactivated;
+          }
+        }
       }
     }
   }
