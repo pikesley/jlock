@@ -5,6 +5,12 @@
     -$scale-factor;
 }
 
+@function z-value($index, $scale-factor) {
+  @return (
+      math.sin(math.div((math.$pi * ($index - 25) * 2), 100)) * $scale-factor
+    ) + $scale-factor;
+}
+
 $perspective: 40vh;
 $y-distance: 10vh;
 $z-distance: 10vh;
@@ -18,13 +24,7 @@ $anims: "in", "out";
       #{$i}% {
         transform: perspective($perspective)
           translateY(y-value($i, $y-distance))
-          translateZ(
-            (
-                math.sin(math.div((math.$pi * ($i - 25) * 2), 100)) *
-                  $z-distance
-              ) +
-              $z-distance
-          )
+          translateZ(z-value($i, $z-distance))
           rotateX(($i * (0.01)) * -$rotation);
 
         // @if #{$anim} == "in" {

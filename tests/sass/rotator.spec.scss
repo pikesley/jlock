@@ -1,34 +1,46 @@
-@import 'true';
-@import '../../sass/base/rotator';
+@import "true";
+@import "../../sass/base/rotator";
 
-@include describe('y-value()') {
-  @include it('calculates the y-value for index 0') {
-    @include assert-equal(
-      y-value(0, 10vh), 0vh
-    );
+@include describe("y-value()") {
+  @include it("calculates the y-value for index 0") {
+    @include assert-equal(y-value(0, 10vh), 0vh);
   }
 
-  @include it('calculates the y-value for index 25') {
-    @include assert-equal(
-      y-value(25, 20vh), -20vh
-    );
+  @include it("calculates the y-value for index 25") {
+    @include assert-equal(y-value(25, 20vh), -20vh);
   }
 
-  @include it('calculates the y-value for index 50') {
-    @include assert-equal(
-      y-value(50, 1vh), 0vh
-    );
+  @include it("calculates the y-value for index 50") {
+    @include assert-equal(y-value(50, 1vh), 0vh);
   }
 
-  @include it('calculates the y-value for index 75') {
-    @include assert-equal(
-      y-value(75, 5vh), 5vh
-    );
+  @include it("calculates the y-value for index 75") {
+    @include assert-equal(y-value(75, 5vh), 5vh);
   }
 
-  @include it('calculates the y-value for index 100') {
-    @include assert-equal(
-      y-value(100, 25vh), 0vh
-    );
+  @include it("calculates the y-value for index 100") {
+    @include assert-equal(y-value(100, 25vh), 0vh);
+  }
+}
+
+@include describe("z-value()") {
+  @include it("calculates the z-value for index 0") {
+    @include assert-equal(z-value(0, 10vh), 0vh);
+  }
+
+  @include it("calculates the z-value for index 25") {
+    @include assert-equal(z-value(25, 1vh), 1vh);
+  }
+
+  @include it("calculates the z-value for index 50") {
+    @include assert-equal(z-value(50, 5vh), 10vh);
+  }
+
+  @include it("calculates the z-value for index 75") {
+    @include assert-equal(z-value(75, 12vh), 12vh);
+  }
+
+  @include it("calculates the z-value for index 100") {
+    @include assert-equal(z-value(100, 10vh), 0vh);
   }
 }
