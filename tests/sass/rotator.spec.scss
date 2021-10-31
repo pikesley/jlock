@@ -1,0 +1,34 @@
+@import 'true';
+@import '../../sass/base/rotator';
+
+@include describe('y-value()') {
+  @include it('calculates the y-value for index 0') {
+    @include assert-equal(
+      y-value(0, 10vh), 0vh
+    );
+  }
+
+  @include it('calculates the y-value for index 25') {
+    @include assert-equal(
+      y-value(25, 20vh), -20vh
+    );
+  }
+
+  @include it('calculates the y-value for index 50') {
+    @include assert-equal(
+      y-value(50, 1vh), 0vh
+    );
+  }
+
+  @include it('calculates the y-value for index 75') {
+    @include assert-equal(
+      y-value(75, 5vh), 5vh
+    );
+  }
+
+  @include it('calculates the y-value for index 100') {
+    @include assert-equal(
+      y-value(100, 25vh), 0vh
+    );
+  }
+}
