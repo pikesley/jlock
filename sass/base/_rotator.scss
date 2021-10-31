@@ -1,8 +1,13 @@
 @use "sass:math";
 
+$tau: math.$pi * 2;
+
 @function y-value($index, $scale-factor) {
-  @return math.cos(math.div((math.$pi * ($index - 25) * 2), 100)) *
-    -$scale-factor;
+  $offset-index: $index - 25;
+  $radians: $tau * $offset-index;
+  $hundredth: math.div($radians, 100);
+
+  @return 0 - (math.cos($hundredth) * $scale-factor);
 }
 
 @function z-value($index, $scale-factor, $depth: 0) {
@@ -27,23 +32,23 @@ $anims: "in", "out";
           translateZ(z-value($i, $z-distance, $z-distance))
           rotateX(($i * (0.01)) * -$rotation);
 
-        @if #{$anim} == "in" {
-          @if $i == 0 {
-            @include deactivated;
-          }
-          @if $i == 100 {
-            @include activated;
-          }
-        }
+        // @if #{$anim} == "in" {
+        //   @if $i == 0 {
+        //     @include deactivated;
+        //   }
+        //   @if $i == 100 {
+        //     @include activated;
+        //   }
+        // }
 
-        @if #{$anim} == "out" {
-          @if $i == 0 {
-            @include activated;
-          }
-          @if $i == 100 {
-            @include deactivated;
-          }
-        }
+        // @if #{$anim} == "out" {
+        //   @if $i == 0 {
+        //     @include activated;
+        //   }
+        //   @if $i == 100 {
+        //     @include deactivated;
+        //   }
+        // }
         // swap Y and X above, and remove the '-' before $rotation, to rotate around the Y-axis
       }
     }
