@@ -2,18 +2,20 @@
 
 $tau: math.$pi * 2;
 
-@function y-value($index, $scale-factor) {
-  $offset-index: $index - 25;
-  $radians: $tau * $offset-index;
-  $hundredth: math.div($radians, 100);
+@function offset-index($index, $amount: 25) {
+  @return $index - $amount;
+}
 
-  @return 0 - (math.cos($hundredth) * $scale-factor);
+@function radians($index) {
+  @return math.div($tau * offset-index($index), 100);
+}
+
+@function y-value($index, $scale-factor) {
+  @return 0 - (math.cos(radians($index)) * $scale-factor);
 }
 
 @function z-value($index, $scale-factor, $depth: 0) {
-  @return (
-      math.sin(math.div((math.$pi * ($index - 25) * 2), 100)) * $scale-factor
-    ) + $depth;
+  @return (math.sin(radians($index)) * $scale-factor) + $depth;
 }
 
 $perspective: 40vh;
