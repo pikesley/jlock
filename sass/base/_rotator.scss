@@ -18,10 +18,14 @@ $tau: math.$pi * 2;
   @return (math.sin(radians($index)) * $scale-factor) + $depth;
 }
 
+@function rotation($index, $turns: 1turn) {
+  @return 0 - (math.div($index, 100) * $turns);
+}
+
 $perspective: 40vh;
 $y-distance: 10vh;
 $z-distance: 10vh;
-$rotation: 1turn;
+$turns: 1turn;
 
 $anims: "in", "out";
 
@@ -32,7 +36,7 @@ $anims: "in", "out";
         transform: perspective($perspective)
           translateY(y-value($i, $y-distance))
           translateZ(z-value($i, $z-distance, $z-distance))
-          rotateX(($i * (0.01)) * -$rotation);
+          rotateX(rotation($i));
 
         // @if #{$anim} == "in" {
         //   @if $i == 0 {
@@ -51,7 +55,6 @@ $anims: "in", "out";
         //     @include deactivated;
         //   }
         // }
-        // swap Y and X above, and remove the '-' before $rotation, to rotate around the Y-axis
       }
     }
   }
