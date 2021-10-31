@@ -5,6 +5,8 @@ body {
   background-color: #fcfcfc;
   color: #daa21e;
   margin: 40vh;
+  perspective: 100vh;
+  perspective-origin: center;
 }
 
 main {
