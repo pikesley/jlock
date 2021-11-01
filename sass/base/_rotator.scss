@@ -1,12 +1,11 @@
 @use "sass:math";
 @use "sass:map";
 
-$defaults: (
-  perspective: 40vh,
-  y-distance: 10vh,
-  z-distance: 10vh,
-  turns: 1turn,
-);
+$perspective: 40vh;
+$y-distance: 10vh;
+$z-distance: 10vh;
+$turns: 1turn;
+$depth: 0;
 
 $tau: math.$pi * 2;
 
@@ -24,15 +23,15 @@ $tau: math.$pi * 2;
   @return math.div($tau * offset-index($index), 100);
 }
 
-@function y-value($index, $y-distance: map.get($defaults, y-distance)) {
+@function y-value($index, $y-distance: $y-distance) {
   @return 0 - (math.cos(radians($index)) * $y-distance);
 }
 
-@function z-value($index, $scale-factor, $depth: 0) {
-  @return (math.sin(radians($index)) * $scale-factor) + $depth;
+@function z-value($index, $z-distance: $z-distance, $depth: $depth) {
+  @return (math.sin(radians($index)) * $z-distance) + $depth;
 }
 
-@function rotation($index, $turns: map.get($defaults, turns)) {
+@function rotation($index, $turns: $turns) {
   @return 0 - (math.div($index, 100) * $turns);
 }
 
@@ -57,15 +56,8 @@ $tau: math.$pi * 2;
 }
 
 @mixin one-frame($index, $anim) {
-  transform: perspective(map.get($defaults, perspective))
-    translateY(y-value($index))
-    translateZ(
-      z-value(
-        $index,
-        map.get($defaults, z-distance),
-        map.get($defaults, z-distance)
-      )
-    )
+  transform: perspective($perspective) translateY(y-value($index))
+    translateZ(z-value($index, $z-distance, $z-distance))
     rotateX(rotation($index));
 
   @include select-include($index, $anim);
@@ -79,9 +71,7 @@ $tau: math.$pi * 2;
   }
 }
 
-$anims: "in", "out";
-
-@each $anim in $anims {
+@each $anim in "in", "out" {
   @keyframes rotate-#{$anim} {
     @include frame-generator($anim);
   }

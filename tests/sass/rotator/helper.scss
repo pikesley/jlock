@@ -1,6 +1,7 @@
 @import "true";
 
-// fixtures to placate the `import` below
+@import "../../../sass/base/rotator";
+
 @mixin activated {
   color: red;
   font-family: "Phony Baloney";
@@ -10,5 +11,3 @@
   color: blue;
   font-size: 400em;
 }
-
-@import "../../../sass/base/rotator";
