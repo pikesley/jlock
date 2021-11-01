@@ -9,11 +9,11 @@ $depth: 0;
 
 $tau: math.$pi * 2;
 
-@mixin activated {
-}
+// @mixin activated {
+// }
 
-@mixin deactivated {
-}
+// @mixin deactivated {
+// }
 
 @function offset-index($index, $amount: 25) {
   @return $index - $amount;

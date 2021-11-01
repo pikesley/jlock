@@ -1,6 +1,5 @@
 @import "true";
 
-@import "../../../sass/base/rotator";
 
 @mixin activated {
   color: red;
@@ -11,3 +10,5 @@
   color: blue;
   font-size: 400em;
 }
+
+@import "../../../sass/base/rotator";
