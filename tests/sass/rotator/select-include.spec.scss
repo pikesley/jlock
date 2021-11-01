@@ -1,0 +1,62 @@
+@import "helper";
+
+@include describe("select-include()") {
+  @include it("should return `deactivated` for index 0 and `in`") {
+    @include assert {
+      @include output {
+        @include select-include(0, in);
+      }
+
+      @include expect {
+        @include deactivated;
+      }
+    }
+  }
+
+  @include it("should return `activated` for index 100 and `in`") {
+    @include assert {
+      @include output {
+        @include select-include(100, in);
+      }
+
+      @include expect {
+        @include activated;
+      }
+    }
+  }
+
+  @include it("should return `activated` for index 0 and `out`") {
+    @include assert {
+      @include output {
+        @include select-include(0, out);
+      }
+
+      @include expect {
+        @include activated;
+      }
+    }
+  }
+
+  @include it("should return `deactivated` for index 100 and `out`") {
+    @include assert {
+      @include output {
+        @include select-include(100, out);
+      }
+
+      @include expect {
+        @include deactivated;
+      }
+    }
+  }
+
+  @include it("should return nothing for index 25") {
+    @include assert {
+      @include output {
+        @include select-include(25, in);
+      }
+
+      @include expect {
+      }
+    }
+  }
+}

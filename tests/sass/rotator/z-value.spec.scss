@@ -1,0 +1,45 @@
+@import "helper";
+
+@include describe("z-value() with default (0) depth") {
+  @include it("calculates the z-value for index 0") {
+    @include assert-equal(z-value(0, 10vh), -10vh);
+  }
+
+  @include it("calculates the z-value for index 25") {
+    @include assert-equal(z-value(25, 1vh), 0vh);
+  }
+
+  @include it("calculates the z-value for index 50") {
+    @include assert-equal(z-value(50, 5vh), 5vh);
+  }
+
+  @include it("calculates the z-value for index 75") {
+    @include assert-equal(z-value(75, 12vh), 0vh);
+  }
+
+  @include it("calculates the z-value for index 100") {
+    @include assert-equal(z-value(100, 10vh), -10vh);
+  }
+}
+
+@include describe("z-value() with specified depth") {
+  @include it("calculates the z-value for index 0") {
+    @include assert-equal(z-value(0, 10vh, 10vh), 0vh);
+  }
+
+  @include it("calculates the z-value for index 25") {
+    @include assert-equal(z-value(25, 1vh, 1vh), 1vh);
+  }
+
+  @include it("calculates the z-value for index 50") {
+    @include assert-equal(z-value(50, 5vh, 5vh), 10vh);
+  }
+
+  @include it("calculates the z-value for index 75") {
+    @include assert-equal(z-value(75, 12vh, 6vh), 6vh);
+  }
+
+  @include it("calculates the z-value for index 100") {
+    @include assert-equal(z-value(100, 10vh, 10vh), 0vh);
+  }
+}

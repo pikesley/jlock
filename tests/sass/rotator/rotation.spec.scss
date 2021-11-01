@@ -1,0 +1,23 @@
+@import "helper";
+
+@include describe("rotation()") {
+  @include it("calculates the rotation for index 0") {
+    @include assert-equal(rotation(0), 0turn);
+  }
+
+  @include it("calculates the rotation for index 25") {
+    @include assert-equal(rotation(25), -0.25turn);
+  }
+
+  @include it("calculates the rotation for index 50") {
+    @include assert-equal(rotation(50), -0.5turn);
+  }
+
+  @include it("calculates the rotation for index 75") {
+    @include assert-equal(rotation(75), -0.75turn);
+  }
+
+  @include it("calculates the rotation for index 100") {
+    @include assert-equal(rotation(100), -1turn);
+  }
+}

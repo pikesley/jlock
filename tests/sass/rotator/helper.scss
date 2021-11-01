@@ -1,0 +1,12 @@
+@import "true";
+
+// fixtures to placate the `import` below
+@mixin activated {
+  color: red;
+}
+
+@mixin deactivated {
+  color: blue;
+}
+
+@import "../../../sass/base/rotator";
