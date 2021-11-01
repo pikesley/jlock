@@ -98,3 +98,17 @@
     @include assert-equal(rotation(100), -1turn);
   }
 }
+
+@include describe("select-include()") {
+  @include it("should return the correct mixin") {
+    @include assert {
+      @include output {
+        @include select-include(0, in);
+      }
+
+      @include expect {
+        @include deactivated
+      }
+    }
+  }
+}

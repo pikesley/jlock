@@ -22,6 +22,26 @@ $tau: math.$pi * 2;
   @return 0 - (math.div($index, 100) * $turns);
 }
 
+@mixin select-include($index, $direction) {
+  @if $direction == "in" {
+    @if $index == 0 {
+      @include deactivated;
+    }
+    @if $index == 100 {
+      @include activated;
+    }
+  }
+
+  @if $direction == "out" {
+    @if $index == 0 {
+      @include activated;
+    }
+    @if $index == 100 {
+      @include deactivated;
+    }
+  }
+}
+
 $perspective: 40vh;
 $y-distance: 10vh;
 $z-distance: 10vh;
@@ -38,23 +58,7 @@ $anims: "in", "out";
           translateZ(z-value($i, $z-distance, $z-distance))
           rotateX(rotation($i));
 
-        @if #{$anim} == "in" {
-          @if $i == 0 {
-            @include deactivated;
-          }
-          @if $i == 100 {
-            @include activated;
-          }
-        }
-
-        @if #{$anim} == "out" {
-          @if $i == 0 {
-            @include activated;
-          }
-          @if $i == 100 {
-            @include deactivated;
-          }
-        }
+        @include select-include($i, $anim);
       }
     }
   }
