@@ -3,10 +3,12 @@
 // fixtures to placate the `import` below
 @mixin activated {
   color: red;
+  font-family: "Phony Baloney";
 }
 
 @mixin deactivated {
   color: blue;
+  font-size: 400em;
 }
 
 @import "../../../sass/base/rotator";

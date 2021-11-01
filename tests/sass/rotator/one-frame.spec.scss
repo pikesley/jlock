@@ -1,0 +1,46 @@
+@import "helper";
+
+@include describe("one-frame()") {
+  @include it("generates the first frame for `in`") {
+    @include assert {
+      @include output {
+        @include one-frame(0, in);
+      }
+
+      @include expect {
+        transform: perspective(40vh) translateY(0vh) translateZ(0vh)
+          rotateX(0turn);
+        color: blue;
+        font-size: 400em;
+      }
+    }
+  }
+
+  @include it("generates a middle frame for `in`") {
+    @include assert {
+      @include output {
+        @include one-frame(27, in);
+      }
+
+      @include expect {
+        transform: perspective(40vh) translateY(-9.9211470131vh)
+          translateZ(11.2533323356vh) rotateX(-0.27turn);
+      }
+    }
+  }
+
+  @include it("generates the final frame for `in`") {
+    @include assert {
+      @include output {
+        @include one-frame(100, in);
+      }
+
+      @include expect {
+        transform: perspective(40vh) translateY(0vh) translateZ(0vh)
+          rotateX(-1turn);
+        color: red;
+        font-family: "Phony Baloney";
+      }
+    }
+  }
+}

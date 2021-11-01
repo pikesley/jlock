@@ -1,5 +1,6 @@
 @use "sass:math";
 
+// I think I need to set some variable on this module which I can override from a client
 $tau: math.$pi * 2;
 
 @function offset-index($index, $amount: 25) {
@@ -42,24 +43,32 @@ $tau: math.$pi * 2;
   }
 }
 
-$perspective: 40vh;
-$y-distance: 10vh;
-$z-distance: 10vh;
-$turns: 1turn;
+@mixin one-frame(
+  $index,
+  $anim,
+  $perspective: 40vh,
+  $y-distance: 10vh,
+  $z-distance: 10vh
+) {
+  transform: perspective($perspective) translateY(y-value($index, $y-distance))
+    translateZ(z-value($index, $z-distance, $z-distance))
+    rotateX(rotation($index));
+
+  @include select-include($index, $anim);
+}
+
+@mixin frame-generator($anim, $step-size: 1) {
+  @for $i from 0 through 100 {
+    #{$i}% {
+      @include one-frame($i, $anim);
+    }
+  }
+}
 
 $anims: "in", "out";
 
 @each $anim in $anims {
   @keyframes rotate-#{$anim} {
-    @for $i from 0 through 100 {
-      #{$i}% {
-        transform: perspective($perspective)
-          translateY(y-value($i, $y-distance))
-          translateZ(z-value($i, $z-distance, $z-distance))
-          rotateX(rotation($i));
-
-        @include select-include($i, $anim);
-      }
-    }
+    @include frame-generator($anim);
   }
 }
