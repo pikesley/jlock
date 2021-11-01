@@ -63,7 +63,6 @@ body {
 @keyframes rotate-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
-    color: #bfbfbf;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -364,13 +363,11 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
-    color: #0000bf;
   }
 }
 @keyframes rotate-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
-    color: #0000bf;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -671,7 +668,6 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
-    color: #bfbfbf;
   }
 }
 @font-face {
