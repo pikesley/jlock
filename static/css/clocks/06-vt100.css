@@ -69,6 +69,7 @@ body {
 @keyframes rotate-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
+    text-shadow: none;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -369,11 +370,17 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
+    color: #66ff00;
+    font-weight: bold;
+    text-shadow: #3d9900 4px 0 4px;
   }
 }
 @keyframes rotate-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
+    color: #66ff00;
+    font-weight: bold;
+    text-shadow: #3d9900 4px 0 4px;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -674,6 +681,7 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
+    text-shadow: none;
   }
 }
 body {

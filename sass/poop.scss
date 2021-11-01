@@ -27,20 +27,20 @@ span {
   font-size: 10vh;
 }
 
-@mixin activated {
-  color: red;
-}
-
-@mixin deactivated {
-  color: blue;
-}
-
 .in {
   animation: rotate-in 2s linear 0s infinite;
 }
 
 .out {
   animation: rotate-out 2s linear 1s infinite;
+}
+
+@mixin activated {
+  color: red;
+}
+
+@mixin deactivated {
+  color: blue;
 }
 
 @import "./base/rotator";
