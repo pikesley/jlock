@@ -43,4 +43,19 @@
       }
     }
   }
+
+  @include it("generates the first frame for `out`") {
+    @include assert {
+      @include output {
+        @include one-frame(0, out);
+      }
+
+      @include expect {
+        transform: perspective(40vh) translateY(0vh) translateZ(0vh)
+          rotateX(0turn);
+        color: red;
+        font-family: "Phony Baloney";
+      }
+    }
+  }
 }
