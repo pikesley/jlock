@@ -1,6 +1,13 @@
 @use "sass:math";
+@use "sass:map";
 
-// I think I need to set some variable on this module which I can override from a client
+$defaults: (
+  perspective: 40vh,
+  y-distance: 10vh,
+  z-distance: 10vh,
+  turns: 1turn,
+);
+
 $tau: math.$pi * 2;
 
 @function offset-index($index, $amount: 25) {
@@ -11,15 +18,15 @@ $tau: math.$pi * 2;
   @return math.div($tau * offset-index($index), 100);
 }
 
-@function y-value($index, $scale-factor) {
-  @return 0 - (math.cos(radians($index)) * $scale-factor);
+@function y-value($index, $y-distance: map.get($defaults, y-distance)) {
+  @return 0 - (math.cos(radians($index)) * $y-distance);
 }
 
 @function z-value($index, $scale-factor, $depth: 0) {
   @return (math.sin(radians($index)) * $scale-factor) + $depth;
 }
 
-@function rotation($index, $turns: 1turn) {
+@function rotation($index, $turns: map.get($defaults, turns)) {
   @return 0 - (math.div($index, 100) * $turns);
 }
 
@@ -43,15 +50,16 @@ $tau: math.$pi * 2;
   }
 }
 
-@mixin one-frame(
-  $index,
-  $anim,
-  $perspective: 40vh,
-  $y-distance: 10vh,
-  $z-distance: 10vh
-) {
-  transform: perspective($perspective) translateY(y-value($index, $y-distance))
-    translateZ(z-value($index, $z-distance, $z-distance))
+@mixin one-frame($index, $anim) {
+  transform: perspective(map.get($defaults, perspective))
+    translateY(y-value($index))
+    translateZ(
+      z-value(
+        $index,
+        map.get($defaults, z-distance),
+        map.get($defaults, z-distance)
+      )
+    )
     rotateX(rotation($index));
 
   @include select-include($index, $anim);

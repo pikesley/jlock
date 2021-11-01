@@ -2,7 +2,7 @@
 
 @include describe("y-value()") {
   @include it("calculates the y-value for index 0") {
-    @include assert-equal(y-value(0, 10vh), 0vh);
+    @include assert-equal(y-value(0), 0vh);
   }
 
   @include it("calculates the y-value for index 25") {
