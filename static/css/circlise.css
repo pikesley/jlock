@@ -1,0 +1,21 @@
+/* Error: Undefined mixin.
+ *    ,
+ * 56 |       @include deactivated;
+ *    |       ^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   sass/base/_circliser.scss 56:7  select-include()
+ *   sass/base/_circliser.scss 79:3  one-frame()
+ *   sass/base/_circliser.scss 86:7  frame-generator()
+ *   sass/base/_circliser.scss 93:5  make-frames()
+ *   sass/circlise.scss 37:1         root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined mixin.\a    \2577 \a 56 \2502        @include deactivated;\a    \2502        ^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/base/_circliser.scss 56:7  select-include()\a   sass/base/_circliser.scss 79:3  one-frame()\a   sass/base/_circliser.scss 86:7  frame-generator()\a   sass/base/_circliser.scss 93:5  make-frames()\a   sass/circlise.scss 37:1         root stylesheet";
+}

@@ -1,0 +1,37 @@
+@use "sass:math";
+@use "base/circliser";
+
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
+
+$background-colour: rgb(252, 252, 252);
+$primary-colour: rgb(218, 162, 30);
+
+body {
+  font-family: "Red Hat Display";
+  text-align: center;
+  background-color: $background-colour;
+  color: $primary-colour;
+  margin: 40vh;
+
+  perspective: 100vh;
+  perspective-origin: center;
+}
+
+main {
+  height: 90vh;
+}
+
+span {
+  display: block;
+  font-size: 10vh;
+}
+
+.animate {
+  animation: rotator 2s linear 0s infinite;
+}
+
+@mixin deactivated {
+  color: red;
+}
+
+@include circliser.make-frames;

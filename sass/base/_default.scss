@@ -14,13 +14,14 @@ body {
 }
 
 .inactive {
-  @include deactivated;
-  animation: #{vars.$animation}-out vars.$anim-time vars.$anim-type;
+  animation: #{vars.$animation}-out vars.$anim-time vars.$anim-type forwards;
 }
 
 .active {
-  @include activated;
-  animation: #{vars.$animation}-in vars.$anim-time vars.$anim-type;
+  animation: #{vars.$animation}-in vars.$anim-time vars.$anim-type math.div(
+      vars.$anim-time,
+      2
+    ) forwards;
 }
 
 @keyframes fade-in {
@@ -41,4 +42,4 @@ body {
   }
 }
 
-@import "./rotator"
+@import "./rotator";
