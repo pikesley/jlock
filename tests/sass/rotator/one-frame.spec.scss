@@ -1,60 +1,49 @@
-@import "helper";
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/rotator";
 
 @include describe("one-frame()") {
-  @include it("generates the first frame for `in`") {
+  rotator.$activated-styles: (phony-property: activated);
+  rotator.$deactivated-styles: (phony-property: deactivated);
+  rotator.$perspective: 400vh;
+
+  @include it("generates a frame for index 0 and `in`") {
     @include assert {
       @include output {
-        @include one-frame(0, in);
+        @include rotator.one-frame(0, in);
       }
 
       @include expect {
-        transform: perspective(40vh) translateY(0vh) translateZ(0vh)
+        transform: perspective(400vh) translateY(0vh) translateZ(0vh)
           rotateX(0turn);
-        color: blue;
-        font-size: 400em;
+        phony-property: deactivated;
       }
     }
   }
 
-  @include it("generates a middle frame for `in`") {
+  @include it("generates a frame for index 35 and `out`") {
     @include assert {
       @include output {
-        @include one-frame(27, in);
+        @include rotator.one-frame(35, out);
       }
 
       @include expect {
-        transform: perspective(40vh) translateY(-9.9211470131vh)
-          translateZ(11.2533323356vh) rotateX(-0.27turn);
+        transform: perspective(400vh) translateY(-8.0901699437vh)
+          translateZ(15.8778525229vh) rotateX(-0.35turn);
       }
     }
   }
 
-  @include it("generates the final frame for `in`") {
+  @include it("generates a frame for index 100 and `out`") {
     @include assert {
       @include output {
-        @include one-frame(100, in);
+        @include rotator.one-frame(100, out);
       }
 
       @include expect {
-        transform: perspective(40vh) translateY(0vh) translateZ(0vh)
+        transform: perspective(400vh) translateY(0vh) translateZ(0vh)
           rotateX(-1turn);
-        color: red;
-        font-family: "Phony Baloney";
-      }
-    }
-  }
-
-  @include it("generates the first frame for `out`") {
-    @include assert {
-      @include output {
-        @include one-frame(0, out);
-      }
-
-      @include expect {
-        transform: perspective(40vh) translateY(0vh) translateZ(0vh)
-          rotateX(0turn);
-        color: red;
-        font-family: "Phony Baloney";
+        phony-property: deactivated;
       }
     }
   }

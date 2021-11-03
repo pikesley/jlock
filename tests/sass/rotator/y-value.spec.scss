@@ -1,23 +1,36 @@
-@import "helper";
-
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/rotator";
 @include describe("y-value()") {
-  @include it("calculates the y-value for index 0") {
-    @include assert-equal(y-value(0), 0vh);
+  $expectations: (
+    0: 0,
+    12.5: 0 - math.div(math.sqrt(2), 2),
+    25: 0 - 1,
+    50: 0,
+    75: 1,
+    100: 0,
+  );
+
+  @each $index, $expected in $expectations {
+    @include it("calculates the y-value for index #{$index}") {
+      @include assert-equal(rotator.y-value($index), $expected);
+    }
+  }
+}
+
+@include describe("scaled y-value()") {
+  @include it("calculates the scaled y-value for index 0 with scale 2") {
+    @include assert-equal(rotator.y-value(0, $scale: 2), 0);
   }
 
-  @include it("calculates the y-value for index 25") {
-    @include assert-equal(y-value(25, 20vh), -20vh);
+  @include it("calculates the scaled y-value for index 25 with scale 0.5") {
+    @include assert-equal(rotator.y-value(25, $scale: 0.5), 0 - 0.5);
   }
 
-  @include it("calculates the y-value for index 50") {
-    @include assert-equal(y-value(50, 1vh), 0vh);
-  }
-
-  @include it("calculates the y-value for index 75") {
-    @include assert-equal(y-value(75, 5vh), 5vh);
-  }
-
-  @include it("calculates the y-value for index 100") {
-    @include assert-equal(y-value(100, 25vh), 0vh);
+  @include it("calculates the scaled y-value for index 12.5 with scale 5") {
+    @include assert-equal(
+      rotator.y-value(12.5, $scale: 5),
+      0 - math.div(math.sqrt(2), 2) * 5
+    );
   }
 }

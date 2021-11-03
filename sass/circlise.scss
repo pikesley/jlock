@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "base/circliser";
+@use "base/rotator";
 
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
 
@@ -26,12 +26,16 @@ span {
   font-size: 10vh;
 }
 
-.animate {
-  animation: rotator 2s linear 0s infinite;
+.in {
+  animation: rotate-in 3s infinite forwards;
 }
 
-@mixin deactivated {
-  color: red;
+.out {
+  animation: rotate-out 5s infinite 1s forwards;
 }
 
-@include circliser.make-frames;
+rotator.$activated-styles: (color: red);
+
+rotator.$deactivated-styles: (color: green);
+
+@include rotator.make-frames;

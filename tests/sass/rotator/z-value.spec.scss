@@ -1,45 +1,56 @@
-@import "helper";
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/rotator";
+@include describe("z-value()") {
+  $expectations: (
+    0: 0 - 1,
+    12.5: 0 - math.div(math.sqrt(2), 2),
+    25: 0,
+    50: 1,
+    75: 0,
+    100: 0 - 1,
+  );
 
-@include describe("z-value() with default (0) depth") {
-  @include it("calculates the z-value for index 0") {
-    @include assert-equal(z-value(0, 10vh), -10vh);
-  }
-
-  @include it("calculates the z-value for index 25") {
-    @include assert-equal(z-value(25, 1vh), 0vh);
-  }
-
-  @include it("calculates the z-value for index 50") {
-    @include assert-equal(z-value(50, 5vh), 5vh);
-  }
-
-  @include it("calculates the z-value for index 75") {
-    @include assert-equal(z-value(75, 12vh), 0vh);
-  }
-
-  @include it("calculates the z-value for index 100") {
-    @include assert-equal(z-value(100, 10vh), -10vh);
+  @each $index, $expected in $expectations {
+    @include it("calculates the z-value for index #{$index}") {
+      @include assert-equal(rotator.z-value($index), $expected);
+    }
   }
 }
 
-@include describe("z-value() with specified depth") {
-  @include it("calculates the z-value for index 0") {
-    @include assert-equal(z-value(0, 10vh, 10vh), 0vh);
+@include describe("scaled z-value()") {
+  @include it("calculates the scaled z-value for index 25 with scale 4") {
+    @include assert-equal(rotator.z-value(25, $scale: 2), 0);
   }
 
-  @include it("calculates the z-value for index 25") {
-    @include assert-equal(z-value(25, 1vh, 1vh), 1vh);
+  @include it("calculates the scaled z-value for index 50 with scale 0.5") {
+    @include assert-equal(rotator.z-value(50, $scale: 0.5), 0.5);
   }
 
-  @include it("calculates the z-value for index 50") {
-    @include assert-equal(z-value(50, 5vh, 5vh), 10vh);
+  @include it("calculates the scaled z-value for index 12.5 with scale 7") {
+    @include assert-equal(
+      rotator.z-value(12.5, $scale: 7),
+      0 - math.div(math.sqrt(2), 2) * 7
+    );
+  }
+}
+
+@include describe("offset z-value()") {
+  @include it("calculates the offset z-value for index 0 with offset 1") {
+    @include assert-equal(rotator.z-value(0, $offset: 1), 0);
   }
 
-  @include it("calculates the z-value for index 75") {
-    @include assert-equal(z-value(75, 12vh, 6vh), 6vh);
+  @include it("calculates the offset z-value for index 25 with offset 1") {
+    @include assert-equal(rotator.z-value(25, $offset: 1), 1);
   }
 
-  @include it("calculates the z-value for index 100") {
-    @include assert-equal(z-value(100, 10vh, 10vh), 0vh);
+  @include it("calculates the offset z-value for index 50 with offset 1") {
+    @include assert-equal(rotator.z-value(50, $offset: 1), 2);
+  }
+
+  @include it(
+    "calculates the offset z-value for index 50 with offset 2 and scale 2"
+  ) {
+    @include assert-equal(rotator.z-value(50, $scale: 2, $offset: 2), 4);
   }
 }

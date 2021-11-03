@@ -1,0 +1,20 @@
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/rotator";
+
+@include describe("radians()") {
+  $expectations: (
+    0: 0,
+    12.5: math.div(math.$pi, 4),
+    25: math.div(math.$pi, 2),
+    50: math.$pi,
+    75: math.div(math.$pi * 3, 2),
+    100: 0,
+  );
+
+  @each $index, $rads in $expectations {
+    @include it("calculates the radians for index #{$index}") {
+      @include assert-equal(rotator.radians($index), $rads);
+    }
+  }
+}

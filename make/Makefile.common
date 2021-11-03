@@ -1,4 +1,4 @@
 PROJECT = jlock
 
 PIHOST = hyperpixel.local
-PIHOST = hp.local
+# PIHOST = hp.local

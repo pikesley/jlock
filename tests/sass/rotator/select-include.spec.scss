@@ -1,58 +1,63 @@
-@import "helper";
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/rotator";
 
 @include describe("select-include()") {
-  @include it("should return `deactivated` for index 0 and `in`") {
+  rotator.$activated-styles: (phony-property: activated);
+  rotator.$deactivated-styles: (phony-property: deactivated);
+
+  @include it("returns `deactivated` for index 0 and `in`") {
     @include assert {
       @include output {
-        @include select-include(0, in);
+        @include rotator.select-include(0, in);
       }
 
       @include expect {
-        @include deactivated;
+        phony-property: deactivated;
       }
     }
   }
 
-  @include it("should return `activated` for index 100 and `in`") {
+  @include it("returns `activated` for index 100 and `in`") {
     @include assert {
       @include output {
-        @include select-include(100, in);
+        @include rotator.select-include(100, in);
       }
 
       @include expect {
-        @include activated;
+        phony-property: activated;
       }
     }
   }
 
-  @include it("should return `activated` for index 0 and `out`") {
+  @include it("returns `activated` for index 0 and `out`") {
     @include assert {
       @include output {
-        @include select-include(0, out);
+        @include rotator.select-include(0, out);
       }
 
       @include expect {
-        @include activated;
+        phony-property: activated;
       }
     }
   }
 
-  @include it("should return `deactivated` for index 100 and `out`") {
+  @include it("returns `deactivated` for index 100 and `out`") {
     @include assert {
       @include output {
-        @include select-include(100, out);
+        @include rotator.select-include(100, out);
       }
 
       @include expect {
-        @include deactivated;
+        phony-property: deactivated;
       }
     }
   }
 
-  @include it("should return nothing for index 25") {
+  @include it("returns nothing for index 25") {
     @include assert {
       @include output {
-        @include select-include(25, in);
+        @include rotator.select-include(25, in);
       }
 
       @include expect {
