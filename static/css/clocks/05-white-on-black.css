@@ -1,71 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Saira");
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
+/* Error: Can't find stylesheet to import.
+ *    ,
+ * 25 | @import "../base/default";
+ *    |         ^^^^^^^^^^^^^^^^^
+ *    '
+ *   sass/clocks/05-white-on-black.scss 25:9  root stylesheet */
 
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a    \2577 \a 25 \2502  @import \"../base/default\";\a    \2502          ^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/clocks/05-white-on-black.scss 25:9  root stylesheet";
 }
-
-#clock span {
-  text-align: center;
-}
-
-body {
-  font-family: "Saira";
-}
-
-body {
-  color: black;
-  -webkit-text-stroke-width: 0.1vh;
-  -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
-}
-
-#clock {
-  perspective: 100vh;
-  perspective-origin: center;
-}
-
-.inactive {
-  animation: fade-out 3s ease-in-out forwards;
-}
-
-.active {
-  animation: fade-in 3s ease-in-out 1.5s forwards;
-}
-
-@keyframes fade-in {
-  0% {
-    color: black;
-    -webkit-text-stroke-width: 0.1vh;
-    -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
-  }
-  100% {
-    color: white;
-  }
-}
-@keyframes fade-out {
-  0% {
-    color: white;
-  }
-  100% {
-    color: black;
-    -webkit-text-stroke-width: 0.1vh;
-    -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
-  }
-}
-body {
-  background: url("../../images/backgrounds/texture.png"), black;
-}
-
-/*# sourceMappingURL=05-white-on-black.css.map */

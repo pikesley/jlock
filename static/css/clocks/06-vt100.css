@@ -1,73 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Press Start 2P");
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
+/* Error: Can't find stylesheet to import.
+ *    ,
+ * 25 | @import "../base/default";
+ *    |         ^^^^^^^^^^^^^^^^^
+ *    '
+ *   sass/clocks/06-vt100.scss 25:9  root stylesheet */
 
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a    \2577 \a 25 \2502  @import \"../base/default\";\a    \2502          ^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/clocks/06-vt100.scss 25:9  root stylesheet";
 }
-
-#clock span {
-  text-align: center;
-}
-
-body {
-  font-family: "Press Start 2P";
-}
-
-body {
-  text-shadow: none;
-}
-
-#clock {
-  perspective: 100vh;
-  perspective-origin: center;
-}
-
-.inactive {
-  animation: fade-out 3s ease-in-out forwards;
-}
-
-.active {
-  animation: fade-in 3s ease-in-out 1.5s forwards;
-}
-
-@keyframes fade-in {
-  0% {
-    text-shadow: none;
-  }
-  100% {
-    color: #66ff00;
-    font-weight: bold;
-    text-shadow: #3d9900 4px 0 4px;
-  }
-}
-@keyframes fade-out {
-  0% {
-    color: #66ff00;
-    font-weight: bold;
-    text-shadow: #3d9900 4px 0 4px;
-  }
-  100% {
-    text-shadow: none;
-  }
-}
-body {
-  background: url("../../images/backgrounds/scanlines.png"), radial-gradient(#143300, black);
-  font-size: 3.5vh;
-  -webkit-text-stroke-color: #296600;
-  -webkit-text-stroke-width: 1px;
-  color: transparent;
-}
-
-/*# sourceMappingURL=06-vt100.css.map */

@@ -1,7 +1,11 @@
+@use "../base/layout";
+
 @use "../base/mixins";
+@use "../base/strokes";
 @use "../base/vars";
 
-$font: "Righteous";
+@use "../base/font" with ($font: "Righteous");
+@use "../base/rotator" as animator;
 
 $grey: rgba(4, 4, 4, 0.445);
 
@@ -11,27 +15,17 @@ $inactive-colour: $grey;
 
 $stroke-width: 1px;
 
-vars.$animation: rotate;
-vars.$anim-time: 2s;
+animator.$activated-styles: (color: $inactive-colour);
+animator.$deactivated-styles: (color: transparent);
 
-@mixin activated {
-  color: $inactive-colour;
-  @include mixins.stroke-width($stroke-width);
-  @include mixins.stroke-colour($active-colour);
-}
+@include mixins.active-inactive(rotate, 2s);
 
-@mixin deactivated {
-  @include mixins.stroke-width($stroke-width);
-  @include mixins.stroke-colour($inactive-colour);
-  color: transparent;
-}
-
-@import "../base/default";
+@include animator.make-frames;
 
 body {
   background: url(vars.$background-root + "wall.png"), $background-colour;
   font-size: 6vh;
-  @include mixins.stroke-width($stroke-width);
-  @include mixins.stroke-colour($inactive-colour);
+  @include strokes.stroke-width($stroke-width);
+  @include strokes.stroke-colour($inactive-colour);
   color: transparent;
 }

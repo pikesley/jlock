@@ -24,6 +24,9 @@ body {
   width: vars.$clock-dimension;
   margin: 0 auto;
 
+  perspective: 100vh;
+  perspective-origin: center;
+
   span {
     text-align: center;
     // border: 1px grey solid;

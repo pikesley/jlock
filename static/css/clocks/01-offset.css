@@ -1,74 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Lalezar");
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
+/* Error: Can't find stylesheet to import.
+ *    ,
+ * 29 | @import "../base/default";
+ *    |         ^^^^^^^^^^^^^^^^^
+ *    '
+ *   sass/clocks/01-offset.scss 29:9  root stylesheet */
 
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a    \2577 \a 29 \2502  @import \"../base/default\";\a    \2502          ^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/clocks/01-offset.scss 29:9  root stylesheet";
 }
-
-#clock span {
-  text-align: center;
-}
-
-body {
-  font-family: "Lalezar";
-}
-
-body {
-  text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-}
-
-#clock {
-  perspective: 100vh;
-  perspective-origin: center;
-}
-
-.inactive {
-  animation: fade-out 3s ease-in-out forwards;
-}
-
-.active {
-  animation: fade-in 3s ease-in-out 1.5s forwards;
-}
-
-@keyframes fade-in {
-  0% {
-    text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-  }
-  100% {
-    text-shadow: 0.7vh 0.7vh #2bd6e2;
-  }
-}
-@keyframes fade-out {
-  0% {
-    text-shadow: 0.7vh 0.7vh #2bd6e2;
-  }
-  100% {
-    text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-  }
-}
-body {
-  background: radial-gradient(#fad400, #fa8100);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  color: transparent;
-  text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-  font-size: 9vh;
-}
-
-#clock span {
-  margin: -4vh;
-}
-
-/*# sourceMappingURL=01-offset.css.map */
