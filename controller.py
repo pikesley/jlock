@@ -4,9 +4,11 @@ import subprocess
 from pathlib import Path
 from time import sleep
 
+import redis
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+app.redis = redis.Redis()
 
 
 @app.route("/", methods=["GET"])
@@ -38,6 +40,25 @@ def reload():
     os.environ["DISPLAY"] = ":0"
     subprocess.run(("xdotool key F5").split(" "), check=True)
     sleep(1)
+
+    return {"status": "OK"}
+
+
+@app.route("/language", methods=["GET"])
+def get_language():
+    """Get the language."""
+    language = app.redis.get("language").decode()
+
+    if not language:
+        language = "en"
+
+    return {"language": language}
+
+
+@app.route("/language", methods=["POST"])
+def set_language():
+    """Set the language."""
+    app.redis.set("language", request.json["language"])
 
     return {"status": "OK"}
 
