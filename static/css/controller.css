@@ -1,20 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
+@import url("https://fonts.googleapis.com/css2?family=Zen Kurenaido");
 body {
-  font-family: "Red Hat Display";
+  font-family: "Zen Kurenaido";
   text-align: center;
-  background-color: #111111;
-  color: #5f1eda;
+  background-color: white;
+  color: #f2651e;
   margin: 4vh;
-  text-shadow: #bbbbbb 0 0 1px, #5f1eda 0 -1px 2px, #5f1eda 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 30px 25px;
-}
-
-main {
-  height: 90vh;
+  font-size: 4em;
 }
 
 h1,
-h2,
-h3 {
+h2 {
   margin: 0;
   padding: 0;
 }
@@ -23,39 +18,30 @@ h1 {
   font-size: 10vh;
 }
 
-h2 {
-  font-size: 2vh;
-}
-
+h2,
 h3 {
-  font-size: 1vh;
+  font-size: 2vh;
 }
 
 em {
   font-weight: bold;
   font-size: 2.5vh;
-  color: #bc9ff2;
+  color: #fac8af;
 }
 
-#next-button {
-  width: 20em;
-  fill: #5f1eda;
-  margin: 4vh;
-  cursor: pointer;
-}
-
-.active {
-  fill: #4b18ad;
-}
-
-footer {
-  height: 2vh;
-  font-size: 4em;
-  text-align: center;
-  text-shadow: none;
-}
-footer a {
+a {
   text-decoration: none;
+}
+
+button {
+  font-family: "Zen Kurenaido";
+  font-size: 4vh;
+  background-color: #f2651e;
+  padding: 0.5em;
+  border: none;
+}
+button a {
+  color: white;
 }
 
 /*# sourceMappingURL=controller.css.map */

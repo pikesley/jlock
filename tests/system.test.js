@@ -1,4 +1,4 @@
-import { initialise } from "modules/controls.js";
+import { run } from "modules/controls.js";
 import { gatherSpanIDs } from "./support/helpers.js";
 
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
@@ -10,7 +10,7 @@ describe("Integration test", function () {
     let div = global.document.createElement("div");
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
-    initialise("#test-clock");
+    run("#test-clock");
 
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:34"));
     await new Promise((r) => setTimeout(r, 1000));

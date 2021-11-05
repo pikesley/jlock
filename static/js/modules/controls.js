@@ -32,7 +32,21 @@ let initialise = function (element = "#clock") {
     null;
   }
 
-  populateClock(element);
+  try {
+    fetch("/controller/language")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        run(element, json.language);
+      });
+  } catch (ReferenceError) {
+    null;
+  }
+};
+
+let run = function (element, language) {
+  populateClock(element, language);
 
   // force it to update on the first load
   localStorage["active-classes"] = null;
@@ -92,7 +106,6 @@ let setStyles = function (specified = null) {
 };
 
 // https://codepen.io/chrisbuttery/pen/hvDKi
-
 function fadeOutAndRedirect(style) {
   html.style.opacity = 1;
 
@@ -117,4 +130,4 @@ function fadeIn() {
   })();
 }
 
-export { initialise };
+export { initialise, run };
