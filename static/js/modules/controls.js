@@ -92,7 +92,6 @@ let setStyles = function (specified = null) {
 };
 
 // https://codepen.io/chrisbuttery/pen/hvDKi
-
 function fadeOutAndRedirect(style) {
   html.style.opacity = 1;
 
