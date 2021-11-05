@@ -1,17 +1,73 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 25 | @import "../base/default";
- *    |         ^^^^^^^^^^^^^^^^^
- *    '
- *   sass/clocks/06-vt100.scss 25:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 25 \2502  @import \"../base/default\";\a    \2502          ^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/clocks/06-vt100.scss 25:9  root stylesheet";
+@import url("https://fonts.googleapis.com/css2?family=Press Start 2P");
+body {
+  font-family: "Press Start 2P";
 }
+
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+  perspective: 100vh;
+  perspective-origin: center;
+}
+#clock span {
+  text-align: center;
+}
+
+.active {
+  animation: rotator-in 2s 1s forwards;
+}
+
+.inactive {
+  animation: rotator-out 2s forwards;
+}
+
+@keyframes rotator-in {
+  0% {
+    transform: perspective(4vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
+  }
+  50% {
+    transform: perspective(4vh) translateY(0vh) translateZ(-20vh) rotateX(4turn);
+  }
+  100% {
+    transform: perspective(4vh) translateY(0vh) translateZ(0vh) rotateX(8turn);
+    color: #66ff00;
+    font-weight: bold;
+    text-shadow: #3d9900 4px 0 4px;
+  }
+}
+@keyframes rotator-out {
+  0% {
+    transform: perspective(4vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
+    color: #66ff00;
+    font-weight: bold;
+    text-shadow: #3d9900 4px 0 4px;
+  }
+  50% {
+    transform: perspective(4vh) translateY(0vh) translateZ(-20vh) rotateX(4turn);
+  }
+  100% {
+    transform: perspective(4vh) translateY(0vh) translateZ(0vh) rotateX(8turn);
+  }
+}
+body {
+  background: url("../../images/backgrounds/scanlines.png"), radial-gradient(#143300, black);
+  font-size: 3.5vh;
+  -webkit-text-stroke-color: #296600;
+  -webkit-text-stroke-width: 1px;
+  color: transparent;
+}
+
+/*# sourceMappingURL=06-vt100.css.map */

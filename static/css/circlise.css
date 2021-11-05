@@ -26,7 +26,7 @@ span {
   animation: rotate-out 5s infinite 1s forwards;
 }
 
-@keyframes rotate-in {
+@keyframes rotator-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
     color: green;
@@ -333,7 +333,7 @@ span {
     color: red;
   }
 }
-@keyframes rotate-out {
+@keyframes rotator-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
     color: red;

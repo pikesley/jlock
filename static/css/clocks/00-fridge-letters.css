@@ -1,17 +1,73 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 35 | @import "../base/default";
- *    |         ^^^^^^^^^^^^^^^^^
- *    '
- *   sass/clocks/00-fridge-letters.scss 35:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a    \2577 \a 35 \2502  @import \"../base/default\";\a    \2502          ^^^^^^^^^^^^^^^^^\a    \2575 \a   sass/clocks/00-fridge-letters.scss 35:9  root stylesheet";
+@import url("https://fonts.googleapis.com/css2?family=Fredoka One");
+body {
+  font-family: "Fredoka One";
 }
+
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+  perspective: 100vh;
+  perspective-origin: center;
+}
+#clock span {
+  text-align: center;
+}
+
+.active {
+  animation: rotator-in 2s 1s forwards;
+}
+
+.inactive {
+  animation: rotator-out 2s forwards;
+}
+
+@keyframes rotator-in {
+  0% {
+    transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
+    color: black;
+    text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
+  }
+  50% {
+    transform: perspective(40vh) translateY(0vh) translateZ(20vh) rotateX(-0.5turn);
+  }
+  100% {
+    transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
+    color: #ff9100;
+    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
+  }
+}
+@keyframes rotator-out {
+  0% {
+    transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
+    color: #ff9100;
+    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
+  }
+  50% {
+    transform: perspective(40vh) translateY(0vh) translateZ(20vh) rotateX(-0.5turn);
+  }
+  100% {
+    transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
+    color: black;
+    text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
+  }
+}
+body {
+  font-size: 5.5vh;
+  background: url("../../images/backgrounds/linen.png"), radial-gradient(gray, black);
+  color: black;
+}
+
+/*# sourceMappingURL=00-fridge-letters.css.map */

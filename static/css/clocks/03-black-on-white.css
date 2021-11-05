@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous");
 body {
+  font-family: "Righteous";
+}
+
+body {
   overflow: hidden;
   font-size: 5vh;
   margin: 1vh;
@@ -22,19 +26,15 @@ body {
   text-align: center;
 }
 
-body {
-  font-family: "Righteous";
+.active {
+  animation: rotator-in 2s 1s forwards;
 }
 
 .inactive {
-  animation: rotate-in 2s forwards;
+  animation: rotator-out 2s forwards;
 }
 
-.active {
-  animation: rotate-in 2s 1s forwards;
-}
-
-@keyframes rotate-in {
+@keyframes rotator-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
     color: transparent;
@@ -341,7 +341,7 @@ body {
     color: rgba(4, 4, 4, 0.445);
   }
 }
-@keyframes rotate-out {
+@keyframes rotator-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
     color: rgba(4, 4, 4, 0.445);
