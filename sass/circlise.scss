@@ -1,11 +1,10 @@
 @use "sass:math";
+@use "base/animators/rotator";
 
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
 
 $background-colour: rgb(252, 252, 252);
 $primary-colour: rgb(218, 162, 30);
-$lighter: lighten($primary-colour, 30%);
-$darker: darken($primary-colour, 10%);
 
 body {
   font-family: "Red Hat Display";
@@ -28,19 +27,15 @@ span {
 }
 
 .in {
-  animation: rotate-in 2s linear 0s infinite;
+  animation: rotate-in 3s infinite forwards;
 }
 
 .out {
-  animation: rotate-out 2s linear 1s infinite;
+  animation: rotate-out 5s infinite 1s forwards;
 }
 
-@mixin activated {
-  color: red;
-}
+rotator.$activated-styles: (color: red);
 
-@mixin deactivated {
-  color: blue;
-}
+rotator.$deactivated-styles: (color: green);
 
-@import "./base/rotator";
+@include rotator.make-frames;

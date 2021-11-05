@@ -1,26 +1,23 @@
+// https://codepen.io/markmead/pen/YjQKeZ
+@use "../base/animators/rotator" as animator;
+@use "../base/layout";
 @use "../base/vars";
-
-$font: "Righteous";
 
 $grey: rgba(4, 4, 4, 0.445);
 $magenta: rgb(255, 0, 255);
 $white: rgb(255, 255, 255);
 $off-white: rgb(191, 191, 191);
-$black: rgb(0, 0, 191);
+$blue: rgb(0, 0, 191);
 
-$active-colour: $black;
+$active-colour: $magenta;
 $background-colour: $white;
 $inactive-colour: $off-white;
 
-@mixin activated {
-  color: $active-colour;
-}
+animator.$step-size: 100;
+animator.$activated-styles: (color: $active-colour);
+animator.$deactivated-styles: (color: $inactive-colour);
 
-@mixin deactivated {
-  color: $inactive-colour;
-}
-
-@import "../base/default";
+@include animator.setup(2s);
 
 @font-face {
   font-family: "Sinclair";
@@ -35,4 +32,5 @@ body {
   background-size: auto 3vh;
   background-position: center bottom 3vh;
   font-size: 6vh;
+  color: $inactive-colour;
 }

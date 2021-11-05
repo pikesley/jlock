@@ -1,0 +1,50 @@
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/animators/rotator";
+
+@include describe("one-frame()") {
+  rotator.$activated-styles: (phony-property: activated);
+  rotator.$deactivated-styles: (phony-property: deactivated);
+  rotator.$perspective: 400vh;
+
+  @include it("generates a frame for index 0 and `in`") {
+    @include assert {
+      @include output {
+        @include rotator.one-frame(0, in);
+      }
+
+      @include expect {
+        transform: perspective(400vh) translateY(0vh) translateZ(0vh)
+          rotateX(0turn);
+        phony-property: deactivated;
+      }
+    }
+  }
+
+  @include it("generates a frame for index 35 and `out`") {
+    @include assert {
+      @include output {
+        @include rotator.one-frame(35, out);
+      }
+
+      @include expect {
+        transform: perspective(400vh) translateY(-8.0901699437vh)
+          translateZ(15.8778525229vh) rotateX(-0.35turn);
+      }
+    }
+  }
+
+  @include it("generates a frame for index 100 and `out`") {
+    @include assert {
+      @include output {
+        @include rotator.one-frame(100, out);
+      }
+
+      @include expect {
+        transform: perspective(400vh) translateY(0vh) translateZ(0vh)
+          rotateX(-1turn);
+        phony-property: deactivated;
+      }
+    }
+  }
+}

@@ -1,43 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Righteous");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display");
 body {
-  font-family: "Righteous";
-}
-
-body {
-  overflow: hidden;
-  font-size: 5vh;
-  margin: 1vh;
-  padding: 0;
-}
-
-#clock {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(14, 1fr);
-  gap: 0 0;
-  align-items: center;
-  height: 98vh;
-  width: 98vh;
-  margin: 0 auto;
+  font-family: "Red Hat Display";
+  text-align: center;
+  background-color: #fcfcfc;
+  color: #daa21e;
+  margin: 40vh;
   perspective: 100vh;
   perspective-origin: center;
 }
-#clock span {
-  text-align: center;
+
+main {
+  height: 90vh;
 }
 
-.active {
-  animation: rotator-in 2s 1s forwards;
+span {
+  display: block;
+  font-size: 10vh;
 }
 
-.inactive {
-  animation: rotator-out 2s forwards;
+.in {
+  animation: rotate-in 3s infinite forwards;
+}
+
+.out {
+  animation: rotate-out 5s infinite 1s forwards;
 }
 
 @keyframes rotator-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
-    color: transparent;
+    color: green;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -338,13 +330,13 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
-    color: rgba(4, 4, 4, 0.445);
+    color: red;
   }
 }
 @keyframes rotator-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
-    color: rgba(4, 4, 4, 0.445);
+    color: red;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -645,15 +637,8 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
-    color: transparent;
+    color: green;
   }
 }
-body {
-  background: url("../../images/backgrounds/wall.png"), white;
-  font-size: 6vh;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
-  color: transparent;
-}
 
-/*# sourceMappingURL=03-black-on-white.css.map */
+/*# sourceMappingURL=circlise.css.map */

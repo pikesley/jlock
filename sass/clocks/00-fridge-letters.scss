@@ -1,15 +1,13 @@
 // https://codepen.io/maxnguyen/pen/BzneE
-@use "../base/mixins";
+@use "../base/animators/rotator" as animator;
+@use "../base/font" with ($font: "Fredoka One");
+@use "../base/layout";
 @use "../base/vars";
 
-$font: "Fredoka One";
-
 $orange: rgb(255, 145, 0);
-$mauve: rgb(192, 22, 214);
-$black: rgb(0, 0, 0);
 
 $active-colour: $orange;
-$inactive-colour: $black;
+$inactive-colour: black;
 
 $gradient-colour-0: $inactive-colour;
 $gradient-colour-1: lighten($gradient-colour-0, 50%);
@@ -21,21 +19,31 @@ $dark-grey: lighten($inactive-colour, 20%);
 $shadow: rgba(0, 0, 0, 0.8);
 $highlight: rgba(255, 255, 255, 0.4);
 
-@mixin activated {
-  color: $active-colour;
-  text-shadow: $light-grey 0 0 0.1vh, $active-colour 0 -0.1vh 0.2vh,
-    $active-colour 0 -0.3vh 0.2vh, $shadow 0 2vh 2vh;
-}
+animator.$step-size: 50;
 
-@mixin deactivated {
-  color: $inactive-colour;
-  text-shadow: $dark-grey 0 0 0.1vh, $highlight 0 0.1vh 0.3vh;
-}
+animator.$activated-styles: (
+  color: $active-colour,
+  text-shadow: (
+    $light-grey 0 0 0.1vh,
+    $active-colour 0 -0.1vh 0.2vh,
+    $active-colour 0 -0.3vh 0.2vh,
+    $shadow 0 2vh 2vh,
+  )
+);
 
-@import "../base/default";
+animator.$deactivated-styles: (
+  color: $inactive-colour,
+  text-shadow: (
+    $dark-grey 0 0 0.1vh,
+    $highlight 0 0.1vh 0.3vh,
+  )
+);
+
+@include animator.setup(2s);
 
 body {
   font-size: 5.5vh;
   background: url(vars.$background-root + "linen.png"),
     radial-gradient($gradient-colour-1, $gradient-colour-0);
+  color: $inactive-colour;
 }

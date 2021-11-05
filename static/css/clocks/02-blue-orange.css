@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat");
 body {
+  font-family: "Montserrat";
+}
+
+body {
   overflow: hidden;
   font-size: 5vh;
   margin: 1vh;
@@ -15,63 +19,25 @@ body {
   height: 98vh;
   width: 98vh;
   margin: 0 auto;
+  perspective: 100vh;
+  perspective-origin: center;
 }
-
 #clock span {
   text-align: center;
 }
 
-body {
-  font-family: "Montserrat";
-}
-
-body {
-  color: #002752;
-  text-shadow: none;
-}
-
-#clock {
-  perspective: 4000vh;
-  perspective-origin: center;
+.active {
+  animation: rotator-in 2s 1s forwards;
 }
 
 .inactive {
-  color: #002752;
-  text-shadow: none;
-  animation: rotate-out 2s ease-in-out;
+  animation: rotator-out 2s forwards;
 }
 
-.active {
-  color: #fa8100;
-  text-shadow: #fa8100 0 0 16px;
-  animation: rotate-in 2s ease-in-out;
-}
-
-@keyframes fade-in {
-  0% {
-    color: #002752;
-    text-shadow: none;
-  }
-  100% {
-    color: #fa8100;
-    text-shadow: #fa8100 0 0 16px;
-  }
-}
-@keyframes fade-out {
-  0% {
-    color: #fa8100;
-    text-shadow: #fa8100 0 0 16px;
-  }
-  100% {
-    color: #002752;
-    text-shadow: none;
-  }
-}
-@keyframes rotate-in {
+@keyframes rotator-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
     color: #002752;
-    text-shadow: none;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -376,7 +342,7 @@ body {
     text-shadow: #fa8100 0 0 16px;
   }
 }
-@keyframes rotate-out {
+@keyframes rotator-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
     color: #fa8100;
@@ -682,11 +648,11 @@ body {
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
     color: #002752;
-    text-shadow: none;
   }
 }
 body {
   background-color: #001b38;
+  color: #002752;
 }
 
 /*# sourceMappingURL=02-blue-orange.css.map */

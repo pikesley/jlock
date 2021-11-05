@@ -1,0 +1,19 @@
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/animators/rotator";
+
+@include describe("rotation()") {
+  $expectations: (
+    0: 0turn,
+    25: -0.25turn,
+    50: -0.5turn,
+    75: -0.75turn,
+    100: -1turn,
+  );
+
+  @each $index, $expected in $expectations {
+    @include it("calculates the rotation for index #{$index}") {
+      @include assert-equal(rotator.rotation($index), $expected);
+    }
+  }
+}

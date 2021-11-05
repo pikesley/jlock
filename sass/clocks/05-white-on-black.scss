@@ -1,29 +1,25 @@
-@use "../base/mixins";
+@use "../base/animators/rotator" as animator;
+@use "../base/font" with ($font: "Saira");
+@use "../base/layout";
+@use "../base/utils";
 @use "../base/vars";
 
-$font: "Saira";
-
-$white: rgb(255, 255, 255);
-
-$active-colour: $white;
+$active-colour: white;
 $inactive-colour: invert($active-colour);
 $background-colour: darken($inactive-colour, 15%);
 
 $stroke-width: 0.1vh;
 $stroke-colour: transparentize($active-colour, 0.6);
 
-@mixin activated {
-  color: $active-colour;
-}
+animator.$activated-styles: (color: $active-colour);
+animator.$deactivated-styles: (color: $inactive-colour);
+animator.$invert: true;
 
-@mixin deactivated {
-  color: $inactive-colour;
-  @include mixins.stroke-width($stroke-width);
-  @include mixins.stroke-colour($stroke-colour);
-}
-
-@import "../base/default";
+@include animator.setup(2s);
 
 body {
   background: url(vars.$background-root + "texture.png"), $background-colour;
+  @include utils.stroke-width($stroke-width);
+  @include utils.stroke-colour($stroke-colour);
+  color: $inactive-colour;
 }

@@ -1,0 +1,67 @@
+@use "true" as *;
+@use "sass:math";
+@use "../../../sass/base/animators/rotator";
+
+@include describe("select-include()") {
+  rotator.$activated-styles: (phony-property: activated);
+  rotator.$deactivated-styles: (phony-property: deactivated);
+
+  @include it("returns `deactivated` for index 0 and `in`") {
+    @include assert {
+      @include output {
+        @include rotator.select-include(0, in);
+      }
+
+      @include expect {
+        phony-property: deactivated;
+      }
+    }
+  }
+
+  @include it("returns `activated` for index 100 and `in`") {
+    @include assert {
+      @include output {
+        @include rotator.select-include(100, in);
+      }
+
+      @include expect {
+        phony-property: activated;
+      }
+    }
+  }
+
+  @include it("returns `activated` for index 0 and `out`") {
+    @include assert {
+      @include output {
+        @include rotator.select-include(0, out);
+      }
+
+      @include expect {
+        phony-property: activated;
+      }
+    }
+  }
+
+  @include it("returns `deactivated` for index 100 and `out`") {
+    @include assert {
+      @include output {
+        @include rotator.select-include(100, out);
+      }
+
+      @include expect {
+        phony-property: deactivated;
+      }
+    }
+  }
+
+  @include it("returns nothing for index 25") {
+    @include assert {
+      @include output {
+        @include rotator.select-include(25, in);
+      }
+
+      @include expect {
+      }
+    }
+  }
+}
