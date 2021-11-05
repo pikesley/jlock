@@ -1,6 +1,6 @@
-@use "../base/vars";
-
-$font: "Montserrat";
+@use "../base/animators/rotator" as animator;
+@use "../base/font" with ($font: "Montserrat");
+@use "../base/layout";
 
 $orange: rgb(250, 129, 0);
 
@@ -9,21 +9,15 @@ $inactive-colour: darken(invert($active-colour), 35%);
 $background-colour: darken($inactive-colour, 5%);
 $shadow-colour: darken($active-colour, 0%);
 
-vars.$animation: rotate;
-vars.$anim-time: 2s;
+animator.$activated-styles: (
+  color: $active-colour,
+  text-shadow: $shadow-colour 0 0 16px
+);
+animator.$deactivated-styles: (color: $inactive-colour);
 
-@mixin activated {
-  color: $active-colour;
-  text-shadow: $shadow-colour 0 0 16px;
-}
-
-@mixin deactivated {
-  color: $inactive-colour;
-  text-shadow: none;
-}
-
-@import "../base/default";
+@include animator.setup(2s);
 
 body {
   background-color: $background-colour;
+  color: $inactive-colour;
 }

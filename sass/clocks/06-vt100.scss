@@ -1,7 +1,8 @@
-@use "../base/mixins";
+@use "../base/animators/rotator" as animator;
+@use "../base/font" with ($font: "Press Start 2P");
+@use "../base/layout";
+@use "../base/utils";
 @use "../base/vars";
-
-$font: "Press Start 2P";
 
 $green: rgb(102, 255, 0);
 
@@ -12,23 +13,24 @@ $shadow-colour: darken($active-colour, 20%);
 $background-colour: black;
 $gradient-colour: darken($active-colour, 40%);
 
-@mixin activated {
-  color: $active-colour;
-  font-weight: bold;
-  text-shadow: $shadow-colour 4px 0 4px;
-}
+animator.$step-size: 50;
+animator.$invert: true;
+animator.$perspective: 4vh;
+animator.$turns: 8turn;
 
-@mixin deactivated {
-  text-shadow: none;
-}
+animator.$activated-styles: (
+  color: $active-colour,
+  font-weight: bold,
+  text-shadow: $shadow-colour 4px 0 4px
+);
 
-@import "../base/default";
+@include animator.setup(2s);
 
 body {
   background: url(vars.$background-root + "scanlines.png"),
     radial-gradient($gradient-colour, $background-colour);
   font-size: 3.5vh;
-  @include mixins.stroke-colour($inactive-colour);
-  @include mixins.stroke-width(1px);
+  @include utils.stroke-colour($inactive-colour);
+  @include utils.stroke-width(1px);
   color: transparent;
 }

@@ -1,8 +1,8 @@
 // https://codepen.io/markmead/pen/YjQKeZ
-@use "../base/mixins";
-@use "../base/vars";
-
-$font: "Lalezar";
+@use "../base/animators/fader" as animator;
+@use "../base/font" with ($font: "Lalezar");
+@use "../base/layout";
+@use "../base/utils";
 
 $orange: rgb(250, 129, 0);
 $yellow: rgb(250, 212, 0);
@@ -18,27 +18,20 @@ $inactive-colour: transparentize(darken($background-colour, 5%), 0.8);
 $stroke-width: 1px;
 $offset: 0.7vh;
 
-@mixin activated {
-  text-shadow: $offset $offset $active-colour;
-}
+animator.$activated-styles: (text-shadow: $offset $offset $active-colour);
+animator.$deactivated-styles: (text-shadow: $offset $offset $inactive-colour);
 
-@mixin deactivated {
-  text-shadow: $offset $offset $inactive-colour;
-}
-
-@import "../base/default";
+@include animator.setup(2s);
 
 body {
   background: radial-gradient($gradient-colour, $background-colour);
-  @include mixins.stroke-width($stroke-width);
-  @include mixins.stroke-colour($stroke-colour);
+  @include utils.stroke-width($stroke-width);
+  @include utils.stroke-colour($stroke-colour);
   color: transparent;
   text-shadow: $offset $offset $inactive-colour;
   font-size: 9vh;
 }
 
-#clock {
-  span {
-    margin: -4vh;
-  }
+span {
+  margin: -4vh;
 }

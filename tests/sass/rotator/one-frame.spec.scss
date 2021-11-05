@@ -1,6 +1,6 @@
 @use "true" as *;
 @use "sass:math";
-@use "../../../sass/base/rotator";
+@use "../../../sass/base/animators/rotator";
 
 @include describe("one-frame()") {
   rotator.$activated-styles: (phony-property: activated);

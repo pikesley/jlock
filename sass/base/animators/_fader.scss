@@ -1,0 +1,37 @@
+@use "../utils";
+
+$name: fader;
+
+// set these to the styles you want for your `active` and `inactive` spans
+//
+// from a client, something like:
+//   fader.$activated-styles: (color: red, font-weight: bold);
+//
+// note that this is a *map* of values, not a CSS block
+$activated-styles: none;
+$deactivated-styles: none;
+
+@mixin make-frames {
+  @keyframes #{$name}-in {
+    0% {
+      @include utils.render-styles($deactivated-styles);
+    }
+    100% {
+      @include utils.render-styles($activated-styles);
+    }
+  }
+
+  @keyframes #{$name}-out {
+    0% {
+      @include utils.render-styles($activated-styles);
+    }
+    100% {
+      @include utils.render-styles($deactivated-styles);
+    }
+  }
+}
+
+@mixin setup($duration: 2s) {
+  @include utils.active-inactive($name, $duration);
+  @include make-frames;
+}

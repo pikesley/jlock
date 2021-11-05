@@ -1,6 +1,7 @@
 @use "true" as *;
 @use "sass:math";
-@use "../../../sass/base/rotator";
+@use "../../../sass/base/animators/rotator";
+
 @include describe("z-value()") {
   $expectations: (
     0: 0 - 1,

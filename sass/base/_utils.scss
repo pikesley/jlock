@@ -1,0 +1,25 @@
+@use "sass:math";
+
+@mixin stroke-width($property) {
+  -webkit-text-stroke-width: $property;
+}
+
+@mixin stroke-colour($property) {
+  -webkit-text-stroke-color: $property;
+}
+
+@mixin active-inactive($anim-name, $anim-time) {
+  .active {
+    animation: #{$anim-name}-in #{$anim-time} math.div($anim-time, 2) forwards;
+  }
+
+  .inactive {
+    animation: #{$anim-name}-out #{$anim-time} forwards;
+  }
+}
+
+@mixin render-styles($styles) {
+  @each $key, $value in $styles {
+    #{$key}: #{$value};
+  }
+}
