@@ -4,4 +4,5 @@ export PATH=./node_modules/.bin/:${PATH}
 
 alias make="make --makefile make/Makefile.docker"
 
+service redis-server start
 service nginx start

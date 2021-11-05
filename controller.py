@@ -47,9 +47,11 @@ def reload():
 @app.route("/language", methods=["GET"])
 def get_language():
     """Get the language."""
-    language = app.redis.get("language").decode()
+    language = app.redis.get("language")
 
-    if not language:
+    if language:
+        language = language.decode()
+    else:
         language = "en"
 
     return {"language": language}
@@ -59,6 +61,7 @@ def get_language():
 def set_language():
     """Set the language."""
     app.redis.set("language", request.json["language"])
+    reload()
 
     return {"status": "OK"}
 

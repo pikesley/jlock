@@ -1,52 +1,11 @@
 import { conf } from "../conf.js";
+import { languages } from "./clockSets.js";
 
-let clockParts = [
-  // members can be one of three types:
-  //
-  // class-only: these will be rendered like <span class="foo">foo</span>
-  // text-only: these will be rendered like <span>foo</span>
-  // class-and-text: these will be rendered like <span class="the-class">the text</span>
+let width = 11;
 
-  [{ class: "it" }, { text: "l" }, { class: "is" }, { text: "asampm" }],
-  [{ class: "a" }, { text: "c" }, { class: "quarter" }, { text: "dc" }],
-  [{ class: "twenty" }, { class: "five" }, { text: "x" }],
-  [
-    { class: "half" },
-    { text: "s" },
-    { class: "ten" },
-    { text: "f" },
-    { class: "to" },
-  ],
-  [{ class: "past" }, { text: "eru" }, { class: "h-9", text: "nine" }],
-  [
-    { class: "h-1", text: "one" },
-    { class: "h-6", text: "six" },
-    { class: "h-3", text: "three" },
-  ],
-  [
-    { class: "h-4", text: "four" },
-    { class: "h-5", text: "five" },
-    { class: "h-2", text: "two" },
-  ],
-  [
-    { class: "h-8", text: "eight" },
-    { class: "h-11", text: "eleven" },
-  ],
-  [
-    { class: "h-7", text: "seven" },
-    { class: "h-0", text: "twelve" },
-  ],
-  [{ class: "h-10", text: "ten" }, { text: "se" }, { class: "oclock" }],
-];
+let populateClock = function (elementID = "#clock", language = "en") {
+  let clockParts = languages[language];
 
-let width = 0;
-for (const [, member] of Object.entries(clockParts[0])) {
-  for (const [, text] of Object.entries(member)) {
-    width += text.length;
-  }
-}
-
-let populateClock = function (elementID = "#clock") {
   let element = document.querySelector(elementID);
   addDots(element, [1, 2]);
 
@@ -64,6 +23,11 @@ let populateClock = function (elementID = "#clock") {
         span.appendChild(content);
         if (cell.class) {
           span.setAttribute("class", cell.class);
+        }
+        if (cell.classes) {
+          cell.classes.forEach(function (klass) {
+            span.classList.add(klass);
+          });
         }
         span.setAttribute("id", `cell-${count}-${index}`);
         count++;
