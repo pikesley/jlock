@@ -17,16 +17,28 @@
   </head>
 
   <body>
-    <main>
+    <header>
       <h1>Jlock</h1>
-      <h2>on <em>{{host_name }}</em></h2>
+      <h2>on <em>{{host_name}}</em></h2>
+      <hr />
+    </header>
 
-      {{ arrow_svg | safe }}
+    <main>
+      <button>
+        <a href="#" id="next-button">Next style</a>
+      </button>
+
+      <hr />
+
+      <h3>Choose language</h3>
+      {% for key, value in languages.items() %}
+
+      <button>
+        <a href="#" onClick="languageSelect('{{value}}')">{{key}}</a>
+      </button>
+
+      {% endfor %}
     </main>
-
-    <footer>
-      <a href="https://github.com/pikesley/jlock">Github</a>
-    </footer>
 
     <script>
       let button = document.querySelector("#next-button");
@@ -35,13 +47,18 @@
       });
 
       let cycle = function () {
-        let arrow = document.querySelector("#arrow");
-        arrow.classList.add("active");
+        let nextStyle = document.querySelector("#nextStyle");
         fetch("/controller/cycle-style", {
           headers: { "Content-Type": "application/json" },
           method: "POST",
-        }).then(function () {
-          arrow.classList.remove("active");
+        });
+      };
+
+      let languageSelect = function (languageID) {
+        fetch("/controller/language", {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify({ language: languageID }),
         });
       };
     </script>

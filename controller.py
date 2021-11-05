@@ -19,6 +19,10 @@ def index():
             "index.html",
             host_name=socket.gethostname(),
             arrow_svg=Path("templates/images/arrow.svg").read_text(encoding="UTF-8"),
+            languages={
+                "English": "en",
+                "Welsh": "cy"
+            }
         )
 
 
