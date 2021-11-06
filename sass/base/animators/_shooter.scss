@@ -1,0 +1,56 @@
+@use "../utils";
+
+$name: shooter;
+
+$shoot-distance: 10vh;
+$perspective: 30vh;
+
+$activated-styles: none;
+$deactivated-styles: none;
+
+@mixin make-frames {
+  @keyframes #{$name}-in {
+    0% {
+      @include utils.render-styles($deactivated-styles);
+    }
+
+    40% {
+      @include utils.render-styles($deactivated-styles);
+      transform: perspective($perspective) translateZ($shoot-distance);
+    }
+
+    60% {
+      @include utils.render-styles($activated-styles);
+      transform: perspective($perspective) translateZ($shoot-distance);
+    }
+
+    70% {
+      @include utils.render-styles($activated-styles);
+      transform: perspective($perspective) translateZ($shoot-distance);
+    }
+
+    95% {
+      @include utils.render-styles($activated-styles);
+      transform: perspective($perspective) translateZ(-$shoot-distance * 2);
+    }
+
+    100% {
+      transform: perspective($perspective) translateZ(0);
+      @include utils.render-styles($activated-styles);
+    }
+  }
+
+  @keyframes #{$name}-out {
+    0% {
+      @include utils.render-styles($activated-styles);
+    }
+    100% {
+      @include utils.render-styles($deactivated-styles);
+    }
+  }
+}
+
+@mixin setup($duration: 6s) {
+  @include utils.active-inactive($name, $duration);
+  @include make-frames;
+}

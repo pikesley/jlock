@@ -1,5 +1,5 @@
 // https://codepen.io/maxnguyen/pen/BzneE
-@use "../base/animators/rotator" as animator;
+@use "../base/animators/shooter" as animator;
 @use "../base/font" with ($font: "Fredoka One");
 @use "../base/layout";
 @use "../base/vars";
@@ -19,7 +19,7 @@ $dark-grey: lighten($inactive-colour, 20%);
 $shadow: rgba(0, 0, 0, 0.8);
 $highlight: rgba(255, 255, 255, 0.4);
 
-animator.$step-size: 50;
+// animator.$step-size: 50;
 
 animator.$activated-styles: (
   color: $active-colour,
