@@ -1,10 +1,10 @@
 import { conf } from "../conf.js";
-import { languages } from "./clockSets.js";
+import { languages } from "./internationalisation/index.js";
 
 let width = 11;
 
 let populateClock = function (elementID = "#clock", language = "en") {
-  let clockParts = languages[language];
+  let clockParts = languages[language]["data"];
 
   let element = document.querySelector(elementID);
   addDots(element, [1, 2]);
