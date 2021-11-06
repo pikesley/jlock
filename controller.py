@@ -18,7 +18,6 @@ def index():
         return render_template(
             "index.html",
             host_name=socket.gethostname(),
-            arrow_svg=Path("templates/images/arrow.svg").read_text(encoding="UTF-8"),
             languages=find_languages(),
             styles=sorted(
                 list(
@@ -28,18 +27,6 @@ def index():
                 )
             ),
         )
-
-
-@app.route("/cycle-style", methods=["POST"])
-def cycle_style():
-    """Send a click to the screen to move to the next stylesheet."""
-    os.environ["DISPLAY"] = ":0"
-    subprocess.run(("xdotool click 1").split(" "), check=True)
-
-    # the clock has a 1-second fade-out / 1-second fade-in
-    sleep(2)
-
-    return {"status": "OK"}
 
 
 @app.route("/reload", methods=["POST"])
