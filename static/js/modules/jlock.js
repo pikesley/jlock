@@ -30,14 +30,6 @@ let minutesClasses = function (minutes) {
   let principalInterval = intervalNameForValue(minutes);
   let output = [`.${principalInterval}`];
 
-  if (principalInterval == "twentyfive") {
-    output = [".twenty", ".five"];
-  }
-
-  if (principalInterval == "quarter") {
-    output.unshift(".a");
-  }
-
   if (minutes >= 35 && minutes < 60) {
     output.push(".to");
   } else if (minutes >= 5 && minutes <= 35) {
