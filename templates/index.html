@@ -21,44 +21,49 @@
       <h1>jlock</h1>
       <h2>on <em>{{host_name }}</em></h2>
     </header>
+
     <main>
-      <h3>Choose style</h3>
-
       <div id="styles">
-        {% for style in styles %} {% set name = style.split('.')[0] %}
+        <h3>Styles</h3>
 
-        <button class="style-button">
-          <a href="#" onClick="styleSelect('{{name}}')">{{name}}</a>
-        </button>
-        {% endfor %}
+        <ul>
+          {% for style in styles %} {% set name = style.split('.')[0] %}
+          <li>
+            <a href="#" onClick="styleSelect('{{name}}')"
+              >{{name | replace("-", " ")}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
       </div>
 
-      <hr />
+      <div id="languages">
+        <h3>Languages</h3>
 
-      <h3>Choose language</h3>
-      {% for key, value in languages.items() %}
-
-      <button>
-        <a href="#" onClick="languageSelect('{{key}}')">{{value}}</a>
-      </button>
-
-      {% endfor %}
+        <ul>
+          {% for key, value in languages.items() %}
+          <li>
+            <a href="#" onClick="languageSelect('{{key}}')">{{value}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </main>
 
     <script>
       let styleSelect = function (style) {
-        fetch("/controller/style", {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify({ style: style }),
-        });
+        sendData("/controller/style", { style: style });
       };
 
       let languageSelect = function (languageID) {
-        fetch("/controller/language", {
+        sendData("/controller/language", { language: languageID });
+      };
+
+      let sendData = function (endPoint, data) {
+        fetch(endPoint, {
           headers: { "Content-Type": "application/json" },
           method: "POST",
-          body: JSON.stringify({ language: languageID }),
+          body: JSON.stringify(data),
         });
       };
     </script>
