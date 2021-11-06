@@ -7,7 +7,7 @@ body {
 
 #clock {
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
+  grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(14, 1fr);
   gap: 0 0;
   align-items: center;
