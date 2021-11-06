@@ -38,8 +38,8 @@ export default {
     ],
     [
       { class: "h-0", text: "deu" },
-      { text: "g" },
       { classes: ["h-0", "h-10"], text: "ddeg" },
+      { text: "g" },
       { class: "h-5", text: "bump" },
     ],
     [

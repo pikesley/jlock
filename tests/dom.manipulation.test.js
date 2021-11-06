@@ -66,25 +66,25 @@ describe("DOM manipulation", function () {
       "cell-2-4",
       "cell-3-4",
       // two
-      "cell-8-6",
       "cell-9-6",
       "cell-10-6",
+      "cell-11-6",
     ]);
     expect(spans.inactives).toEqual([
       // twelve
-      "cell-5-8",
       "cell-6-8",
       "cell-7-8",
       "cell-8-8",
       "cell-9-8",
       "cell-10-8",
+      "cell-11-8",
       // oclock
-      "cell-5-9",
       "cell-6-9",
       "cell-7-9",
       "cell-8-9",
       "cell-9-9",
       "cell-10-9",
+      "cell-11-9",
     ]);
   });
 });
