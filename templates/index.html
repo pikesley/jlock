@@ -18,15 +18,20 @@
 
   <body>
     <header>
-      <h1>Jlock</h1>
-      <h2>on <em>{{host_name}}</em></h2>
-      <hr />
+      <h1>jlock</h1>
+      <h2>on <em>{{host_name }}</em></h2>
     </header>
-
     <main>
-      <button>
-        <a href="#" id="next-button">Next style</a>
-      </button>
+      <h3>Choose style</h3>
+
+      <div id="styles">
+        {% for style in styles %} {% set name = style.split('.')[0] %}
+
+        <button class="style-button">
+          <a href="#" onClick="styleSelect('{{name}}')">{{name}}</a>
+        </button>
+        {% endfor %}
+      </div>
 
       <hr />
 
@@ -41,16 +46,11 @@
     </main>
 
     <script>
-      let button = document.querySelector("#next-button");
-      button.addEventListener("click", (event) => {
-        cycle();
-      });
-
-      let cycle = function () {
-        let nextStyle = document.querySelector("#nextStyle");
-        fetch("/controller/cycle-style", {
+      let styleSelect = function (style) {
+        fetch("/controller/style", {
           headers: { "Content-Type": "application/json" },
           method: "POST",
+          body: JSON.stringify({ style: style }),
         });
       };
 

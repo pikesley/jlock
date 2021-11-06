@@ -44,4 +44,8 @@ button a {
   color: white;
 }
 
+button.style-button {
+  font-size: 2vh;
+}
+
 /*# sourceMappingURL=controller.css.map */
