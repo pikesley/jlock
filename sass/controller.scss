@@ -1,18 +1,25 @@
 $font: "Zen Kurenaido";
 @import url("https://fonts.googleapis.com/css2?family=#{$font}");
 
-$primary-colour: rgb(242, 101, 30);
-$background-colour: white;
-$lighter: lighten($primary-colour, 30%);
-$darker: darken($primary-colour, 10%);
+$primary: rgb(242, 101, 30);
+$faded-primary: lighten($primary, 30%);
+$gradient-colour: invert($faded-primary);
+$grid-gap: 1em;
+
+@mixin backdrop {
+  margin: 0;
+  border: 1px solid $primary;
+  background-color: $faded-primary;
+  padding: $grid-gap;
+  border-radius: 1em;
+}
 
 body {
   font-family: $font;
   text-align: center;
-  background-color: $background-colour;
-  color: $primary-colour;
-  margin: 4vh;
-  font-size: 4em;
+  color: $primary;
+  padding: 1em;
+  background: radial-gradient(white, $gradient-colour);
 }
 
 h1,
@@ -22,35 +29,53 @@ h2 {
 }
 
 h1 {
-  font-size: 10vh;
+  font-size: 10em;
 }
 
-h2,
+h2 {
+  font-size: 1em;
+}
+
 h3 {
-  font-size: 2vh;
+  font-size: 2em;
+  padding: 0em;
+  margin: 1em;
 }
 
 em {
   font-weight: bold;
-  font-size: 2.5vh;
-  color: $lighter;
 }
 
 a {
   text-decoration: none;
+  color: white;
 }
 
-button {
-  font-family: $font;
-  font-size: 4vh;
-  background-color: $primary-colour;
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $grid-gap;
+
+  @include backdrop;
+}
+
+li {
+  font-size: 2em;
+  background-color: $primary;
   padding: 0.5em;
-  border: none;
-  a {
-    color: white;
-  }
 }
 
-button.style-button {
-  font-size: 2vh;
+main {
+  display: grid;
+  gap: 3em;
+  padding: 0;
+}
+
+div {
+}
+
+header {
+  margin-bottom: 4em;
+  @include backdrop;
 }
