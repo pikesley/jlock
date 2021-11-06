@@ -2,12 +2,6 @@
 
 $name: fader;
 
-// set these to the styles you want for your `active` and `inactive` spans
-//
-// from a client, something like:
-//   fader.$activated-styles: (color: red, font-weight: bold);
-//
-// note that this is a *map* of values, not a CSS block
 $activated-styles: none;
 $deactivated-styles: none;
 

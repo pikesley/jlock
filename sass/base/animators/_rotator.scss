@@ -1,12 +1,3 @@
-// to use this from a client, do something like:
-//
-//    @use "../base/animators/rotator" as animator;
-//
-//    animator.$activated-styles: (color: red);
-//    animator.$deactivated-styles: (color: blue);
-//    animator.setup
-//
-
 @use "sass:math";
 @use "../utils";
 
