@@ -12,20 +12,14 @@ let initialise = function (element = "#clock") {
 
   // this will not work in jest
   try {
-    fetch("/css/clocks/")
+    fetch("/controller/style")
       .then(function (response) {
         return response.json();
       })
       .then(function (json) {
-        json.forEach(function (entry) {
-          if (entry.name.endsWith("css")) {
-            validStyles.push(entry.name.replace(/\.[^/.]+$/, ""));
-          }
-        });
-        setStyles();
-      })
-      .catch(function () {
-        setStyles("01-offset");
+        let style = json.style;
+        let element = document.querySelector("#styles");
+        element.setAttribute("href", `css/clocks/${style}.css`);
       });
   } catch (ReferenceError) {
     // but I don't really care
@@ -84,25 +78,6 @@ let cycleStyle = function () {
 
   // fade out and go to new location
   fadeOutAndRedirect(style);
-};
-
-let setStyles = function (specified = null) {
-  // extract the stylesheet from the querystring and apply it to the element
-  let element = document.querySelector("#styles");
-
-  if (specified) {
-    element.setAttribute("href", `css/clocks/${specified}.css`);
-    return;
-  }
-
-  let urlParams = new URLSearchParams(window.location.search);
-  let style = urlParams.get("style");
-
-  if (style && validStyles.includes(style)) {
-    element.setAttribute("href", `css/clocks/${style}.css`);
-  } else {
-    element.setAttribute("href", `css/clocks/${validStyles[0]}.css`);
-  }
 };
 
 // https://codepen.io/chrisbuttery/pen/hvDKi

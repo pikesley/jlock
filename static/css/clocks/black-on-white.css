@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat");
+@import url("https://fonts.googleapis.com/css2?family=Righteous");
 body {
-  font-family: "Montserrat";
+  font-family: "Righteous";
 }
 
 body {
@@ -37,7 +37,7 @@ body {
 @keyframes rotator-in {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
-    color: #002752;
+    color: transparent;
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -338,15 +338,13 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
-    color: #fa8100;
-    text-shadow: #fa8100 0 0 16px;
+    color: rgba(4, 4, 4, 0.445);
   }
 }
 @keyframes rotator-out {
   0% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(0turn);
-    color: #fa8100;
-    text-shadow: #fa8100 0 0 16px;
+    color: rgba(4, 4, 4, 0.445);
   }
   1% {
     transform: perspective(40vh) translateY(-0.6279051953vh) translateZ(0.0197327157vh) rotateX(-0.01turn);
@@ -647,12 +645,15 @@ body {
   }
   100% {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
-    color: #002752;
+    color: transparent;
   }
 }
 body {
-  background-color: #001b38;
-  color: #002752;
+  background: url("../../images/backgrounds/wall.png"), white;
+  font-size: 6vh;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+  color: transparent;
 }
 
-/*# sourceMappingURL=02-blue-orange.css.map */
+/*# sourceMappingURL=black-on-white.css.map */

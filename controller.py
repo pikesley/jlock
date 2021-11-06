@@ -19,10 +19,8 @@ def index():
             "index.html",
             host_name=socket.gethostname(),
             arrow_svg=Path("templates/images/arrow.svg").read_text(encoding="UTF-8"),
-            languages={
-                "English": "en",
-                "Welsh": "cy"
-            }
+            languages={"English": "en", "Welsh": "cy"},
+            styles = sorted(list(filter(lambda x: x.endswith(".css"), (os.listdir("static/css/clocks")))))
         )
 
 
@@ -44,6 +42,28 @@ def reload():
     os.environ["DISPLAY"] = ":0"
     subprocess.run(("xdotool key F5").split(" "), check=True)
     sleep(1)
+
+    return {"status": "OK"}
+
+
+@app.route("/style", methods=["GET"])
+def get_style():
+    """Get the language."""
+    style = app.redis.get("style")
+
+    if style:
+        style = style.decode()
+    else:
+        style = "blue-orange"
+
+    return {"style": style}
+
+
+@app.route("/style", methods=["POST"])
+def set_style():
+    """Set the language."""
+    app.redis.set("style", request.json["style"])
+    reload()
 
     return {"status": "OK"}
 
