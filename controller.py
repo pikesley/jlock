@@ -19,7 +19,7 @@ def index():
             "index.html",
             host_name=socket.gethostname(),
             arrow_svg=Path("templates/images/arrow.svg").read_text(encoding="UTF-8"),
-            languages={"English": "en", "Welsh": "cy"},
+            languages=find_languages(),
             styles=sorted(
                 list(
                     filter(
@@ -72,6 +72,22 @@ def set_language():
     reload()
 
     return {"status": "OK"}
+
+
+def find_languages():
+    """Find the available languages."""
+    languages = {}
+    lang_root = "static/js/modules/internationalisation/languages"
+    files = os.listdir(lang_root)
+    for file in files:
+        posix = Path(lang_root, file)
+        content = posix.read_text(encoding="UTF-8")
+        name = list(filter(lambda x: "name:" in x, content.split("\n")))[0].split('"')[
+            1
+        ]
+        languages[posix.stem] = name
+
+    return languages
 
 
 if __name__ == "__main__":  # nocov
