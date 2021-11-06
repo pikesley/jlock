@@ -71,7 +71,7 @@ describe("minutesClasses", function () {
     },
     {
       minutes: fiveMinutes(15),
-      ids: [".a", ".quarter", ".past"],
+      ids: [".quarter", ".past"],
     },
     {
       minutes: fiveMinutes(20),
@@ -79,7 +79,7 @@ describe("minutesClasses", function () {
     },
     {
       minutes: fiveMinutes(25),
-      ids: [".twenty", ".five", ".past"],
+      ids: [".twentyfive", ".past"],
     },
     {
       minutes: fiveMinutes(30),
@@ -87,7 +87,7 @@ describe("minutesClasses", function () {
     },
     {
       minutes: fiveMinutes(35),
-      ids: [".twenty", ".five", ".to"],
+      ids: [".twentyfive", ".to"],
     },
     {
       minutes: fiveMinutes(40),
@@ -95,7 +95,7 @@ describe("minutesClasses", function () {
     },
     {
       minutes: fiveMinutes(45),
-      ids: [".a", ".quarter", ".to"],
+      ids: [".quarter", ".to"],
     },
     {
       minutes: fiveMinutes(50),
@@ -191,7 +191,6 @@ describe("classesToBeActivatedFor", function () {
     expect(classesToBeActivatedFor({ hours: 15, minutes: 45 })).toEqual([
       ".it",
       ".is",
-      ".a",
       ".quarter",
       ".to",
       ".h-4",
@@ -214,8 +213,7 @@ describe("classesToBeActivatedFor", function () {
     expect(classesToBeActivatedFor({ hours: 3, minutes: 35 })).toEqual([
       ".it",
       ".is",
-      ".twenty",
-      ".five",
+      ".twentyfive",
       ".to",
       ".h-4",
     ]);
@@ -245,8 +243,7 @@ describe("classesToBeActivatedFor", function () {
     expect(classesToBeActivatedFor({ hours: 12, minutes: 27 })).toEqual([
       ".it",
       ".is",
-      ".twenty",
-      ".five",
+      ".twentyfive",
       ".past",
       ".h-0",
       ".m-1",
@@ -256,8 +253,7 @@ describe("classesToBeActivatedFor", function () {
     expect(classesToBeActivatedFor({ hours: 12, minutes: 35 })).toEqual([
       ".it",
       ".is",
-      ".twenty",
-      ".five",
+      ".twentyfive",
       ".to",
       ".h-1",
     ]);
