@@ -1,7 +1,7 @@
 import { conf } from "../conf.js";
 import { languages } from "./internationalisation/index.js";
 
-let width = 11;
+let width = 12;
 
 let populateClock = function (elementID = "#clock", language = "en") {
   let clockParts = languages[language]["data"];
