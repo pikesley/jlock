@@ -4,7 +4,6 @@ import { populateClock } from "./populate.js";
 import { classesToBeActivatedFor } from "./jlock.js";
 import { conf } from "../conf.js";
 
-var validStyles = [];
 var html = document.querySelector("html");
 
 let initialise = function (element = "#clock") {
@@ -83,7 +82,7 @@ function fadeIn() {
 function urlParams() {
   let count = 0;
   let params = new URLSearchParams(window.location.search);
-  params.forEach(function (key, value) {
+  params.forEach(function () {
     count += 1;
   });
 
