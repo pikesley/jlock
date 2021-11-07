@@ -1,9 +1,9 @@
 /* Error: Can't find stylesheet to import.
  *   ,
- * 2 | @use "../base/animators/fader" as animator;
+ * 3 | @use "../base/animators/fader" as animator;
  *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
- *   sass/clocks/broken-clocks/offset.scss 2:1  root stylesheet */
+ *   sass/clocks/broken-clocks/offset.scss 3:1  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @use \"../base/animators/fader\" as animator;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   sass/clocks/broken-clocks/offset.scss 2:1  root stylesheet";
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 3 \2502  @use \"../base/animators/fader\" as animator;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   sass/clocks/broken-clocks/offset.scss 3:1  root stylesheet";
 }

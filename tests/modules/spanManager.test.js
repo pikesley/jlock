@@ -13,12 +13,12 @@ describe("SpanManager", function () {
     expect(sm.next).toEqual([".it", ".is", ".h-6", ".oclock", ".m-1"]);
   });
 
-  it("assumes correct defaults", function(){
-    let sm = new SpanManager(null, null)
+  it("assumes correct defaults", function () {
+    let sm = new SpanManager(null, null);
 
-    expect(sm.current).toEqual([])
-    expect(sm.next).toEqual([])
-  })
+    expect(sm.current).toEqual([]);
+    expect(sm.next).toEqual([]);
+  });
 
   it("knows when it has diffs", function () {
     let sm = new SpanManager(["foo"], ["foo", "bar"]);
@@ -37,8 +37,7 @@ describe("SpanManager", function () {
       [
         ".it",
         ".is",
-        ".twenty",
-        ".five",
+        ".twentyfive",
         ".past",
         ".h-6",
         ".m-1",
@@ -51,8 +50,7 @@ describe("SpanManager", function () {
 
     expect(sm.activate).toEqual([".half"]);
     expect(sm.deactivate).toEqual([
-      ".twenty",
-      ".five",
+      ".twentyfive",
       ".m-1",
       ".m-2",
       ".m-3",
@@ -72,8 +70,7 @@ describe("SpanManager", function () {
       [
         ".it",
         ".is",
-        ".twenty",
-        ".five",
+        ".twentyfive",
         ".past",
         ".h-6",
         ".m-1",

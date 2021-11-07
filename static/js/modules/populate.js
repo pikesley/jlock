@@ -1,8 +1,6 @@
 import { conf } from "../conf.js";
 import { languages } from "./internationalisation/index.js";
 
-let width = 12;
-
 let populateClock = function (elementID = "#clock", language = "en") {
   let clockParts = languages[language]["data"];
 
@@ -52,7 +50,7 @@ let addSpacerSpans = function (element) {
 
 let addBlankRows = function (element) {
   for (let i = 0; i < conf.spacers; i++) {
-    for (let j = 0; j < width + conf.spacers * 2 + 2; j++) {
+    for (let j = 0; j < conf.width + conf.spacers * 2 + 2; j++) {
       let span = getSpan();
       element.append(span);
     }
@@ -62,7 +60,7 @@ let addBlankRows = function (element) {
 let addDots = function (element, minutes) {
   element.append(dotSpan(minutes[0]));
 
-  for (let i = 0; i < width + conf.spacers * 2; i++) {
+  for (let i = 0; i < conf.width + conf.spacers * 2; i++) {
     let span = getSpan();
     element.append(span);
   }
