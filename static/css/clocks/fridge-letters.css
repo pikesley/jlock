@@ -50,13 +50,9 @@ body {
     transform: perspective(30vh) translateZ(10vh);
   }
   70% {
-    color: #ff9100;
-    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
     transform: perspective(30vh) translateZ(10vh);
   }
-  95% {
-    color: #ff9100;
-    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
+  99% {
     transform: perspective(30vh) translateZ(-20vh);
   }
   100% {
@@ -70,7 +66,24 @@ body {
     color: #ff9100;
     text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
   }
+  40% {
+    color: #ff9100;
+    text-shadow: #995700 0 0 0.1vh, #ff9100 0 -0.1vh 0.2vh, #ff9100 0 -0.3vh 0.2vh, rgba(0, 0, 0, 0.8) 0 2vh 2vh;
+    transform: perspective(30vh) translateZ(10vh);
+  }
+  60% {
+    color: black;
+    text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
+    transform: perspective(30vh) translateZ(10vh);
+  }
+  70% {
+    transform: perspective(30vh) translateZ(10vh);
+  }
+  99% {
+    transform: perspective(30vh) translateZ(-20vh);
+  }
   100% {
+    transform: perspective(30vh) translateZ(0);
     color: black;
     text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
   }
