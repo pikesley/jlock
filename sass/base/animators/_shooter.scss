@@ -8,46 +8,48 @@ $perspective: 30vh;
 $activated-styles: none;
 $deactivated-styles: none;
 
-@mixin make-frames {
-  @keyframes #{$name}-in {
+@mixin shoot($direction) {
+  $start-styles: $deactivated-styles;
+  $end-styles: $activated-styles;
+
+  @if $direction == out {
+    $start-styles: $activated-styles;
+    $end-styles: $deactivated-styles;
+  }
+
+  @keyframes #{$name}-#{$direction} {
     0% {
-      @include utils.render-styles($deactivated-styles);
+      @include utils.render-styles($start-styles);
     }
 
     40% {
-      @include utils.render-styles($deactivated-styles);
+      @include utils.render-styles($start-styles);
       transform: perspective($perspective) translateZ($shoot-distance);
     }
 
     60% {
-      @include utils.render-styles($activated-styles);
+      @include utils.render-styles($end-styles);
       transform: perspective($perspective) translateZ($shoot-distance);
     }
 
     70% {
-      @include utils.render-styles($activated-styles);
       transform: perspective($perspective) translateZ($shoot-distance);
     }
 
-    95% {
-      @include utils.render-styles($activated-styles);
+    99% {
       transform: perspective($perspective) translateZ(-$shoot-distance * 2);
     }
 
     100% {
       transform: perspective($perspective) translateZ(0);
-      @include utils.render-styles($activated-styles);
+      @include utils.render-styles($end-styles);
     }
   }
+}
 
-  @keyframes #{$name}-out {
-    0% {
-      @include utils.render-styles($activated-styles);
-    }
-    100% {
-      @include utils.render-styles($deactivated-styles);
-    }
-  }
+@mixin make-frames {
+  @include shoot(in);
+  @include shoot(out);
 }
 
 @mixin setup($duration: 6s) {
