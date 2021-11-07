@@ -1,12 +1,11 @@
 $clock-spacers: 1; // this should match `spacers` in `static/js/conf.js`
+$clock-width: 12; // this should match `clockWidth` in `static/js/conf.js`
+$clock-height: 10;
 
 $background-root: "../../images/backgrounds/";
 $grid-gap: 0;
 $font-size: 5vh;
 $outer-margin: 1vh;
-
-$clock-width: 12;
-$clock-height: 10;
 
 ///
 
