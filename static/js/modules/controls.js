@@ -10,32 +10,40 @@ var html = document.querySelector("html");
 let initialise = function (element = "#clock") {
   fadeIn();
 
-  // this will not work in jest
-  try {
-    fetch("/controller/style")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (json) {
-        let style = json.style;
-        let element = document.querySelector("#styles");
-        element.setAttribute("href", `css/clocks/${style}.css`);
-      });
-  } catch (ReferenceError) {
-    // but I don't really care
-    null;
-  }
+  let params = urlParams();
 
-  try {
-    fetch("/controller/language")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (json) {
-        run(element, json.language);
-      });
-  } catch (ReferenceError) {
-    null;
+  if (params) {
+    runServerLess(params, element);
+  } else {
+    // this will not work in jest
+    try {
+      fetch("/controller/style")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          let style = json.style;
+          // let element = document.querySelector("#styles");
+          document
+            .querySelector("#styles")
+            .setAttribute("href", `css/clocks/${style}.css`);
+        });
+    } catch (ReferenceError) {
+      // but I don't really care
+      null;
+    }
+
+    try {
+      fetch("/controller/language")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          run(element, json.language);
+        });
+    } catch (ReferenceError) {
+      null;
+    }
   }
 };
 
@@ -48,11 +56,6 @@ let run = function (element, language) {
 
   // check for updates every second
   setInterval(refreshClock, 1000);
-
-  // call cycleStyle when we get a click anywhere
-  document.addEventListener("click", function () {
-    cycleStyle();
-  });
 };
 
 let refreshClock = function () {
@@ -65,34 +68,6 @@ let refreshClock = function () {
   sm.yeet();
 };
 
-let cycleStyle = function () {
-  // rotate throught the available stylesheets
-  let styleIndex = parseInt(localStorage.styleIndex);
-  if (!styleIndex) {
-    styleIndex = 0;
-  }
-  styleIndex = (styleIndex + 1) % validStyles.length;
-
-  let style = validStyles[styleIndex];
-  localStorage.styleIndex = styleIndex;
-
-  // fade out and go to new location
-  fadeOutAndRedirect(style);
-};
-
-// https://codepen.io/chrisbuttery/pen/hvDKi
-function fadeOutAndRedirect(style) {
-  html.style.opacity = 1;
-
-  (function fade() {
-    if (!((html.style.opacity -= conf.fadeIncrement) < 0)) {
-      requestAnimationFrame(fade);
-    } else {
-      location.replace(`?style=${style}`);
-    }
-  })();
-}
-
 function fadeIn() {
   html.style.opacity = 0;
 
@@ -103,6 +78,40 @@ function fadeIn() {
       requestAnimationFrame(fade);
     }
   })();
+}
+
+function urlParams() {
+  let count = 0;
+  let params = new URLSearchParams(window.location.search);
+  params.forEach(function (key, value) {
+    count += 1;
+  });
+
+  if (count > 0) {
+    return params;
+  }
+
+  return false;
+}
+
+// run where we don't have a backend (netlify, for example)
+function runServerLess(params, element) {
+  let language = "en";
+  let style = "blue-orange";
+
+  if (params.get("style")) {
+    style = params.get("style");
+  }
+
+  if (params.get("language")) {
+    language = params.get("language");
+  }
+
+  document
+    .querySelector("#styles")
+    .setAttribute("href", `css/clocks/${style}.css`);
+
+  run(element, language);
 }
 
 export { initialise, run };
