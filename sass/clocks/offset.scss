@@ -30,9 +30,9 @@ body {
   @include utils.stroke-colour($stroke-colour);
   color: transparent;
   text-shadow: $offset $offset $inactive-colour;
-  font-size: 9vh;
+  font-size: 6.5vh;
 }
 
 span {
-  margin: -4vh;
+  margin: -1vh;
 }
