@@ -20,19 +20,21 @@ class SpanManager {
   yeet() {
     // actually switch the spans
     if (this.diffs) {
-      this.activate.forEach(function (span) {
-        let elements = document.querySelectorAll(span);
-        elements.forEach(function (element) {
-          element.classList.remove("inactive");
-          element.classList.add("active");
-        });
-      });
-
+      // this ordering is IMPORTANT - activating before deactivating causes things to be deactivated incorrectly
+      // see tests/activationBugFix.test.js
       this.deactivate.forEach(function (span) {
         let elements = document.querySelectorAll(span);
         elements.forEach(function (element) {
           element.classList.remove("active");
           element.classList.add("inactive");
+        });
+      });
+
+      this.activate.forEach(function (span) {
+        let elements = document.querySelectorAll(span);
+        elements.forEach(function (element) {
+          element.classList.remove("inactive");
+          element.classList.add("active");
         });
       });
 
