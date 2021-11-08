@@ -18,8 +18,9 @@ body {
   font-family: $font;
   text-align: center;
   color: $primary;
-  margin: 1vh;
-  background: radial-gradient(white, $gradient-colour);
+  padding: 1vh;
+  // background: radial-gradient(white, $gradient-colour);
+  background: $gradient-colour;
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
@@ -35,14 +36,13 @@ h1 {
   font-size: 10em;
 }
 
-h2 {
+.identifier {
   font-size: 2em;
 }
 
-h3 {
-  font-size: 2em;
-  padding: 0em;
-  margin: 1em;
+h2 {
+  font-size: 4em;
+  margin: 0.5em;
 }
 
 em {
@@ -63,10 +63,20 @@ ul {
   @include backdrop;
 }
 
-li {
-  font-size: 2em;
+button {
+  font-family: $font;
+  font-size: 3em;
+  text-transform: lowercase;
   background-color: $primary;
+  color: white;
   padding: 0.5em;
+  width: 100%;
+  border: none;
+  border-radius: 0.3em;
+
+  &:active {
+    color: $faded-primary;
+  }
 }
 
 main {
@@ -76,9 +86,10 @@ main {
 }
 
 div {
+  // border: solid 1px red;
 }
 
 header {
-  margin-bottom: 4em;
   @include backdrop;
+  margin-bottom: 4em;
 }

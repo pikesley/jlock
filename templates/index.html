@@ -19,31 +19,33 @@
   <body>
     <header>
       <h1>jlock</h1>
-      <h2>on <em>{{host_name }}</em></h2>
+      <span class="identifier">on <em>{{host_name }}</em></span>
     </header>
 
     <main>
       <div id="styles">
-        <h3>Styles</h3>
+        <h2>Styles</h2>
 
         <ul>
           {% for style in styles %} {% set name = style.split('.')[0] %}
           <li>
-            <a href="#" onClick="styleSelect('{{name}}')"
-              >{{name | replace("-", " ")}}</a
-            >
+            <button id="style-{{name}}" onClick="styleSelect('{{name}}')">
+              {{name | replace("-", " ")}}
+            </button>
           </li>
           {% endfor %}
         </ul>
       </div>
 
       <div id="languages">
-        <h3>Languages</h3>
+        <h2>Languages</h2>
 
         <ul>
-          {% for key, value in languages.items() %}
+          {% for id, name in languages.items() %}
           <li>
-            <a href="#" onClick="languageSelect('{{key}}')">{{value}}</a>
+            <button id="language-{{id}}" onClick="languageSelect('{{id}}')">
+              {{name}}
+            </button>
           </li>
           {% endfor %}
         </ul>
