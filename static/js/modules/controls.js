@@ -37,13 +37,7 @@ let runWithBackend = function (element) {
 
   fetch("/controller/language")
     .then(function (response) {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response;
-    })
-    .then(function (response) {
-      return response.json;
+      return response.json();
     })
     .then(function (json) {
       run(element, json.language);
