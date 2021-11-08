@@ -3,8 +3,8 @@ body {
   font-family: "Zen Kurenaido";
   text-align: center;
   color: #f2651e;
-  margin: 1vh;
-  background: radial-gradient(white, #053750);
+  padding: 1vh;
+  background: #053750;
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
@@ -20,14 +20,13 @@ h1 {
   font-size: 10em;
 }
 
-h2 {
+.identifier {
   font-size: 2em;
 }
 
-h3 {
-  font-size: 2em;
-  padding: 0em;
-  margin: 1em;
+h2 {
+  font-size: 4em;
+  margin: 0.5em;
 }
 
 em {
@@ -51,10 +50,19 @@ ul {
   border-radius: 1em;
 }
 
-li {
-  font-size: 2em;
+button {
+  font-family: "Zen Kurenaido";
+  font-size: 3em;
+  text-transform: lowercase;
   background-color: #f2651e;
+  color: white;
   padding: 0.5em;
+  width: 100%;
+  border: none;
+  border-radius: 0.3em;
+}
+button:active {
+  color: #fac8af;
 }
 
 main {
@@ -64,12 +72,12 @@ main {
 }
 
 header {
-  margin-bottom: 4em;
   margin: 0;
   border: 1px solid #f2651e;
   background-color: #fac8af;
   padding: 1em;
   border-radius: 1em;
+  margin-bottom: 4em;
 }
 
 /*# sourceMappingURL=controller.css.map */
