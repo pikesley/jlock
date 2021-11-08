@@ -1,6 +1,6 @@
 import { run } from "modules/controls.js";
 import { gatherSpanIDs } from "./support/helpers.js";
-
+let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
 describe("Integration test", function () {
@@ -10,10 +10,10 @@ describe("Integration test", function () {
     let div = global.document.createElement("div");
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
-    run("#test-clock");
+    run("#test-clock", "en", interval);
 
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:34"));
-    await new Promise((r) => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, interval));
     expect(consoleLogMock).toBeCalledWith(
       ".it .is .half .past .h-6 .m-1 .m-2 .m-3 .m-4"
     );
@@ -59,7 +59,7 @@ describe("Integration test", function () {
     ]);
 
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:35"));
-    await new Promise((r) => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, interval));
     expect(consoleLogMock).toBeCalledWith(".it .is .twentyfive .to .h-7");
 
     spans = gatherSpanIDs(div);
