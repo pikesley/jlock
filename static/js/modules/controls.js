@@ -7,46 +7,77 @@ import { conf } from "../conf.js";
 var html = document.querySelector("html");
 
 let initialise = function (element = "#clock") {
-  fadeIn();
-
-  let params = urlParams();
-
-  if (params) {
-    runServerLess(params, element);
-  } else {
-    // this will not work in jest
-    try {
-      fetch("/controller/style")
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (json) {
-          let style = json.style;
-          // let element = document.querySelector("#styles");
-          document
-            .querySelector("#styles")
-            .setAttribute("href", `css/clocks/${style}.css`);
-        });
-    } catch (ReferenceError) {
-      // but I don't really care
-      null;
-    }
-
-    try {
-      fetch("/controller/language")
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (json) {
-          run(element, json.language);
-        });
-    } catch (ReferenceError) {
-      null;
-    }
-  }
+  // see if the backend is reachable
+  fetch("/controller/")
+    .then(function (response) {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response;
+    })
+    .then(function () {
+      runWithBackend(element);
+    })
+    .catch(function () {
+      runServerLess(element);
+    });
 };
 
-let run = function (element, language) {
+let runWithBackend = function (element) {
+  fetch("/controller/style")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      let style = json.style;
+      document
+        .querySelector("#styles")
+        .setAttribute("href", `css/clocks/${style}.css`);
+    });
+
+  fetch("/controller/language")
+    .then(function (response) {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response;
+    })
+    .then(function (response) {
+      return response.json;
+    })
+    .then(function (json) {
+      run(element, json.language);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+// run where we don't have a backend (netlify, for example)
+function runServerLess(element) {
+  let style = conf.defaults.style;
+  let language = conf.defaults.language;
+
+  let params = new URLSearchParams(window.location.search);
+  if (params.get("style")) {
+    style = params.get("style");
+  }
+
+  if (params.get("language")) {
+    language = params.get("language");
+  }
+
+  document
+    .querySelector("#styles")
+    .setAttribute("href", `css/clocks/${style}.css`);
+
+  run(element, language);
+}
+
+// we can override `interval` to speed up our tests
+let run = function (element, language, interval = 1000) {
+  fadeIn();
+
   populateClock(element, language);
 
   // force it to update on the first load
@@ -54,7 +85,7 @@ let run = function (element, language) {
   refreshClock();
 
   // check for updates every second
-  setInterval(refreshClock, 1000);
+  setInterval(refreshClock, interval);
 };
 
 let refreshClock = function () {
@@ -77,40 +108,6 @@ function fadeIn() {
       requestAnimationFrame(fade);
     }
   })();
-}
-
-function urlParams() {
-  let count = 0;
-  let params = new URLSearchParams(window.location.search);
-  params.forEach(function () {
-    count += 1;
-  });
-
-  if (count > 0) {
-    return params;
-  }
-
-  return false;
-}
-
-// run where we don't have a backend (netlify, for example)
-function runServerLess(params, element) {
-  let language = "en";
-  let style = "blue-orange";
-
-  if (params.get("style")) {
-    style = params.get("style");
-  }
-
-  if (params.get("language")) {
-    language = params.get("language");
-  }
-
-  document
-    .querySelector("#styles")
-    .setAttribute("href", `css/clocks/${style}.css`);
-
-  run(element, language);
 }
 
 export { initialise, run };

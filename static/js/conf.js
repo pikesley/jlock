@@ -3,6 +3,12 @@ let conf = {
   width: 12, // this should match `clock-width` in `sass/base/_vars.scss`
   fadeIncrement: 0.1,
   dot: "•",
+
+  defaults: {
+    // what we'll use when running serverless
+    style: "black-on-white",
+    language: "en",
+  },
 };
 
 export { conf };
