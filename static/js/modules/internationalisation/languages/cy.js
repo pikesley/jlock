@@ -55,9 +55,9 @@ export default {
     ],
     [
       { class: "h-1", text: "un" },
-      { text: "f" },
-      { class: "oclock", text: "or" },
       { text: "es" },
+      { class: "oclock", text: "or" },
+      { text: "f" },
       { class: "oclock", text: "gloch" },
     ],
   ],

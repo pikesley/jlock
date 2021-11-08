@@ -18,8 +18,11 @@ body {
   font-family: $font;
   text-align: center;
   color: $primary;
-  padding: 1em;
+  margin: 1vh;
   background: radial-gradient(white, $gradient-colour);
+  text-transform: lowercase;
+  height: 99vh;
+  overflow: hidden;
 }
 
 h1,

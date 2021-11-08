@@ -3,8 +3,11 @@ body {
   font-family: "Zen Kurenaido";
   text-align: center;
   color: #f2651e;
-  padding: 1em;
+  margin: 1vh;
   background: radial-gradient(white, #053750);
+  text-transform: lowercase;
+  height: 99vh;
+  overflow: hidden;
 }
 
 h1,
