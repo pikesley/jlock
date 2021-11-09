@@ -1,5 +1,5 @@
 // https://codepen.io/markmead/pen/YjQKeZ
-@use "../base/animators/rotator" as animator;
+@use "../base/animators/twirler" as animator;
 @use "../base/layout";
 @use "../base/vars";
 
@@ -13,7 +13,7 @@ $active-colour: $magenta;
 $background-colour: $white;
 $inactive-colour: $off-white;
 
-animator.$step-size: 100;
+// animator.$step-size: 100;
 animator.$activated-styles: (color: $active-colour);
 animator.$deactivated-styles: (color: $inactive-colour);
 

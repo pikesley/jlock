@@ -1,0 +1,84 @@
+@use "sass:math";
+@use "../utils";
+
+$name: twirler;
+
+$tau: math.$pi * 2;
+
+// some defaults
+
+// perspective for the animation transforms. basically how far away we are
+$perspective: 10vh;
+
+// how many times to rotate
+$turns: 1turn;
+
+// set these to the styles you want for your `active` and `inactive` spans
+//
+// note that this is a *map* of values, not a CSS block
+$activated-styles: none;
+$deactivated-styles: none;
+
+////
+
+// how much to rotate for `$index`
+//
+// with no `$turns` supplied, the result is *unitless*
+@function rotation($index, $turns: $turns) {
+  @return math.div($index, 100) * $turns;
+}
+
+// select which mixin to include in the frame for `$index` and `$direction`
+@mixin select-include($index, $direction) {
+  @if $direction == "in" {
+    @if $index == 0 {
+      @include utils.render-styles($deactivated-styles);
+    }
+    @if $index == 100 {
+      @include utils.render-styles($activated-styles);
+    }
+  }
+
+  @if $direction == "out" {
+    @if $index == 0 {
+      @include utils.render-styles($activated-styles);
+    }
+    @if $index == 100 {
+      @include utils.render-styles($deactivated-styles);
+    }
+  }
+}
+
+// generate one frame of animation for `$index` and `$direction`
+@mixin one-frame($index, $direction) {
+  transform: perspective($perspective)
+    rotateY(rotation($index, $turns: -$turns));
+  @include select-include($index, $direction);
+}
+
+// generate a set of frames for `$direction`
+@mixin frame-generator($direction) {
+  @for $i from 0 through 100 {
+    #{$i}% {
+      @include one-frame($i, $direction);
+    }
+  }
+}
+
+// generate two @keyframe sets, `rotate-in` and `rotate-out`
+//
+// `rotate-in` should be applied to things that have just become `active`
+// `rotate-out` should be applied to things that have just become `inactive`
+@mixin make-frames {
+  @each $anim in "in", "out" {
+    @keyframes #{$name}-#{$anim} {
+      @include frame-generator($anim);
+    }
+  }
+}
+
+// call this from a client to set everything up
+@mixin setup($duration: 2s) {
+  @include utils.active-inactive($name, $duration);
+  @include make-frames;
+}
