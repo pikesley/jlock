@@ -26,6 +26,13 @@ body {
   text-align: center;
 }
 
+body {
+  background: url("../../images/backgrounds/texture.png"), black;
+  -webkit-text-stroke-width: 0.1vh;
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
+  color: black;
+}
+
 .active {
   animation: rotator-in 2s 1s forwards;
 }
@@ -647,12 +654,6 @@ body {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(1turn);
     color: black;
   }
-}
-body {
-  background: url("../../images/backgrounds/texture.png"), black;
-  -webkit-text-stroke-width: 0.1vh;
-  -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
-  color: black;
 }
 
 /*# sourceMappingURL=white-on-black.css.map */

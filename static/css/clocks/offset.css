@@ -26,6 +26,19 @@ body {
   text-align: center;
 }
 
+body {
+  background: radial-gradient(#fad400, #fa8100);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  color: transparent;
+  text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
+  font-size: 6.5vh;
+}
+
+span {
+  margin: -1vh;
+}
+
 .active {
   animation: fader-in 2s 1s forwards;
 }
@@ -49,18 +62,6 @@ body {
   100% {
     text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
   }
-}
-body {
-  background: radial-gradient(#fad400, #fa8100);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  color: transparent;
-  text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-  font-size: 6.5vh;
-}
-
-span {
-  margin: -1vh;
 }
 
 /*# sourceMappingURL=offset.css.map */

@@ -26,6 +26,12 @@ body {
   text-align: center;
 }
 
+body {
+  font-size: 5.5vh;
+  background: url("../../images/backgrounds/linen.png"), radial-gradient(gray, black);
+  color: black;
+}
+
 .active {
   animation: shooter-in 2s 1s forwards;
 }
@@ -87,11 +93,6 @@ body {
     color: black;
     text-shadow: #333333 0 0 0.1vh, rgba(255, 255, 255, 0.4) 0 0.1vh 0.3vh;
   }
-}
-body {
-  font-size: 5.5vh;
-  background: url("../../images/backgrounds/linen.png"), radial-gradient(gray, black);
-  color: black;
 }
 
 /*# sourceMappingURL=fridge-letters.css.map */

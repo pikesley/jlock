@@ -21,6 +21,21 @@ body {
   text-align: center;
 }
 
+@font-face {
+  font-family: "Sinclair";
+  src: url("../../fonts/sinclair.ttf") format("truetype");
+}
+body {
+  font-family: "Sinclair";
+  background: white;
+  background-image: url("../../images/backgrounds/1982.png");
+  background-repeat: no-repeat;
+  background-size: auto 3vh;
+  background-position: center bottom 3vh;
+  font-size: 6vh;
+  color: #bfbfbf;
+}
+
 .active {
   animation: twirler-in 2s 1s forwards;
 }
@@ -642,20 +657,6 @@ body {
     transform: perspective(10vh) rotateY(-1turn);
     color: #bfbfbf;
   }
-}
-@font-face {
-  font-family: "Sinclair";
-  src: url("../../fonts/sinclair.ttf") format("truetype");
-}
-body {
-  font-family: "Sinclair";
-  background: white;
-  background-image: url("../../images/backgrounds/1982.png");
-  background-repeat: no-repeat;
-  background-size: auto 3vh;
-  background-position: center bottom 3vh;
-  font-size: 6vh;
-  color: #bfbfbf;
 }
 
 /*# sourceMappingURL=sinclair.css.map */

@@ -26,6 +26,11 @@ body {
   text-align: center;
 }
 
+body {
+  background-color: #001b38;
+  color: #002752;
+}
+
 .active {
   animation: rotator-in 2s 1s forwards;
 }
@@ -649,10 +654,6 @@ body {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
     color: #002752;
   }
-}
-body {
-  background-color: #001b38;
-  color: #002752;
 }
 
 /*# sourceMappingURL=blue-orange.css.map */

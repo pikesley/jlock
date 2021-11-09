@@ -26,6 +26,14 @@ body {
   text-align: center;
 }
 
+body {
+  background: url("../../images/backgrounds/wall.png"), white;
+  font-size: 6vh;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
+  color: transparent;
+}
+
 .active {
   animation: rotator-in 2s 1s forwards;
 }
@@ -647,13 +655,6 @@ body {
     transform: perspective(40vh) translateY(0vh) translateZ(0vh) rotateX(-1turn);
     color: transparent;
   }
-}
-body {
-  background: url("../../images/backgrounds/wall.png"), white;
-  font-size: 6vh;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgba(4, 4, 4, 0.445);
-  color: transparent;
 }
 
 /*# sourceMappingURL=black-on-white.css.map */

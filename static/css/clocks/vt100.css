@@ -26,6 +26,14 @@ body {
   text-align: center;
 }
 
+body {
+  background: url("../../images/backgrounds/scanlines.png"), radial-gradient(#143300, black);
+  font-size: 3.5vh;
+  -webkit-text-stroke-color: #296600;
+  -webkit-text-stroke-width: 1px;
+  color: transparent;
+}
+
 .active {
   animation: rotator-in 2s 1s forwards;
 }
@@ -61,13 +69,6 @@ body {
   100% {
     transform: perspective(4vh) translateY(0vh) translateZ(0vh) rotateX(8turn);
   }
-}
-body {
-  background: url("../../images/backgrounds/scanlines.png"), radial-gradient(#143300, black);
-  font-size: 3.5vh;
-  -webkit-text-stroke-color: #296600;
-  -webkit-text-stroke-width: 1px;
-  color: transparent;
 }
 
 /*# sourceMappingURL=vt100.css.map */
