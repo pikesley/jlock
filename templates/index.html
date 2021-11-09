@@ -29,7 +29,7 @@
         <ul>
           {% for style in styles %} {% set name = style.split('.')[0] %}
           <li>
-            <button id="style-{{name}}" onClick="styleSelect('{{name}}')">
+            <button id="style-{{name}}" onClick="select('style', '{{name}}')">
               {{name | replace("-", " ")}}
             </button>
           </li>
@@ -43,7 +43,7 @@
         <ul>
           {% for id, name in languages.items() %}
           <li>
-            <button id="language-{{id}}" onClick="languageSelect('{{id}}')">
+            <button id="language-{{id}}" onClick="select('language', '{{id}}')">
               {{name}}
             </button>
           </li>
@@ -53,21 +53,65 @@
     </main>
 
     <script>
-      let styleSelect = function (style) {
-        sendData("/controller/style", { style: style });
+      let currents = {
+        style: null,
+        languages: null,
       };
 
-      let languageSelect = function (languageID) {
-        sendData("/controller/language", { language: languageID });
-      };
+      let select = function (selectable, id) {
+        if (currents[selectable] == id) {
+          return;
+        }
 
-      let sendData = function (endPoint, data) {
-        fetch(endPoint, {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify(data),
+        let buttons = document.querySelectorAll(`#${selectable}s button`);
+        buttons.forEach(function (b) {
+          ["selected", "pending"].forEach(function (state) {
+            b.classList.remove(state);
+          });
+        });
+
+        setButtonClass(`#${selectable}s`, `#${selectable}-${id}`, "pending");
+
+        sendData(`/controller/${selectable}`, id).then(function (data) {
+          setActive(selectable);
         });
       };
+
+      let sendData = function (endPoint, value) {
+        return fetch(endPoint, {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify({ value: value }),
+        });
+      };
+
+      let setActive = function (selectable) {
+        fetch(`/controller/${selectable}`, {
+          headers: { "Content-Type": "application/json" },
+          method: "GET",
+        })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (json) {
+            setButtonClass(
+              `#${selectable}s`,
+              `#${selectable}-${json[selectable]}`,
+              "selected"
+            );
+            console.log(`${selectable}: ${json[selectable]}`);
+            currents[selectable] = json[selectable];
+          });
+      };
+
+      let setButtonClass = function (enclosing, id, klass) {
+        let button = document.querySelector(`${enclosing} ${id}`);
+        button.classList.add(klass);
+      };
+
+      ["style", "language"].forEach(function (item) {
+        setActive(item);
+      });
     </script>
   </body>
 </html>

@@ -17,7 +17,7 @@ h2 {
 }
 
 h1 {
-  font-size: 10em;
+  font-size: 8em;
 }
 
 .identifier {
@@ -31,11 +31,6 @@ h2 {
 
 em {
   font-weight: bold;
-}
-
-a {
-  text-decoration: none;
-  color: white;
 }
 
 ul {
@@ -63,6 +58,14 @@ button {
 }
 button:active {
   color: #fac8af;
+}
+
+button.pending {
+  background-color: #712a07;
+}
+
+button.selected {
+  background-color: #053750;
 }
 
 main {
