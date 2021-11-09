@@ -5,7 +5,7 @@ Description=Jlock Control Webserver
 [Service]
 User=pi
 WorkingDirectory=/home/pi/jlock/
-ExecStart=/bin/bash -lc '/home/pi/.local/bin/gunicorn -b 0.0.0.0:5000 controller:app'
+ExecStart=/bin/bash -lc '/home/pi/.local/bin/gunicorn --bind 0.0.0.0:5000 --access-logfile - controller:app'
 Restart=always
 StandardInput=null
 StandardOutput=file:/var/log/controller/controller.log
