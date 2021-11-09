@@ -19,13 +19,7 @@ def index():
             "index.html",
             host_name=socket.gethostname(),
             languages=find_languages(),
-            styles=sorted(
-                list(
-                    filter(
-                        lambda x: x.endswith(".css"), (os.listdir("static/css/clocks"))
-                    )
-                )
-            ),
+            styles=find_styles(),
         )
 
 
@@ -34,6 +28,7 @@ def reload():
     """Reload the screen."""
     if "PLATFORM" in os.environ:
         if os.environ["PLATFORM"] == "docker":
+            sleep(1)
             return {"status": "OK", "platform": "docker"}
 
     os.environ["DISPLAY"] = ":0"
@@ -58,7 +53,7 @@ def get_style():
 @app.route("/style", methods=["POST"])
 def set_style():
     """Set the language."""
-    app.redis.set("style", request.json["style"])
+    app.redis.set("style", request.json["value"])
     reload()
 
     return {"status": "OK"}
@@ -80,10 +75,17 @@ def get_language():
 @app.route("/language", methods=["POST"])
 def set_language():
     """Set the language."""
-    app.redis.set("language", request.json["language"])
+    app.redis.set("language", request.json["value"])
     reload()
 
     return {"status": "OK"}
+
+
+def find_styles():
+    """Find the available styles."""
+    return sorted(
+        list(filter(lambda x: x.endswith(".css"), (os.listdir("static/css/clocks"))))
+    )
 
 
 def find_languages():
