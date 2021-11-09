@@ -9,6 +9,7 @@ build:
 run:
 	docker run \
 		--name ${PROJECT} \
+		--hostname ${PROJECT}-dev \
 		--volume $(shell pwd):/opt/${PROJECT} \
 		--volume ${HOME}/.ssh:/root/.ssh \
 		--interactive \
@@ -29,6 +30,3 @@ exec:
 
 ci:
 		docker run --rm ${ID} test
-
-
-
