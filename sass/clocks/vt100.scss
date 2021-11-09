@@ -13,6 +13,15 @@ $shadow-colour: darken($active-colour, 20%);
 $background-colour: black;
 $gradient-colour: darken($active-colour, 40%);
 
+body {
+  background: url(vars.$background-root + "scanlines.png"),
+    radial-gradient($gradient-colour, $background-colour);
+  font-size: 3.5vh;
+  @include utils.stroke-colour($inactive-colour);
+  @include utils.stroke-width(1px);
+  color: transparent;
+}
+
 animator.$step-size: 50;
 animator.$invert: true;
 animator.$perspective: 4vh;
@@ -25,12 +34,3 @@ animator.$activated-styles: (
 );
 
 @include animator.setup(2s);
-
-body {
-  background: url(vars.$background-root + "scanlines.png"),
-    radial-gradient($gradient-colour, $background-colour);
-  font-size: 3.5vh;
-  @include utils.stroke-colour($inactive-colour);
-  @include utils.stroke-width(1px);
-  color: transparent;
-}

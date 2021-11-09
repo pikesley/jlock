@@ -10,11 +10,6 @@ $active-colour: $grey;
 
 $stroke-width: 1px;
 
-animator.$activated-styles: (color: $active-colour);
-animator.$deactivated-styles: (color: transparent);
-
-@include animator.setup(2s);
-
 body {
   background: url(vars.$background-root + "wall.png"), $background-colour;
   font-size: 6vh;
@@ -22,3 +17,8 @@ body {
   @include utils.stroke-colour($active-colour);
   color: transparent;
 }
+
+animator.$activated-styles: (color: $active-colour);
+animator.$deactivated-styles: (color: transparent);
+
+@include animator.setup(2s);

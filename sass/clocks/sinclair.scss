@@ -13,12 +13,6 @@ $active-colour: $magenta;
 $background-colour: $white;
 $inactive-colour: $off-white;
 
-// animator.$step-size: 100;
-animator.$activated-styles: (color: $active-colour);
-animator.$deactivated-styles: (color: $inactive-colour);
-
-@include animator.setup(2s);
-
 @font-face {
   font-family: "Sinclair";
   src: url("../../fonts/sinclair.ttf") format("truetype");
@@ -34,3 +28,8 @@ body {
   font-size: 6vh;
   color: $inactive-colour;
 }
+
+animator.$activated-styles: (color: $active-colour);
+animator.$deactivated-styles: (color: $inactive-colour);
+
+@include animator.setup(2s);

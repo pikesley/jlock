@@ -19,7 +19,12 @@ $dark-grey: lighten($inactive-colour, 20%);
 $shadow: rgba(0, 0, 0, 0.8);
 $highlight: rgba(255, 255, 255, 0.4);
 
-// animator.$step-size: 50;
+body {
+  font-size: 5.5vh;
+  background: url(vars.$background-root + "linen.png"),
+    radial-gradient($gradient-colour-1, $gradient-colour-0);
+  color: $inactive-colour;
+}
 
 animator.$activated-styles: (
   color: $active-colour,
@@ -40,10 +45,3 @@ animator.$deactivated-styles: (
 );
 
 @include animator.setup(2s);
-
-body {
-  font-size: 5.5vh;
-  background: url(vars.$background-root + "linen.png"),
-    radial-gradient($gradient-colour-1, $gradient-colour-0);
-  color: $inactive-colour;
-}
