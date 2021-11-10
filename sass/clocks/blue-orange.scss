@@ -1,6 +1,7 @@
 @use "../base/animators/rotator" as animator;
 @use "../base/font" with ($font: "Montserrat");
 @use "../base/layout";
+@use "../base/vars";
 
 $orange: rgb(250, 129, 0);
 
@@ -10,7 +11,7 @@ $background-colour: darken($inactive-colour, 5%);
 $shadow-colour: darken($active-colour, 0%);
 
 body {
-  background-color: $background-colour;
+  background: $background-colour;
   color: $inactive-colour;
 }
 

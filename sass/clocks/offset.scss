@@ -25,11 +25,16 @@ body {
   @include utils.stroke-colour($stroke-colour);
   color: transparent;
   text-shadow: $offset $offset $inactive-colour;
-  font-size: 6.5vh;
+  font-size: 9vh;
 }
 
 span {
-  margin: -1vh;
+  margin: -4vh;
+}
+
+#clock {
+  // this is a fudge to repair whatever broke when we moved to a width of 12
+  padding: 2.5vh;
 }
 
 animator.$activated-styles: (text-shadow: $offset $offset $active-colour);
