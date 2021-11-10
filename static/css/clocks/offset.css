@@ -32,11 +32,15 @@ body {
   -webkit-text-stroke-color: black;
   color: transparent;
   text-shadow: 0.7vh 0.7vh rgba(225, 116, 0, 0.2);
-  font-size: 6.5vh;
+  font-size: 9vh;
 }
 
 span {
-  margin: -1vh;
+  margin: -4vh;
+}
+
+#clock {
+  padding: 2.5vh;
 }
 
 .active {

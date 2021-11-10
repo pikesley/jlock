@@ -1,19 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Zen Kurenaido");
+html,
+body,
+h1,
+h2,
+ul,
+main,
+header {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: "Zen Kurenaido";
   text-align: center;
-  color: #f2651e;
-  padding: 1vh;
+  color: #053750;
   background: #053750;
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
-}
-
-h1,
-h2 {
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -26,7 +30,15 @@ h1 {
 
 h2 {
   font-size: 4em;
-  margin: 0.5em;
+  color: #f2651e;
+  padding: 0.5em;
+}
+
+h1:before,
+h1:after,
+h2:before,
+h2:after {
+  content: "-";
 }
 
 em {
@@ -40,47 +52,55 @@ ul {
   gap: 1em;
   margin: 0;
   border: 1px solid #f2651e;
-  background-color: #fac8af;
+  background-color: #868686;
   padding: 1em;
   border-radius: 1em;
+}
+
+#languages ul {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 button {
   font-family: "Zen Kurenaido";
   font-size: 3em;
   text-transform: lowercase;
-  background-color: #f2651e;
-  color: white;
+  background-color: #053750;
+  color: #868686;
   padding: 0.5em;
   width: 100%;
-  border: none;
+  border: 1px solid #053750;
   border-radius: 0.3em;
 }
 button:active {
-  color: #fac8af;
+  color: white;
 }
 
 button.pending {
-  background-color: #712a07;
+  color: white;
+  background-color: #868686;
 }
 
 button.selected {
-  background-color: #053750;
+  background-color: #f2651e;
+  color: white;
 }
 
 main {
   display: grid;
-  gap: 3em;
-  padding: 0;
 }
 
 header {
   margin: 0;
   border: 1px solid #f2651e;
-  background-color: #fac8af;
+  background-color: #868686;
   padding: 1em;
   border-radius: 1em;
-  margin-bottom: 4em;
+}
+
+header,
+section {
+  margin: 1em;
 }
 
 /*# sourceMappingURL=controller.css.map */
