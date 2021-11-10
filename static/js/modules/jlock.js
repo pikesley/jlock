@@ -80,25 +80,28 @@ let dotsForMinutes = function (minutes) {
 };
 
 let selectItIs = function (time, language) {
-  let classes = [".it", ".is"];
+  /* eslint-disable indent */
+  switch (language) {
+    // Spanish rules
+    case "es":
+      switch (true) {
+        case time.hours % 12 == 0 && time.minutes >= 35:
+          return [".special-it", ".special-is"];
 
-  if (language == "es") {
-    if (time.hours % 12 == 0) {
-      if (time.minutes >= 35) {
-        classes = [".special-it", ".special-is"];
-      }
-    }
+        case time.hours % 12 == 1:
+          switch (true) {
+            case time.minutes < 30:
+              return [".special-it", ".special-is"];
 
-    if (time.hours % 12 == 1) {
-      if (time.minutes < 30) {
-        classes = [".special-it", ".special-is"];
+            case time.minutes == 30:
+              return [".it", ".special-is"];
+          }
       }
-      if (time.minutes == 30) {
-        classes = [".it", ".special-is"];
-      }
-    }
+
+    // eslint-disable no-fallthrough
+    default:
+      return [".it", ".is"];
   }
-  return classes;
 };
 
 export {
