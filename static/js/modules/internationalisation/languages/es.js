@@ -1,0 +1,75 @@
+export default {
+  name: "Spanish",
+  data: [
+    [
+      { class: "special-it", text: "e" },
+      { classes: ["it", "special-it"], text: "s" },
+      { class: "it", text: "on" },
+      { text: "e" },
+      { classes: ["is", "special-is"], text: "la" },
+      { class: "is", text: "s" },
+      { class: "h-1", text: "una" },
+      { text: "l" },
+    ],
+    [
+      { class: "h-2", text: "dos" },
+      { text: "im" },
+      { class: "h-3", text: "tres" },
+      { text: "oam" },
+    ],
+    [
+      { class: "h-4", text: "cuatro" },
+      { text: "ñ" },
+      { class: "h-5", text: "cinco" },
+    ],
+    [
+      { text: "o" },
+      { class: "h-6", text: "seis" },
+      { text: "a" },
+      { class: "h-7", text: "siete" },
+      { text: "n" },
+    ],
+    [
+      { class: "h-8", text: "ocho" },
+      { text: "pm" },
+      { class: "h-8", text: "nueve" },
+      { text: "c" },
+    ],
+    [
+      { class: "h-8", text: "ocho" },
+      { text: "j" },
+      { class: "h-9", text: "nueve" },
+      { text: "pm" },
+    ],
+    [
+      { text: "la" },
+      { class: "h-10", text: "diez" },
+      { text: "s" },
+      { class: "h-11", text: "once" },
+      { text: "w" },
+    ],
+    [
+      { class: "h-0", text: "doce" },
+      { text: "l" },
+      { class: "past", text: "y" },
+      { text: "x" },
+      { class: "to", text: "menos" },
+    ],
+    [
+      { text: "o" },
+      { class: "twenty", text: "veinte" },
+      { class: "ten", text: "diez" },
+      { text: "h" },
+    ],
+    [
+      { class: "twentyfive", text: "veinti" },
+      { text: "e" },
+      { classes: ["five", "twentyfive"], text: "cinco" },
+    ],
+    [
+      { class: "half", text: "media" },
+      { text: "i" },
+      { class: "quarter", text: "cuarto" },
+    ],
+  ],
+};

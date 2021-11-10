@@ -48,12 +48,12 @@ let hoursClass = function (hours, minutes) {
   return `.h-${hours % 12}`;
 };
 
-let classesToBeActivatedFor = function (time) {
+let classesToBeActivatedFor = function (time, language = "en") {
   // compile all the Classes for this particular time
   let intervals = minutesClasses(time.minutes);
   let hour = hoursClass(time.hours, time.minutes);
 
-  let classes = [".it", ".is"];
+  let classes = selectItIs(time, language);
 
   // this is a stupid aesthetic choice
   if (intervals[0] == ".oclock") {
@@ -79,6 +79,28 @@ let dotsForMinutes = function (minutes) {
   return classes;
 };
 
+let selectItIs = function (time, language) {
+  let classes = [".it", ".is"];
+
+  if (language == "es") {
+    if (time.hours % 12 == 0) {
+      if (time.minutes >= 35) {
+        classes = [".special-it", ".special-is"];
+      }
+    }
+
+    if (time.hours % 12 == 1) {
+      if (time.minutes < 30) {
+        classes = [".special-it", ".special-is"];
+      }
+      if (time.minutes == 30) {
+        classes = [".it", ".special-is"];
+      }
+    }
+  }
+  return classes;
+};
+
 export {
   attenuatedIndex,
   dotsForMinutes,
@@ -86,4 +108,5 @@ export {
   hoursClass,
   intervalNameForValue,
   minutesClasses,
+  selectItIs,
 };
