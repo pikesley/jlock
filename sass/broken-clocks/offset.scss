@@ -18,6 +18,7 @@ $inactive-colour: transparentize(darken($background-colour, 5%), 0.8);
 
 $stroke-width: 1px;
 $offset: 0.7vh;
+$offset: 0vh;
 
 body {
   background: radial-gradient($gradient-colour, $background-colour);
@@ -25,11 +26,11 @@ body {
   @include utils.stroke-colour($stroke-colour);
   color: transparent;
   text-shadow: $offset $offset $inactive-colour;
-  font-size: 9vh;
+  font-size: 7vh;
 }
 
 span {
-  margin: -4vh;
+  margin: -6vh;
 }
 
 #clock {
