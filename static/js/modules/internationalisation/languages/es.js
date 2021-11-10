@@ -63,8 +63,8 @@ export default {
     ],
     [
       { class: "twentyfive", text: "veinti" },
-      { text: "e" },
       { classes: ["five", "twentyfive"], text: "cinco" },
+      { text: "e" },
     ],
     [
       { class: "half", text: "media" },
