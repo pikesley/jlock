@@ -1,36 +1,52 @@
+@use "sass:math";
+
 $font: "Zen Kurenaido";
 @import url("https://fonts.googleapis.com/css2?family=#{$font}");
 
-$primary: rgb(242, 101, 30);
-$faded-primary: lighten($primary, 30%);
-$deeper-primary: darken($primary, 30%);
-$background-colour: invert($faded-primary);
+$orange: rgb(242, 101, 30);
+$indigo: rgb(5, 55, 80);
+$grey: rgb(134, 134, 134);
+
+$primary: $orange;
+$contrast: $indigo;
+$highlight: $grey;
+$light: white;
 
 $grid-gap: 1em;
+$padding: 1em;
+$border-thickess: 1px;
 
 @mixin backdrop {
   margin: 0;
-  border: 1px solid $primary;
-  background-color: $faded-primary;
+  border: $border-thickess solid $primary;
+  background-color: $highlight;
   padding: $grid-gap;
   border-radius: 1em;
+}
+
+@mixin unpad {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+h1,
+h2,
+ul,
+main,
+header {
+  @include unpad;
 }
 
 body {
   font-family: $font;
   text-align: center;
-  color: $primary;
-  padding: 1vh;
-  background: $background-colour;
+  color: $contrast;
+  background: $contrast;
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
-}
-
-h1,
-h2 {
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -43,7 +59,15 @@ h1 {
 
 h2 {
   font-size: 4em;
-  margin: 0.5em;
+  color: $primary;
+  padding: math.div($padding, 2);
+}
+
+h1:before,
+h1:after,
+h2:before,
+h2:after {
+  content: "-";
 }
 
 em {
@@ -59,42 +83,47 @@ ul {
   @include backdrop;
 }
 
+#languages {
+  ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 button {
   font-family: $font;
   font-size: 3em;
   text-transform: lowercase;
-  background-color: $primary;
-  color: white;
+  background-color: $contrast;
+  color: $highlight;
   padding: 0.5em;
   width: 100%;
-  // height: 3em;
-  border: none;
+  border: $border-thickess solid $contrast;
   border-radius: 0.3em;
 
   &:active {
-    color: $faded-primary;
+    color: $light;
   }
 }
 
 button.pending {
-  background-color: $deeper-primary;
+  color: $light;
+  background-color: $highlight;
 }
 
 button.selected {
-  background-color: $background-colour;
+  background-color: $primary;
+  color: $light;
 }
 
 main {
   display: grid;
-  gap: 3em;
-  padding: 0;
-}
-
-div {
-  // border: solid 1px red;
 }
 
 header {
   @include backdrop;
-  margin-bottom: 4em;
+}
+
+header,
+section {
+  margin: $padding;
 }
