@@ -1,49 +1,38 @@
 it is twelve o'clock
-
 it is five past twelve
-
 it is ten past twelve
-
 it is a quarter past twelve
-
 it is twenty past twelve
-
 it is twentyfive past twelve
-
 it is half past twelve
-
 it is twentyfive to one
-
 it is twenty to one
-
 it is a quarter to one
-
 it is ten to one
-
 it is five to one
-
 it is one o'clock
-
 it is five past one
-
 it is ten past one
-
 it is a quarter past one
-
 it is twenty past one
-
 it is twentyfive past one
-
 it is half past one
-
 it is twentyfive to two
-
 it is twenty to two
-
 it is a quarter to two
-
 it is ten to two
-
 it is five to two
-
 it is two o'clock
+---
+it is one o'clock
+it is two o'clock
+it is three o'clock
+it is four o'clock
+it is five o'clock
+it is six o'clock
+it is seven o'clock
+it is eight o'clock
+it is nine o'clock
+it is ten o'clock
+it is eleven o'clock
+it is twelve o'clock
