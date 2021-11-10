@@ -76,17 +76,19 @@ let run = function (element, language, interval = 1000) {
 
   // force it to update on the first load
   localStorage["active-classes"] = null;
-  refreshClock();
+  refreshClock(language);
 
   // check for updates every second
-  setInterval(refreshClock, interval);
+  setInterval(function () {
+    refreshClock(language);
+  }, interval);
 };
 
-let refreshClock = function () {
+let refreshClock = function (language) {
   // update the clock
   let sm = new SpanManager(
     JSON.parse(localStorage["active-classes"] || "[]"),
-    classesToBeActivatedFor(new TimeFinder())
+    classesToBeActivatedFor(new TimeFinder(), language)
   );
 
   sm.yeet();
