@@ -7,16 +7,8 @@ body {
   padding: 0;
 }
 
-#clock {
+.clock-grid {
   display: grid;
-  grid-template-columns: repeat(
-    vars.$clock-width + 2 + vars.$clock-spacers * 2,
-    1fr
-  );
-  grid-template-rows: repeat(
-    vars.$clock-height + 2 + vars.$clock-spacers * 2,
-    1fr
-  );
 
   gap: vars.$grid-gap vars.$grid-gap;
   align-items: center;
@@ -29,6 +21,22 @@ body {
 
   span {
     text-align: center;
-    // border: 1px grey solid;
+  }
+}
+
+// generate `.clock-11-10` etc
+@for $cols from 10 through 12 {
+  @for $rows from 10 through 12 {
+    .clock-grid-#{$cols}-#{$rows} {
+      grid-template-columns: repeat(
+        $cols + 2 + vars.$clock-spacers * 2,
+        minmax(0, 1fr)
+      );
+
+      grid-template-rows: repeat(
+        $rows + 2 + vars.$clock-spacers * 2,
+        minmax(0, 1fr)
+      );
+    }
   }
 }

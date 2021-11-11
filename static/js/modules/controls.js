@@ -3,6 +3,8 @@ import { TimeFinder } from "./timeFinder.js";
 import { populateClock } from "./populate.js";
 import { classesToBeActivatedFor } from "./jlock.js";
 import { conf } from "../conf.js";
+import { DimensionFinder } from "./dimensionFinder.js";
+import { languages } from "./internationalisation/index.js";
 
 var html = document.querySelector("html");
 
@@ -72,7 +74,16 @@ function runServerLess(element) {
 let run = function (element, language, interval = 1000) {
   fadeIn();
 
-  populateClock(element, language);
+  let languageData = languages[language]["data"];
+  let dimensions = new DimensionFinder(languageData);
+
+  let el = document.querySelector(element);
+  el.classList.add("clock-grid");
+
+  let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
+  el.classList.add(dimensionedClockClass);
+
+  populateClock(element, languageData, dimensions);
 
   // force it to update on the first load
   localStorage["active-classes"] = null;

@@ -1,6 +1,8 @@
 import { populateClock } from "modules/populate.js";
 import { SpanManager } from "modules/spanManager.js";
 import { gatherSpanIDs } from "./support/helpers.js";
+import { languages } from "modules/internationalisation/index.js";
+import { DimensionFinder } from "modules/dimensionFinder.js";
 
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
@@ -11,7 +13,10 @@ describe("DOM manipulation", function () {
     div = global.document.createElement("div");
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
-    populateClock("#test-clock");
+
+    let languageData = languages.en.data;
+    let dimensions = new DimensionFinder(languageData);
+    populateClock("#test-clock", languageData, dimensions);
   });
 
   afterEach(function () {
@@ -66,25 +71,25 @@ describe("DOM manipulation", function () {
       "cell-2-4",
       "cell-3-4",
       // two
+      "cell-8-6",
       "cell-9-6",
       "cell-10-6",
-      "cell-11-6",
     ]);
     expect(spans.inactives).toEqual([
       // twelve
+      "cell-5-8",
       "cell-6-8",
       "cell-7-8",
       "cell-8-8",
       "cell-9-8",
       "cell-10-8",
-      "cell-11-8",
       // oclock
+      "cell-5-9",
       "cell-6-9",
       "cell-7-9",
       "cell-8-9",
       "cell-9-9",
       "cell-10-9",
-      "cell-11-9",
     ]);
   });
 });

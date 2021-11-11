@@ -1,15 +1,16 @@
 import { conf } from "../conf.js";
-import { languages } from "./internationalisation/index.js";
 
-let populateClock = function (elementID = "#clock", language = "en") {
-  let clockParts = languages[language]["data"];
+let width;
+
+let populateClock = function (elementID = "#clock", languageData, dimensions) {
+  width = dimensions.columns;
 
   let element = document.querySelector(elementID);
   addDots(element, [1, 2]);
 
   addBlankRows(element);
 
-  clockParts.forEach(function (row, index) {
+  languageData.forEach(function (row, index) {
     addSpacerSpans(element);
 
     let count = 0;
@@ -20,7 +21,7 @@ let populateClock = function (elementID = "#clock", language = "en") {
         let content = document.createTextNode(character);
         span.appendChild(content);
         if (cell.class) {
-          span.setAttribute("class", cell.class);
+          cell.classes = [cell.class];
         }
         if (cell.classes) {
           cell.classes.forEach(function (klass) {
@@ -50,7 +51,7 @@ let addSpacerSpans = function (element) {
 
 let addBlankRows = function (element) {
   for (let i = 0; i < conf.spacers; i++) {
-    for (let j = 0; j < conf.width + conf.spacers * 2 + 2; j++) {
+    for (let j = 0; j < width + conf.spacers * 2 + 2; j++) {
       let span = getSpan();
       element.append(span);
     }
@@ -60,7 +61,7 @@ let addBlankRows = function (element) {
 let addDots = function (element, minutes) {
   element.append(dotSpan(minutes[0]));
 
-  for (let i = 0; i < conf.width + conf.spacers * 2; i++) {
+  for (let i = 0; i < width + conf.spacers * 2; i++) {
     let span = getSpan();
     element.append(span);
   }

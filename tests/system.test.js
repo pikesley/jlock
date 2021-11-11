@@ -1,5 +1,6 @@
 import { run } from "modules/controls.js";
 import { gatherSpanIDs } from "./support/helpers.js";
+
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
@@ -85,8 +86,8 @@ describe("Integration test", function () {
       "cell-9-2",
 
       // to
+      "cell-9-3",
       "cell-10-3",
-      "cell-11-3",
 
       // seven
       "cell-0-8",

@@ -1,10 +1,15 @@
 import { populateClock } from "modules/populate.js";
+import { languages } from "modules/internationalisation/index.js";
+import { DimensionFinder } from "modules/dimensionFinder.js";
 
 it("populates the clock", function () {
   let div = global.document.createElement("div");
   div.setAttribute("id", "test-clock");
   global.document.body.appendChild(div);
-  populateClock("#test-clock");
+
+  let languageData = languages.en.data;
+  let dimensions = new DimensionFinder(languageData);
+  populateClock("#test-clock", languageData, dimensions);
 
   let itSpans = div.querySelectorAll("span.it");
   expect(itSpans.length).toBe(2);
@@ -20,7 +25,11 @@ it("understands welsh", function () {
   let div = global.document.createElement("div");
   div.setAttribute("id", "welsh-clock");
   global.document.body.appendChild(div);
-  populateClock("#welsh-clock", "cy");
+
+  let languageData = languages.cy.data;
+  let dimensions = new DimensionFinder(languageData);
+  populateClock("#test-clock", languageData, dimensions);
+  populateClock("#welsh-clock", languageData, dimensions);
 
   let tenSpans = div.querySelectorAll("span.h-10");
   expect(tenSpans.length).toBe(4);
