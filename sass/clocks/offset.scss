@@ -1,9 +1,13 @@
-// migt be broken due to `outer-margin` in vars
+$font: "Lalezar";
+$animator: "fader";
+
 // https://codepen.io/markmead/pen/YjQKeZ
-@use "../base/animators/fader" as animator;
-@use "../base/font" with ($font: "Lalezar");
+@use "sass:math";
+@use "../base/animators/twirler" as animator;
+@use "../base/font" with ($font: $font);
 @use "../base/layout";
 @use "../base/utils";
+@use "../base/vars";
 
 $orange: rgb(250, 129, 0);
 $yellow: rgb(250, 212, 0);
@@ -16,26 +20,21 @@ $stroke-colour: darken($background-colour, 60%);
 $active-colour: $cyan;
 $inactive-colour: transparentize(darken($background-colour, 5%), 0.8);
 
-$stroke-width: 1px;
-$offset: 0.7vh;
-$offset: 0vh;
+$stroke-width: 0.5px;
+$offset: 0.6vh;
 
 body {
-  background: radial-gradient($gradient-colour, $background-colour);
+  font-size: 9vh;
+
+  background-image: url(vars.$background-root + "project-paper.png"),
+    radial-gradient($gradient-colour, $background-colour);
+  // background-blend-mode: multiply;
+
   @include utils.stroke-width($stroke-width);
   @include utils.stroke-colour($stroke-colour);
-  color: transparent;
   text-shadow: $offset $offset $inactive-colour;
-  font-size: 7vh;
-}
 
-span {
-  margin: -6vh;
-}
-
-#clock {
-  // this is a fudge to repair whatever broke when we moved to a width of 12
-  padding: 2.5vh;
+  color: transparent;
 }
 
 animator.$activated-styles: (text-shadow: $offset $offset $active-colour);
