@@ -6,3 +6,4 @@ geckodriver.log
 .vscode/
 coverage/
 Makefile
+NOTES.md
