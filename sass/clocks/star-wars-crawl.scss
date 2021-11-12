@@ -12,7 +12,8 @@ $active-colour: white;
 $inactive-colour: darken($active-colour, 70%);
 
 body {
-  background: url(vars.$background-root + "stars-0.jpg"), $background-colour;
+  background: url(https://wallpaperaccess.com/full/2819253.jpg),
+    $background-colour;
   background-blend-mode: darken;
   color: $inactive-colour;
   font-weight: bold;
