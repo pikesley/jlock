@@ -1,7 +1,7 @@
 $font: "Libre Franklin";
 
 @use "sass:math";
-@use "../base/animators/fader" as animator;
+@use "../base/animators/twirler" as animator;
 @use "../base/font" with ($font: $font);
 @use "../base/layout";
 @use "../base/utils";
@@ -19,6 +19,7 @@ body {
   font-weight: bold;
   perspective: 10vh;
   perspective-origin: center;
+  text-transform: lowercase;
 }
 
 #clock {
@@ -26,9 +27,10 @@ body {
 }
 
 .npc {
-  text-transform: lowercase;
+  // text-transform: lowercase;
 }
 
-animator.$activated-styles: (color: $active-colour);
+animator.$activated-styles: (color: $active-colour, text-transform: uppercase);
+// animator.$deactivated-styles: ();
 
 @include animator.setup(2s);
