@@ -1,0 +1,33 @@
+$font: "Libre Franklin";
+
+@use "sass:math";
+@use "../base/animators/fader" as animator;
+@use "../base/font" with ($font: $font);
+@use "../base/layout";
+@use "../base/utils";
+@use "../base/vars";
+
+$background-colour: rgba(0, 0, 0, 0.661);
+$active-colour: white;
+$inactive-colour: darken($active-colour, 70%);
+
+body {
+  background: url(//wallpaperaccess.com/full/2819253.jpg), $background-colour;
+  background-blend-mode: darken;
+  color: $inactive-colour;
+  font-weight: bold;
+  perspective: 10vh;
+  perspective-origin: center;
+}
+
+#clock {
+  transform: rotateX(6deg) translateY(-15vh) translateZ(-4vh);
+}
+
+.npc {
+  text-transform: lowercase;
+}
+
+animator.$activated-styles: (color: $active-colour);
+
+@include animator.setup(2s);
