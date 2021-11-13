@@ -17,9 +17,9 @@
     "sass-true": "^6.0.1"
   },
   "scripts": {
-    "dom-jest": "jest --testPathIgnorePatterns scss",
-    "sass-jest": "jest --env node tests/sass/scss.spec.js",
-    "test": "npm run dom-jest && npm run sass-jest",
+    "jest-dom": "jest --testPathIgnorePatterns scss --bail",
+    "jest-sass": "jest --env node tests/sass/scss.spec.js",
+    "test": "npm run jest-dom && npm run jest-sass",
     "test-debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js",
     "lint": "eslint static/"
   }

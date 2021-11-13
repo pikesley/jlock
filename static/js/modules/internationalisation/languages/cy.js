@@ -1,4 +1,4 @@
-export default {
+export let cy = {
   name: "Welsh",
   data: [
     [

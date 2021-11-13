@@ -1,4 +1,4 @@
-export default {
+export let es = {
   name: "Spanish",
   data: [
     [

@@ -102,19 +102,15 @@ The total number of rendered spans, following the above rules, _must be the same
 
 ## `index.js`
 
-We have to include each language in [`index.js`](index.js):
+We have to export each language via [`index.js`](index.js):
 
 ```javascript
-import * as cy from "./languages/cy.js";
-
-let languages = {
-  cy: cy.default,
-};
+export * from "./languages/cy.js";
+export * from "./languages/en.js";
+export * from "./languages/es.js";
 ```
 
 in order to make them available to clients.
-
-> This elaborate construction seems overloaded with redundancy to me, but I've been unable to get pure ES6 to list the files in a directory and automatically generate this import / export file, which would be much more elegant. Maybe I'm missing something, or maybe it just can't be done.
 
 ## Consuming the languages
 
