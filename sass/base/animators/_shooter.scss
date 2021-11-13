@@ -8,6 +8,8 @@ $perspective: 30vh;
 $activated-styles: none;
 $deactivated-styles: none;
 
+$timing-function: ease;
+
 @mixin shoot($direction) {
   $start-styles: $deactivated-styles;
   $end-styles: $activated-styles;
@@ -53,6 +55,6 @@ $deactivated-styles: none;
 }
 
 @mixin setup($duration: 6s) {
-  @include utils.active-inactive($name, $duration);
+  @include utils.active-inactive($name, $duration, $timing-function);
   @include make-frames;
 }

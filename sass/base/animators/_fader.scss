@@ -5,6 +5,8 @@ $name: fader;
 $activated-styles: none;
 $deactivated-styles: none;
 
+$timing-function: ease;
+
 @mixin make-frames {
   @keyframes #{$name}-in {
     0% {
@@ -26,6 +28,6 @@ $deactivated-styles: none;
 }
 
 @mixin setup($duration: 2s) {
-  @include utils.active-inactive($name, $duration);
+  @include utils.active-inactive($name, $duration, $timing-function);
   @include make-frames;
 }
