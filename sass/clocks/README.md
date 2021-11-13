@@ -41,13 +41,11 @@ further down your Sass file.
 
 ### `animator`
 
-You're going to want to include an [`animator`](sass/base/animators). The simplest animator is the `fader`:
+You're going to want to include an [`animator`](../base/animators/README.md). The simplest animator is the `fader`:
 
 ```scss
 @use "../base/animators/fader" as animator;
 ```
-
-> See the [animator README](sass/base/animators/README.md) for more on how these work
 
 ### `vars`
 
