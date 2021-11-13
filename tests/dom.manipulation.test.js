@@ -1,7 +1,7 @@
 import { populateClock } from "modules/populate.js";
 import { SpanManager } from "modules/spanManager.js";
 import { gatherSpanIDs } from "./support/helpers.js";
-import { languages } from "modules/internationalisation/index.js";
+import * as languages from "modules/internationalisation/index.js";
 import { DimensionFinder } from "modules/dimensionFinder.js";
 
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
@@ -14,7 +14,7 @@ describe("DOM manipulation", function () {
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
 
-    let languageData = languages.en.data;
+    let languageData = languages["en"].data;
     let dimensions = new DimensionFinder(languageData);
     populateClock("#test-clock", languageData, dimensions);
   });

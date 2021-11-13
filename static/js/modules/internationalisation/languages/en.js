@@ -1,4 +1,4 @@
-export default {
+export let en = {
   name: "English",
   data: [
     [{ class: "it" }, { text: "l" }, { class: "is" }, { text: "asampm" }],
