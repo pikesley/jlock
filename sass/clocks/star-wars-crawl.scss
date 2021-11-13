@@ -1,13 +1,13 @@
 $font: "Libre Franklin";
 
 @use "sass:math";
-@use "../base/animators/twirler" as animator;
+@use "../base/animators/disappear" as animator;
 @use "../base/font" with ($font: $font);
 @use "../base/layout";
 @use "../base/utils";
 @use "../base/vars";
 
-$background-colour: rgba(0, 0, 0, 0.661);
+$background-colour: rgba(0, 0, 0, 0.771);
 $active-colour: white;
 $inactive-colour: darken($active-colour, 70%);
 
@@ -23,14 +23,10 @@ body {
 }
 
 #clock {
-  transform: rotateX(6deg) translateY(-15vh) translateZ(-4vh);
-}
-
-.npc {
-  // text-transform: lowercase;
+  transform: rotateX(4deg) translateY(-5vh) translateZ(-4vh);
 }
 
 animator.$activated-styles: (color: $active-colour, text-transform: uppercase);
-// animator.$deactivated-styles: ();
+animator.$timing-function: linear;
 
-@include animator.setup(2s);
+@include animator.setup;

@@ -19,6 +19,8 @@ $turns: 1turn;
 $activated-styles: none;
 $deactivated-styles: none;
 
+$timing-function: ease;
+
 ////
 
 // how much to rotate for `$index`
@@ -79,6 +81,6 @@ $deactivated-styles: none;
 
 // call this from a client to set everything up
 @mixin setup($duration: 2s) {
-  @include utils.active-inactive($name, $duration);
+  @include utils.active-inactive($name, $duration, $timing-function);
   @include make-frames;
 }

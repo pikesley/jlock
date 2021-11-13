@@ -1,5 +1,4 @@
 $font: "Lalezar";
-$animator: "fader";
 
 // https://codepen.io/markmead/pen/YjQKeZ
 @use "sass:math";
@@ -28,7 +27,7 @@ body {
 
   background-image: url(vars.$background-root + "project-paper.png"),
     radial-gradient($gradient-colour, $background-colour);
-  // background-blend-mode: multiply;
+  background-blend-mode: multiply;
 
   @include utils.stroke-width($stroke-width);
   @include utils.stroke-colour($stroke-colour);

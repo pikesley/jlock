@@ -76,11 +76,11 @@ body {
 }
 
 .active {
-  animation: shooter-in 2s 1s forwards;
+  animation: shooter-in 2s 1s ease forwards;
 }
 
 .inactive {
-  animation: shooter-out 2s forwards;
+  animation: shooter-out 2s ease forwards;
 }
 
 @keyframes shooter-in {

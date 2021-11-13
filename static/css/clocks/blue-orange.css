@@ -75,11 +75,11 @@ body {
 }
 
 .active {
-  animation: rotator-in 2s 1s forwards;
+  animation: rotator-in 2s 1s ease forwards;
 }
 
 .inactive {
-  animation: rotator-out 2s forwards;
+  animation: rotator-out 2s ease forwards;
 }
 
 @keyframes rotator-in {

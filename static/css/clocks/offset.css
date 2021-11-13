@@ -80,11 +80,11 @@ body {
 }
 
 .active {
-  animation: twirler-in 2s 1s forwards;
+  animation: twirler-in 2s 1s ease forwards;
 }
 
 .inactive {
-  animation: twirler-out 2s forwards;
+  animation: twirler-out 2s ease forwards;
 }
 
 @keyframes twirler-in {

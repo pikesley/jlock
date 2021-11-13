@@ -25,8 +25,8 @@ body {
 }
 
 // generate `.clock-11-10` etc
-@for $cols from 10 through 12 {
-  @for $rows from 10 through 12 {
+@for $cols from vars.$min-grid through vars.$max-grid {
+  @for $rows from vars.$min-grid through vars.$max-grid {
     .clock-grid-#{$cols}-#{$rows} {
       grid-template-columns: repeat(
         $cols + 2 + vars.$clock-spacers * 2,

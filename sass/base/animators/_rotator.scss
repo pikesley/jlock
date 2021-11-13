@@ -36,6 +36,8 @@ $invert: false;
 $activated-styles: none;
 $deactivated-styles: none;
 
+$timing-function: ease;
+
 ////
 
 // how many radians for `$index` (out of 100)
@@ -150,6 +152,6 @@ $deactivated-styles: none;
 
 // call this from a client to set everything up
 @mixin setup($duration: 2s) {
-  @include utils.active-inactive($name, $duration);
+  @include utils.active-inactive($name, $duration, $timing-function);
   @include make-frames;
 }
