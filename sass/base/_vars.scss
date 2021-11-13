@@ -5,6 +5,9 @@ $grid-gap: 0;
 $font-size: 5vh;
 $outer-margin: 1vh;
 
+$min-grid: 10; // the grid sized we should support
+$max-grid: 12;
+
 ///
 
 $clock-dimension: 100vh - ($outer-margin * 2);
