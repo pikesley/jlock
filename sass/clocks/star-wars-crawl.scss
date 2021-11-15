@@ -12,8 +12,9 @@ $active-colour: white;
 $inactive-colour: darken($active-colour, 70%);
 
 body {
-  background: url(https://wallpaperaccess.com/full/2819253.jpg),
-    $background-colour;
+  // background: url(https://wallpaperaccess.com/full/2819253.jpg),
+  background: url(vars.$background-root + "twinkle-stars-01.gif");
+  // $background-colour;
   background-blend-mode: darken;
   color: $inactive-colour;
   font-weight: bold;
