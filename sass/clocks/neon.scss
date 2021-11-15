@@ -1,0 +1,40 @@
+$font: "Balsamiq Sans";
+$font: "Monoton";
+
+@use "../base/animators/neon" as animator;
+@use "../base/font" with ($font: $font);
+@use "../base/layout";
+@use "../base/vars";
+
+$pink: rgb(254, 1, 154);
+$shadow-pink: darken($pink, 20%);
+
+$active-colour: $pink;
+$inactive-colour: darken($active-colour, 40%);
+$shadow-colour: $shadow-pink;
+$background-colour: black;
+
+body {
+  background: $background-colour;
+  color: $inactive-colour;
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+animator.$activated-styles: (
+  color: $active-colour,
+  text-shadow: (
+    1px 0px 4px $active-colour,
+    2px 0px 4px $active-colour,
+    3px 0px 4px $active-colour,
+    2px 0px 3px $shadow-colour,
+    2px 3px 15px $shadow-colour,
+    2px 0px 15px,
+    5px 0px 125px,
+    20px 0vw 200px $shadow-colour,
+    40px 0vw 200px $shadow-colour,
+  )
+);
+animator.$deactivated-styles: (color: $inactive-colour);
+
+@include animator.setup(2s); ;;
