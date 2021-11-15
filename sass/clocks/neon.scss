@@ -1,5 +1,5 @@
 $font: "Balsamiq Sans";
-$font: "Monoton";
+// $font: "Monoton";
 
 @use "../base/animators/neon" as animator;
 @use "../base/font" with ($font: $font);
@@ -18,7 +18,7 @@ body {
   background: $background-colour;
   color: $inactive-colour;
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 5.5rem;
 }
 
 animator.$activated-styles: (

@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Monoton");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq Sans");
 body {
-  font-family: "Monoton";
+  font-family: "Balsamiq Sans";
 }
 
 body {
@@ -73,7 +73,7 @@ body {
   background: black;
   color: #33001f;
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 5.5rem;
 }
 
 .active {
