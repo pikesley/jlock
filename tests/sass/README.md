@@ -89,7 +89,7 @@ jest tests/sass/scss.spec.js
 
 ## And now your existing tests are broken
 
-Before I added all this, and just had my regular `jest` tests, I could just type
+Before I added all this, and had just my regular `jest` tests, I could type
 
 ```bash
 jest
