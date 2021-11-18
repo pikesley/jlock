@@ -161,7 +161,19 @@ We can create a test at `tests/sass/tools/bgcolour.spec.scss`:
 }
 ```
 
-There's something subtle (at least to this idiot) but important to note here: the `expect` block is a direct child of the `assert` block, a peer of the `output` block. I failed to notice this at first and crammed my `expect` into the same block as the `output`, in various increasingly-ludicrous comfigurations, leading to all kinds of `Undefined mixin` and `Mixin "foo" does not accept a content block` errors, and the loss of several hours I'll never see again. I'm out here making these halfwit mistakes so you don't have to.
+There's something subtle (at least to this idiot) but important to note here: the `expect` block is a direct child of the `assert` block, and a peer of the `output` block. I had initially assumed (for reasons that I now cannot fathom) that I should attach the expectation to the maxin call, like this:
+
+```scss
+@include assert {
+  @include output {
+    @include tools.bgcolour {
+      background-color: mauve;
+    }
+  }
+}
+```
+
+which threw a `Mixin doesn't accept a content block.` error. Like, of course it did. Just, I mean, what the fuck Sam? I persisted with various iterations of this for a long time, too. I'm out here making these halfwit mistakes so you don't have to.
 
 ### Parameterising your tests
 
