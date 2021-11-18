@@ -150,7 +150,7 @@ We can create a test at `tests/sass/tools/bgcolour.spec.scss`:
   @include it("gives the correct background-color") {
     @include assert {
       @include output {
-        @include tools.bgcolor;
+        @include tools.bgcolour;
       }
 
       @include expect {
