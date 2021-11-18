@@ -161,7 +161,7 @@ We can create a test at `tests/sass/tools/bgcolour.spec.scss`:
 }
 ```
 
-There's something subtle (at least to this idiot) but important to note here: the `expect` block is a direct child of the `assert` block, and a peer of the `output` block. I had initially assumed (for reasons that I now cannot fathom) that I should attach the expectation to the maxin call, like this:
+There's something subtle (at least to this idiot) but important to note here: the `expect` block is a direct child of the `assert` block, and a peer of the `output` block. I had initially assumed (for reasons that I now cannot fathom) that I should attach the expectation to the mixin call, like this:
 
 ```scss
 @include assert {
