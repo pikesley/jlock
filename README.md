@@ -59,7 +59,7 @@ sudo apt -y update && sudo apt install -y git
 
 ### Clone this repo
 
-```bash
+```
 git clone https://github.com/pikesley/jlock
 cd jlock
 ```
@@ -81,7 +81,7 @@ There should be a control interface available at [http://jlock.local/controller/
 
 This was all developed on a Docker container. To run it:
 
-```bash
+```
 git clone https://github.com/pikesley/jlock
 cd jlock
 ./configure
@@ -89,17 +89,23 @@ make build
 make run
 ```
 
-The container starts `nginx` when you connect to it, so it should be running at [http://localhost:8080/](http://localhost:8080/).
+The container starts `redis` and `nginx` when you connect to it, so it should be running at [http://localhost:8080/](http://localhost:8080/). If you start the `controller`
 
-### Install the node dependencies from inside the container
+```bash
+python controller.py
+```
+
+then there should be a control interface at [http://localhost:8000/controller/](http://localhost:8000/controller/). Note that this interface is designed to run on a phone and the layout is not responsive, so you might want to open the inspector and set it to emulate a phone.
+
+### Tests
+
+Install the node dependencies (these are not needed to run tha actual clock)
 
 ```bash
 npm install
 ```
 
-### Tests
-
-There are some [tests](tests/). To run them (and the linters), do
+and then run the [tests](tests/) (and the linters):
 
 ```bash
 make
@@ -107,43 +113,17 @@ make
 
 ### Designs
 
-The designs are built using [SASS](https://sass-lang.com/dart-sass). Each `.scss` file in the root of [clock/sass](clock/sass) becomes part of the list of designs that are cycled-through when the screen is clicked, and they have a very particular layout:
+I wrote about my massively over-engineered design system [here](sass/clocks/README.md). To actually get the designs building, you'll need to get another connection to the container:
 
-```css
-$white: rgb(255, 255, 255); // define some colours
-
-$background-colour: darken($white, 10%);
-$active-colour: darken($white, 60%);
-$inactive-colour: darken($white, 20%);
-
-@mixin activated {
-  // these two mixins will be applied when the text is faded in or out
-  color: $active-colour;
-}
-
-@mixin deactivated {
-  color: $inactive-colour;
-}
-
-@import "base/default"; // this contains the grid layout plus the fade-in and -out animations
-
-body {
-  // add additional body styles here
-  background-color: $background-colour;
-  font-weight: bold;
-  font-size: 4.9em;
-}
+```
+make exec
 ```
 
-The two `@mixin`s and the `@import 'base/default';` are _absolutely required_ or undefined things will happen.
+then start Sass:
 
-Run
-
-```bash
+```
 make sass
 ```
-
-to get the designs building. Note that this is probably a terrible misuse of SASS, it's really not my area of expertise.
 
 ### Push changes to the Pi
 
@@ -157,12 +137,6 @@ On the Pi, you can force the browser to reload with
 
 ```bash
 DISPLAY=:0 xdotool key F5
-```
-
-or generate a fake click to cycle through the designs with
-
-```bash
-DISPLAY=:0 xdotool click 1
 ```
 
 (this is all the `controller` webserver is doing tbh)
