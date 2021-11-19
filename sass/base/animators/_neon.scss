@@ -28,7 +28,7 @@ $deactivated-styles: none;
 
   @each $value in $values {
     $results: list.append($results, as-per($value - 0.001), $separator: comma);
-    $results: list.append($results, as-per($value + 0.5), $separator: comma);
+    $results: list.append($results, as-per($value + 0.1), $separator: comma);
   }
   @return list-to-string($results);
 }
@@ -45,7 +45,7 @@ $deactivated-styles: none;
     }
   }
 
-  $offs: [22, 35, 36, 64, 70, 80, 99];
+  $offs: [1, 35, 36, 70, 71, 90, 99];
   @keyframes flicker {
     #{bracket-values($offs)} {
       @include utils.render-styles($activated-styles);
@@ -57,9 +57,9 @@ $deactivated-styles: none;
   }
 }
 
-@mixin setup($duration: 2s) {
+@mixin setup($duration: 20s) {
   .active {
-    animation: turn-on 4s linear 0ms 1, flicker 30s linear 3s infinite alternate;
+    animation: turn-on 4s linear 0ms 1, flicker 15s linear 3s infinite alternate;
   }
 
   .inactive {
