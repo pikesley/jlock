@@ -13,6 +13,8 @@ $glow-colour: $pink;
 $inactive-colour: darken($glow-colour, 40%);
 $background-colour: rgba(45, 2, 39, 0.894);
 
+$inactive-shadow: 0 0 1px $glow-colour;
+
 body {
   background: url(vars.$background-root + "wall.jpg");
   background-color: $background-colour;
@@ -20,7 +22,7 @@ body {
   color: $inactive-colour;
   font-weight: bold;
   font-size: 8.5vh;
-  text-shadow: 0 0 1px $glow-colour;
+  text-shadow: $inactive-shadow;
 }
 
 animator.$activated-styles: (
@@ -40,7 +42,7 @@ animator.$activated-styles: (
 animator.$deactivated-styles: (
   color: $inactive-colour,
   text-shadow: (
-    0 0 1px $glow-colour,
+    $inactive-shadow,
   )
 );
 

@@ -1,9 +1,21 @@
+@use "sass:list";
+@use "sass:string";
 @use "./utils";
 
 $name: neon;
 
 $activated-styles: none;
 $deactivated-styles: none;
+
+@function bracket-values($values) {
+  $results: [];
+
+  @each $value in $values {
+    $results: list.append($results, $value - 0.001, $separator: comma);
+    $results: list.append($results, $value + 1, $separator: comma);
+  }
+  @return $results;
+}
 
 @mixin frames {
   @keyframes turn-on {
