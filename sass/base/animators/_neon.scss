@@ -31,7 +31,6 @@ $deactivated-styles: none;
     80%,
     100% {
       @include utils.render-styles($activated-styles);
-      opacity: 1;
     }
   }
 
@@ -45,7 +44,6 @@ $deactivated-styles: none;
     70%,
     100% {
       @include utils.render-styles($activated-styles);
-      opacity: 1;
     }
     20%,
     21.999%,
@@ -60,7 +58,7 @@ $deactivated-styles: none;
 
 @mixin setup($duration: 2s) {
   .active {
-    animation: turn-on 4s linear 0ms 1, flicker 30s linear 3s infinite;
+    animation: turn-on 4s linear 0ms 1, flicker 20s linear 3s infinite alternate;
   }
 
   .inactive {

@@ -7,34 +7,41 @@ $font: "Balsamiq Sans";
 @use "../base/vars";
 
 $pink: rgb(254, 1, 154);
-$shadow-pink: darken($pink, 20%);
 
-$active-colour: $pink;
-$inactive-colour: darken($active-colour, 40%);
-$shadow-colour: $shadow-pink;
-$background-colour: black;
+$active-colour: white;
+$glow-colour: $pink;
+$inactive-colour: darken($glow-colour, 40%);
+$background-colour: rgba(45, 2, 39, 0.894);
 
 body {
-  background: $background-colour;
+  background: url(vars.$background-root + "wall.jpg");
+  background-color: $background-colour;
+  background-blend-mode: overlay;
   color: $inactive-colour;
   font-weight: bold;
   font-size: 8.5vh;
+  text-shadow: 0 0 1px $glow-colour;
 }
 
 animator.$activated-styles: (
   color: $active-colour,
   text-shadow: (
-    1px 0px 4px $active-colour,
-    2px 0px 4px $active-colour,
-    3px 0px 4px $active-colour,
-    2px 0px 3px $shadow-colour,
-    2px 3px 15px $shadow-colour,
-    2px 0px 15px,
-    5px 0px 125px,
-    20px 0vw 200px $shadow-colour,
-    40px 0vw 200px $shadow-colour,
+    0 0 7px white,
+    0 0 10px white,
+    0 0 21px white,
+    0 0 42px $glow-colour,
+    0 0 82px $glow-colour,
+    0 0 92px $glow-colour,
+    0 0 102px $glow-colour,
+    0 0 151px $glow-colour,
+  ),
+  z-index: 1000
+);
+animator.$deactivated-styles: (
+  color: $inactive-colour,
+  text-shadow: (
+    0 0 1px $glow-colour,
   )
 );
-animator.$deactivated-styles: (color: $inactive-colour);
 
 @include animator.setup(2s); ;;
