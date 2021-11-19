@@ -5,3 +5,4 @@ isort
 pylama
 pylint
 redis
+hiredis
