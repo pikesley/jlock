@@ -1,0 +1,20 @@
+@use "true" as *;
+@use "../../../sass/base/animators/neon";
+
+@include describe("bracket-values()") {
+  @include it("calculates bracket values") {
+    @include assert-equal(
+      neon.bracket-values([1, 2]),
+      "0.999%, 1.5%, 1.999%, 2.5%"
+    );
+  }
+}
+
+@include describe("numbers-to-percentages()") {
+  @include it("turns numbers to percentages") {
+    @include assert-equal(
+      neon.numbers-to-percentages([1, 2, 15.5]),
+      "1%, 2%, 15.5%"
+    );
+  }
+}
