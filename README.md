@@ -2,6 +2,8 @@
 
 # Jlock
 
+https://user-images.githubusercontent.com/885973/142743936-73d308e9-493a-4966-bf62-39bcb9ade81b.mp4
+
 ## Make your own text clock
 
 Things you will need:
