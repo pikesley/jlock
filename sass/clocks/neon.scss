@@ -6,12 +6,14 @@ $font: "Balsamiq Sans";
 @use "../base/layout";
 @use "../base/vars";
 
-$pink: rgb(254, 1, 154);
+$pink: rgba(254, 1, 154, 1);
+$orange: rgba(201, 128, 19, 1);
+$green: rgb(0, 255, 85);
 
 $active-colour: white;
-$glow-colour: $pink;
-$inactive-colour: darken($glow-colour, 40%);
-$background-colour: rgba(45, 2, 39, 0.894);
+$glow-colour: $green;
+$inactive-colour: darken($glow-colour, 50%);
+$background-colour: transparentize(darken($glow-colour, 50%), 0.15);
 
 $inactive-shadow: 0 0 1px $glow-colour;
 
