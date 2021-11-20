@@ -11,12 +11,13 @@ $font: "Dongle";
 @use "../base/vars";
 @use "../base/utils";
 
-$pink: rgba(254, 1, 154, 1);
-$orange: rgba(201, 128, 19, 1);
+$pink: rgb(254, 1, 154);
+$orange: rgb(201, 128, 19);
 $green: rgb(0, 255, 85);
+$purple: rgb(90, 7, 135);
 
-$active-colour: white;
 $glow-colour: $green;
+$active-colour: white;
 $inactive-colour: darken($glow-colour, 50%);
 $background-colour: transparentize(darken($glow-colour, 50%), 0.15);
 
