@@ -13,6 +13,7 @@ COPY ./ /opt/${PROJECT}
 COPY docker-config/bashrc /root/.bashrc
 
 RUN npm install
+RUN npm completion >> /root/.bashrc
 
 RUN python -m pip install -r requirements-dev.txt
 
