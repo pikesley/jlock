@@ -1,10 +1,15 @@
-$font: "Balsamiq Sans";
+// $font: "Balsamiq Sans";
 // $font: "Monoton";
+// $font: "Genos";
+// $font: "MuseoModerno";
+$font: "Dongle";
 
+@use "sass:list";
 @use "../base/animators/neon" as animator;
 @use "../base/font" with ($font: $font);
 @use "../base/layout";
 @use "../base/vars";
+@use "../base/utils";
 
 $pink: rgba(254, 1, 154, 1);
 $orange: rgba(201, 128, 19, 1);
@@ -23,23 +28,32 @@ body {
   background-blend-mode: overlay;
   color: $inactive-colour;
   font-weight: bold;
-  font-size: 8.5vh;
+  font-size: 10vh;
   text-shadow: $inactive-shadow;
+}
+
+@function make-shadows($radii, $colour) {
+  $results: [];
+  @each $radius in $radii {
+    $results: list.append(
+      $results,
+      #{0 0 $radius * 1vh $colour},
+      $separator: comma
+    );
+  }
+  @return $results;
 }
 
 animator.$activated-styles: (
   color: $active-colour,
   text-shadow: (
-    0 0 7px white,
-    0 0 10px white,
-    0 0 21px white,
-    0 0 42px $glow-colour,
-    0 0 82px $glow-colour,
-    0 0 92px $glow-colour,
-    0 0 102px $glow-colour,
-    0 0 151px $glow-colour,
-  ),
-  z-index: 1000
+    utils.list-to-string(
+      list.join(
+        make-shadows([0.5, 1], $active-colour),
+        make-shadows([2, 3, 4], $glow-colour)
+      )
+    ),
+  )
 );
 animator.$deactivated-styles: (
   color: $inactive-colour,
