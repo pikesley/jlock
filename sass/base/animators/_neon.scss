@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:string";
 @use "./utils";
+@use "../utils" as base-utils;
 
 $name: neon;
 
@@ -11,16 +12,12 @@ $deactivated-styles: none;
   @return $number * 1%;
 }
 
-@function list-to-string($list) {
-  @return #{string.slice(#{$list}, 2, -2)};
-}
-
 @function numbers-to-percentages($list) {
   $results: [];
   @each $value in $list {
     $results: list.append($results, as-per($value), $separator: comma);
   }
-  @return list-to-string($results);
+  @return base-utils.list-to-string($results);
 }
 
 @function bracket-values($values) {
@@ -30,7 +27,7 @@ $deactivated-styles: none;
     $results: list.append($results, as-per($value - 0.001), $separator: comma);
     $results: list.append($results, as-per($value + 0.1), $separator: comma);
   }
-  @return list-to-string($results);
+  @return base-utils.list-to-string($results);
 }
 
 @mixin frames {

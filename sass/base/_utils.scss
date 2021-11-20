@@ -1,7 +1,12 @@
+@use "sass:string";
 @mixin stroke-width($property) {
   -webkit-text-stroke-width: $property;
 }
 
 @mixin stroke-colour($property) {
   -webkit-text-stroke-color: $property;
+}
+
+@function list-to-string($list) {
+  @return #{string.slice(#{$list}, 2, -2)};
 }

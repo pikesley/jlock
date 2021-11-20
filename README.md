@@ -2,10 +2,6 @@
 
 # Jlock
 
-![jlock](https://j.gifs.com/MZ8goP.gif)
-
-(full demo video on [YouTube](https://www.youtube.com/watch?v=X-VtmaGDBU8))
-
 ## Make your own text clock
 
 Things you will need:
