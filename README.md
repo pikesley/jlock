@@ -22,7 +22,7 @@ HDMI to whatever's on the monitor. The Model A has a full-size HDMI port, the Pi
 
 ## Install it
 
-This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/). Presuming you can SSH into the Pi,
+This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/). Presuming you can SSH into the Pi:
 
 (optionally) change the hostname:
 
@@ -87,7 +87,7 @@ then there should be a control interface at [http://localhost:8000/controller/](
 
 ### Tests
 
-Install the node dependencies (these are not needed to run tha actual clock)
+Install the node dependencies (these are not needed to run the actual clock)
 
 ```bash
 npm install
@@ -115,7 +115,7 @@ make sass
 
 ### Push changes to the Pi
 
-As long as `PIHOST` at the top of the [Makefile](Makefile) resolves to the address of your Pi, you should ba able to push new code to it with:
+As long as `PIHOST` in [Makefile.common](make/Makefile.common) resolves to the address of your Pi, you should be able to push new code to it with:
 
 ```bash
 make push-code
