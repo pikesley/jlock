@@ -37,19 +37,9 @@ Once you've done this you should be able to get to the Pi with
 ssh pi@jlock.local
 ```
 
-### Install the screen drivers
-
-If you're using a [HyperPixel](https://shop.pimoroni.com/products/hyperpixel-4-square?variant=30138251444307) screen, then you need to install the drivers. Per [this](https://github.com/pimoroni/hyperpixel4):
-
-```bash
-curl https://get.pimoroni.com/hyperpixel4 | bash
-```
-
-Select the correct screen and Pi combination (in my case it's `3 : Weirdly Square - Pi 3B+ or older` and `1: 2020 or earlier`) and let it do its thing. When it's done it will reboot, and the screen should work. Then:
-
 ### Install Git
 
-Git isn't installed out-of-the-box (although it is a dependency of the screen-drivers above), so:
+Git isn't installed out-of-the-box, so:
 
 ```bash
 sudo apt -y update && sudo apt install -y git
@@ -69,11 +59,11 @@ cd jlock
 make
 ```
 
-This will install everything, and then reboot into a running clock.
+This will install it all, and then reboot into a running clock.
 
 ![running jlock](assets/images/jlock.png)
 
-There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can cycle through the available clock designs.
+There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](sass/clocks) and [languages](static/js/modules/internationalisation/README.md).
 
 ## Development
 
@@ -137,7 +127,77 @@ On the Pi, you can force the browser to reload with
 DISPLAY=:0 xdotool key F5
 ```
 
-(this is all the `controller` webserver is doing tbh)
+## REST API
+
+`controller.py` implements an extremely noddy API, mostly for the `controller` to use:
+
+### Setting the language
+
+`POST /language`
+
+with a JSON payload like
+
+```json
+{
+  "value": "cy"
+}
+```
+
+sets the language. [The language must be supported](static/js/modules/internationalisation/index.js), obviously. This also triggers a browser reload, if we're running on a Pi.
+
+### Getting the language
+
+`GET /language`
+
+returns JSON of the form
+
+```json
+{
+  "value": "cy"
+}
+```
+
+### Setting the style
+
+`POST /style`
+
+with a JSON payload like
+
+```json
+{
+  "value": "offset"
+}
+```
+
+Sets the style. [The style must be implemented](sass/clocks), obviously. This also triggers a browser reload, if we're running on a Pi.
+
+### Getting the style
+
+`GET /style`
+
+returns JSON of the form
+
+```json
+{
+  "value": "offset"
+}
+```
+
+### Triggering a reload
+
+`POST /reload`
+
+If we're running on a Pi, this calls `DISPLAY=:0 xdotool key F5` to trigger a browser reload.
+
+### Serverless mode
+
+If the clock cannot talk to an API (e.g. if it's running on [Netlify](https://jlock.netlify.app)) it falls-back to reading the query-string, so it will honour something like `https://localhost:8000?language=cy&style=neon`.
+
+> PROVIDING QUERY-STRING VALUES WHEN THERE _IS_ AN AVAILABLE API IS AN UNSUPPORTED CONFIGURATION AND RESULTS ARE EXTREMELY UNDEFINED.
+
+## Storing CSS artefacts in Github
+
+You may have noticed that [there is a load of generated CSS in this repo](static/css). Normally, for a Rails app or whatever, you'd exclude this stuff and run some sort of asset-pipeline at deploy time, but this repo needs to be deployable directly from Github onto a Raspberry Pi, and installing `node` and then `Sass` and running a load of precompile guff on a Pi seems objectively much worse, so here we are. This does mean that the commit-history of this repo is full of [horrible commits](https://github.com/pikesley/jlock/commit/31c31d350e4745293225877551ee193ef7905aee), but I think that's OK.
 
 ## Notes
 
