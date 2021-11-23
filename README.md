@@ -113,6 +113,12 @@ then start Sass:
 make sass
 ```
 
+(and there are also some [Sass tests](tests/sass/README.md)).
+
+### Languages
+
+jlock [supports multiple languages](static/js/modules/internationalisation/languages), I wrote about how to implement a new one [here](static/js/modules/internationalisation/README.md)
+
 ### Push changes to the Pi
 
 As long as `PIHOST` in [Makefile.common](make/Makefile.common) resolves to the address of your Pi, you should be able to push new code to it with:
