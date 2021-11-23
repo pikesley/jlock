@@ -87,7 +87,9 @@ def find_styles():
         list(
             map(
                 lambda x: Path(x).stem,
-                filter(lambda x: x.endswith(".css"), (os.listdir("static/css/clocks"))),
+                filter(
+                    lambda x: x.endswith(".css"), (os.listdir("../static/css/clocks"))
+                ),
             )
         )
     )
@@ -96,7 +98,7 @@ def find_styles():
 def find_languages():
     """Find the available languages."""
     languages = {}
-    lang_root = "static/js/modules/internationalisation/languages"
+    lang_root = "../static/js/modules/internationalisation/languages"
     files = os.listdir(lang_root)
     for file in files:
         posix = Path(lang_root, file)
