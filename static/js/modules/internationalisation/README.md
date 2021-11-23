@@ -153,3 +153,46 @@ It's (probably) fine to have all the _interval_ words crammed up against each ot
 English and Spanish fit into a 11x10 grid, but Welsh has some longer words, and so requires a 12x10 grid. This is fine, as long as all the rows are the same length when rendered as `<span>`s, and in fact `jlock` can support grids from 10x10 to 12x12 (or in fact arbitrary sizes with a couple of [sass tweaks](../../../../sass/base/_vars.scss)).
 
 I am genuinely attempting to implement Basque, which is definitely going to require a bigger grid.
+
+### Special rules per-language
+
+English is jlock's default language, and is the way it "thinks about" telling the time: it generates a list of classes like
+
+```
+.it .is .twentyfive .to .h-7
+```
+
+(and has tests to [verify this](tests/modules/jlock.test.js)) and then uses this to activate and deactivate the appropriate `spans`.
+
+For languages which have different rules, e.g. Spanish which takes a different form of `it is` depending on whether the `hour` is `1`, it does some [additional juggling](static/js/modules/jlock.js):
+
+```javascript
+let selectItIs = function (time, language) {
+  /* eslint-disable indent */
+  switch (language) {
+    // Spanish rules
+    case "es":
+      switch (true) {
+        case time.hours % 12 == 0 && time.minutes >= 35:
+          return [".special-it", ".special-is"];
+
+        case time.hours % 12 == 1:
+          switch (true) {
+            case time.minutes < 30:
+              return [".special-it", ".special-is"];
+
+            case time.minutes == 30:
+              return [".it", ".special-is"];
+          }
+      }
+
+    // eslint-disable no-fallthrough
+    default:
+      return [".it", ".is"];
+  }
+};
+```
+
+and then there are [tests for this behaviour, too](tests/modules/internationalisation/languages/es/selectItIs.test.js).
+
+I don't think there's any point in trying to make this generic, it just needs to be taken case-by-case.
