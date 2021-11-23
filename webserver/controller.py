@@ -31,11 +31,13 @@ def reload():
     if "PLATFORM" in os.environ:
         if os.environ["PLATFORM"] == "docker":
             sleep(0.1)
+
             return {"status": "OK", "platform": "docker"}
 
     os.environ["DISPLAY"] = ":0"
     subprocess.run(("xdotool key F5").split(" "), check=True)
     sleep(1)
+
     return {"status": "OK"}
 
 
