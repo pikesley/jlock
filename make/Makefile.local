@@ -30,3 +30,13 @@ exec:
 
 ci:
 		docker run --rm ${ID} test
+
+capture-changes:
+	@tar \
+		--create \
+		--compress \
+		--verbose \
+		--file changeset.tgz \
+			$(shell git status --short | \
+			grep -v changeset.tgz | \
+			awk '{ print $$2 }')
