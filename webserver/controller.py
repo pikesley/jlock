@@ -10,6 +10,8 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app.redis = redis.Redis()
 
+STATIC_ROOT = Path(Path(__file__).resolve().parent.parent, "static")
+
 
 @app.route("/", methods=["GET"])
 def index():
@@ -92,7 +94,8 @@ def find_styles():
             map(
                 lambda x: Path(x).stem,
                 filter(
-                    lambda x: x.endswith(".css"), (os.listdir("../static/css/clocks"))
+                    lambda x: str(x).endswith(".css"),
+                    Path(Path(STATIC_ROOT, "css", "clocks")).glob("*"),
                 ),
             )
         )
@@ -102,10 +105,10 @@ def find_styles():
 def find_languages():
     """Find the available languages."""
     languages = {}
-    lang_root = "../static/js/modules/internationalisation/languages"
-    files = os.listdir(lang_root)
+    lang_root = Path(STATIC_ROOT, "js", "modules", "internationalisation", "languages")
+    files = Path(lang_root).glob("*")
     for file in files:
-        # we have to parse fucking ES6 because ES6 cannot natively read fucking JSON
+        # we have to parse fucking ES6 because ES6 cannot natively import fucking JSON
         posix = Path(lang_root, file)
         content = posix.read_text(encoding="UTF-8")
         name = list(filter(lambda x: "name:" in x, content.split("\n")))[0].split('"')[

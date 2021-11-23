@@ -6,6 +6,9 @@ default: format lint test clean
 sass:
 	sass --watch sass:static/css
 
+controller:
+	python webserver/controller.py
+
 push-code:
 	rsync --archive \
 		  --verbose \
