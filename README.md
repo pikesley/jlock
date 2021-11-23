@@ -63,7 +63,7 @@ This will install it all, and then reboot into a running clock.
 
 ![running jlock](assets/images/jlock.png)
 
-There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](sass/clocks) and [languages](static/js/modules/internationalisation/README.md).
+There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](sass/clocks) and [languages](static/js/internationalisation/README.md).
 
 ## Development
 
@@ -117,7 +117,7 @@ make sass
 
 ### Languages
 
-jlock [supports multiple languages](static/js/modules/internationalisation/languages), I wrote about how to implement a new one [here](static/js/modules/internationalisation/README.md)
+jlock [supports multiple languages](static/js/internationalisation/languages), I wrote about how to implement a new one [here](static/js/internationalisation/README.md)
 
 ### Push changes to the Pi
 
@@ -149,7 +149,7 @@ with a JSON payload like
 }
 ```
 
-sets the language. [The language must be supported](static/js/modules/internationalisation/index.js), obviously. This also triggers a browser reload, if we're running on a Pi.
+sets the language. [The language must be supported](static/js/internationalisation/index.js), obviously. This also triggers a browser reload, if we're running on a Pi.
 
 ### Getting the language
 

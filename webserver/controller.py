@@ -105,7 +105,7 @@ def find_styles():
 def find_languages():
     """Find the available languages."""
     languages = {}
-    lang_root = Path(STATIC_ROOT, "js", "modules", "internationalisation", "languages")
+    lang_root = Path(STATIC_ROOT, "js", "internationalisation", "languages")
     files = Path(lang_root).glob("*")
     for file in files:
         # we have to parse fucking ES6 because ES6 cannot natively import fucking JSON
