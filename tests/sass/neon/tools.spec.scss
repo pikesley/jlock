@@ -5,7 +5,7 @@
   @include it("calculates bracket values") {
     @include assert-equal(
       neon.bracket-values([1, 2]),
-      "0.999%, 1.1%, 1.999%, 2.1%"
+      "0.999%, 2%, 1.999%, 3%"
     );
   }
 }
