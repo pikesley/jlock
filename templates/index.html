@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="{{ url_for('static', filename='../images/favicon.png') }}"
-    />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='../css/controller.css') }}"
-    />
-
+    {% include "components/imports.html" %}
     <title>jlock control</title>
   </head>
 
@@ -27,10 +16,15 @@
         <h2>Styles</h2>
 
         <ul>
-          {% for style in styles %} {% set name = style.split('.')[0] %}
+          {% for style in styles %}
           <li>
-            <button id="style-{{name}}" onClick="select('style', '{{name}}')">
-              {{name | replace("-", " ")}}
+            <button
+              id="style-{{style}}"
+              class="btn"
+              data-type="style"
+              data-name="{{style}}"
+            >
+              {{style | replace("-", " ")}}
             </button>
           </li>
           {% endfor %}
@@ -43,7 +37,12 @@
         <ul>
           {% for id, name in languages.items() %}
           <li>
-            <button id="language-{{id}}" onClick="select('language', '{{id}}')">
+            <button
+              id="language-{{id}}"
+              class="btn"
+              data-type="language"
+              data-name="{{id}}"
+            >
               {{name}}
             </button>
           </li>
@@ -51,67 +50,5 @@
         </ul>
       </section>
     </main>
-
-    <script>
-      let currents = {
-        style: null,
-        languages: null,
-      };
-
-      let select = function (selectable, id) {
-        if (currents[selectable] == id) {
-          return;
-        }
-
-        let buttons = document.querySelectorAll(`#${selectable}s button`);
-        buttons.forEach(function (b) {
-          ["selected", "pending"].forEach(function (state) {
-            b.classList.remove(state);
-          });
-        });
-
-        setButtonClass(`#${selectable}s`, `#${selectable}-${id}`, "pending");
-
-        sendData(`/controller/${selectable}`, id).then(function (data) {
-          setActive(selectable);
-        });
-      };
-
-      let sendData = function (endPoint, value) {
-        return fetch(endPoint, {
-          headers: { "Content-Type": "application/json" },
-          method: "POST",
-          body: JSON.stringify({ value: value }),
-        });
-      };
-
-      let setActive = function (selectable) {
-        fetch(`/controller/${selectable}`, {
-          headers: { "Content-Type": "application/json" },
-          method: "GET",
-        })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (json) {
-            setButtonClass(
-              `#${selectable}s`,
-              `#${selectable}-${json[selectable]}`,
-              "selected"
-            );
-            console.log(`${selectable}: ${json[selectable]}`);
-            currents[selectable] = json[selectable];
-          });
-      };
-
-      let setButtonClass = function (enclosing, id, klass) {
-        let button = document.querySelector(`${enclosing} ${id}`);
-        button.classList.add(klass);
-      };
-
-      ["style", "language"].forEach(function (item) {
-        setActive(item);
-      });
-    </script>
   </body>
 </html>
