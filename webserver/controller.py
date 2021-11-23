@@ -22,6 +22,8 @@ def index():
             styles=find_styles(),
         )
 
+    return {"status": "OK"}
+
 
 @app.route("/reload", methods=["POST"])
 def reload():
@@ -101,6 +103,7 @@ def find_languages():
     lang_root = "../static/js/modules/internationalisation/languages"
     files = os.listdir(lang_root)
     for file in files:
+        # we have to parse fucking ES6 because ES6 cannot natively read fucking JSON
         posix = Path(lang_root, file)
         content = posix.read_text(encoding="UTF-8")
         name = list(filter(lambda x: "name:" in x, content.split("\n")))[0].split('"')[
