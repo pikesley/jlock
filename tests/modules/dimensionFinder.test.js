@@ -1,5 +1,5 @@
 import { DimensionFinder } from "modules/dimensionFinder.js";
-import * as languages from "modules/internationalisation/index.js";
+import * as languages from "internationalisation/index.js";
 
 describe("DimensionFinder", function () {
   it("gets the right data", function () {

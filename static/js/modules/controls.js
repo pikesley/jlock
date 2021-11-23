@@ -4,7 +4,7 @@ import { populateClock } from "./populate.js";
 import { classesToBeActivatedFor } from "./jlock.js";
 import { conf } from "../conf.js";
 import { DimensionFinder } from "./dimensionFinder.js";
-import * as languages from "./internationalisation/index.js";
+import * as languages from "../internationalisation/index.js";
 
 var html = document.querySelector("html");
 

@@ -1,5 +1,5 @@
 import { populateClock } from "modules/populate.js";
-import * as languages from "modules/internationalisation/index.js";
+import * as languages from "internationalisation/index.js";
 import { DimensionFinder } from "modules/dimensionFinder.js";
 
 it("populates the clock", function () {
