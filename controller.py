@@ -28,7 +28,7 @@ def reload():
     """Reload the screen."""
     if "PLATFORM" in os.environ:
         if os.environ["PLATFORM"] == "docker":
-            sleep(1)
+            sleep(0.1)
             return {"status": "OK", "platform": "docker"}
 
     os.environ["DISPLAY"] = ":0"
@@ -84,7 +84,12 @@ def set_language():
 def find_styles():
     """Find the available styles."""
     return sorted(
-        list(filter(lambda x: x.endswith(".css"), (os.listdir("static/css/clocks"))))
+        list(
+            map(
+                lambda x: Path(x).stem,
+                filter(lambda x: x.endswith(".css"), (os.listdir("static/css/clocks"))),
+            )
+        )
     )
 
 
