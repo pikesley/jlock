@@ -1,6 +1,7 @@
 include make/Makefile.common
 
-default: format lint test clean
+default: format lint test 
+
 
 .PHONY: sass
 sass:
@@ -21,8 +22,19 @@ push-code:
 
 		ssh pi@${PIHOST} "cd jlock && ./configure"
 
-test:
+test: python-tests js-tests
+
+js-tests:
 	npm run test
+
+python-tests:
+	PYTHONDONTWRITEBYTECODE=1 \
+		python -m pytest \
+		--random-order \
+		--verbose \
+		--capture no \
+		--failed-first \
+		--exitfirst 
 
 lint:
 	python -m pylama
@@ -30,8 +42,6 @@ lint:
 
 clean:
 	@find . -name __pycache__ -exec rm -fr {} \;
-	@rm -fr reports
-	@rm -f geckodriver.log
 
 format: black isort
 

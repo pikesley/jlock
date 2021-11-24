@@ -1,16 +1,16 @@
 import os
 import socket
 import subprocess
-from pathlib import Path
 from time import sleep
 
 import redis
 from flask import Flask, render_template, request
+from tools import find_languages, find_styles, get_defaults
 
 app = Flask(__name__)
 app.redis = redis.Redis()
 
-STATIC_ROOT = Path(Path(__file__).resolve().parent.parent, "static")
+DEFAULTS = get_defaults()
 
 
 @app.route("/", methods=["GET"])
@@ -32,7 +32,7 @@ def reload():
     """Reload the screen."""
     if "PLATFORM" in os.environ:
         if os.environ["PLATFORM"] == "docker":
-            sleep(0.1)
+            sleep(1)
 
             return {"status": "OK", "platform": "docker"}
 
@@ -45,20 +45,20 @@ def reload():
 
 @app.route("/style", methods=["GET"])
 def get_style():
-    """Get the language."""
+    """Get the style."""
     style = app.redis.get("style")
 
     if style:
         style = style.decode()
     else:
-        style = "blue-orange"
+        style = DEFAULTS["style"]
 
     return {"style": style}
 
 
 @app.route("/style", methods=["POST"])
 def set_style():
-    """Set the language."""
+    """Set the style."""
     app.redis.set("style", request.json["value"])
     reload()
 
@@ -73,7 +73,7 @@ def get_language():
     if language:
         language = language.decode()
     else:
-        language = "en"
+        language = DEFAULTS["language"]
 
     return {"language": language}
 
@@ -85,38 +85,6 @@ def set_language():
     reload()
 
     return {"status": "OK"}
-
-
-def find_styles():
-    """Find the available styles."""
-    return sorted(
-        list(
-            map(
-                lambda x: Path(x).stem,
-                filter(
-                    lambda x: str(x).endswith(".css"),
-                    Path(Path(STATIC_ROOT, "css", "clocks")).glob("*"),
-                ),
-            )
-        )
-    )
-
-
-def find_languages():
-    """Find the available languages."""
-    languages = {}
-    lang_root = Path(STATIC_ROOT, "js", "internationalisation", "languages")
-    files = Path(lang_root).glob("*")
-    for file in files:
-        # we have to parse fucking ES6 because ES6 cannot natively import fucking JSON
-        posix = Path(lang_root, file)
-        content = posix.read_text(encoding="UTF-8")
-        name = list(filter(lambda x: "name:" in x, content.split("\n")))[0].split('"')[
-            1
-        ]
-        languages[posix.stem] = name
-
-    return languages
 
 
 if __name__ == "__main__":  # nocov
