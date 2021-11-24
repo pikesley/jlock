@@ -5,7 +5,7 @@ let conf = {
 
   defaults: {
     // what we'll use when running serverless
-    style: "offset",
+    style: "neon",
     language: "en",
   },
 };
