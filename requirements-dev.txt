@@ -1,8 +1,8 @@
-flask
-ipdb
 black
+flask
+hiredis
+ipdb
 isort
 pylama
 pylint
 redis
-hiredis

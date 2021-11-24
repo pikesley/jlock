@@ -1,4 +1,4 @@
 Flask
 gunicorn
-redis
 hiredis
+redis
