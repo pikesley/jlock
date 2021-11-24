@@ -80,7 +80,7 @@ make run
 The container starts `redis` and `nginx` when you connect to it, so it should be running at [http://localhost:8080/](http://localhost:8080/). If you start the `controller`
 
 ```bash
-python controller.py
+make controller
 ```
 
 then there should be a control interface at [http://localhost:8000/controller/](http://localhost:8000/controller/). Note that this interface is designed to run on a phone and the layout is not responsive, so you might want to open the inspector and set it to emulate a phone.
@@ -135,7 +135,7 @@ DISPLAY=:0 xdotool key F5
 
 ## REST API
 
-`controller.py` implements an extremely noddy API, mostly for the `controller` to use:
+`webserver/controller.py` implements an extremely noddy API, mostly for the `controller` to use:
 
 ### Setting the language
 
