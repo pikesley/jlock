@@ -1,9 +1,8 @@
 .sass-cache/
 .DS_Store
 node_modules/
-*.xml
-geckodriver.log
 .vscode/
 coverage/
 Makefile
 NOTES.md
+.coverage
