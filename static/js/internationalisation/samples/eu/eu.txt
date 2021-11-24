@@ -1,0 +1,112 @@
+12:00
+hamabiak dira
+
+12:05
+hamabiak eta bost dira
+
+12:10
+hamabiak eta hamarrak dira
+
+12:15
+hamabi eta laurdenak dira
+
+12:20
+hamabiak eta hogei dira
+
+12:25
+hamabiak eta hogeita bost dira
+
+12:30
+hamabi eta erdiak dira
+
+12:35
+hogeita bost bata da
+
+12:40
+hogeita bat da
+
+12:45
+bata eta laurdena da
+
+12:50
+hamarreko bat da
+
+12:55
+bost bata da
+
+13:00
+ordu bata da
+
+13:05
+ordu bata eta bost dira
+
+13:10
+bata eta hamarrak dira
+
+13:15
+ordu laurdenak dira
+
+13:20
+bat eta hogei dira
+
+13:25
+hogeita bost eta bata da
+
+13:30
+ordu bat eta erdiak dira
+
+13:35
+hogeita bost eta bi da
+
+13:40
+hogeita bi da
+
+13:45
+ordu biak laurdenak dira
+
+13:50
+hamar eta bi da
+
+13:55
+bost edo bi da
+
+14:00
+ordu biak dira
+
+---
+
+13:00
+ordu bata da
+
+14:00
+ordu biak dira
+
+15:00
+hirurak dira
+
+16:00
+laurak dira
+
+17:00
+bostak dira
+
+18:00
+seiak dira
+
+19:00
+zazpiak dira
+
+20:00
+zortziak dira
+
+21:00
+bederatziak dira
+
+22:00
+hamarrak dira
+
+23:00
+hamaikak dira
+
+24:00
+hamabiak dira
