@@ -1,20 +1,17 @@
 import {
   allButtons,
-  selectiseButton,
-  pendButton,
+  makeButtonPending,
+  makeButtonSelected,
 } from "./modules/buttonManipulations.js";
 
-let currents = {
-  style: null,
-  languages: null,
-};
+let currents = {};
 
 let select = function (parameter, id) {
   if (currents[parameter] == id) {
     return;
   }
 
-  pendButton(parameter, id);
+  makeButtonPending(parameter, id, currents[parameter]);
 
   sendData(`/controller/${parameter}`, id).then(function () {
     setActive(parameter);
@@ -38,9 +35,10 @@ let setActive = function (parameter) {
       return response.json();
     })
     .then(function (json) {
-      selectiseButton(`#${parameter}-${json[parameter]}`);
-      console.log(`${parameter}: ${json[parameter]}`);
-      currents[parameter] = json[parameter];
+      let value = json[parameter];
+      makeButtonSelected(parameter, value);
+      console.log(`${parameter}: ${value}`);
+      currents[parameter] = value;
     });
 };
 

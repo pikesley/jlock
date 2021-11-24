@@ -1,40 +1,32 @@
-let cleanButtons = function (parameter) {
-  let buttons = document.querySelectorAll(`#${parameter}s .btn`);
-  buttons.forEach(function (button) {
-    cleanButton(button);
-  });
-};
-
-let cleanButton = function (button) {
-  ["selected", "pending"].forEach(function (state) {
-    unclassButton(button, state);
-  });
-};
-
-function unclassButton(button, klass) {
+let removeClassFromButton = function (button, klass) {
   button.classList.remove(klass);
-}
-
-let pendButton = function (parameter, id) {
-  cleanButtons(parameter);
-  setButtonClass(`#${parameter}-${id}`, "pending");
 };
 
-let selectiseButton = function (id) {
-  unclassButton(getButton(id), "pending");
-  setButtonClass(id, "selected");
+let addClassToButton = function (button, klass) {
+  button.classList.add(klass);
 };
 
-let setButtonClass = function (id, klass) {
-  getButton(id).classList.add(klass);
+let makeButtonPending = function (parameter, id, previousID) {
+  removeClassFromButton(getButton(parameter, previousID), "selected");
+  addClassToButton(getButton(parameter, id), "pending");
 };
 
-let getButton = function (id) {
-  return document.querySelector(id);
+let makeButtonSelected = function (parameter, id) {
+  let button = getButton(parameter, id);
+  removeClassFromButton(button, "pending");
+  addClassToButton(button, "selected");
+};
+
+let getButton = function (parameter, id) {
+  return document.querySelector(makeID(parameter, id));
 };
 
 let allButtons = function () {
   return document.querySelectorAll(".btn");
 };
 
-export { allButtons, pendButton, selectiseButton };
+let makeID = function (left, right) {
+  return `#${left}-${right}`;
+};
+
+export { allButtons, makeButtonPending, makeButtonSelected };

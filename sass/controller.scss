@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "base/vars";
 
 $font: "Zen Kurenaido";
 @import url("https://fonts.googleapis.com/css2?family=#{$font}");
@@ -43,7 +44,8 @@ body {
   font-family: $font;
   text-align: center;
   color: $contrast;
-  background: $contrast;
+  background-color: $contrast;
+  background-image: url(vars.$background-root + "batthern.png");
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
@@ -83,7 +85,7 @@ ul {
   @include backdrop;
 }
 
-#languages {
+#language {
   ul {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -93,16 +95,17 @@ button {
   font-family: $font;
   font-size: 3em;
   text-transform: lowercase;
+  text-shadow: 0 0 1px $contrast;
+
   background-color: $contrast;
+  background-image: url(vars.$background-root + "bo-play.png");
+  background-blend-mode: hard-light;
   color: $highlight;
+
   padding: 0.5em;
   width: 100%;
-  border: $border-thickess solid $contrast;
+  border: 4px solid $contrast;
   border-radius: 0.3em;
-
-  &:active {
-    color: $light;
-  }
 }
 
 button.pending {
