@@ -80,7 +80,7 @@ body {
 }
 
 .active {
-  animation: turn-on 10s linear 0ms 1, flicker 15s linear 3s infinite alternate;
+  animation: turn-on 10s linear 0ms 1, flicker 45s linear 3s infinite alternate;
 }
 
 .inactive {
