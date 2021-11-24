@@ -6,7 +6,7 @@ import {
   intervalNameForValue,
   minutesClasses,
 } from "modules/jlock.js";
-import { fiveMinutes } from "support/helpers.js";
+import { fiveMinutes } from "../support/helpers.js";
 
 describe("attenuatedIndex", function () {
   it("generates indeces to traverse the intervalNames backwards", function () {

@@ -8,6 +8,6 @@ module.exports = {
   coverageDirectory: "coverage",
   coverageProvider: "v8",
   moduleDirectories: ["node_modules", "static/js", "tests"],
-  setupFiles: ["<rootDir>/tests/support/client.js"],
+  setupFiles: ["<rootDir>/tests/js/support/client.js"],
   testEnvironment: "jsdom",
 };
