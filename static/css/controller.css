@@ -15,7 +15,6 @@ body {
   text-align: center;
   color: #053750;
   background-color: #053750;
-  background-image: url("../../images/backgrounds/batthern.png");
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
@@ -62,28 +61,30 @@ ul {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-button {
+.btn {
   font-family: "Zen Kurenaido";
   font-size: 3em;
   text-transform: lowercase;
   text-shadow: 0 0 1px #053750;
-  background-color: #053750;
-  background-image: url("../../images/backgrounds/bo-play.png");
-  background-blend-mode: hard-light;
   color: #868686;
+  margin: 0;
   padding: 0.5em;
   width: 100%;
   border: 4px solid #053750;
   border-radius: 0.3em;
+  transition: background-size 1s ease-in-out, color 2s;
+  background: linear-gradient(#f2651e, #f2651e) no-repeat, #053750;
+  background-size: 0% 0%;
+  background-position: center;
 }
 
-button.pending {
-  color: white;
-  background-color: #868686;
+.btn.pending {
+  color: #f2651e;
 }
 
-button.selected {
-  background-color: #f2651e;
+.btn.selected {
+  background-size: 120% 100%;
+  background-position: center;
   color: white;
 }
 

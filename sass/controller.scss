@@ -13,6 +13,9 @@ $contrast: $indigo;
 $highlight: $grey;
 $light: white;
 
+$inactive: $contrast;
+$active: $primary;
+
 $grid-gap: 1em;
 $padding: 1em;
 $border-thickess: 1px;
@@ -45,7 +48,6 @@ body {
   text-align: center;
   color: $contrast;
   background-color: $contrast;
-  background-image: url(vars.$background-root + "batthern.png");
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
@@ -91,30 +93,35 @@ ul {
   }
 }
 
-button {
+.btn {
   font-family: $font;
   font-size: 3em;
   text-transform: lowercase;
   text-shadow: 0 0 1px $contrast;
 
-  background-color: $contrast;
-  background-image: url(vars.$background-root + "bo-play.png");
-  background-blend-mode: hard-light;
   color: $highlight;
 
+  margin: 0;
   padding: 0.5em;
   width: 100%;
   border: 4px solid $contrast;
   border-radius: 0.3em;
+
+  transition: background-size 1s ease-in-out, color 2s;
+
+  background: linear-gradient($active, $active) no-repeat, $inactive;
+  background-size: 0% 0%;
+  background-position: center;
 }
 
-button.pending {
-  color: $light;
-  background-color: $highlight;
+.btn.pending {
+  color: $primary;
 }
 
-button.selected {
-  background-color: $primary;
+.btn.selected {
+  background-size: 120% 100%;
+  background-position: center;
+
   color: $light;
 }
 
