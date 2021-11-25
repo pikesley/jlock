@@ -22,18 +22,20 @@ push-code:
 
 		ssh pi@${PIHOST} "cd jlock && ./configure"
 
-test: python-tests js-tests
+test: js-tests python-tests 
 
 js-tests:
 	npm run test
 
 python-tests:
+	PYTHONPATH=$(shell pwd)/webserver \
 	PYTHONDONTWRITEBYTECODE=1 \
 		python -m pytest \
 		--random-order \
 		--verbose \
 		--capture no \
 		--failed-first \
+		--cov \
 		--exitfirst 
 
 lint:
@@ -42,6 +44,7 @@ lint:
 
 clean:
 	@find . -name __pycache__ -exec rm -fr {} \;
+	@find . -name .pytest_cache -exec rm -fr {} \;
 
 format: black isort
 

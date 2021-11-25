@@ -9,8 +9,8 @@ from tools import find_languages, find_styles, get_defaults
 
 app = Flask(__name__)
 app.redis = redis.Redis()
-
-DEFAULTS = get_defaults()
+app.defaults = get_defaults()
+app.valids = {"style": find_styles(), "language": find_languages()}
 
 
 @app.route("/", methods=["GET"])
@@ -20,15 +20,15 @@ def index():
         return render_template(
             "index.html",
             host_name=socket.gethostname(),
-            languages=find_languages(),
-            styles=find_styles(),
+            languages=app.valids["language"],
+            styles=app.valids["style"],
         )
 
     return {"status": "OK"}
 
 
 @app.route("/reload", methods=["POST"])
-def reload():
+def reload():  # nocov
     """Reload the screen."""
     if "PLATFORM" in os.environ:
         if os.environ["PLATFORM"] == "docker":
@@ -43,48 +43,39 @@ def reload():
     return {"status": "OK"}
 
 
-@app.route("/style", methods=["GET"])
-def get_style():
-    """Get the style."""
-    style = app.redis.get("style")
+@app.route("/<key>", methods=["GET"])
+def get_thing(key):
+    """Get something."""
+    if key in app.valids:
+        data = {"status": "OK", key: app.defaults[key]}
 
-    if style:
-        style = style.decode()
-    else:
-        style = DEFAULTS["style"]
+        value = app.redis.get(key)
+        if value:
+            data[key] = value.decode()
 
-    return {"style": style}
+        return data
 
-
-@app.route("/style", methods=["POST"])
-def set_style():
-    """Set the style."""
-    app.redis.set("style", request.json["value"])
-    reload()
-
-    return {"status": "OK"}
+    return four_o_four()
 
 
-@app.route("/language", methods=["GET"])
-def get_language():
-    """Get the language."""
-    language = app.redis.get("language")
+@app.route("/<key>", methods=["POST"])
+def set_thing(key):
+    """Set something."""
+    if key in app.valids:
+        value = request.json["value"]
+        if value in app.valids[key]:
+            app.redis.set(key, value)
+            reload()
+            return {"status": "OK", key: value}
 
-    if language:
-        language = language.decode()
-    else:
-        language = DEFAULTS["language"]
+        return {"status": "not OK", "reason": f"invalid {key}"}, 400
 
-    return {"language": language}
+    return four_o_four()
 
 
-@app.route("/language", methods=["POST"])
-def set_language():
-    """Set the language."""
-    app.redis.set("language", request.json["value"])
-    reload()
-
-    return {"status": "OK"}
+def four_o_four():
+    """Return a 404."""
+    return {"status": "not OK", "reason": "that's not a thing I know about"}, 404
 
 
 if __name__ == "__main__":  # nocov
