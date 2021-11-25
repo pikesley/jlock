@@ -15,6 +15,7 @@ case ${1} in
 
   test )
     cd /opt/jlock
+    service redis-server start
     make --makefile make/Makefile.docker
     ;;
 
