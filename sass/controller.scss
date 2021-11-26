@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "base/vars";
 
-$font: "Zen Kurenaido";
+$font: "Montserrat Alternates";
 @import url("https://fonts.googleapis.com/css2?family=#{$font}");
 
 $orange: rgb(242, 101, 30);
@@ -47,7 +47,9 @@ body {
   font-family: $font;
   text-align: center;
   color: $contrast;
+  background-image: url(vars.$background-root + "blue-metal-cogs-and-gears.jpg");
   background-color: $contrast;
+  background-blend-mode: overlay;
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
