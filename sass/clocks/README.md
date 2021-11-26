@@ -16,13 +16,14 @@ because that's where all the `grid` stuff comes from, along with some other defa
 
 ### `font`
 
-You probably want a
+You probably want something like
 
 ```scss
-@use "../base/font" with ($font: "Some font");
+$font: "Some font";
+@use "../base/font" with ($font: $font);
 ```
 
-line, where `Some font` is a [Google webfont](https://fonts.google.com/).
+where `Some font` is a [Google webfont](https://fonts.google.com/).
 
 This is not mandatory, if you want to bring your own font or whatever you can do something like
 
