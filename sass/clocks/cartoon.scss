@@ -1,0 +1,28 @@
+$font: "Dokdo";
+
+@use "../base/layout";
+@use "../base/font" with ($font: $font);
+@use "../base/animators/disappear" as animator;
+@use "../base/utils";
+@use "../base/vars";
+
+$background-colour: rgb(35, 104, 99);
+$active-colour: rgb(170, 170, 57);
+
+body {
+  @include utils.stroke-width(1px);
+  @include utils.stroke-colour($active-colour);
+  background-image: url(vars.$background-root + "navy.png");
+  background-color: $background-colour;
+  background-blend-mode: hard-light;
+  color: transparent;
+  font-size: 14vh;
+  text-transform: lowercase;
+}
+
+.corner {
+  font-size: 7vh;
+}
+
+animator.$activated-styles: (color: $active-colour);
+@include animator.setup(4s);

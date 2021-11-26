@@ -4,13 +4,14 @@
 @use "../base/vars";
 
 $grey: rgba(4, 4, 4, 0.445);
-$magenta: rgb(255, 0, 255);
+$magenta: rgb(191, 0, 191);
 $white: rgb(255, 255, 255);
 $off-white: rgb(191, 191, 191);
 $blue: rgb(0, 0, 191);
+$black: rgb(0, 0, 0);
 
 $active-colour: $magenta;
-$background-colour: $white;
+$background-colour: $black;
 $inactive-colour: $off-white;
 
 @font-face {

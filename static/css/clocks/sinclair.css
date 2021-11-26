@@ -70,7 +70,7 @@ body {
 }
 body {
   font-family: "Sinclair";
-  background: white;
+  background: black;
   background-image: url("../../images/backgrounds/1982.svg");
   background-repeat: no-repeat;
   background-size: auto 3vh;
@@ -391,13 +391,13 @@ body {
   }
   100% {
     transform: perspective(10vh) rotateY(-1turn);
-    color: fuchsia;
+    color: #bf00bf;
   }
 }
 @keyframes twirler-out {
   0% {
     transform: perspective(10vh) rotateY(0turn);
-    color: fuchsia;
+    color: #bf00bf;
   }
   1% {
     transform: perspective(10vh) rotateY(-0.01turn);
