@@ -73,8 +73,10 @@ let dotSpan = function (index) {
   let span = getSpan();
   let content = document.createTextNode(conf.dot);
   span.appendChild(content);
-  span.setAttribute("class", `m-${index}`);
   span.setAttribute("id", `corner-${index}`);
+
+  span.classList.add(`m-${index}`);
+  span.classList.add("corner");
 
   return span;
 };
