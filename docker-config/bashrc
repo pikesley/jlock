@@ -3,6 +3,3 @@ complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' make/Makefile.docker | sed '
 export PATH=./node_modules/.bin/:${PATH}
 
 alias make="make --makefile make/Makefile.docker"
-
-service redis-server start
-service nginx start
