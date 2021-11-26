@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Zen Kurenaido");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat Alternates");
 html,
 body,
 h1,
@@ -11,10 +11,12 @@ header {
 }
 
 body {
-  font-family: "Zen Kurenaido";
+  font-family: "Montserrat Alternates";
   text-align: center;
   color: #053750;
+  background-image: url("../../images/backgrounds/blue-metal-cogs-and-gears.jpg");
   background-color: #053750;
+  background-blend-mode: overlay;
   text-transform: lowercase;
   height: 99vh;
   overflow: hidden;
@@ -62,7 +64,7 @@ ul {
 }
 
 .btn {
-  font-family: "Zen Kurenaido";
+  font-family: "Montserrat Alternates";
   font-size: 3em;
   text-transform: lowercase;
   text-shadow: 0 0 1px #053750;
