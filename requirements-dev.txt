@@ -5,7 +5,7 @@ backcall==0.2.0
 black==21.11b1
 click==8.0.3
 coverage==6.1.2
-cryptography==2.6.1
+cryptography==3.3.2
 decorator==5.1.0
 Deprecated==1.2.13
 entrypoints==0.3
