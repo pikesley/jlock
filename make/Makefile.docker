@@ -1,6 +1,6 @@
 include make/Makefile.common
 
-default: format lint test 
+default: format lint test
 
 
 .PHONY: sass
@@ -22,7 +22,7 @@ push-code:
 
 		ssh pi@${PIHOST} "cd jlock && ./configure"
 
-test: js-tests python-tests 
+test: js-tests python-tests
 
 js-tests:
 	npm run test
@@ -36,7 +36,7 @@ python-tests:
 		--capture no \
 		--failed-first \
 		--cov \
-		--exitfirst 
+		--exitfirst
 
 lint:
 	python -m pylama
@@ -46,7 +46,7 @@ clean:
 	@find . -name __pycache__ -exec rm -fr {} \;
 	@find . -name .pytest_cache -exec rm -fr {} \;
 
-format: black isort
+format: isort black
 
 black:
 	black .
