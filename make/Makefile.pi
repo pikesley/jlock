@@ -40,7 +40,7 @@ prepare-logs:
 	sudo mkdir -p /var/log/controller/
 	sudo chown pi /var/log/controller/
 
-system-install: systemd restart-services
+system-install: systemd cronjobs restart-services
 
 systemd: prepare-logs
 	sudo systemctl enable -f /home/pi/${PROJECT}/etc/systemd/controller.service
@@ -50,6 +50,9 @@ virtualhost:
 
 restart-services:
 	sudo service controller restart
+
+cronjobs:
+	sudo cp -f /home/pi/jlock/etc/cron.d/updater /etc/cron.d/
 
 install:
 	python -m pip install -r requirements.txt
