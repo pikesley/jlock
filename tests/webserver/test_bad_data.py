@@ -18,9 +18,11 @@ class TestBadDataInRedis(TestCase):
         app.valids = {"style": ["phony-style"], "language": {"pl": "Polish"}}
 
         redis.flushall()
+
     def tearDown(self):
         """Clean-up after ourselves."""
         redis.flushall()
+
     def test_with_invalid_style(self):
         """Test it bypasses a bad style in redis."""
         redis.set("style", "something-bad")

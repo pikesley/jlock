@@ -51,10 +51,8 @@ def get_thing(key):
 
         value = app.redis.get(key)
         if value:
-            data[key] = value.decode()
-
-        if data[key] not in app.valids[key]:
-            data[key] = app.defaults[key]
+            if value in app.valids[key]:
+                data[key] = value.decode()
 
         return data
 

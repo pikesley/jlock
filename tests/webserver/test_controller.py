@@ -14,7 +14,7 @@ class TestWebserver(TestCase):
 
     def setUp(self):
         """Do some initialisation."""
-        app.defaults = {"language": "ru", "style": "soviet"}
+        app.defaults = {"language": "pl", "style": "phony-style"}
         app.valids = {"style": ["phony-style"], "language": {"pl": "Polish"}}
 
         redis.flushall()
@@ -78,7 +78,9 @@ class TestWebserver(TestCase):
         client = app.test_client()
         response = client.get("/style", headers=headers)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data), {"status": "OK", "style": "soviet"})
+        self.assertEqual(
+            json.loads(response.data), {"status": "OK", "style": "phony-style"}
+        )
 
     def test_set_language(self):
         """Test setting the `language`."""
@@ -119,7 +121,7 @@ class TestWebserver(TestCase):
         client = app.test_client()
         response = client.get("/language", headers=headers)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data), {"language": "ru", "status": "OK"})
+        self.assertEqual(json.loads(response.data), {"language": "pl", "status": "OK"})
 
     def test_bad_get(self):
         """Test attempting to get a nonsense route."""
