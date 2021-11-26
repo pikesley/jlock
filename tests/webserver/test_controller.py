@@ -65,12 +65,12 @@ class TestWebserver(TestCase):
 
     def test_get_style(self):
         """Test getting the `style`."""
-        redis.set("style", "fake-style")
+        redis.set("style", "phony-style")
         client = app.test_client()
         response = client.get("/style", headers=headers)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            json.loads(response.data), {"status": "OK", "style": "fake-style"}
+            json.loads(response.data), {"status": "OK", "style": "phony-style"}
         )
 
     def test_get_default_style(self):
@@ -108,11 +108,11 @@ class TestWebserver(TestCase):
 
     def test_get_language(self):
         """Test getting the `language`."""
-        redis.set("language", "eu")
+        redis.set("language", "pl")
         client = app.test_client()
         response = client.get("/language", headers=headers)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data), {"language": "eu", "status": "OK"})
+        self.assertEqual(json.loads(response.data), {"language": "pl", "status": "OK"})
 
     def test_get_default_language(self):
         """Test getting the default `language`."""

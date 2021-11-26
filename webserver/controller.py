@@ -53,6 +53,9 @@ def get_thing(key):
         if value:
             data[key] = value.decode()
 
+        if data[key] not in app.valids[key]:
+            data[key] = app.defaults[key]
+
         return data
 
     return four_o_four()
