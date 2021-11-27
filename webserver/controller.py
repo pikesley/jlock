@@ -6,6 +6,7 @@ from time import sleep
 import redis
 from flask import Flask, render_template, request
 from tools import find_languages, find_styles, get_defaults
+from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 app.redis = redis.Redis()
@@ -64,7 +65,11 @@ def get_thing(key):
 def set_thing(key):
     """Set something."""
     if key in app.valids:
-        value = request.json["value"]
+        try:
+            value = request.json["value"]
+        except BadRequest:
+            return {"status": "not OK", "reason": "no data sent"}, 400
+
         if value in app.valids[key]:
             app.redis.set(key, value)
             reload()
