@@ -15,7 +15,10 @@ class TestWebserver(TestCase):
     def setUp(self):
         """Do some initialisation."""
         app.defaults = {"language": "pl", "style": "phony-style"}
-        app.valids = {"style": ["phony-style"], "language": {"pl": "Polish"}}
+        app.valids = {
+            "style": ["phony-style", "some-style"],
+            "language": {"pl": "Polish", "ru": "Russian"},
+        }
 
         redis.flushall()
 
@@ -65,12 +68,12 @@ class TestWebserver(TestCase):
 
     def test_get_style(self):
         """Test getting the `style`."""
-        redis.set("style", "phony-style")
+        redis.set("style", "some-style")
         client = app.test_client()
         response = client.get("/style", headers=headers)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            json.loads(response.data), {"status": "OK", "style": "phony-style"}
+            json.loads(response.data), {"status": "OK", "style": "some-style"}
         )
 
     def test_get_default_style(self):
@@ -110,11 +113,11 @@ class TestWebserver(TestCase):
 
     def test_get_language(self):
         """Test getting the `language`."""
-        redis.set("language", "pl")
+        redis.set("language", "ru")
         client = app.test_client()
         response = client.get("/language", headers=headers)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data), {"language": "pl", "status": "OK"})
+        self.assertEqual(json.loads(response.data), {"language": "ru", "status": "OK"})
 
     def test_get_default_language(self):
         """Test getting the default `language`."""
