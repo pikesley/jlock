@@ -71,12 +71,12 @@ body {
 
 body {
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #aaaa39;
+  -webkit-text-stroke-color: #c4c4c4;
   background-image: url("../../images/backgrounds/navy.png");
-  background-color: #236863;
+  background-color: #684623;
   background-blend-mode: hard-light;
   color: transparent;
-  font-size: 14vh;
+  font-size: 11vh;
   text-transform: lowercase;
 }
 
@@ -102,12 +102,12 @@ body {
   }
   100% {
     transform: perspective(30vh) translateY(0);
-    color: #aaaa39;
+    color: #c4c4c4;
   }
 }
 @keyframes shooter-out {
   0% {
-    color: #aaaa39;
+    color: #c4c4c4;
   }
   50% {
     font-size: 0;

@@ -6,8 +6,8 @@ $font: "Dokdo";
 @use "../base/utils";
 @use "../base/vars";
 
-$background-colour: rgb(35, 104, 99);
-$active-colour: rgb(170, 170, 57);
+$background-colour: rgb(104, 70, 35);
+$active-colour: rgb(196, 196, 196);
 
 body {
   @include utils.stroke-width(1px);
@@ -16,7 +16,7 @@ body {
   background-color: $background-colour;
   background-blend-mode: hard-light;
   color: transparent;
-  font-size: 14vh;
+  font-size: 11vh;
   text-transform: lowercase;
 }
 
