@@ -68,7 +68,7 @@ def set_thing(key):
         try:
             value = request.json["value"]
         except BadRequest:
-            return {"status": "not OK", "reason": "no data sent"}, 400
+            return {"status": "not OK", "reason": "invalid payload"}, 400
 
         if value in app.valids[key]:
             app.redis.set(key, value)
