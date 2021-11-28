@@ -67,7 +67,7 @@ There should be a control interface available at [http://jlock.local/controller/
 
 ### Keeping it updated
 
-jlock runs a [cronjob](etc/cron.d/updater) at 03:00 every morning to discover and apply updates to `main`.
+jlock runs a [cronjob](etc/cron.d/updater) at 03:00 every morning to discover and apply updates to `main`. It does this via `git reset --hard origin/main` so _any local changes will be blatted_.
 
 ## Development
 
