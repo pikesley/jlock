@@ -54,7 +54,7 @@ def find_languages(root=STATIC_ROOT):
 
 def get_git_data():
     """Assemble some Git metadata."""
-    repo = Repo(".")
+    repo = Repo(Path(Path(__file__).resolve().parent.parent))
 
     timestamp = repo.head.object.authored_datetime.isoformat()
     timestamp = timestamp.split('+')[0].replace("T", " ")
