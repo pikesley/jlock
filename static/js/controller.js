@@ -51,3 +51,8 @@ allButtons().forEach(function (b) {
 ["style", "language"].forEach(function (item) {
   setActive(item);
 });
+
+document.querySelector("#show-metadata").addEventListener("click", function () {
+  let element = document.querySelector("#git-metadata-modal");
+  element.classList.toggle("visible");
+});

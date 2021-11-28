@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat Alternates");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu Mono");
 html,
 body,
 h1,
@@ -78,6 +79,61 @@ ul {
 
 #language ul {
   grid-template-columns: repeat(3, 1fr);
+}
+
+#git-metadata {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  right: 2em;
+  font-size: 2vh;
+  font-family: "Ubuntu Mono";
+  background-color: #053750;
+  color: #f2651e;
+  border-radius: 1em;
+  border: 1px solid #868686;
+}
+#git-metadata a {
+  color: #868686;
+  text-decoration: none;
+}
+#git-metadata dl {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 2fr;
+  padding: 0;
+}
+#git-metadata dl {
+  text-align: right;
+}
+#git-metadata dd {
+  text-align: left;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+#show-metadata {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 3vh;
+}
+#show-metadata a {
+  color: #f2651e;
+  text-decoration: none;
+}
+
+.visible {
+  display: block;
 }
 
 .btn {

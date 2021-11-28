@@ -1,7 +1,9 @@
 from pathlib import Path
 
-STATIC_ROOT = Path(Path(__file__).resolve().parent.parent, "static")
+from git import Repo
 
+STATIC_ROOT = Path(Path(__file__).resolve().parent.parent, "static")
+GITHUB_REPO = "pikesley/jlock"
 
 def get_defaults(root=STATIC_ROOT):
     """Get the default language and style from the JS."""
@@ -48,3 +50,21 @@ def find_languages(root=STATIC_ROOT):
         languages[posix.stem] = pull_from_js(content, "name")
 
     return languages
+
+
+def get_git_data():
+    """Assemble some Git metadata."""
+    repo = Repo(".")
+
+    timestamp = repo.head.object.authored_datetime.isoformat()
+    timestamp = timestamp.split('+')[0].replace("T", " ")
+
+    commit_sha = repo.head.object.hexsha
+    url = f"https://github.com/{GITHUB_REPO}/tree/{commit_sha}"
+
+    return {
+        "commit": repo.git.rev_parse(commit_sha, short=True),
+        "url": url,
+        "author": repo.head.object.author.name,
+        "timestamp": timestamp
+    }
