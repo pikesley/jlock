@@ -59,12 +59,16 @@ def get_git_data():
     timestamp = repo.head.object.authored_datetime.isoformat()
     timestamp = timestamp.split('+')[0].replace("T", " ")
 
-    commit_sha = repo.head.object.hexsha
-    url = f"https://github.com/{GITHUB_REPO}/tree/{commit_sha}"
+    repo_url = f"https://github.com/{GITHUB_REPO}"
+    head_sha = repo.head.object.hexsha
+    head_url = f"{repo_url}/tree/{head_sha}"
 
     return {
-        "commit": repo.git.rev_parse(commit_sha, short=True),
-        "url": url,
+        "commit": repo.git.rev_parse(head_sha, short=True),
+        "urls": {
+            "repo": repo_url,
+            "head": head_url,
+        },
         "author": repo.head.object.author.name,
         "timestamp": timestamp
     }
