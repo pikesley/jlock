@@ -1,90 +1,19 @@
 @use "sass:math";
-@use "base/vars";
 
-$font: "Montserrat Alternates";
-@import url("https://fonts.googleapis.com/css2?family=#{$font}");
+@use "base/vars" as base-vars;
 
-$monofont: "Ubuntu Mono";
-@import url("https://fonts.googleapis.com/css2?family=#{$monofont}");
-
-$orange: rgb(242, 101, 30);
-$indigo: rgb(5, 55, 80);
-$grey: rgb(134, 134, 134);
-
-$primary: $orange;
-$contrast: $indigo;
-$highlight: $grey;
-$light: white;
-
-$inactive: $contrast;
-$active: $primary;
-
-$grid-gap: 1em;
-$padding: 1em;
-$border-thickess: 1px;
-
-$curvature: 1em;
-
-@mixin backdrop {
-  margin: 0;
-  border: $border-thickess solid $primary;
-  background-color: $highlight;
-  padding: $grid-gap;
-  border-radius: $curvature;
-}
-
-@mixin unpad {
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body,
-h1,
-h2,
-ul,
-main,
-header {
-  @include unpad;
-}
+@use "controller/colours";
+@use "controller/fonts";
+@use "controller/layout";
+@use "controller/metadata-modal";
+@use "controller/mixins";
+@use "controller/vars";
+@use "controller/buttons";
 
 body {
-  font-family: $font;
   text-align: center;
-  color: $contrast;
-  background-image: url(vars.$background-root + "blue-metal-cogs-and-gears.jpg");
-  background-color: $contrast;
+  background-image: url(base-vars.$background-root + "blue-metal-cogs-and-gears.jpg");
   background-blend-mode: overlay;
-  text-transform: lowercase;
-  height: 99vh;
-  overflow: hidden;
-}
-
-main {
-  display: grid;
-}
-
-header {
-  @include backdrop;
-}
-
-header,
-section {
-  margin: $padding;
-}
-
-h1 {
-  font-size: 8em;
-}
-
-.identifier {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 4em;
-  color: $primary;
-  padding: math.div($padding, 2);
 }
 
 h1:before,
@@ -92,119 +21,4 @@ h1:after,
 h2:before,
 h2:after {
   content: "-";
-}
-
-em {
-  font-weight: bold;
-}
-
-ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $grid-gap;
-
-  @include backdrop;
-}
-
-#language {
-  ul {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-#git-metadata {
-  position: absolute;
-  top: $padding * 2;
-  left: $padding * 2;
-  right: $padding * 2;
-  font-size: 2vh;
-  font-family: $monofont;
-
-  background-color: $contrast;
-  color: $primary;
-  border-radius: $curvature;
-  border: 1px solid $highlight;
-
-  a {
-    color: $highlight;
-    text-decoration: none;
-  }
-
-  dl {
-    display: grid;
-    gap: $padding;
-    grid-template-columns: 1fr 2fr;
-    padding: 0;
-  }
-
-  dl {
-    text-align: right;
-  }
-
-  dd {
-    text-align: left;
-  }
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: transparentize(black, 0.2);
-  display: none;
-}
-
-#show-metadata {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 3vh;
-
-  a {
-    color: $primary;
-    text-decoration: none;
-  }
-}
-
-.visible {
-  display: block;
-}
-
-///
-
-.btn {
-  font-family: $font;
-  font-size: 3em;
-  text-transform: lowercase;
-  text-shadow: 0 0 1px $contrast;
-
-  color: $highlight;
-
-  margin: 0;
-  padding: 0.5em;
-  width: 100%;
-  border: 4px solid;
-  border-color: $contrast;
-  border-radius: 0.3em;
-
-  transition: background-size 1s ease-in-out, color 2s;
-
-  background: linear-gradient($active, $active) no-repeat, $inactive;
-  background-size: 0% 0%;
-  background-position: center;
-}
-
-.btn.pending {
-  color: $primary;
-}
-
-.btn.selected {
-  background-size: 100% 100%;
-  background-position: center;
-
-  color: $light;
 }
