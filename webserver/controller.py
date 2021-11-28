@@ -5,7 +5,7 @@ from time import sleep
 
 import redis
 from flask import Flask, render_template, request
-from tools import find_languages, find_styles, get_defaults
+from tools import find_languages, find_styles, get_defaults, get_git_data
 from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
@@ -23,6 +23,7 @@ def index():
             host_name=socket.gethostname(),
             languages=app.valids["language"],
             styles=app.valids["style"],
+            git_metadata=get_git_data(),
         )
 
     return {"status": "OK"}

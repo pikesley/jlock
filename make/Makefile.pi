@@ -5,6 +5,9 @@ default: setup
 setup: set-python apt-installs install virtualhost system-install configure-shell
 	sudo reboot
 
+update:
+	bash scripts/updater.sh
+
 configure-shell: set-autologin disable-power-warning
 	cp shell-config/bash_profile /home/pi/.bash_profile
 	cp shell-config/xinitrc /home/pi/.xinitrc

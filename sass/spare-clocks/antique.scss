@@ -1,0 +1,22 @@
+$font: "Shippori Antique";
+$font: "Special Elite";
+
+@use "../base/layout";
+@use "../base/font" with ($font: $font);
+@use "../base/animators/twirler" as animator;
+@use "../base/utils";
+@use "../base/vars";
+
+$background-colour: rgb(42, 35, 104);
+$active-colour: rgb(201, 37, 193);
+$inactive-colour: darken($active-colour, 30%);
+
+body {
+  background-color: $background-colour;
+  color: $inactive-colour;
+  font-size: 6vh;
+  text-transform: uppercase;
+}
+
+animator.$activated-styles: (color: $active-colour, font-size: 8vh);
+@include animator.setup(4s);
