@@ -65,6 +65,10 @@ This will install it all, and then reboot into a running clock.
 
 There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](sass/clocks) and [languages](static/js/internationalisation/README.md).
 
+### Keeping it updated
+
+jlock runs a [cronjob](etc/cron.d/updater) at 03:00 every morning to discover and apply updates to `main`.
+
 ## Development
 
 This was all developed on a Docker container. To run it:
