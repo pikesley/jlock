@@ -63,12 +63,18 @@ def get_git_data():
     head_sha = repo.head.object.hexsha
     head_url = f"{repo_url}/tree/{head_sha}"
 
+    author_name = repo.head.object.author.name
+    author_link=f"https://github.com/{author_name}"
+
     return {
         "commit": repo.git.rev_parse(head_sha, short=True),
         "urls": {
             "repo": repo_url,
             "head": head_url,
         },
-        "author": repo.head.object.author.name,
+        "author": {
+            "name": author_name,
+            "github_link": author_link
+        },
         "timestamp": timestamp
     }

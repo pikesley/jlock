@@ -49,29 +49,6 @@
         </ul>
       </section>
     </main>
-
-    <div class="overlay" id="git-metadata-modal">
-      <section id="git-metadata">
-        <h2>
-          <a href="{{ git_metadata['urls']['repo'] }}"> jlock </a>
-        </h2>
-        <dl>
-          <dt>Commit</dt>
-          <dd>
-            <a href="{{ git_metadata['urls']['head'] }}"
-              >{{ git_metadata['commit'] }}</a
-            >
-          </dd>
-          <dt>Timestamp</dt>
-          <dd>{{ git_metadata['timestamp'] }}</dd>
-          <dt>Author</dt>
-          <dd>{{ git_metadata['author'] }}</dd>
-        </dl>
-      </section>
-    </div>
-
-    <section id="show-metadata">
-      <a href="#">❋</a>
-    </section>
+    {% include "components/git-metadata.html" %}
   </body>
 </html>
