@@ -1,0 +1,702 @@
+@import url("https://fonts.googleapis.com/css2?family=Special Elite");
+body {
+  overflow: hidden;
+  font-size: 5vh;
+  margin: 1vh;
+  padding: 0;
+}
+
+.clock-grid {
+  display: grid;
+  gap: 0 0;
+  align-items: center;
+  height: 98vh;
+  width: 98vh;
+  margin: 0 auto;
+  perspective: 100vh;
+  perspective-origin: center;
+}
+.clock-grid span {
+  text-align: center;
+}
+
+.clock-grid-10-10 {
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  grid-template-rows: repeat(14, minmax(0, 1fr));
+}
+
+.clock-grid-10-11 {
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  grid-template-rows: repeat(15, minmax(0, 1fr));
+}
+
+.clock-grid-10-12 {
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  grid-template-rows: repeat(16, minmax(0, 1fr));
+}
+
+.clock-grid-11-10 {
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  grid-template-rows: repeat(14, minmax(0, 1fr));
+}
+
+.clock-grid-11-11 {
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  grid-template-rows: repeat(15, minmax(0, 1fr));
+}
+
+.clock-grid-11-12 {
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  grid-template-rows: repeat(16, minmax(0, 1fr));
+}
+
+.clock-grid-12-10 {
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  grid-template-rows: repeat(14, minmax(0, 1fr));
+}
+
+.clock-grid-12-11 {
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  grid-template-rows: repeat(15, minmax(0, 1fr));
+}
+
+.clock-grid-12-12 {
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  grid-template-rows: repeat(16, minmax(0, 1fr));
+}
+
+body {
+  font-family: "Special Elite";
+}
+
+body {
+  background-color: #2a2368;
+  color: #480d45;
+  font-size: 6vh;
+  text-transform: uppercase;
+}
+
+.active {
+  animation: twirler-in 4s 2s ease forwards;
+}
+
+.inactive {
+  animation: twirler-out 4s ease forwards;
+}
+
+@keyframes twirler-in {
+  0% {
+    transform: perspective(10vh) rotateY(0turn);
+  }
+  1% {
+    transform: perspective(10vh) rotateY(-0.01turn);
+  }
+  2% {
+    transform: perspective(10vh) rotateY(-0.02turn);
+  }
+  3% {
+    transform: perspective(10vh) rotateY(-0.03turn);
+  }
+  4% {
+    transform: perspective(10vh) rotateY(-0.04turn);
+  }
+  5% {
+    transform: perspective(10vh) rotateY(-0.05turn);
+  }
+  6% {
+    transform: perspective(10vh) rotateY(-0.06turn);
+  }
+  7% {
+    transform: perspective(10vh) rotateY(-0.07turn);
+  }
+  8% {
+    transform: perspective(10vh) rotateY(-0.08turn);
+  }
+  9% {
+    transform: perspective(10vh) rotateY(-0.09turn);
+  }
+  10% {
+    transform: perspective(10vh) rotateY(-0.1turn);
+  }
+  11% {
+    transform: perspective(10vh) rotateY(-0.11turn);
+  }
+  12% {
+    transform: perspective(10vh) rotateY(-0.12turn);
+  }
+  13% {
+    transform: perspective(10vh) rotateY(-0.13turn);
+  }
+  14% {
+    transform: perspective(10vh) rotateY(-0.14turn);
+  }
+  15% {
+    transform: perspective(10vh) rotateY(-0.15turn);
+  }
+  16% {
+    transform: perspective(10vh) rotateY(-0.16turn);
+  }
+  17% {
+    transform: perspective(10vh) rotateY(-0.17turn);
+  }
+  18% {
+    transform: perspective(10vh) rotateY(-0.18turn);
+  }
+  19% {
+    transform: perspective(10vh) rotateY(-0.19turn);
+  }
+  20% {
+    transform: perspective(10vh) rotateY(-0.2turn);
+  }
+  21% {
+    transform: perspective(10vh) rotateY(-0.21turn);
+  }
+  22% {
+    transform: perspective(10vh) rotateY(-0.22turn);
+  }
+  23% {
+    transform: perspective(10vh) rotateY(-0.23turn);
+  }
+  24% {
+    transform: perspective(10vh) rotateY(-0.24turn);
+  }
+  25% {
+    transform: perspective(10vh) rotateY(-0.25turn);
+  }
+  26% {
+    transform: perspective(10vh) rotateY(-0.26turn);
+  }
+  27% {
+    transform: perspective(10vh) rotateY(-0.27turn);
+  }
+  28% {
+    transform: perspective(10vh) rotateY(-0.28turn);
+  }
+  29% {
+    transform: perspective(10vh) rotateY(-0.29turn);
+  }
+  30% {
+    transform: perspective(10vh) rotateY(-0.3turn);
+  }
+  31% {
+    transform: perspective(10vh) rotateY(-0.31turn);
+  }
+  32% {
+    transform: perspective(10vh) rotateY(-0.32turn);
+  }
+  33% {
+    transform: perspective(10vh) rotateY(-0.33turn);
+  }
+  34% {
+    transform: perspective(10vh) rotateY(-0.34turn);
+  }
+  35% {
+    transform: perspective(10vh) rotateY(-0.35turn);
+  }
+  36% {
+    transform: perspective(10vh) rotateY(-0.36turn);
+  }
+  37% {
+    transform: perspective(10vh) rotateY(-0.37turn);
+  }
+  38% {
+    transform: perspective(10vh) rotateY(-0.38turn);
+  }
+  39% {
+    transform: perspective(10vh) rotateY(-0.39turn);
+  }
+  40% {
+    transform: perspective(10vh) rotateY(-0.4turn);
+  }
+  41% {
+    transform: perspective(10vh) rotateY(-0.41turn);
+  }
+  42% {
+    transform: perspective(10vh) rotateY(-0.42turn);
+  }
+  43% {
+    transform: perspective(10vh) rotateY(-0.43turn);
+  }
+  44% {
+    transform: perspective(10vh) rotateY(-0.44turn);
+  }
+  45% {
+    transform: perspective(10vh) rotateY(-0.45turn);
+  }
+  46% {
+    transform: perspective(10vh) rotateY(-0.46turn);
+  }
+  47% {
+    transform: perspective(10vh) rotateY(-0.47turn);
+  }
+  48% {
+    transform: perspective(10vh) rotateY(-0.48turn);
+  }
+  49% {
+    transform: perspective(10vh) rotateY(-0.49turn);
+  }
+  50% {
+    transform: perspective(10vh) rotateY(-0.5turn);
+  }
+  51% {
+    transform: perspective(10vh) rotateY(-0.51turn);
+  }
+  52% {
+    transform: perspective(10vh) rotateY(-0.52turn);
+  }
+  53% {
+    transform: perspective(10vh) rotateY(-0.53turn);
+  }
+  54% {
+    transform: perspective(10vh) rotateY(-0.54turn);
+  }
+  55% {
+    transform: perspective(10vh) rotateY(-0.55turn);
+  }
+  56% {
+    transform: perspective(10vh) rotateY(-0.56turn);
+  }
+  57% {
+    transform: perspective(10vh) rotateY(-0.57turn);
+  }
+  58% {
+    transform: perspective(10vh) rotateY(-0.58turn);
+  }
+  59% {
+    transform: perspective(10vh) rotateY(-0.59turn);
+  }
+  60% {
+    transform: perspective(10vh) rotateY(-0.6turn);
+  }
+  61% {
+    transform: perspective(10vh) rotateY(-0.61turn);
+  }
+  62% {
+    transform: perspective(10vh) rotateY(-0.62turn);
+  }
+  63% {
+    transform: perspective(10vh) rotateY(-0.63turn);
+  }
+  64% {
+    transform: perspective(10vh) rotateY(-0.64turn);
+  }
+  65% {
+    transform: perspective(10vh) rotateY(-0.65turn);
+  }
+  66% {
+    transform: perspective(10vh) rotateY(-0.66turn);
+  }
+  67% {
+    transform: perspective(10vh) rotateY(-0.67turn);
+  }
+  68% {
+    transform: perspective(10vh) rotateY(-0.68turn);
+  }
+  69% {
+    transform: perspective(10vh) rotateY(-0.69turn);
+  }
+  70% {
+    transform: perspective(10vh) rotateY(-0.7turn);
+  }
+  71% {
+    transform: perspective(10vh) rotateY(-0.71turn);
+  }
+  72% {
+    transform: perspective(10vh) rotateY(-0.72turn);
+  }
+  73% {
+    transform: perspective(10vh) rotateY(-0.73turn);
+  }
+  74% {
+    transform: perspective(10vh) rotateY(-0.74turn);
+  }
+  75% {
+    transform: perspective(10vh) rotateY(-0.75turn);
+  }
+  76% {
+    transform: perspective(10vh) rotateY(-0.76turn);
+  }
+  77% {
+    transform: perspective(10vh) rotateY(-0.77turn);
+  }
+  78% {
+    transform: perspective(10vh) rotateY(-0.78turn);
+  }
+  79% {
+    transform: perspective(10vh) rotateY(-0.79turn);
+  }
+  80% {
+    transform: perspective(10vh) rotateY(-0.8turn);
+  }
+  81% {
+    transform: perspective(10vh) rotateY(-0.81turn);
+  }
+  82% {
+    transform: perspective(10vh) rotateY(-0.82turn);
+  }
+  83% {
+    transform: perspective(10vh) rotateY(-0.83turn);
+  }
+  84% {
+    transform: perspective(10vh) rotateY(-0.84turn);
+  }
+  85% {
+    transform: perspective(10vh) rotateY(-0.85turn);
+  }
+  86% {
+    transform: perspective(10vh) rotateY(-0.86turn);
+  }
+  87% {
+    transform: perspective(10vh) rotateY(-0.87turn);
+  }
+  88% {
+    transform: perspective(10vh) rotateY(-0.88turn);
+  }
+  89% {
+    transform: perspective(10vh) rotateY(-0.89turn);
+  }
+  90% {
+    transform: perspective(10vh) rotateY(-0.9turn);
+  }
+  91% {
+    transform: perspective(10vh) rotateY(-0.91turn);
+  }
+  92% {
+    transform: perspective(10vh) rotateY(-0.92turn);
+  }
+  93% {
+    transform: perspective(10vh) rotateY(-0.93turn);
+  }
+  94% {
+    transform: perspective(10vh) rotateY(-0.94turn);
+  }
+  95% {
+    transform: perspective(10vh) rotateY(-0.95turn);
+  }
+  96% {
+    transform: perspective(10vh) rotateY(-0.96turn);
+  }
+  97% {
+    transform: perspective(10vh) rotateY(-0.97turn);
+  }
+  98% {
+    transform: perspective(10vh) rotateY(-0.98turn);
+  }
+  99% {
+    transform: perspective(10vh) rotateY(-0.99turn);
+  }
+  100% {
+    transform: perspective(10vh) rotateY(-1turn);
+    color: #c925c1;
+    font-size: 8vh;
+  }
+}
+@keyframes twirler-out {
+  0% {
+    transform: perspective(10vh) rotateY(0turn);
+    color: #c925c1;
+    font-size: 8vh;
+  }
+  1% {
+    transform: perspective(10vh) rotateY(-0.01turn);
+  }
+  2% {
+    transform: perspective(10vh) rotateY(-0.02turn);
+  }
+  3% {
+    transform: perspective(10vh) rotateY(-0.03turn);
+  }
+  4% {
+    transform: perspective(10vh) rotateY(-0.04turn);
+  }
+  5% {
+    transform: perspective(10vh) rotateY(-0.05turn);
+  }
+  6% {
+    transform: perspective(10vh) rotateY(-0.06turn);
+  }
+  7% {
+    transform: perspective(10vh) rotateY(-0.07turn);
+  }
+  8% {
+    transform: perspective(10vh) rotateY(-0.08turn);
+  }
+  9% {
+    transform: perspective(10vh) rotateY(-0.09turn);
+  }
+  10% {
+    transform: perspective(10vh) rotateY(-0.1turn);
+  }
+  11% {
+    transform: perspective(10vh) rotateY(-0.11turn);
+  }
+  12% {
+    transform: perspective(10vh) rotateY(-0.12turn);
+  }
+  13% {
+    transform: perspective(10vh) rotateY(-0.13turn);
+  }
+  14% {
+    transform: perspective(10vh) rotateY(-0.14turn);
+  }
+  15% {
+    transform: perspective(10vh) rotateY(-0.15turn);
+  }
+  16% {
+    transform: perspective(10vh) rotateY(-0.16turn);
+  }
+  17% {
+    transform: perspective(10vh) rotateY(-0.17turn);
+  }
+  18% {
+    transform: perspective(10vh) rotateY(-0.18turn);
+  }
+  19% {
+    transform: perspective(10vh) rotateY(-0.19turn);
+  }
+  20% {
+    transform: perspective(10vh) rotateY(-0.2turn);
+  }
+  21% {
+    transform: perspective(10vh) rotateY(-0.21turn);
+  }
+  22% {
+    transform: perspective(10vh) rotateY(-0.22turn);
+  }
+  23% {
+    transform: perspective(10vh) rotateY(-0.23turn);
+  }
+  24% {
+    transform: perspective(10vh) rotateY(-0.24turn);
+  }
+  25% {
+    transform: perspective(10vh) rotateY(-0.25turn);
+  }
+  26% {
+    transform: perspective(10vh) rotateY(-0.26turn);
+  }
+  27% {
+    transform: perspective(10vh) rotateY(-0.27turn);
+  }
+  28% {
+    transform: perspective(10vh) rotateY(-0.28turn);
+  }
+  29% {
+    transform: perspective(10vh) rotateY(-0.29turn);
+  }
+  30% {
+    transform: perspective(10vh) rotateY(-0.3turn);
+  }
+  31% {
+    transform: perspective(10vh) rotateY(-0.31turn);
+  }
+  32% {
+    transform: perspective(10vh) rotateY(-0.32turn);
+  }
+  33% {
+    transform: perspective(10vh) rotateY(-0.33turn);
+  }
+  34% {
+    transform: perspective(10vh) rotateY(-0.34turn);
+  }
+  35% {
+    transform: perspective(10vh) rotateY(-0.35turn);
+  }
+  36% {
+    transform: perspective(10vh) rotateY(-0.36turn);
+  }
+  37% {
+    transform: perspective(10vh) rotateY(-0.37turn);
+  }
+  38% {
+    transform: perspective(10vh) rotateY(-0.38turn);
+  }
+  39% {
+    transform: perspective(10vh) rotateY(-0.39turn);
+  }
+  40% {
+    transform: perspective(10vh) rotateY(-0.4turn);
+  }
+  41% {
+    transform: perspective(10vh) rotateY(-0.41turn);
+  }
+  42% {
+    transform: perspective(10vh) rotateY(-0.42turn);
+  }
+  43% {
+    transform: perspective(10vh) rotateY(-0.43turn);
+  }
+  44% {
+    transform: perspective(10vh) rotateY(-0.44turn);
+  }
+  45% {
+    transform: perspective(10vh) rotateY(-0.45turn);
+  }
+  46% {
+    transform: perspective(10vh) rotateY(-0.46turn);
+  }
+  47% {
+    transform: perspective(10vh) rotateY(-0.47turn);
+  }
+  48% {
+    transform: perspective(10vh) rotateY(-0.48turn);
+  }
+  49% {
+    transform: perspective(10vh) rotateY(-0.49turn);
+  }
+  50% {
+    transform: perspective(10vh) rotateY(-0.5turn);
+  }
+  51% {
+    transform: perspective(10vh) rotateY(-0.51turn);
+  }
+  52% {
+    transform: perspective(10vh) rotateY(-0.52turn);
+  }
+  53% {
+    transform: perspective(10vh) rotateY(-0.53turn);
+  }
+  54% {
+    transform: perspective(10vh) rotateY(-0.54turn);
+  }
+  55% {
+    transform: perspective(10vh) rotateY(-0.55turn);
+  }
+  56% {
+    transform: perspective(10vh) rotateY(-0.56turn);
+  }
+  57% {
+    transform: perspective(10vh) rotateY(-0.57turn);
+  }
+  58% {
+    transform: perspective(10vh) rotateY(-0.58turn);
+  }
+  59% {
+    transform: perspective(10vh) rotateY(-0.59turn);
+  }
+  60% {
+    transform: perspective(10vh) rotateY(-0.6turn);
+  }
+  61% {
+    transform: perspective(10vh) rotateY(-0.61turn);
+  }
+  62% {
+    transform: perspective(10vh) rotateY(-0.62turn);
+  }
+  63% {
+    transform: perspective(10vh) rotateY(-0.63turn);
+  }
+  64% {
+    transform: perspective(10vh) rotateY(-0.64turn);
+  }
+  65% {
+    transform: perspective(10vh) rotateY(-0.65turn);
+  }
+  66% {
+    transform: perspective(10vh) rotateY(-0.66turn);
+  }
+  67% {
+    transform: perspective(10vh) rotateY(-0.67turn);
+  }
+  68% {
+    transform: perspective(10vh) rotateY(-0.68turn);
+  }
+  69% {
+    transform: perspective(10vh) rotateY(-0.69turn);
+  }
+  70% {
+    transform: perspective(10vh) rotateY(-0.7turn);
+  }
+  71% {
+    transform: perspective(10vh) rotateY(-0.71turn);
+  }
+  72% {
+    transform: perspective(10vh) rotateY(-0.72turn);
+  }
+  73% {
+    transform: perspective(10vh) rotateY(-0.73turn);
+  }
+  74% {
+    transform: perspective(10vh) rotateY(-0.74turn);
+  }
+  75% {
+    transform: perspective(10vh) rotateY(-0.75turn);
+  }
+  76% {
+    transform: perspective(10vh) rotateY(-0.76turn);
+  }
+  77% {
+    transform: perspective(10vh) rotateY(-0.77turn);
+  }
+  78% {
+    transform: perspective(10vh) rotateY(-0.78turn);
+  }
+  79% {
+    transform: perspective(10vh) rotateY(-0.79turn);
+  }
+  80% {
+    transform: perspective(10vh) rotateY(-0.8turn);
+  }
+  81% {
+    transform: perspective(10vh) rotateY(-0.81turn);
+  }
+  82% {
+    transform: perspective(10vh) rotateY(-0.82turn);
+  }
+  83% {
+    transform: perspective(10vh) rotateY(-0.83turn);
+  }
+  84% {
+    transform: perspective(10vh) rotateY(-0.84turn);
+  }
+  85% {
+    transform: perspective(10vh) rotateY(-0.85turn);
+  }
+  86% {
+    transform: perspective(10vh) rotateY(-0.86turn);
+  }
+  87% {
+    transform: perspective(10vh) rotateY(-0.87turn);
+  }
+  88% {
+    transform: perspective(10vh) rotateY(-0.88turn);
+  }
+  89% {
+    transform: perspective(10vh) rotateY(-0.89turn);
+  }
+  90% {
+    transform: perspective(10vh) rotateY(-0.9turn);
+  }
+  91% {
+    transform: perspective(10vh) rotateY(-0.91turn);
+  }
+  92% {
+    transform: perspective(10vh) rotateY(-0.92turn);
+  }
+  93% {
+    transform: perspective(10vh) rotateY(-0.93turn);
+  }
+  94% {
+    transform: perspective(10vh) rotateY(-0.94turn);
+  }
+  95% {
+    transform: perspective(10vh) rotateY(-0.95turn);
+  }
+  96% {
+    transform: perspective(10vh) rotateY(-0.96turn);
+  }
+  97% {
+    transform: perspective(10vh) rotateY(-0.97turn);
+  }
+  98% {
+    transform: perspective(10vh) rotateY(-0.98turn);
+  }
+  99% {
+    transform: perspective(10vh) rotateY(-0.99turn);
+  }
+  100% {
+    transform: perspective(10vh) rotateY(-1turn);
+  }
+}
+
+/*# sourceMappingURL=antique.css.map */
