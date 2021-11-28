@@ -1,5 +1,78 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat Alternates");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu Mono");
+@import url("https://fonts.googleapis.com/css2?family=Red Hat Mono");
+body {
+  color: #053750;
+  background-color: #053750;
+}
+
+h2 {
+  color: #f2651e;
+}
+
+#git-metadata {
+  background-color: #053750;
+  color: #f2651e;
+  border-color: #868686;
+}
+#git-metadata a {
+  color: #868686;
+  text-decoration-color: #f2651e;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#show-metadata a {
+  color: #f2651e;
+}
+
+.btn {
+  color: #868686;
+  border-color: #053750;
+  background-image: linear-gradient(#f2651e, #f2651e);
+  background-repeat: no-repeat;
+  background-color: #053750;
+}
+
+.btn.pending {
+  color: #f2651e;
+}
+
+.btn.selected {
+  color: white;
+}
+
+body {
+  font-family: "Montserrat Alternates";
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: 8em;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+.identifier {
+  font-size: 2em;
+}
+
+em {
+  font-weight: bold;
+}
+
+#git-metadata {
+  font-family: "Red Hat Mono";
+  font-size: 2vh;
+}
+
+.btn {
+  font-family: "Montserrat Alternates";
+}
+
 html,
 body,
 h1,
@@ -11,23 +84,12 @@ header {
   margin: 0;
 }
 
-body {
-  font-family: "Montserrat Alternates";
-  text-align: center;
-  color: #053750;
-  background-image: url("../../images/backgrounds/blue-metal-cogs-and-gears.jpg");
-  background-color: #053750;
-  background-blend-mode: overlay;
-  text-transform: lowercase;
-  height: 99vh;
-  overflow: hidden;
-}
-
 main {
   display: grid;
 }
 
-header {
+header,
+ul {
   margin: 0;
   border: 1px solid #f2651e;
   background-color: #868686;
@@ -40,29 +102,8 @@ section {
   margin: 1em;
 }
 
-h1 {
-  font-size: 8em;
-}
-
-.identifier {
-  font-size: 2em;
-}
-
 h2 {
-  font-size: 4em;
-  color: #f2651e;
   padding: 0.5em;
-}
-
-h1:before,
-h1:after,
-h2:before,
-h2:after {
-  content: "-";
-}
-
-em {
-  font-weight: bold;
 }
 
 ul {
@@ -70,11 +111,6 @@ ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
-  margin: 0;
-  border: 1px solid #f2651e;
-  background-color: #868686;
-  padding: 1em;
-  border-radius: 1em;
 }
 
 #language ul {
@@ -86,16 +122,16 @@ ul {
   top: 2em;
   left: 2em;
   right: 2em;
-  font-size: 2vh;
-  font-family: "Ubuntu Mono";
-  background-color: #053750;
-  color: #f2651e;
   border-radius: 1em;
-  border: 1px solid #868686;
+  border: 1px solid;
+}
+#git-metadata h2:before,
+#git-metadata h2:after {
+  content: "";
 }
 #git-metadata a {
-  color: #868686;
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
 }
 #git-metadata dl {
   display: grid;
@@ -116,7 +152,6 @@ ul {
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.8);
   display: none;
 }
 
@@ -128,7 +163,6 @@ ul {
   font-size: 3vh;
 }
 #show-metadata a {
-  color: #f2651e;
   text-decoration: none;
 }
 
@@ -137,31 +171,35 @@ ul {
 }
 
 .btn {
-  font-family: "Montserrat Alternates";
   font-size: 3em;
   text-transform: lowercase;
-  text-shadow: 0 0 1px #053750;
-  color: #868686;
   margin: 0;
   padding: 0.5em;
   width: 100%;
-  border: 4px solid;
-  border-color: #053750;
+  border-width: 4px;
+  border-style: solid;
   border-radius: 0.3em;
   transition: background-size 1s ease-in-out, color 2s;
-  background: linear-gradient(#f2651e, #f2651e) no-repeat, #053750;
   background-size: 0% 0%;
   background-position: center;
-}
-
-.btn.pending {
-  color: #f2651e;
 }
 
 .btn.selected {
   background-size: 100% 100%;
   background-position: center;
-  color: white;
+}
+
+body {
+  text-align: center;
+  background-image: url("../../images/backgrounds/blue-metal-cogs-and-gears.jpg");
+  background-blend-mode: overlay;
+}
+
+h1:before,
+h1:after,
+h2:before,
+h2:after {
+  content: "-";
 }
 
 /*# sourceMappingURL=controller.css.map */

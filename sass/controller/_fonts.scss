@@ -1,0 +1,35 @@
+$font: "Montserrat Alternates";
+@import url("https://fonts.googleapis.com/css2?family=#{$font}");
+
+$monofont: "Red Hat Mono";
+@import url("https://fonts.googleapis.com/css2?family=#{$monofont}");
+
+body {
+  font-family: $font;
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: 8em;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+.identifier {
+  font-size: 2em;
+}
+
+em {
+  font-weight: bold;
+}
+
+#git-metadata {
+  font-family: $monofont;
+  font-size: 2vh;
+}
+
+.btn {
+  font-family: $font;
+}

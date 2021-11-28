@@ -1,0 +1,15 @@
+@use "colours";
+@use "vars";
+
+@mixin backdrop {
+  margin: 0;
+  border: vars.$border-thickess solid colours.$primary;
+  background-color: colours.$highlight;
+  padding: vars.$grid-gap;
+  border-radius: vars.$curvature;
+}
+
+@mixin unpad {
+  padding: 0;
+  margin: 0;
+}
