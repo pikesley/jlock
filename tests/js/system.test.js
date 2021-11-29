@@ -1,8 +1,20 @@
+// https://www.leighhalliday.com/mock-fetch-jest
+
 import { run } from "modules/controls.js";
 import { gatherSpanIDs } from "./support/helpers.js";
 
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
+
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: () => 500,
+  })
+);
+
+let styles = global.document.createElement("link");
+styles.setAttribute("id", "styles");
+global.document.head.appendChild(styles);
 
 describe("Integration test", function () {
   it("displays the time", async function () {

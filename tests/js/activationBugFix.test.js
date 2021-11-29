@@ -3,6 +3,16 @@ import { gatherSpanIDs, combine } from "./support/helpers.js";
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: () => 500,
+  })
+);
+
+let styles = global.document.createElement("link");
+styles.setAttribute("id", "styles");
+global.document.head.appendChild(styles);
+
 describe("twentyfive bug", function () {
   it("activates and deactivates multi-class spans correctly", async function () {
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:20"));

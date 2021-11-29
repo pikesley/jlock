@@ -1,3 +1,3 @@
-import { initialise } from "./modules/controls.js";
+import { run } from "./modules/controls.js";
 
-initialise();
+run();
