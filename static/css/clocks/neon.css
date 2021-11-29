@@ -69,6 +69,21 @@ body {
   grid-template-rows: repeat(16, minmax(0, 1fr));
 }
 
+.overlay {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 4s;
+}
+
+.screen {
+  opacity: 1;
+}
+
 body {
   background: url("../../images/backgrounds/wall.jpg");
   background-color: rgba(0, 0, 0, 0.85);
