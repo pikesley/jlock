@@ -179,7 +179,7 @@ with a JSON payload like
 }
 ```
 
-Sets the style. [The style must be implemented](sass/clocks), obviously. This also triggers a browser reload, if we're running on a Pi.
+Sets the style. [The style must be implemented](sass/clocks), obviously.
 
 ### Getting the style
 
@@ -202,8 +202,6 @@ If we're running on a Pi, this calls `DISPLAY=:0 xdotool key F5` to trigger a br
 ### Serverless mode
 
 If the clock cannot talk to an API (e.g. if it's running on [Netlify](https://jlock.netlify.app)) it falls-back to reading the query-string, so it will honour something like `https://localhost:8000?language=cy&style=neon`.
-
-> PROVIDING QUERY-STRING VALUES WHEN THERE _IS_ AN AVAILABLE API IS AN UNSUPPORTED CONFIGURATION AND RESULTS ARE EXTREMELY UNDEFINED.
 
 ## Storing CSS artefacts in Github
 

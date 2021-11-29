@@ -1,8 +1,10 @@
 import { run } from "modules/controls.js";
 import { gatherSpanIDs, combine } from "./support/helpers.js";
+
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
+jest.setTimeout(10000);
 global.fetch = jest.fn(() =>
   Promise.resolve({
     status: () => 500,
