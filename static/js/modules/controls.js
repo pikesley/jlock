@@ -71,7 +71,7 @@ let repopulate = function (element, language) {
     el.classList.add("clock-grid");
     el.classList.add(dimensionedClockClass);
 
-    populateClock("#clock", languages[language]["data"], dimensions);
+    populateClock(element, languages[language]["data"], dimensions);
 
     // force a refresh
     localStorage["active-classes"] = null;
