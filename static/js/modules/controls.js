@@ -17,7 +17,7 @@ document.querySelector("html").appendChild(screen);
 
 // we can override `interval` to speed up our tests
 let run = function (element = "#clock", interval = 1000) {
-  fadeIn();
+  reveal();
   setInterval(function () {
     refreshContent(element);
     refreshClock();
@@ -62,7 +62,7 @@ let refreshClock = function () {
 
 let repopulate = function (element, language) {
   if (language != currents.language) {
-    fadeOutChangeFadeIn(function () {
+    hideChangeReveal(function () {
       let el = document.querySelector(element);
       let dimensions = new DimensionFinder(languages[language]["data"]);
       let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
@@ -85,7 +85,7 @@ let repopulate = function (element, language) {
 
 let setStyle = function (style) {
   if (style != currents.style) {
-    fadeOutChangeFadeIn(function () {
+    hideChangeReveal(function () {
       document
         .querySelector("#styles")
         .setAttribute("href", `css/clocks/${style}.css`);
@@ -96,20 +96,21 @@ let setStyle = function (style) {
 };
 
 // https://stackoverflow.com/a/56104627
-let fadeOutChangeFadeIn = function (callback) {
+let hideChangeReveal = function (callback) {
   screen.classList.remove("reveal");
   screen.classList.add("hide");
 
   screen.addEventListener("transitionend", function x() {
+    // this seems redundant but is VERY IMPORTANT
     screen.removeEventListener("transitionend", x);
 
     callback();
 
-    fadeIn();
+    reveal();
   });
 };
 
-let fadeIn = function () {
+let reveal = function () {
   screen.classList.remove("hide");
   screen.classList.add("reveal");
 };

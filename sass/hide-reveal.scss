@@ -1,7 +1,7 @@
 @use "base/vars";
 
 .screen {
-  transition: opacity vars.$fade-time ease-in-out;
+  transition: opacity vars.$reveal-time ease-in-out;
   background-color: black;
   position: fixed;
   top: 0;
