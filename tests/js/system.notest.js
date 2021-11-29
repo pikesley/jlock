@@ -1,3 +1,5 @@
+// https://www.leighhalliday.com/mock-fetch-jest
+
 import { run } from "modules/controls.js";
 import { gatherSpanIDs } from "./support/helpers.js";
 
