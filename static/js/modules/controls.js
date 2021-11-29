@@ -11,14 +11,13 @@ var currents = {
   language: null,
 };
 
+let screen = document.createElement("div");
+screen.classList.add("screen");
+document.querySelector("html").appendChild(screen);
+
 // we can override `interval` to speed up our tests
 let run = function (element = "#clock", interval = 1000) {
-  let overlay = document.createElement("div");
-  overlay.classList.add("overlay");
-
-  document.querySelector("html").appendChild(overlay);
   fadeIn();
-
   setInterval(function () {
     refreshContent(element);
     refreshClock();
@@ -34,6 +33,7 @@ let refreshContent = function (element) {
       setStyle(json.style);
     })
     .catch(function () {
+      // we couldn't talk to the backend
       setStyle(fromQueryString("style"));
     });
 
@@ -45,12 +45,13 @@ let refreshContent = function (element) {
       repopulate(element, json.language);
     })
     .catch(function () {
+      // we couldn't talk to the backend
       repopulate(element, fromQueryString("language"));
     });
 };
 
 let refreshClock = function () {
-  // update the clock
+  // update the time
   let sm = new SpanManager(
     JSON.parse(localStorage["active-classes"] || "[]"),
     classesToBeActivatedFor(new TimeFinder(), currents.language)
@@ -61,45 +62,56 @@ let refreshClock = function () {
 
 let repopulate = function (element, language) {
   if (language != currents.language) {
-    fadeOut();
-    let el = document.querySelector(element);
-    let dimensions = new DimensionFinder(languages[language]["data"]);
-    let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
+    fadeOutChangeFadeIn(function () {
+      let el = document.querySelector(element);
+      let dimensions = new DimensionFinder(languages[language]["data"]);
+      let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
 
-    // reset classes
-    el.className = "";
-    el.classList.add("clock-grid");
-    el.classList.add(dimensionedClockClass);
+      // reset classes
+      el.className = "";
+      el.classList.add("clock-grid");
+      el.classList.add(dimensionedClockClass);
 
-    populateClock(element, languages[language]["data"], dimensions);
+      populateClock(element, languages[language]["data"], dimensions);
 
-    // force a refresh
-    localStorage["active-classes"] = null;
-    refreshClock();
+      // force a refresh
+      localStorage["active-classes"] = null;
+      refreshClock();
 
-    currents.language = language;
-    fadeIn();
+      currents.language = language;
+    });
   }
 };
 
 let setStyle = function (style) {
   if (style != currents.style) {
-    fadeOut();
-    document
-      .querySelector("#styles")
-      .setAttribute("href", `css/clocks/${style}.css`);
+    fadeOutChangeFadeIn(function () {
+      document
+        .querySelector("#styles")
+        .setAttribute("href", `css/clocks/${style}.css`);
 
-    currents.style = style;
-    fadeIn();
+      currents.style = style;
+    });
   }
 };
 
-let fadeOut = function () {
-  document.querySelector(".overlay").classList.add("screen");
+// https://stackoverflow.com/a/56104627
+let fadeOutChangeFadeIn = function (callback) {
+  screen.classList.remove("reveal");
+  screen.classList.add("hide");
+
+  screen.addEventListener("transitionend", function x() {
+    screen.removeEventListener("transitionend", x);
+
+    callback();
+
+    fadeIn();
+  });
 };
 
 let fadeIn = function () {
-  document.querySelector(".overlay").classList.remove("screen");
+  screen.classList.remove("hide");
+  screen.classList.add("reveal");
 };
 
 let fromQueryString = function (param) {
