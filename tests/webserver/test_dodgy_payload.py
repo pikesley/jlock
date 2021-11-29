@@ -21,7 +21,6 @@ class TestWithDodgyPayload(TestCase):
             json.loads(response.data), {"status": "not OK", "reason": "invalid payload"}
         )
 
-
     def test_with_bad_json(self):
         """Test it responds nicely to invalid JSON."""
         client = app.test_client()
