@@ -6,35 +6,35 @@ import { conf } from "../conf.js";
 import { DimensionFinder } from "./dimensionFinder.js";
 import * as languages from "../internationalisation/index.js";
 
-var html = document.querySelector("html");
-
-let initialise = function (element = "#clock") {
-  // see if the backend is reachable
-  fetch("/controller/")
-    .then(function (response) {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response;
-    })
-    .then(function () {
-      runWithBackend(element);
-    })
-    .catch(function () {
-      runServerLess(element);
-    });
+var currents = {
+  style: null,
+  language: null,
 };
 
-let runWithBackend = function (element) {
+// we can override `interval` to speed up our tests
+let run = function (element = "#clock", interval = 1000) {
+  let overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
+  document.querySelector("html").appendChild(overlay);
+  fadeIn();
+
+  setInterval(function () {
+    refreshContent(element);
+    refreshClock();
+  }, interval);
+};
+
+let refreshContent = function (element) {
   fetch("/controller/style")
     .then(function (response) {
       return response.json();
     })
     .then(function (json) {
-      let style = json.style;
-      document
-        .querySelector("#styles")
-        .setAttribute("href", `css/clocks/${style}.css`);
+      setStyle(json.style);
+    })
+    .catch(function () {
+      setStyle(fromQueryString("style"));
     });
 
   fetch("/controller/language")
@@ -42,79 +42,74 @@ let runWithBackend = function (element) {
       return response.json();
     })
     .then(function (json) {
-      run(element, json.language);
+      repopulate(element, json.language);
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function () {
+      repopulate(element, fromQueryString("language"));
     });
 };
 
-// run where we don't have a backend (netlify, for example)
-function runServerLess(element) {
-  let style = conf.defaults.style;
-  let language = conf.defaults.language;
-
-  let params = new URLSearchParams(window.location.search);
-  if (params.get("style")) {
-    style = params.get("style");
-  }
-
-  if (params.get("language")) {
-    language = params.get("language");
-  }
-
-  document
-    .querySelector("#styles")
-    .setAttribute("href", `css/clocks/${style}.css`);
-
-  run(element, language);
-}
-
-// we can override `interval` to speed up our tests
-let run = function (element, language, interval = 1000) {
-  fadeIn();
-
-  let languageData = languages[language]["data"];
-  let dimensions = new DimensionFinder(languageData);
-
-  let el = document.querySelector(element);
-  el.classList.add("clock-grid");
-
-  let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
-  el.classList.add(dimensionedClockClass);
-
-  populateClock(element, languageData, dimensions);
-
-  // force it to update on the first load
-  localStorage["active-classes"] = null;
-  refreshClock(language);
-
-  // check for updates every second
-  setInterval(function () {
-    refreshClock(language);
-  }, interval);
-};
-
-let refreshClock = function (language) {
+let refreshClock = function () {
   // update the clock
   let sm = new SpanManager(
     JSON.parse(localStorage["active-classes"] || "[]"),
-    classesToBeActivatedFor(new TimeFinder(), language)
+    classesToBeActivatedFor(new TimeFinder(), currents.language)
   );
 
   sm.yeet();
 };
 
-function fadeIn() {
-  html.style.opacity = 0;
+let repopulate = function (element, language) {
+  if (language != currents.language) {
+    fadeOut();
+    let el = document.querySelector(element);
+    let dimensions = new DimensionFinder(languages[language]["data"]);
+    let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
 
-  (function fade() {
-    var val = parseFloat(html.style.opacity);
-    if (!((val += conf.fadeIncrement) > 1)) {
-      html.style.opacity = val;
-      requestAnimationFrame(fade);
-    }
-  })();
-}
+    // reset classes
+    el.className = "";
+    el.classList.add("clock-grid");
+    el.classList.add(dimensionedClockClass);
 
-export { initialise, run };
+    populateClock("#clock", languages[language]["data"], dimensions);
+
+    // force a refresh
+    localStorage["active-classes"] = null;
+    refreshClock();
+
+    currents.language = language;
+    fadeIn();
+  }
+};
+
+let setStyle = function (style) {
+  if (style != currents.style) {
+    fadeOut();
+    document
+      .querySelector("#styles")
+      .setAttribute("href", `css/clocks/${style}.css`);
+
+    currents.style = style;
+    fadeIn();
+  }
+};
+
+let fadeOut = function () {
+  document.querySelector(".overlay").classList.add("screen");
+};
+
+let fadeIn = function () {
+  document.querySelector(".overlay").classList.remove("screen");
+};
+
+let fromQueryString = function (param) {
+  let parameter = conf.defaults[param];
+  let params = new URLSearchParams(window.location.search);
+  if (params.get(param)) {
+    parameter = params.get(param);
+  }
+
+  return parameter;
+};
+
+export { run };

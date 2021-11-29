@@ -73,7 +73,6 @@ def set_thing(key):
 
         if value in app.valids[key]:
             app.redis.set(key, value)
-            reload()
             return {"status": "OK", key: value}
 
         return {"status": "not OK", "reason": f"invalid {key}"}, 400

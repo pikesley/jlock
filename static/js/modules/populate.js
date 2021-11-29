@@ -6,6 +6,12 @@ let populateClock = function (elementID = "#clock", languageData, dimensions) {
   width = dimensions.columns;
 
   let element = document.querySelector(elementID);
+
+  // remove existing children
+  element.querySelectorAll("*").forEach(function (n) {
+    n.remove();
+  });
+
   addDots(element, [1, 2]);
 
   addBlankRows(element);
