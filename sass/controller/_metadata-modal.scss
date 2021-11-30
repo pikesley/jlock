@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "vars";
 
 #git-metadata {
@@ -21,7 +22,7 @@
 
   dl {
     display: grid;
-    gap: vars.$padding;
+    gap: math.div(vars.$padding, 2);
     grid-template-columns: 1fr 2fr;
     padding: 0;
   }

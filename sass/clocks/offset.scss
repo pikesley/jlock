@@ -1,6 +1,6 @@
+// https://codepen.io/markmead/pen/YjQKeZ
 $font: "Lalezar";
 
-// https://codepen.io/markmead/pen/YjQKeZ
 @use "sass:math";
 @use "../base/animators/twirler" as animator;
 @use "../base/font" with ($font: $font);
@@ -27,6 +27,7 @@ body {
 
   background-image: url(vars.$background-root + "project-paper.png"),
     radial-gradient($gradient-colour, $background-colour);
+  background-color: white;
   background-blend-mode: multiply;
 
   @include utils.stroke-width($stroke-width);
