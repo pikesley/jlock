@@ -13,7 +13,7 @@ Jinja2==3.0.2
 MarkupSafe==2.0.1
 python-apt==1.8.4.3
 redis==3.5.3
-requests==2.21.0
+requests==2.26.0
 RPi.GPIO==0.7.0
 six==1.16.0
 spidev==3.5
