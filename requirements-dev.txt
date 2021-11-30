@@ -1,4 +1,4 @@
-asn1crypto==0.24.0
+asn1crypto==1.4.0
 astroid==2.9.0
 attrs==21.2.0
 backcall==0.2.0
