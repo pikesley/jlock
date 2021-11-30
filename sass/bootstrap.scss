@@ -1,0 +1,28 @@
+@use "base/vars";
+
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  background-color: black;
+}
+
+.screen {
+  transition: opacity vars.$reveal-time ease-in-out;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.hide {
+  opacity: 1;
+}
+
+.reveal {
+  opacity: 0;
+}
