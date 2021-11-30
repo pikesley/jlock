@@ -17,6 +17,7 @@ case ${1} in
     ;;
 
   test )
+    export PATH=/opt/jlock/node_modules/.bin:${PATH}
     cd /opt/jlock
     make --makefile make/Makefile.docker
     ;;

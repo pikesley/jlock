@@ -10,4 +10,5 @@ module.exports = {
   moduleDirectories: ["node_modules", "static/js", "tests"],
   setupFiles: ["<rootDir>/tests/js/support/client.js"],
   testEnvironment: "jsdom",
+  reporters: ["default", "jest-junit"],
 };

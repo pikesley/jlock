@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Dokdo");
 body {
-  overflow: hidden;
   font-size: 5vh;
   margin: 1vh;
   padding: 0;
@@ -71,13 +70,14 @@ body {
 
 body {
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #c4c4c4;
+  -webkit-text-stroke-color: #ddceae;
   background-image: url("../../images/backgrounds/navy.png");
   background-color: #684623;
   background-blend-mode: hard-light;
   color: transparent;
   font-size: 11vh;
   text-transform: lowercase;
+  text-shadow: 1vh 1vh 1vh #422c16;
 }
 
 .corner {
@@ -102,12 +102,12 @@ body {
   }
   100% {
     transform: perspective(30vh) translateY(0);
-    color: #c4c4c4;
+    color: #ddceae;
   }
 }
 @keyframes shooter-out {
   0% {
-    color: #c4c4c4;
+    color: #ddceae;
   }
   50% {
     font-size: 0;

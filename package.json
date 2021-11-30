@@ -14,15 +14,20 @@
     "glob": "^7.2.0",
     "glob-parent": "^6.0.2",
     "jest": "^27.4.0",
+    "jest-junit": "^13.0.0",
     "prettier": "^2.5.0",
     "sass": "^1.43.5",
-    "sass-true": "^6.0.1"
+    "sass-true": "^6.0.1",
+    "xunit-viewer": "^7.1.5"
   },
   "scripts": {
-    "jest-dom": "jest --testPathIgnorePatterns scss --bail",
-    "jest-sass": "jest --env node tests/sass/scss.spec.js",
+    "jest-dom": "JEST_JUNIT_OUTPUT_NAME=jest-dom-junit.xml jest --testPathIgnorePatterns scss --bail",
+    "jest-sass": "JEST_JUNIT_OUTPUT_NAME=jest-sass-junit.xml jest --env node tests/sass/scss.spec.js",
     "test": "npm run jest-dom && npm run jest-sass",
     "test-debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js",
     "lint": "eslint static/"
+  },
+  "jest-junit": {
+    "outputDirectory": "junit/"
   }
 }

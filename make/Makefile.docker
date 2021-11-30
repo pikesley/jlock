@@ -2,7 +2,6 @@ include make/Makefile.common
 
 default: format lint test
 
-
 .PHONY: sass
 sass:
 	sass --watch sass:static/css
@@ -23,7 +22,20 @@ push-code:
 
 		ssh pi@${PIHOST} "cd jlock && ./configure"
 
-test: js-tests python-tests
+test: prep-tests js-tests python-tests process-junit
+
+process-junit:
+	xunit-viewer \
+		--results junit \
+		--console \
+		--output static/junit.html \
+		--title "jlock tests" \
+		--brand images/favicon.png \
+		--favicon images/favicon.png
+
+prep-tests:
+	rm -fr junit/*
+	mkdir -p junit/
 
 js-tests:
 	npm run test
@@ -37,7 +49,8 @@ python-tests:
 		--capture no \
 		--failed-first \
 		--cov \
-		--exitfirst
+		--exitfirst \
+		--junitxml junit/pytest-junit.xml
 
 lint:
 	python -m pylama
