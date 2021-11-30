@@ -2,7 +2,7 @@
 
 # Jlock
 
-https://user-images.githubusercontent.com/885973/142761936-de1c8291-10a7-49a5-8040-fd494399366d.mp4
+https://user-images.githubusercontent.com/885973/144121827-10edb976-b597-41f6-be81-fc986a0c8152.mp4
 
 ## Make your own text clock
 
