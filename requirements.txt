@@ -16,7 +16,7 @@ redis==3.5.3
 requests==2.21.0
 RPi.GPIO==0.7.0
 six==1.16.0
-spidev==3.4
+spidev==3.5
 ssh-import-id==5.7
 typing-extensions==3.10.0.2
 urllib3==1.26.5
