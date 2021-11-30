@@ -15,8 +15,12 @@ let screen = document.createElement("div");
 screen.classList.add("screen");
 document.querySelector("html").appendChild(screen);
 
+let environment;
+
 // we can override `interval` to speed up our tests
-let run = function (element = "#clock", interval = 1000) {
+let run = function (element = "#clock", interval = 1000, env = "PROD") {
+  environment = env;
+
   reveal();
   setInterval(function () {
     refreshContent(element);
@@ -100,14 +104,20 @@ let hideChangeReveal = function (callback) {
   screen.classList.remove("reveal");
   screen.classList.add("hide");
 
-  screen.addEventListener("transitionend", function x() {
-    // this seems redundant but is VERY IMPORTANT
-    screen.removeEventListener("transitionend", x);
-
+  // the fancy fade breaks the tests
+  if (environment == "TEST") {
     callback();
-
     reveal();
-  });
+  } else {
+    screen.addEventListener("transitionend", function x() {
+      // this seems redundant but is VERY IMPORTANT
+      screen.removeEventListener("transitionend", x);
+
+      callback();
+
+      reveal();
+    });
+  }
 };
 
 let reveal = function () {
@@ -118,6 +128,7 @@ let reveal = function () {
 let fromQueryString = function (param) {
   let parameter = conf.defaults[param];
   let params = new URLSearchParams(window.location.search);
+
   if (params.get(param)) {
     parameter = params.get(param);
   }
