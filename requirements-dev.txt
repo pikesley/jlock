@@ -42,7 +42,7 @@ pydocstyle==6.1.1
 pyflakes==2.4.0
 Pygments==2.10.0
 PyGObject==3.30.4
-pylama==8.2.0
+pylama==8.2.1
 pylint==2.12.1
 pyparsing==3.0.6
 pytest==6.2.5
