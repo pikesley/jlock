@@ -6,3 +6,5 @@ coverage/
 Makefile
 NOTES.md
 .coverage
+junit/
+static/junit.html
