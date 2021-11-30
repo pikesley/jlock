@@ -4,7 +4,6 @@ body {
 }
 
 body {
-  overflow: hidden;
   font-size: 5vh;
   margin: 1vh;
   padding: 0;
@@ -72,6 +71,7 @@ body {
 body {
   font-size: 9vh;
   background-image: url("../../images/backgrounds/project-paper.png"), radial-gradient(#fad400, #fa8100);
+  background-color: white;
   background-blend-mode: multiply;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
