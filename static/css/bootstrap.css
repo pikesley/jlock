@@ -8,7 +8,7 @@ body {
 }
 
 .screen {
-  transition: opacity 2s ease-in-out;
+  transition: opacity 3s ease-in-out;
   background-color: black;
   position: fixed;
   top: 0;

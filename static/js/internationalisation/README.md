@@ -94,7 +94,7 @@ will be rendered as
 <span class="twentyfive five">E</span>
 ```
 
-> See the first row of [`en.js`](languages/es.js) for a fairly complicated example.
+> See the first row of [`en.js`](https://github.com/pikesley/jlock/blob/main/static/js/internationalisation/languages/es.js) for a fairly complicated example.
 
 ## Adding it all up
 
@@ -102,7 +102,7 @@ The total number of rendered spans, following the above rules, _must be the same
 
 ## `index.js`
 
-We have to export each language via [`index.js`](index.js):
+We have to export each language via [`index.js`](https://github.com/pikesley/jlock/blob/main/static/js/internationalisation/index.js):
 
 ```javascript
 export * from "./languages/cy.js";
@@ -150,7 +150,7 @@ It's (probably) fine to have all the _interval_ words crammed up against each ot
 
 ### Dealing with long words
 
-English and Spanish fit into a 11x10 grid, but Welsh has some longer words, and so requires a 12x10 grid. This is fine, as long as all the rows are the same length when rendered as `<span>`s, and in fact `jlock` can support grids from 10x10 to 12x12 (or in fact arbitrary sizes with a couple of [sass tweaks](../../../../sass/base/_vars.scss)).
+English and Spanish fit into a 11x10 grid, but Welsh has some longer words, and so requires a 12x10 grid. This is fine, as long as all the rows are the same length when rendered as `<span>`s, and in fact `jlock` can support grids from 10x10 to 12x12 (or in fact arbitrary sizes with a couple of [sass tweaks](https://github.com/pikesley/jlock/blob/main/sass/base/_vars.scss#L10-L11)).
 
 I am genuinely attempting to implement Basque, which is definitely going to require a bigger grid.
 
@@ -162,9 +162,9 @@ English is jlock's default language, and is the way it "thinks about" telling th
 .it .is .twentyfive .to .h-7
 ```
 
-(and has tests to [verify this](tests/modules/jlock.test.js)) and then uses this to activate and deactivate the appropriate `spans`.
+(and has tests to [verify this](https://github.com/pikesley/jlock/blob/main/tests/js/modules/jlock.test.js#L182)) and then uses this to activate and deactivate the appropriate `spans`.
 
-For languages which have different rules, e.g. Spanish which takes a different form of `it is` depending on whether the `hour` is `1`, it does some [additional juggling](static/js/modules/jlock.js):
+For languages which have different rules, e.g. Spanish which takes a different form of `it is` depending on whether the `hour` is `1`, it does some [additional juggling](https://github.com/pikesley/jlock/blob/main/static/js/modules/jlock.js#L82-L105):
 
 ```javascript
 let selectItIs = function (time, language) {
@@ -193,6 +193,6 @@ let selectItIs = function (time, language) {
 };
 ```
 
-and then there are [tests for this behaviour, too](tests/modules/internationalisation/languages/es/selectItIs.test.js).
+and then there are [tests for this behaviour, too](https://github.com/pikesley/jlock/blob/main/tests/js/internationalisation/languages/es/selectItIs.test.js).
 
 I don't think there's any point in trying to make this generic, it just needs to be taken case-by-case.

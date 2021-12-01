@@ -1,6 +1,6 @@
 # Test-driven Sass
 
-The morning after I'd spent the evening [precariously lashing-together the first cut of the `rotator`](https://github.com/pikesley/jlock/blob/84c47f711c13d50507ce6bcf19b6c0f2f36afce0/sass/base/_default.scss#L46-L91), I [woke up with the phrase "test-driven Sass" going round my head](https://twitter.com/pikesley/status/1454759899204923393), and was then not surprised to discover that there are of course [frameworks for exactly this](https://github.com/oddbird/true). I was somewhat startled, however, to discover that [the tests _themselves_ are written in Sass](tests/sass/rotator/one-frame.spec.scss).
+The morning after I'd spent the evening [precariously lashing-together the first cut of the `rotator`](https://github.com/pikesley/jlock/blob/84c47f711c13d50507ce6bcf19b6c0f2f36afce0/sass/base/_default.scss#L46-L91), I [woke up with the phrase "test-driven Sass" going round my head](https://twitter.com/pikesley/status/1454759899204923393), and was then not surprised to discover that there are of course [frameworks for exactly this](https://github.com/oddbird/true). I was somewhat startled, however, to discover that [the tests _themselves_ are written in Sass](https://github.com/pikesley/jlock/blob/main/tests/sass/rotator/one-frame.spec.scss).
 
 ## Getting it working
 
