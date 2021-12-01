@@ -73,6 +73,14 @@ em {
   font-family: "Montserrat Alternates";
 }
 
+#style {
+  font-size: 1rem;
+}
+
+#language {
+  font-size: 1rem;
+}
+
 html,
 body,
 h1,
