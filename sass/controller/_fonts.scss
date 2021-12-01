@@ -1,3 +1,5 @@
+@use "vars";
+
 $font: "Montserrat Alternates";
 @import url("https://fonts.googleapis.com/css2?family=#{$font}");
 
@@ -32,4 +34,12 @@ em {
 
 .btn {
   font-family: $font;
+}
+
+#style {
+  font-size: vars.$style-font-size;
+}
+
+#language {
+  font-size: vars.$language-font-size;
 }
