@@ -20,7 +20,9 @@ You probably want something like
 
 ```scss
 $font: "Some font";
-@use "../base/font" with ($font: $font);
+@use "../base/font" with (
+  $font: $font
+);
 ```
 
 where `Some font` is a [Google webfont](https://fonts.google.com/).
@@ -42,7 +44,7 @@ further down your Sass file.
 
 ### `animator`
 
-You're going to want to include an [`animator`](../base/animators/README.md). The simplest animator is the `fader`:
+You're going to want to include an [`animator`](https://github.com/pikesley/jlock/blob/main/sass/base/animators/README.md). The simplest animator is the `fader`:
 
 ```scss
 @use "../base/animators/fader" as animator;

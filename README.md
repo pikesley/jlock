@@ -63,11 +63,11 @@ This will install it all, and then reboot into a running clock.
 
 ![running jlock](assets/images/jlock.png)
 
-There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](sass/clocks) and [languages](static/js/internationalisation/README.md).
+There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](https://github.com/pikesley/jlock/blob/main/sass/clocks) and [languages](https://github.com/pikesley/jlock/blob/main/static/js/internationalisation/README.md).
 
 ### Keeping it updated
 
-jlock runs a [cronjob](etc/cron.d/updater) at 03:00 every morning to discover and apply updates to `main`. It does this via `git reset --hard origin/main` so _any local changes will be blatted_.
+jlock runs a [cronjob](https://github.com/pikesley/jlock/tree/main/etc/cron.d/updater) at 03:00 every morning to discover and apply updates to `main`. It does this via `git reset --hard origin/main` so _any local changes will be blatted_.
 
 ## Development
 
@@ -97,7 +97,7 @@ Install the node dependencies (these are not needed to run the actual clock)
 npm install
 ```
 
-and then run the [tests](tests/) (and the linters):
+and then run the [tests](https://github.com/pikesley/jlock/tree/main/tests/) (and the linters):
 
 ```bash
 make
@@ -105,7 +105,7 @@ make
 
 ### Designs
 
-I wrote about my massively over-engineered design system [here](sass/clocks/README.md). To actually get the designs building, you'll need to get another connection to the container:
+I wrote about my massively over-engineered design system [here](https://github.com/pikesley/jlock/tree/main/sass/clocks/README.md). To actually get the designs building, you'll need to get another connection to the container:
 
 ```
 make exec
@@ -117,15 +117,15 @@ then start Sass:
 make sass
 ```
 
-(and there are also some [Sass tests](tests/sass/README.md)).
+(and there are also some [Sass tests](https://github.com/pikesley/jlock/tree/main/tests/sass/README.md)).
 
 ### Languages
 
-jlock [supports multiple languages](static/js/internationalisation/languages), I wrote about how to implement a new one [here](static/js/internationalisation/README.md)
+jlock [supports multiple languages](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/languages), I wrote about how to implement a new one [here](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/README.md)
 
 ### Push changes to the Pi
 
-As long as `PIHOST` in [Makefile.common](make/Makefile.common) resolves to the address of your Pi, you should be able to push new code to it with:
+As long as `PIHOST` in [Makefile.common](https://github.com/pikesley/jlock/tree/main/make/Makefile.common) resolves to the address of your Pi, you should be able to push new code to it with:
 
 ```bash
 make push-code
@@ -153,7 +153,7 @@ with a JSON payload like
 }
 ```
 
-sets the language. [The language must be supported](static/js/internationalisation/index.js), obviously. This also triggers a browser reload, if we're running on a Pi.
+sets the language. [The language must be supported](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/index.js), obviously. This also triggers a browser reload, if we're running on a Pi.
 
 ### Getting the language
 
@@ -179,7 +179,7 @@ with a JSON payload like
 }
 ```
 
-Sets the style. [The style must be implemented](sass/clocks), obviously.
+Sets the style. [The style must be implemented](https://github.com/pikesley/jlock/tree/main/sass/clocks), obviously.
 
 ### Getting the style
 
@@ -205,12 +205,12 @@ If the clock cannot talk to an API (e.g. if it's running on [Netlify](https://jl
 
 ## Storing CSS artefacts in Github
 
-You may have noticed that [there is a load of generated CSS in this repo](static/css). Normally, for a Rails app or whatever, you'd exclude this stuff and run some sort of asset-pipeline at deploy time, but this repo needs to be deployable directly from Github onto a Raspberry Pi, and installing `node` and then `Sass` and running a load of precompile guff on a Pi seems objectively much worse, so here we are. This does mean that the commit-history of this repo is full of [horrible commits](https://github.com/pikesley/jlock/commit/31c31d350e4745293225877551ee193ef7905aee), but I think that's OK.
+You may have noticed that [there is a load of generated CSS in this repo](https://github.com/pikesley/jlock/tree/main/static/css). Normally, for a Rails app or whatever, you'd exclude this stuff and run some sort of asset-pipeline at deploy time, but this repo needs to be deployable directly from Github onto a Raspberry Pi, and installing `node` and then `Sass` and running a load of precompile guff on a Pi seems objectively much worse, so here we are. This does mean that the commit-history of this repo is full of [horrible commits](https://github.com/pikesley/jlock/commit/31c31d350e4745293225877551ee193ef7905aee), but I think that's OK.
 
 ## Notes
 
 - This was developed _specifically on and for Chrome/Chromium_. It works OK on Firefox and Safari, and it makes no sense at all on a portrait-orientated phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
-- For more about running a Pi in Kiosk Mode, see the `configure-shell` target [in this Makefile](make/Makefile.pi).
+- For more about running a Pi in Kiosk Mode, see the `configure-shell` target [in this Makefile](https://github.com/pikesley/jlock/tree/main/make/Makefile.pi).
 - There are some incredible people doing some [amazing CSS text trickery](https://freefrontend.com/css-text-effects/).
 - This owes a great debt to [Carson Farmer's text-based clock](http://bl.ocks.org/carsonfarmer/a60c1ffa72bf58934bbd), written in [d3.js](https://d3js.org/).
 - Any similarity to a clock you can actually buy for thousands of pounds is entirely coincidental.
