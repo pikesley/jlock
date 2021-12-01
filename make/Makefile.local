@@ -40,3 +40,6 @@ capture-changes:
 			$(shell git status --short | \
 			grep -v changeset.tgz | \
 			awk '{ print $$2 }')
+
+artefacts:
+	git add static/css/* && git ci -m artefacts
