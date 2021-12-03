@@ -2,7 +2,6 @@ import { SpanManager } from "./spanManager.js";
 import { TimeFinder } from "./timeFinder.js";
 import { populateClock } from "./populate.js";
 import { classesToBeActivatedFor } from "./jlock.js";
-import { conf } from "../conf.js";
 import { DimensionFinder } from "./dimensionFinder.js";
 import * as languages from "../internationalisation/index.js";
 
@@ -19,8 +18,6 @@ let environment;
 
 // we can override `interval` to speed up our tests
 let run = function (socket, element = "#clock", interval = 1000, env = "PROD") {
-  // let socket = io(`ws://${location.hostname}:5000`);
-
   environment = env;
 
   repopulate(element, "en");
@@ -108,17 +105,6 @@ let hideChangeReveal = function (callback) {
 let reveal = function () {
   screen.classList.remove("hide");
   screen.classList.add("reveal");
-};
-
-let fromQueryString = function (param) {
-  let parameter = conf.defaults[param];
-  let params = new URLSearchParams(window.location.search);
-
-  if (params.get(param)) {
-    parameter = params.get(param);
-  }
-
-  return parameter;
 };
 
 export { run };

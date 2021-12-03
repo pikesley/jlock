@@ -7,22 +7,22 @@ from time import sleep
 import redis
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
-from tools import find_languages, find_styles, get_defaults, get_git_data
+from tools import find_things, get_git_data, prime_redis
 from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
-app.redis = redis.Redis()
-app.currents = get_defaults()
-app.valids = {"style": find_styles(), "language": find_languages()}
 
-app.threads = {
-    "style": None,
-    "language": None,
-}
-
-app.thread_locks = {"style": Lock(), "language": Lock()}
+app.data = {}
+for thing in ["style", "language"]:
+    app.data[thing] = {
+        "valids": find_things(thing),
+        "thread": None,
+        "lock": Lock(),
+    }
 
 app.redis = redis.Redis()
+prime_redis(app.redis)
+app.sleep_time = 1
 
 ASYNC_MODE = None
 socketio = SocketIO(app, async_mode=ASYNC_MODE, cors_allowed_origins="*")
@@ -35,8 +35,8 @@ def index():
         return render_template(
             "index.html",
             host_name=socket.gethostname(),
-            languages=app.valids["language"],
-            styles=app.valids["style"],
+            styles=app.data["style"]["valids"],
+            languages=app.data["language"]["valids"],
             git_metadata=get_git_data(),
         )
 
@@ -62,16 +62,8 @@ def reload():  # nocov
 @app.route("/<key>", methods=["GET"])
 def get_thing(key):
     """Get something."""
-    if key in app.valids:
-        data = {"status": "OK", key: app.currents[key]}
-
-        value = app.redis.get(key)
-        if value:
-            value = value.decode()
-            if value in app.valids[key]:
-                data[key] = value
-
-        return data
+    if key in app.data:
+        return {"status": "OK", key: app.redis.get(key).decode()}
 
     return four_o_four()
 
@@ -79,13 +71,13 @@ def get_thing(key):
 @app.route("/<key>", methods=["POST"])
 def set_thing(key):
     """Set something."""
-    if key in app.valids:
+    if key in app.data:
         try:
             value = request.json["value"]
         except BadRequest:
             return {"status": "not OK", "reason": "invalid payload"}, 400
 
-        if value in app.valids[key]:
+        if value in app.data[key]["valids"]:
             app.redis.set(key, value)
             return {"status": "OK", key: value}
 
@@ -103,29 +95,22 @@ def get_thread(name):
     """Get a thread."""
     while True:
         try:
-            thing = app.redis.get(name)
-            if thing:
-                thing = thing.decode()
-
-                if not thing == app.currents[name]:
-                    app.currents[name] = thing
-                    socketio.emit(name, {name: app.currents[name]})
+            socketio.emit(name, {name: app.redis.get(name).decode()})
         except TypeError:
             pass
 
-        socketio.sleep(0.1)
+        socketio.sleep(app.sleep_time)
 
 
 @socketio.event
 def connect():
     """Make first connection to the client."""
-    for thing in ["style", "language"]:
-        with app.thread_locks[thing]:
-            app.threads[thing] = socketio.start_background_task(get_thread, thing)
+    for item in ["style", "language"]:
+        with app.data[item]["lock"]:
+            app.data[item]["thread"] = socketio.start_background_task(get_thread, item)
 
-        socketio.emit(thing, {thing: app.currents[thing]})
+            socketio.emit(item, {item: app.redis.get(thing).decode()})
 
 
 if __name__ == "__main__":  # nocov
     socketio.run(app, host="0.0.0.0", debug=True)
-    # socketio.run(app, host="0.0.0.0", port="5001", debug=True)

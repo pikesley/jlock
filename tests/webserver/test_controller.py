@@ -14,13 +14,20 @@ class TestWebserver(TestCase):
 
     def setUp(self):
         """Do some initialisation."""
-        app.defaults = {"language": "pl", "style": "phony-style"}
+        app.currents = {"language": "pl", "style": "phony-style"}
         app.valids = {
             "style": ["phony-style", "some-style"],
             "language": {"pl": "Polish", "ru": "Russian"},
         }
 
-        redis.flushall()
+        app.data = {
+            "style": {"valids": ["phony-style", "some-style"]},
+            "language": {"valids": {"pl": "Polish", "ru": "Russian"}},
+        }
+        app.redis.set("style", "something")
+        app.redis.set("language", "ru")
+
+        # redis.flushall()
 
     def tearDown(self):
         """Clean-up after ourselves."""
@@ -76,15 +83,6 @@ class TestWebserver(TestCase):
             json.loads(response.data), {"status": "OK", "style": "some-style"}
         )
 
-    def test_get_default_style(self):
-        """Test getting the default `style`."""
-        client = app.test_client()
-        response = client.get("/style", headers=headers)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            json.loads(response.data), {"status": "OK", "style": "phony-style"}
-        )
-
     def test_set_language(self):
         """Test setting the `language`."""
         client = app.test_client()
@@ -118,13 +116,6 @@ class TestWebserver(TestCase):
         response = client.get("/language", headers=headers)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.data), {"language": "ru", "status": "OK"})
-
-    def test_get_default_language(self):
-        """Test getting the default `language`."""
-        client = app.test_client()
-        response = client.get("/language", headers=headers)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data), {"language": "pl", "status": "OK"})
 
     def test_bad_get(self):
         """Test attempting to get a nonsense route."""
