@@ -1,59 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat Alternates");
 @import url("https://fonts.googleapis.com/css2?family=Red Hat Mono");
+html,
+body,
+h1,
+h2,
+ul,
+main,
+header {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   color: #053750;
   background-color: #053750;
+  font-family: "Montserrat Alternates";
+  text-transform: lowercase;
+  text-align: center;
+  background-image: url("../../images/backgrounds/blue-metal-cogs-and-gears.jpg");
+  background-blend-mode: overlay;
 }
 
 h2 {
   color: #f2651e;
-}
-
-#git-metadata {
-  background-color: #053750;
-  color: #f2651e;
-  border-color: #868686;
-}
-#git-metadata a {
-  color: #868686;
-  text-decoration-color: #f2651e;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-#show-metadata a {
-  color: #f2651e;
-}
-
-.btn {
-  color: #868686;
-  border-color: #053750;
-  background-image: linear-gradient(#f2651e, #f2651e);
-  background-repeat: no-repeat;
-  background-color: #053750;
-}
-
-.btn.pending {
-  color: #f2651e;
+  font-size: 4em;
+  padding: 0.5em;
 }
 
 .btn.selected {
   color: white;
-}
-
-body {
-  font-family: "Montserrat Alternates";
-  text-transform: lowercase;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 h1 {
   font-size: 8em;
-}
-
-h2 {
-  font-size: 4em;
 }
 
 .identifier {
@@ -69,27 +50,12 @@ em {
   font-size: 2vh;
 }
 
-.btn {
-  font-family: "Montserrat Alternates";
-}
-
 #style {
   font-size: 1rem;
 }
 
 #language {
   font-size: 1rem;
-}
-
-html,
-body,
-h1,
-h2,
-ul,
-main,
-header {
-  padding: 0;
-  margin: 0;
 }
 
 main {
@@ -110,10 +76,6 @@ section {
   margin: 1em;
 }
 
-h2 {
-  padding: 0.5em;
-}
-
 ul {
   list-style: none;
   display: grid;
@@ -125,61 +87,21 @@ ul {
   grid-template-columns: repeat(3, 1fr);
 }
 
-#git-metadata {
-  position: absolute;
-  top: 2em;
-  left: 2em;
-  right: 2em;
-  border-radius: 1em;
-  border: 1px solid;
-}
-#git-metadata h2:before,
-#git-metadata h2:after {
-  content: "";
-}
-#git-metadata a {
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-}
-#git-metadata dl {
-  display: grid;
-  gap: 0.5em;
-  grid-template-columns: 1fr 2fr;
-  padding: 0;
-}
-#git-metadata dl {
-  text-align: right;
-}
-#git-metadata dd {
-  text-align: left;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: none;
-}
-
-#show-metadata {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 3vh;
-}
-#show-metadata a {
-  text-decoration: none;
-}
-
-.visible {
-  display: block;
+h1:before,
+h1:after,
+h2:before,
+h2:after {
+  content: "-";
 }
 
 .btn {
+  color: #868686;
+  border-color: #053750;
+  background-image: linear-gradient(#f2651e, #f2651e);
+  background-repeat: no-repeat;
+  background-color: #053750;
   font-size: 3em;
+  font-family: "Montserrat Alternates";
   text-transform: lowercase;
   margin: 0;
   padding: 0.5em;
@@ -192,22 +114,80 @@ ul {
   background-position: center;
 }
 
-.btn.selected {
-  background-size: 100% 100%;
-  background-position: center;
+.btn.pending {
+  color: #f2651e;
 }
 
-body {
-  text-align: center;
-  background-image: url("../../images/backgrounds/blue-metal-cogs-and-gears.jpg");
-  background-blend-mode: overlay;
+#git-metadata {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  right: 2em;
+  border-radius: 1em;
+  border: 1px solid;
+  background-color: #053750;
+  color: #f2651e;
+  border-color: #868686;
+}
+#git-metadata h2:before,
+#git-metadata h2:after {
+  content: "";
+}
+#git-metadata a {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  color: #868686;
+  text-decoration-color: #f2651e;
+}
+#git-metadata dl {
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: 1fr 2fr;
+  padding: 0;
+}
+#git-metadata dt {
+  text-align: right;
+}
+#git-metadata dd {
+  text-align: left;
 }
 
-h1:before,
-h1:after,
-h2:before,
-h2:after {
-  content: "-";
+#show-metadata {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 3vh;
+}
+#show-metadata a {
+  text-decoration: none;
+  color: #f2651e;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+.visible {
+  display: block;
+  animation: fade_in 0.5s;
+}
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /*# sourceMappingURL=controller.css.map */

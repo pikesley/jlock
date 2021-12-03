@@ -52,7 +52,7 @@ allButtons().forEach(function (b) {
   setActive(item);
 });
 
-document.querySelector("#show-metadata").addEventListener("click", function () {
-  let element = document.querySelector("#git-metadata-modal");
+document.getElementById("show-metadata").addEventListener("click", function () {
+  let element = document.getElementById("git-metadata-modal");
   element.classList.toggle("visible");
 });

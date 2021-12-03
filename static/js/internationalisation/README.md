@@ -146,11 +146,11 @@ which still offers a consistent pattern. A language without this kind of consist
 
 ### Allowing space between key strings
 
-It's (probably) fine to have all the _interval_ words crammed up against each other to optimise the use of space, because they never get activated simultaneously, and the same goes for the _hour_ strings. But there _must_ be spaces around (the equivalent of) _it is_, and _past_ and _to_. I ran into this when implementing Welsh, and it's a subtle bug which will only reveal itself at certain times of the day.
+It's (probably) fine to have all the _interval_ words crammed up against each other to optimise the use of space, because they never get activated simultaneously, and the same goes for the _hour_ strings. But there _must_ be unused, filler characters around (the equivalent of) _it is_, and _past_ and _to_. I ran into this when implementing Welsh, and it's a subtle bug which will only reveal itself at certain times of the day.
 
 ### Dealing with long words
 
-English and Spanish fit into a 11x10 grid, but Welsh has some longer words, and so requires a 12x10 grid. This is fine, as long as all the rows are the same length when rendered as `<span>`s, and in fact `jlock` can support grids from 10x10 to 12x12 (or in fact arbitrary sizes with a couple of [sass tweaks](https://github.com/pikesley/jlock/blob/main/sass/base/_vars.scss#L10-L11)).
+English and Spanish fit into a 11x10 grid, but Welsh has some longer words, and so requires a 12x10 grid. This is fine, as long as all the rows are the same length when rendered as `<span>`s, and in fact `jlock` can support grids from 10x10 to 12x12 (or arbitrary sizes with a couple of [sass tweaks](https://github.com/pikesley/jlock/blob/main/sass/base/_vars.scss#L10-L11)).
 
 I am genuinely attempting to implement Basque, which is definitely going to require a bigger grid.
 
