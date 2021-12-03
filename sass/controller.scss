@@ -1,19 +1,132 @@
 @use "sass:math";
 
-@use "base/vars" as base-vars;
+@use "base/vars" as vars;
 
-@use "controller/colours";
-@use "controller/fonts";
-@use "controller/layout";
-@use "controller/metadata-modal";
-@use "controller/mixins";
-@use "controller/vars";
-@use "controller/buttons";
+$orange: rgb(242, 101, 30);
+$indigo: rgb(5, 55, 80);
+$grey: rgb(134, 134, 134);
+
+$primary: $orange;
+$contrast: $indigo;
+$highlight: $grey;
+$light: white;
+
+$inactive: $contrast;
+$active: $primary;
+
+$grid-gap: 1em;
+$padding: 1em;
+$border-thickess: 1px;
+
+$curvature: 1em;
+
+$style-columns: 2;
+$style-font-size: 1rem;
+
+$language-columns: 3;
+$language-font-size: 1rem;
+
+$font: "Montserrat Alternates";
+@import url("https://fonts.googleapis.com/css2?family=#{$font}");
+
+$monofont: "Red Hat Mono";
+@import url("https://fonts.googleapis.com/css2?family=#{$monofont}");
+
+@mixin backdrop {
+  margin: 0;
+  border: $border-thickess solid $primary;
+  background-color: $highlight;
+  padding: $grid-gap;
+  border-radius: $curvature;
+}
+
+@mixin unpad {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+h1,
+h2,
+ul,
+main,
+header {
+  @include unpad;
+}
 
 body {
+  color: $contrast;
+  background-color: $contrast;
+  font-family: $font;
+  text-transform: lowercase;
   text-align: center;
-  background-image: url(base-vars.$background-root + "blue-metal-cogs-and-gears.jpg");
+  background-image: url(vars.$background-root + "blue-metal-cogs-and-gears.jpg");
   background-blend-mode: overlay;
+}
+
+h2 {
+  color: $primary;
+  font-size: 4em;
+  padding: math.div($padding, 2);
+}
+
+.btn.selected {
+  color: $light;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+h1 {
+  font-size: 8em;
+}
+
+.identifier {
+  font-size: 2em;
+}
+
+em {
+  font-weight: bold;
+}
+
+#git-metadata {
+  font-family: $monofont;
+  font-size: 2vh;
+}
+
+#style {
+  font-size: $style-font-size;
+}
+
+#language {
+  font-size: $language-font-size;
+}
+
+main {
+  display: grid;
+}
+
+header,
+ul {
+  @include backdrop;
+}
+
+header,
+section {
+  margin: $padding;
+}
+
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat($style-columns, 1fr);
+  gap: $grid-gap;
+}
+
+#language {
+  ul {
+    grid-template-columns: repeat($language-columns, 1fr);
+  }
 }
 
 h1:before,
@@ -21,4 +134,113 @@ h1:after,
 h2:before,
 h2:after {
   content: "-";
+}
+
+.btn {
+  color: $highlight;
+  border-color: $contrast;
+  background-image: linear-gradient($active, $active);
+  background-repeat: no-repeat;
+  background-color: $inactive;
+
+  font-size: 3em;
+  font-family: $font;
+  text-transform: lowercase;
+
+  margin: 0;
+  padding: 0.5em;
+  width: 100%;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 0.3em;
+
+  transition: background-size 1s ease-in-out, color 2s;
+
+  background-size: 0% 30%;
+  background-position: center;
+}
+
+.btn.pending {
+  color: $primary;
+}
+
+#git-metadata {
+  position: absolute;
+  top: $padding * 2;
+  left: $padding * 2;
+  right: $padding * 2;
+
+  border-radius: $curvature;
+  border: 1px solid;
+
+  background-color: $contrast;
+  color: $primary;
+  border-color: $highlight;
+
+  h2:before,
+  h2:after {
+    content: "";
+  }
+
+  a {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    color: $highlight;
+    text-decoration-color: $primary;
+  }
+
+  dl {
+    display: grid;
+    gap: math.div($padding, 2);
+    grid-template-columns: 1fr 2fr;
+    padding: 0;
+  }
+
+  dt {
+    text-align: right;
+  }
+
+  dd {
+    text-align: left;
+  }
+}
+
+#show-metadata {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 3vh;
+
+  a {
+    text-decoration: none;
+    color: $primary;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: transparentize(black, 0.2);
+  display: none;
+}
+
+.visible {
+  display: block;
+  animation: fade_in 0.5s;
+}
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
