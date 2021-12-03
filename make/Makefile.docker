@@ -7,8 +7,15 @@ sass:
 	sass --watch sass:static/css
 
 controller:
+	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js static/js/vendor/
+	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js.map static/js/vendor/
 	PYTHONDONTWRITEBYTECODE=1 \
 	python webserver/controller.py
+
+# websocket-server:
+# 	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js static/js/vendor/socket.io.js
+# 	PYTHONDONTWRITEBYTECODE=1 \
+# 	python webserver/websocket_server.py
 
 push-code:
 	rsync --archive \

@@ -3,6 +3,7 @@
     "browser": true,
     "es2021": true
   },
+  "ignorePatterns": ["**/vendor/*.js"],
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 13,

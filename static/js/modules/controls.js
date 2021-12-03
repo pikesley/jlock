@@ -18,40 +18,25 @@ document.querySelector("html").appendChild(screen);
 let environment;
 
 // we can override `interval` to speed up our tests
-let run = function (element = "#clock", interval = 1000, env = "PROD") {
+let run = function (socket, element = "#clock", interval = 1000, env = "PROD") {
+  // let socket = io(`ws://${location.hostname}:5000`);
+
   environment = env;
+
+  repopulate(element, "en");
 
   reveal();
   setInterval(function () {
-    refreshContent(element);
     refreshClock();
   }, interval);
-};
 
-let refreshContent = function (element) {
-  fetch("/controller/style")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      setStyle(json.style);
-    })
-    .catch(function () {
-      // we couldn't talk to the backend
-      setStyle(fromQueryString("style"));
-    });
+  socket.on("style", function (json) {
+    setStyle(json.style);
+  });
 
-  fetch("/controller/language")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      repopulate(element, json.language);
-    })
-    .catch(function () {
-      // we couldn't talk to the backend
-      repopulate(element, fromQueryString("language"));
-    });
+  socket.on("language", function (json) {
+    repopulate(element, json.language);
+  });
 };
 
 let refreshClock = function () {
@@ -91,7 +76,7 @@ let setStyle = function (style) {
   if (style != currents.style) {
     hideChangeReveal(function () {
       document
-        .querySelector("#styles")
+        .getElementById("styles")
         .setAttribute("href", `css/clocks/${style}.css`);
 
       currents.style = style;

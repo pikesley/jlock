@@ -4,7 +4,6 @@ import { gatherSpanIDs, combine } from "./support/helpers.js";
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
-// jest.setTimeout(10000);
 global.fetch = jest.fn(() =>
   Promise.resolve({
     status: () => 500,
@@ -15,6 +14,9 @@ let styles = global.document.createElement("link");
 styles.setAttribute("id", "styles");
 global.document.head.appendChild(styles);
 
+const socket = {};
+socket.on = jest.fn();
+
 describe("twentyfive bug", function () {
   it("activates and deactivates multi-class spans correctly", async function () {
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:20"));
@@ -24,7 +26,7 @@ describe("twentyfive bug", function () {
     global.document.body.appendChild(div);
 
     let language = "en";
-    run("#test-clock", interval, "TEST");
+    run(socket, "#test-clock", interval, "TEST");
 
     //
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:20"));
