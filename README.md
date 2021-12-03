@@ -153,7 +153,7 @@ with a JSON payload like
 }
 ```
 
-sets the language. [The language must be supported](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/index.js), obviously. This also triggers a browser reload, if we're running on a Pi.
+sets the language. [The language must be supported](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/index.js), obviously.
 
 ### Getting the language
 
