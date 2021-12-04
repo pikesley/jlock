@@ -2,7 +2,9 @@ asn1crypto==1.4.0
 astroid==2.9.0
 attrs==21.2.0
 backcall==0.2.0
-black==21.12b0
+bidict==0.21.4
+black==21.11b1
+cffi==1.15.0
 click==8.0.3
 coverage==6.2
 cryptography==3.3.2
@@ -10,6 +12,10 @@ decorator==5.1.0
 Deprecated==1.2.13
 entrypoints==0.3
 Flask==2.0.2
+Flask-Cors==3.0.10
+Flask-SocketIO==5.1.1
+gitdb==4.0.9
+GitPython==3.1.24
 hiredis==2.0.0
 importlib-metadata==4.8.2
 iniconfig==1.1.1
@@ -18,6 +24,7 @@ ipython==7.30.0
 isort==5.10.1
 itsdangerous==2.0.1
 jedi==0.18.1
+jeepney==0.7.1
 Jinja2==3.0.3
 keyring==23.4.0
 keyrings.alt==4.1.0
@@ -36,7 +43,9 @@ pluggy==1.0.0
 prompt-toolkit==3.0.23
 ptyprocess==0.7.0
 py==1.11.0
+pycairo==1.20.1
 pycodestyle==2.8.0
+pycparser==2.21
 pycrypto==2.6.1
 pydocstyle==6.1.1
 pyflakes==2.4.0
@@ -48,12 +57,15 @@ pyparsing==3.0.6
 pytest==6.2.5
 pytest-cov==3.0.0
 pytest-random-order==1.0.4
+python-engineio==4.3.0
+python-socketio==5.5.0
 pyxdg==0.27
 PyYAML==6.0
 redis==4.0.2
 regex==2021.11.10
 SecretStorage==3.3.1
 six==1.16.0
+smmap==5.0.0
 snowballstemmer==2.2.0
 toml==0.10.2
 tomli==1.2.2
@@ -64,7 +76,3 @@ wcwidth==0.2.5
 Werkzeug==2.0.2
 wrapt==1.13.3
 zipp==3.6.0
-gitpython==3.1.24
-
-Flask_SocketIO
-flask-cors
