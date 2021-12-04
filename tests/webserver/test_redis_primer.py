@@ -1,8 +1,8 @@
 from pathlib import Path
 from unittest import TestCase
 
-from redis import StrictRedis
 import redis
+from redis import StrictRedis
 
 from webserver.redis_primer import RedisPrimer
 
@@ -36,11 +36,6 @@ class TestRedisPrimer(TestCase):
             redis, namespace="test", static_root=Path(FIXTURE_ROOT, "static")
         )
         r_p.populate()
-
-        self.assertEqual(redis.get("test:style:current"), "banana")
-        self.assertEqual(
-            redis.lrange("test:language:valids", 0, -1), ["eu", "pl", "uk"]
-        )
 
     def test_populate_with_existing_data(self):
         """Test it populates but respects existing data."""

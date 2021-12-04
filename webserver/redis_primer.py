@@ -1,3 +1,5 @@
+import json
+
 from tools import STATIC_ROOT, find_things, get_defaults
 
 
@@ -18,13 +20,15 @@ class RedisPrimer:
 
     def populate(self):
         """Fill ourselves up."""
+
         defaults = get_defaults(self.static_root)
         for item in ["style", "language"]:
             prefix = f"{self.namespace}:{item}"
 
             if not self.redis.get(f"{prefix}:current"):
                 self.redis.set(f"{prefix}:current", defaults[item])
-                self.redis.set(f"{prefix}:previous", defaults[item])
+                self.redis.delete(f"{prefix}:changed")
 
-            for member in find_things(item, root=self.static_root):
-                self.redis.rpush(f"{prefix}:valids", member)
+            self.redis.set(
+                f"{prefix}:valids", json.dumps(find_things(item, root=self.static_root))
+            )

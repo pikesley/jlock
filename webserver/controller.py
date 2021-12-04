@@ -1,3 +1,4 @@
+import json
 import os
 import socket
 import subprocess
@@ -7,7 +8,8 @@ from time import sleep
 import redis
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
-from tools import find_things, get_git_data, prime_redis
+from redis_primer import RedisPrimer
+from tools import find_things, get_git_data
 from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
@@ -20,8 +22,9 @@ for thing in ["style", "language"]:
         "lock": Lock(),
     }
 
-app.redis = redis.Redis()
-prime_redis(app.redis)
+app.redis = redis.StrictRedis(encoding="utf-8", decode_responses=True)
+RedisPrimer(app.redis).populate()
+app.env = "production"
 app.sleep_time = 1
 
 ASYNC_MODE = None
@@ -35,8 +38,8 @@ def index():
         return render_template(
             "index.html",
             host_name=socket.gethostname(),
-            styles=app.data["style"]["valids"],
-            languages=app.data["language"]["valids"],
+            styles=json.loads(app.redis.get(f"{app.env}:style:valids")),
+            languages=json.loads(app.redis.get(f"{app.env}:language:valids")),
             git_metadata=get_git_data(),
         )
 
@@ -63,7 +66,7 @@ def reload():  # nocov
 def get_thing(key):
     """Get something."""
     if key in app.data:
-        return {"status": "OK", key: app.redis.get(key).decode()}
+        return {"status": "OK", key: app.redis.get(f"{app.env}:{key}:current")}
 
     return four_o_four()
 
@@ -77,8 +80,9 @@ def set_thing(key):
         except BadRequest:
             return {"status": "not OK", "reason": "invalid payload"}, 400
 
-        if value in app.data[key]["valids"]:
-            app.redis.set(key, value)
+        if value in json.loads(app.redis.get(f"{app.env}:{key}:valids")):
+            app.redis.set(f"{app.env}:{key}:current", value)
+            app.redis.set(f"{app.env}:{key}:changed", 1)
             return {"status": "OK", key: value}
 
         return {"status": "not OK", "reason": f"invalid {key}"}, 400
@@ -95,7 +99,9 @@ def get_thread(name):
     """Get a thread."""
     while True:
         try:
-            socketio.emit(name, {name: app.redis.get(name).decode()})
+            if app.redis.get(f"{app.env}:{name}:changed"):
+                socketio.emit(name, {name: app.redis.get(f"{app.env}:{name}:current")})
+                app.redis.delete(f"{app.env}:{name}:changed")
         except TypeError:
             pass
 
@@ -109,7 +115,7 @@ def connect():
         with app.data[item]["lock"]:
             app.data[item]["thread"] = socketio.start_background_task(get_thread, item)
 
-            socketio.emit(item, {item: app.redis.get(thing).decode()})
+            socketio.emit(item, {item: app.redis.get(f"{app.env}:{item}:current")})
 
 
 if __name__ == "__main__":  # nocov
