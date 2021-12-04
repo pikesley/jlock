@@ -29,7 +29,7 @@ push-code:
 
 		ssh pi@${PIHOST} "cd jlock && ./configure"
 
-test: prep-tests js-tests python-tests process-junit
+test: prep-tests js-tests python-suite process-junit
 
 process-junit:
 	xunit-viewer \
@@ -47,6 +47,8 @@ prep-tests:
 js-tests:
 	npm run test
 
+python-suite: format python-lint python-tests
+
 python-tests:
 	PYTHONPATH=$(shell pwd)/webserver \
 	PYTHONDONTWRITEBYTECODE=1 \
@@ -59,8 +61,12 @@ python-tests:
 		--exitfirst \
 		--junitxml junit/pytest-junit.xml
 
-lint:
+lint: python-lint js-lint
+
+python-lint:
 	python -m pylama
+
+js-lint:
 	npm run lint
 
 clean:

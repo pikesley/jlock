@@ -34,13 +34,13 @@ def prime_redis(redis):
             redis.set(key, defaults[key])
 
 
-def find_things(thing):
+def find_things(thing, root=STATIC_ROOT):
     """Find the available `thing`."""
     if thing == "style":
-        return find_styles()
+        return find_styles(root)
 
     if thing == "language":
-        return find_languages()
+        return find_languages(root)
 
     return None  # nocov
 
