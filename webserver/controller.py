@@ -14,10 +14,10 @@ from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 
-app.data = {}
-for thing in ["style", "language"]:
-    app.data[thing] = {
-        "valids": find_things(thing),
+app.keys = ["style", "language"]
+app.threads = {}
+for thing in app.keys:
+    app.threads[thing] = {
         "thread": None,
         "lock": Lock(),
     }
@@ -65,7 +65,7 @@ def reload():  # nocov
 @app.route("/<key>", methods=["GET"])
 def get_thing(key):
     """Get something."""
-    if key in app.data:
+    if key in app.keys:
         return {"status": "OK", key: app.redis.get(f"{app.env}:{key}:current")}
 
     return four_o_four()
@@ -74,7 +74,7 @@ def get_thing(key):
 @app.route("/<key>", methods=["POST"])
 def set_thing(key):
     """Set something."""
-    if key in app.data:
+    if key in app.keys:
         try:
             value = request.json["value"]
         except BadRequest:
@@ -112,8 +112,10 @@ def get_thread(name):
 def connect():
     """Make first connection to the client."""
     for item in ["style", "language"]:
-        with app.data[item]["lock"]:
-            app.data[item]["thread"] = socketio.start_background_task(get_thread, item)
+        with app.threads[item]["lock"]:
+            app.threads[item]["thread"] = socketio.start_background_task(
+                get_thread, item
+            )
 
             socketio.emit(item, {item: app.redis.get(f"{app.env}:{item}:current")})
 

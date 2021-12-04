@@ -6,7 +6,7 @@ import redis
 from webserver.controller import app
 
 headers = {"Accept": "application/json", "Content-type": "application/json"}
-redis = redis.Redis()
+redis = redis.StrictRedis(encoding="utf-8", decode_responses=True)
 
 
 class TestWebserver(TestCase):
@@ -14,20 +14,13 @@ class TestWebserver(TestCase):
 
     def setUp(self):
         """Do some initialisation."""
-        app.currents = {"language": "pl", "style": "phony-style"}
-        app.valids = {
-            "style": ["phony-style", "some-style"],
-            "language": {"pl": "Polish", "ru": "Russian"},
-        }
-
-        app.data = {
-            "style": {"valids": ["phony-style", "some-style"]},
-            "language": {"valids": {"pl": "Polish", "ru": "Russian"}},
-        }
-        app.redis.set("style", "something")
-        app.redis.set("language", "ru")
-
-        # redis.flushall()
+        app.env = "test"
+        app.redis.set("test:style:current", "phony-style")
+        app.redis.set("test:language:current", "pl")
+        app.redis.set("test:style:valids", json.dumps(["phony-style", "some-style"]))
+        app.redis.set(
+            "test:language:valids", json.dumps({"pl": "Polish", "ru": "Russian"})
+        )
 
     def tearDown(self):
         """Clean-up after ourselves."""
@@ -56,11 +49,11 @@ class TestWebserver(TestCase):
         self.assertEqual(
             json.loads(response.data), {"status": "OK", "style": "phony-style"}
         )
-        self.assertEqual(redis.get("style").decode(), "phony-style")
+        self.assertEqual(redis.get("test:style:current"), "phony-style")
 
     def test_set_bad_style(self):
         """Test it rejects an invalid `style`."""
-        redis.set("style", "this-should-not-change")
+        redis.set("test:style:current", "this-should-not-change")
         client = app.test_client()
         response = client.post(
             "/style", headers=headers, data=json.dumps({"value": "bad-style"})
@@ -71,11 +64,11 @@ class TestWebserver(TestCase):
             json.loads(response.data),
             {"reason": "invalid style", "status": "not OK"},
         )
-        self.assertEqual(redis.get("style").decode(), "this-should-not-change")
+        self.assertEqual(redis.get("test:style:current"), "this-should-not-change")
 
     def test_get_style(self):
         """Test getting the `style`."""
-        redis.set("style", "some-style")
+        redis.set("test:style:current", "some-style")
         client = app.test_client()
         response = client.get("/style", headers=headers)
         self.assertEqual(response.status_code, 200)
@@ -92,11 +85,11 @@ class TestWebserver(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.data), {"language": "pl", "status": "OK"})
-        self.assertEqual(redis.get("language").decode(), "pl")
+        self.assertEqual(redis.get("test:language:current"), "pl")
 
     def test_set_bad_language(self):
         """Test it rejects an invalid `language`."""
-        redis.set("language", "this-should-not-change")
+        redis.set("test:language:current", "this-should-not-change")
         client = app.test_client()
         response = client.post(
             "/language", headers=headers, data=json.dumps({"value": "uk"})
@@ -107,11 +100,11 @@ class TestWebserver(TestCase):
             json.loads(response.data),
             {"reason": "invalid language", "status": "not OK"},
         )
-        self.assertEqual(redis.get("language").decode(), "this-should-not-change")
+        self.assertEqual(redis.get("test:language:current"), "this-should-not-change")
 
     def test_get_language(self):
         """Test getting the `language`."""
-        redis.set("language", "ru")
+        redis.set("test:language:current", "ru")
         client = app.test_client()
         response = client.get("/language", headers=headers)
         self.assertEqual(response.status_code, 200)
