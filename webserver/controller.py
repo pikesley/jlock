@@ -9,7 +9,7 @@ import redis
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 from redis_primer import RedisPrimer
-from tools import find_things, get_git_data
+from tools import get_git_data
 from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)

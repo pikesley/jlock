@@ -20,7 +20,9 @@ let environment;
 let run = function (socket, element = "#clock", interval = 1000, env = "PROD") {
   environment = env;
 
-  repopulate(element, "en");
+  if (environment == "TEST") {
+    repopulate(element, "en");
+  }
 
   reveal();
   setInterval(function () {
