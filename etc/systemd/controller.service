@@ -5,7 +5,7 @@ Description=Jlock Control Webserver
 [Service]
 User=pi
 WorkingDirectory=/home/pi/jlock/webserver/
-ExecStart=/bin/bash -lc '/home/pi/.local/bin/gunicorn --worker-class eventlet -w 1 --bind 0.0.0.0:5000 --access-logfile - controller:app'
+ExecStart=/bin/bash -lc '/home/pi/.local/bin/gunicorn --worker-class gevent --workers 1 --bind 0.0.0.0:5000 --access-logfile - controller:app'
 Restart=always
 StandardInput=null
 StandardOutput=file:/var/log/controller/controller.log
