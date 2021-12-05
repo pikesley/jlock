@@ -1,10 +1,12 @@
-.sass-cache/
+.coverage
 .DS_Store
-node_modules/
 .vscode/
 coverage/
-Makefile
-NOTES.md
-.coverage
 junit/
+Makefile
+node_modules/
+NOTES.md
 static/junit.html
+
+# these are symlinks
+static/js/vendor/
