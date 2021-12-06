@@ -15,7 +15,7 @@
     "glob-parent": "^6.0.2",
     "jest": "^27.4.2",
     "jest-junit": "^13.0.0",
-    "prettier": "^2.5.0",
+    "prettier": "^2.5.1",
     "sass": "^1.44.0",
     "sass-true": "^6.0.1",
     "xunit-viewer": "^7.1.5"
