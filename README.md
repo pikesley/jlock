@@ -22,7 +22,9 @@ HDMI to whatever's on the monitor. The Model A has a full-size HDMI port, the Pi
 
 ## Install it
 
-This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/). Presuming you can SSH into the Pi:
+This was all done on a pristine install of Raspberry Pi OS Lite (i.e. no desktop) via the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/). **As of this writing (2021-12-06) you should use the `Buster (Debian 10)` distribution, which is tagged `(Legacy)` in the Imager - there's a bug that stops `Chromium` from starting properly in `Bullseye (Debian 11)`.**
+
+Presuming you can SSH into the Pi:
 
 (optionally) change the hostname:
 
