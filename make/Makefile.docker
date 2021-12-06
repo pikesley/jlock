@@ -7,6 +7,7 @@ sass:
 	sass --watch sass:static/css
 
 controller:
+	mkdir -p static/js
 	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js static/js/vendor/
 	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js.map static/js/vendor/
 
@@ -25,7 +26,7 @@ push-code:
 
 		ssh pi@${PIHOST} "cd jlock && ./configure"
 
-test: prep-tests js-tests python-suite process-junit
+test: prep-tests js-tests python-tests process-junit
 
 process-junit:
 	xunit-viewer \
@@ -42,8 +43,6 @@ prep-tests:
 
 js-tests:
 	npm run test
-
-python-suite: format python-lint python-tests
 
 python-tests:
 	PYTHONPATH=$(shell pwd)/webserver \
