@@ -65,5 +65,6 @@ npm-install:
 	npm install --only=prod
 
 link-socketio:
+	mkdir -p static/js/vendor/
 	ln -sf ../../../node_modules/socket.io-client/dist/socket.io.esm.min.js static/js/vendor/
 	ln -sf ../../../node_modules/socket.io-client/dist/socket.io.esm.min.js.map static/js/vendor/
