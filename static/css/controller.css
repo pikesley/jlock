@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat Alternates");
-@import url("https://fonts.googleapis.com/css2?family=Red Hat Mono");
+@import url("https://fonts.googleapis.com/css2?family=Anonymous Pro");
 html,
 body,
 h1,
@@ -21,43 +21,6 @@ body {
   background-blend-mode: overlay;
 }
 
-h2 {
-  color: #f2651e;
-  font-size: 4em;
-  padding: 0.5em;
-}
-
-.btn.selected {
-  color: white;
-  background-size: 100% 100%;
-  background-position: center;
-}
-
-h1 {
-  font-size: 8em;
-}
-
-.identifier {
-  font-size: 2em;
-}
-
-em {
-  font-weight: bold;
-}
-
-#git-metadata {
-  font-family: "Red Hat Mono";
-  font-size: 2vh;
-}
-
-#style {
-  font-size: 1rem;
-}
-
-#language {
-  font-size: 1rem;
-}
-
 main {
   display: grid;
 }
@@ -76,15 +39,14 @@ section {
   margin: 1em;
 }
 
-ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
+h1 {
+  font-size: 8em;
 }
 
-#language ul {
-  grid-template-columns: repeat(3, 1fr);
+h2 {
+  color: #f2651e;
+  font-size: 4em;
+  padding: 0.5em;
 }
 
 h1:before,
@@ -92,6 +54,30 @@ h1:after,
 h2:before,
 h2:after {
   content: "-";
+}
+
+ul {
+  list-style: none;
+  display: grid;
+  gap: 1em;
+}
+
+#style {
+  font-size: 1rem;
+}
+#style ul {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#language {
+  font-size: 1rem;
+}
+#language ul {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.identifier {
+  font-size: 2em;
 }
 
 .btn {
@@ -118,7 +104,15 @@ h2:after {
   color: #f2651e;
 }
 
+.btn.selected {
+  color: white;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
 #git-metadata {
+  font-family: "Anonymous Pro";
+  font-size: 2vh;
   position: absolute;
   top: 2em;
   left: 2em;
@@ -152,18 +146,6 @@ h2:after {
   text-align: left;
 }
 
-#show-metadata {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 3vh;
-}
-#show-metadata a {
-  text-decoration: none;
-  color: #f2651e;
-}
-
 .overlay {
   position: absolute;
   top: 0;
@@ -176,7 +158,20 @@ h2:after {
 
 .visible {
   display: block;
-  animation: fade_in 0.5s;
+  opacity: 1;
+  animation: fade_in ease-out 0.5s;
+}
+
+#show-metadata {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 3vh;
+}
+#show-metadata a {
+  text-decoration: none;
+  color: #f2651e;
 }
 
 @keyframes fade_in {
