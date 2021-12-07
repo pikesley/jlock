@@ -12,6 +12,9 @@ global.fetch = jest.fn(() =>
   })
 );
 
+const socket = {};
+socket.on = jest.fn();
+
 let styles = global.document.createElement("link");
 styles.setAttribute("id", "styles");
 global.document.head.appendChild(styles);
@@ -23,7 +26,7 @@ describe("Integration test", function () {
     let div = global.document.createElement("div");
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
-    run("#test-clock", interval, "TEST");
+    run(socket, "#test-clock", interval, "TEST");
 
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:34"));
     await new Promise((r) => setTimeout(r, interval));

@@ -25,6 +25,26 @@ def pull_from_js(content, key):
     return list(filter(lambda x: f"{key}:" in x, content.split("\n")))[0].split('"')[1]
 
 
+def prime_redis(redis):
+    """Pre-load Redis."""
+    defaults = get_defaults()
+    for key in ["style", "language"]:
+        value = redis.get(key)
+        if not value:
+            redis.set(key, defaults[key])
+
+
+def find_things(thing, root=STATIC_ROOT):
+    """Find the available `thing`."""
+    if thing == "style":
+        return find_styles(root)
+
+    if thing == "language":
+        return find_languages(root)
+
+    return None  # nocov
+
+
 def find_styles(root=STATIC_ROOT):
     """Find the available styles."""
     return sorted(

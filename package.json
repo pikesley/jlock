@@ -29,5 +29,8 @@
   },
   "jest-junit": {
     "outputDirectory": "junit/"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.4.0"
   }
 }

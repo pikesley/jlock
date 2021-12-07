@@ -7,6 +7,10 @@ sass:
 	sass --watch sass:static/css
 
 controller:
+	mkdir -p static/js
+	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js static/js/vendor/
+	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js.map static/js/vendor/
+
 	PYTHONDONTWRITEBYTECODE=1 \
 	python webserver/controller.py
 
@@ -52,8 +56,12 @@ python-tests:
 		--exitfirst \
 		--junitxml junit/pytest-junit.xml
 
-lint:
+lint: python-lint js-lint
+
+python-lint:
 	python -m pylama
+
+js-lint:
 	npm run lint
 
 clean:
