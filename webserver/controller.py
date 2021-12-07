@@ -102,6 +102,7 @@ def get_thread(name):
             if app.redis.get(f"{app.env}:{name}:changed"):
                 socketio.emit(name, {name: app.redis.get(f"{app.env}:{name}:current")})
                 app.redis.delete(f"{app.env}:{name}:changed")
+                socketio.sleep(app.sleep_time)
         except TypeError:
             pass
 
