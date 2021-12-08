@@ -203,7 +203,7 @@ If we're running on a Pi, this calls `DISPLAY=:0 xdotool key F5` to trigger a br
 
 ## Storing CSS artefacts in Github
 
-You may have noticed that [there is a load of generated CSS in this repo](https://github.com/pikesley/jlock/tree/main/static/css). Normally, for a Rails app or whatever, you'd exclude this stuff and run some sort of asset-pipeline at deploy time, but this repo needs to be deployable directly from Github onto a Raspberry Pi, and installing `Sass` and running a load of precompile guff on a Pi seems objectively much worse, so here we are. This does mean that the commit-history of this repo is full of [horrible commits](https://github.com/pikesley/jlock/commit/31c31d350e4745293225877551ee193ef7905aee), but I think that's OK.
+You may have noticed that [there is a load of generated CSS in this repo](https://github.com/pikesley/jlock/tree/main/static/css). Normally, for a Rails app or whatever, you'd exclude this stuff and run some sort of asset-pipeline at deploy time, but this repo needs to be deployable directly from Github onto a Raspberry Pi, and installing `Sass` and running a load of precompile guff on a Pi seems objectively much worse, so here we are. This does mean that the commit-history of this repo is full of [horrible commits](https://github.com/pikesley/jlock/commit/31c31d350e4745293225877551ee193ef7905aee), and it does make rebasing a massive fucking pain, but I think that's OK.
 
 ## Notes
 
