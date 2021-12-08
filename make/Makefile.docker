@@ -59,6 +59,7 @@ python-tests:
 lint: python-lint js-lint
 
 python-lint:
+	PYTHONPATH=$(shell pwd)/webserver \
 	python -m pylama
 
 js-lint:

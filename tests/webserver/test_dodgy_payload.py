@@ -4,6 +4,7 @@ from unittest import TestCase
 import redis
 
 from webserver.controller import app
+from webserver.redis_manager import RedisManager
 
 headers = {"Accept": "application/json", "Content-type": "application/json"}
 redis = redis.Redis()
@@ -11,6 +12,11 @@ redis = redis.Redis()
 
 class TestWithDodgyPayload(TestCase):
     """Test it handles no POST data."""
+
+    def setUp(self):
+        """Do some initialisation."""
+        app.env = "test"
+        app.redis_manager = RedisManager(namespace="test", flush=True)
 
     def test_with_no_post_data(self):
         """Test it responds nicely to no POST data."""
