@@ -1,5 +1,90 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat Alternates");
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Anonymous Pro");
+=======
+@import url("https://fonts.googleapis.com/css2?family=Red Hat Mono");
+body {
+  color: #053750;
+  background-color: #053750;
+}
+
+h2 {
+  color: #f2651e;
+}
+
+#git-metadata {
+  background-color: #053750;
+  color: #f2651e;
+  border-color: #868686;
+}
+#git-metadata a {
+  color: #868686;
+  text-decoration-color: #f2651e;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#show-metadata a {
+  color: #f2651e;
+}
+
+.btn {
+  color: #868686;
+  border-color: #053750;
+  background-image: linear-gradient(#f2651e, #f2651e);
+  background-repeat: no-repeat;
+  background-color: #053750;
+}
+
+.btn.pending {
+  color: #f2651e;
+}
+
+.btn.selected {
+  color: white;
+}
+
+body {
+  font-family: "Montserrat Alternates";
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: 8em;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+.identifier {
+  font-size: 2em;
+}
+
+em {
+  font-weight: bold;
+}
+
+#git-metadata {
+  font-family: "Red Hat Mono";
+  font-size: 2vh;
+}
+
+.btn {
+  font-family: "Montserrat Alternates";
+}
+
+#style {
+  font-size: 1rem;
+}
+
+#language {
+  font-size: 0.9rem;
+}
+
+>>>>>>> artefacts
 html,
 body,
 h1,
