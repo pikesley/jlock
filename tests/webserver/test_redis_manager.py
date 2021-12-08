@@ -1,10 +1,13 @@
 from pathlib import Path
 from unittest import TestCase
 
-from redis import StrictRedis
-
-from webserver.redis_manager import (RedisManager, find_languages, find_styles,
-                                     get_defaults, pull_from_js)
+from webserver.redis_manager import (
+    RedisManager,
+    find_languages,
+    find_styles,
+    get_defaults,
+    pull_from_js,
+)
 
 FIXTURE_ROOT = Path(Path(__file__).resolve().parent, "fixtures")
 
@@ -14,50 +17,36 @@ class TestRedisManager(TestCase):
 
     def test_constructor(self):
         """Test it initialises correctly."""
-        r_m = RedisManager(namespace="test")
+        r_m = get_redis_manager()
         self.assertEqual(r_m.namespace, "test")
 
     def test_populate_from_scratch(self):
         """Test it populates correctly from a clean start."""
-        r_m = RedisManager(
-            namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
-        )
-
+        r_m = get_redis_manager()
         self.assertEqual(r_m.redis.get("test:language:current"), "no")
         self.assertEqual(r_m.redis.get("test:style:current"), "banana")
 
     def test_populate_with_existing_data(self):
         """Test it populates but respects existing data."""
-        e_r = StrictRedis(encoding="utf-8", decode_responses=True)
-        e_r.flushall()
-        e_r.set("test:language:current", "uk")
+        temp_rm = get_redis_manager()
+        temp_rm.redis.set("test:language:current", "uk")
 
         r_m = RedisManager(namespace="test", static_root=Path(FIXTURE_ROOT, "static"))
-
         self.assertEqual(r_m.redis.get("test:language:current"), "uk")
 
     def test_valids(self):
         """Test it returns `valids`."""
-        r_m = RedisManager(
-            namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
-        )
-
+        r_m = get_redis_manager()
         self.assertEqual(r_m.valids("style"), ["banana", "bar", "baz", "foo"])
 
     def test_current(self):
         """Test it returns `current`."""
-        r_m = RedisManager(
-            namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
-        )
-
+        r_m = get_redis_manager()
         self.assertEqual(r_m.current("language"), "no")
 
     def test_tainting(self):
         """Test it `taints` a key."""
-        r_m = RedisManager(
-            namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
-        )
-
+        r_m = get_redis_manager()
         self.assertFalse(r_m.is_changed("style"))
 
         r_m.taint("style")
@@ -65,9 +54,8 @@ class TestRedisManager(TestCase):
 
     def test_resolve(self):
         """Test it `resolves` a key."""
-        r_m = RedisManager(
-            namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
-        )
+        r_m = get_redis_manager()
+
         r_m.taint("language")
         self.assertTrue(r_m.is_changed("language"))
 
@@ -76,9 +64,7 @@ class TestRedisManager(TestCase):
 
     def test_setting(self):
         """Test it `sets` a current."""
-        r_m = RedisManager(
-            namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
-        )
+        r_m = get_redis_manager()
 
         self.assertFalse(r_m.is_changed("style"))
 
@@ -123,3 +109,10 @@ def test_get_defaults():
         "language": "no",
         "style": "banana",
     }
+
+
+def get_redis_manager():
+    """Get a standard, flushed instance to test with."""
+    return RedisManager(
+        namespace="test", static_root=Path(FIXTURE_ROOT, "static"), flush=True
+    )

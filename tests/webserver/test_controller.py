@@ -26,10 +26,6 @@ class TestController(TestCase):
             "test:language:valids", json.dumps({"pl": "Polish", "ru": "Russian"})
         )
 
-    def tearDown(self):
-        """Clean-up after ourselves."""
-        redis.flushall()
-
     def test_root(self):
         """Test '/'."""
         client = app.test_client()

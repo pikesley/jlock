@@ -12,10 +12,11 @@ class RedisManager:
     def __init__(self, namespace="production", static_root=STATIC_ROOT, flush=False):
         """Construct."""
         self.redis = redis.StrictRedis(encoding="utf-8", decode_responses=True)
-        if flush:
-            self.redis.flushall()
 
         self.namespace = namespace
+        if flush:
+            self.purge_namespace()
+
         self.static_root = static_root
 
         self.populate()
@@ -63,6 +64,11 @@ class RedisManager:
     def assemble_full_key(self, key, attribute):
         """Put together the full key."""
         return f"{self.namespace}:{key}:{attribute}"
+
+    def purge_namespace(self):
+        """Clean out one namespace."""
+        for key in self.redis.scan_iter(f"{self.namespace}:*"):
+            self.redis.delete(key)
 
 
 def find_things(thing, root=STATIC_ROOT):
