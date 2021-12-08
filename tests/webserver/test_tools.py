@@ -1,7 +1,6 @@
 from pathlib import Path
 
-from webserver.tools import (find_languages, find_styles, get_defaults,
-                             pull_from_js)
+from webserver.tools import find_languages, find_styles, get_defaults, pull_from_js
 
 FIXTURE_ROOT = Path(Path(__file__).resolve().parent, "fixtures")
 
