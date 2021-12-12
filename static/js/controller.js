@@ -1,45 +1,27 @@
+import { io } from "./vendor/socket.io.esm.min.js";
 import {
   allButtons,
-  makeButtonPending,
   makeButtonSelected,
+  unsetOtherButton,
 } from "./modules/buttonManipulations.js";
 
 let currents = {};
+let socket = io(`ws://${location.hostname}:5000`);
+
+let makeActive = function (parameter, json) {
+  let value = json[parameter];
+  makeButtonSelected(parameter, value);
+  console.log(`${parameter}: ${value}`);
+  currents[parameter] = value;
+};
 
 let select = function (parameter, id) {
   if (currents[parameter] == id) {
     return;
   }
 
-  makeButtonPending(parameter, id, currents[parameter]);
-
-  sendData(`/controller/${parameter}`, id).then(function () {
-    setActive(parameter);
-  });
-};
-
-let sendData = function (endPoint, value) {
-  return fetch(endPoint, {
-    headers: { "Content-Type": "application/json" },
-    method: "POST",
-    body: JSON.stringify({ value: value }),
-  });
-};
-
-let setActive = function (parameter) {
-  fetch(`/controller/${parameter}`, {
-    headers: { "Content-Type": "application/json" },
-    method: "GET",
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      let value = json[parameter];
-      makeButtonSelected(parameter, value);
-      console.log(`${parameter}: ${value}`);
-      currents[parameter] = value;
-    });
+  unsetOtherButton(parameter, id, currents[parameter]);
+  socket.send({ [parameter]: id });
 };
 
 allButtons().forEach(function (b) {
@@ -48,11 +30,15 @@ allButtons().forEach(function (b) {
   });
 });
 
-["style", "language"].forEach(function (item) {
-  setActive(item);
-});
-
 document.getElementById("show-metadata").addEventListener("click", function () {
   let element = document.getElementById("git-metadata-modal");
   element.classList.toggle("visible");
+});
+
+socket.on("style", function (json) {
+  makeActive("style", json);
+});
+
+socket.on("language", function (json) {
+  makeActive("language", json);
 });

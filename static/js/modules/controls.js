@@ -36,6 +36,11 @@ let run = function (socket, element = "#clock", interval = 1000, env = "PROD") {
   socket.on("language", function (json) {
     repopulate(element, json.language);
   });
+
+  // socket.on("nonsense"),
+  //   function (id) {
+  //     console.log(id);
+  //   };
 };
 
 let refreshClock = function () {
