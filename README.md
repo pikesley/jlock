@@ -65,7 +65,7 @@ This will install it all, and then reboot into a running clock.
 
 ![running jlock](assets/images/jlock.png)
 
-There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](https://github.com/pikesley/jlock/blob/main/sass/clocks) and [languages](https://github.com/pikesley/jlock/blob/main/static/js/internationalisation/README.md).
+There should be a control interface available at [http://jlock.local/controller/](http://jlock.local/controller/) from which you can select from the available [clock designs](https://github.com/pikesley/jlock/blob/main/sass/clocks) and [languages](https://github.com/pikesley/jlock/blob/main/internationalisation/README.md).
 
 ### Keeping it updated
 

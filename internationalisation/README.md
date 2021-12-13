@@ -4,12 +4,12 @@ I was asked by my partner (who is half-Welsh) if I could make it tell the time i
 
 ## `language` files
 
-The language data files live in the `languages` directory, named using their [_ISO 639-1_](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code:
+The language data files live in the `internationalisation/languages/` directory, named using their [_ISO 639-1_](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code:
 
 ```
-cy.js
-en.js
-es.js
+cy.json
+en.json
+es.json
 ```
 
 The format of the `data` field is important:
@@ -21,9 +21,9 @@ The format of the `data` field is important:
 
 These are unused, filler strings. An object like
 
-```javascript
+```json
 {
-  text: "asampm";
+  "text": "asampm";
 }
 ```
 
@@ -42,9 +42,9 @@ will be rendered as
 
 These are used where the text and the class of the spans are the same. An object like
 
-```javascript
+```json
 {
-  class: "half"
+  "class": "half"
 }
 ```
 
@@ -61,9 +61,10 @@ will be rendered as
 
 These are used where the text and class of the spans need to be different. An object like
 
-```javascript
+```json
 {
-  class: "h-1", text: "one"
+  "class": "h-1",
+  "text": "one"
 }
 ```
 
@@ -79,9 +80,10 @@ will be rendered as
 
 These are used where we want to assign multiple classes to (some parts of) the text. An object lile
 
-```javascript
+```json
 {
-  classes: ["twentyfive", "five"], text: "five"
+  "classes": ["twentyfive", "five"],
+  "text": "five"
 }
 ```
 
@@ -94,33 +96,11 @@ will be rendered as
 <span class="twentyfive five">E</span>
 ```
 
-> See the first row of [`en.js`](https://github.com/pikesley/jlock/blob/main/static/js/internationalisation/languages/es.js) for a fairly complicated example.
+> See the first row of [`en.js`](https://github.com/pikesley/jlock/blob/main/internationalisation/languages/es.json) for a fairly complicated example.
 
 ## Adding it all up
 
 The total number of rendered spans, following the above rules, _must be the same per-row_ or results are extremely undefined.
-
-## `index.js`
-
-We have to export each language via [`index.js`](https://github.com/pikesley/jlock/blob/main/static/js/internationalisation/index.js):
-
-```javascript
-export * from "./languages/cy.js";
-export * from "./languages/en.js";
-export * from "./languages/es.js";
-```
-
-in order to make them available to clients.
-
-## Consuming the languages
-
-To use this data from a client:
-
-```javascript
-import { languages } from "./internationalisation/index.js";
-
-let languageData = languages["cy"]["data"];
-```
 
 ## Adding a language
 
