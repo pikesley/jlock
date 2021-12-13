@@ -3,7 +3,6 @@ import { TimeFinder } from "./timeFinder.js";
 import { populateClock } from "./populate.js";
 import { classesToBeActivatedFor } from "./jlock.js";
 import { DimensionFinder } from "./dimensionFinder.js";
-import * as languages from "../internationalisation/index.js";
 
 var currents = {
   style: null,
@@ -20,10 +19,6 @@ let environment;
 let run = function (socket, element = "#clock", interval = 1000, env = "PROD") {
   environment = env;
 
-  if (environment == "TEST") {
-    repopulate(element, "en");
-  }
-
   reveal();
   setInterval(function () {
     refreshClock();
@@ -34,13 +29,8 @@ let run = function (socket, element = "#clock", interval = 1000, env = "PROD") {
   });
 
   socket.on("language", function (json) {
-    repopulate(element, json.language);
+    repopulate(element, json);
   });
-
-  // socket.on("nonsense"),
-  //   function (id) {
-  //     console.log(id);
-  //   };
 };
 
 let refreshClock = function () {
@@ -53,11 +43,13 @@ let refreshClock = function () {
   sm.yeet();
 };
 
-let repopulate = function (element, language) {
+let repopulate = function (element, json) {
+  let language = json.language;
   if (language != currents.language) {
     hideChangeReveal(function () {
       let el = document.querySelector(element);
-      let dimensions = new DimensionFinder(languages[language]["data"]);
+      let data = json.data;
+      let dimensions = new DimensionFinder(data);
       let dimensionedClockClass = `clock-grid-${dimensions.columns}-${dimensions.rows}`;
 
       // reset classes
@@ -65,7 +57,7 @@ let repopulate = function (element, language) {
       el.classList.add("clock-grid");
       el.classList.add(dimensionedClockClass);
 
-      populateClock(element, languages[language]["data"], dimensions);
+      populateClock(element, data, dimensions);
 
       // force a refresh
       localStorage["active-classes"] = null;

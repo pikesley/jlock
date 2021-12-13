@@ -34,7 +34,7 @@
         <h2>Languages</h2>
 
         <ul>
-          {% for id, name in languages.items() | sort %}
+          {% for id, data in languages.items() | sort %}
           <li>
             <button
               id="language-{{id}}"
@@ -42,7 +42,7 @@
               data-type="language"
               data-name="{{id}}"
             >
-              {{name}}
+              {{data.name}}
             </button>
           </li>
           {% endfor %}

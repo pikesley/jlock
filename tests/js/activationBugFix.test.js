@@ -1,21 +1,13 @@
+import MockedSocket from "socket.io-mock";
+
 import { run } from "modules/controls.js";
 import { gatherSpanIDs, combine } from "./support/helpers.js";
+import { en } from "./support/languages.js";
 
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    status: () => 500,
-  })
-);
-
-let styles = global.document.createElement("link");
-styles.setAttribute("id", "styles");
-global.document.head.appendChild(styles);
-
-const socket = {};
-socket.on = jest.fn();
+let socket = new MockedSocket();
 
 describe("twentyfive bug", function () {
   it("activates and deactivates multi-class spans correctly", async function () {
@@ -27,6 +19,11 @@ describe("twentyfive bug", function () {
 
     let language = "en";
     run(socket, "#test-clock", interval, "TEST");
+
+    socket.socketClient.emit("language", {
+      language: language,
+      data: en.data,
+    });
 
     //
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:20"));

@@ -18,7 +18,7 @@ class TestWebserver(TestCase):
         app.env = "test"
         app.redis_manager = RedisManager(
             namespace="test",
-            static_root=Path(Path(__file__).resolve().parent, "fixtures", "static"),
+            root_dir=Path(Path(__file__).resolve().parent, "fixtures"),
         )
 
     def test_root(self):

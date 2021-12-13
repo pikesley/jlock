@@ -47,7 +47,7 @@ def connect():
                 get_thread, item
             )
 
-            socketio.emit(item, {item: app.redis_manager.current(item)})
+            socketio.emit(item, assemble_payload(item))
 
 
 @socketio.on("message")
@@ -64,13 +64,25 @@ def get_thread(name):
     while True:
         try:
             if app.redis_manager.is_changed(name):
-                socketio.emit(name, {name: app.redis_manager.current(name)})
+                socketio.emit(name, assemble_payload(name))
                 app.redis_manager.resolve(name)
                 socketio.sleep(app.sleep_time)
+
         except TypeError:
             pass
 
         socketio.sleep(app.sleep_time)
+
+
+def assemble_payload(thing):
+    """Assemble the data to be sent."""
+    item = app.redis_manager.current(thing)
+    payload = {thing: item}
+
+    if thing == "language":
+        payload["data"] = app.redis_manager.valids("language")[item]["data"]
+
+    return payload
 
 
 if __name__ == "__main__":  # nocov
