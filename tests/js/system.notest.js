@@ -1,16 +1,19 @@
-// https://www.leighhalliday.com/mock-fetch-jest
-
 import { run } from "modules/controls.js";
 import { gatherSpanIDs } from "./support/helpers.js";
 
 let interval = 10;
 const consoleLogMock = jest.spyOn(console, "log").mockImplementation();
 
+// https://www.leighhalliday.com/mock-fetch-jest
+// mock `fetch` to look like the backend is broken
 global.fetch = jest.fn(() =>
   Promise.resolve({
     status: () => 500,
   })
 );
+
+const socket = {};
+socket.on = jest.fn();
 
 let styles = global.document.createElement("link");
 styles.setAttribute("id", "styles");
@@ -23,7 +26,7 @@ describe("Integration test", function () {
     let div = global.document.createElement("div");
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
-    run("#test-clock", "en", interval);
+    run(socket, "#test-clock", interval, "TEST");
 
     Date.now = jest.fn(() => Date.parse("2021-10-17T18:34"));
     await new Promise((r) => setTimeout(r, interval));
