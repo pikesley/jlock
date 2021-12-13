@@ -1,6 +1,6 @@
 import { populateClock } from "modules/populate.js";
-import * as languages from "internationalisation/index.js";
 import { DimensionFinder } from "modules/dimensionFinder.js";
+import { en, cy } from "../support/languages.js";
 
 describe("populate", function () {
   it("populates the clock", function () {
@@ -8,7 +8,7 @@ describe("populate", function () {
     div.setAttribute("id", "test-clock");
     global.document.body.appendChild(div);
 
-    let languageData = languages["en"].data;
+    let languageData = en.data;
     let dimensions = new DimensionFinder(languageData);
     populateClock("#test-clock", languageData, dimensions);
 
@@ -27,7 +27,7 @@ describe("populate", function () {
     div.setAttribute("id", "welsh-clock");
     global.document.body.appendChild(div);
 
-    let languageData = languages["cy"].data;
+    let languageData = cy.data;
     let dimensions = new DimensionFinder(languageData);
     populateClock("#test-clock", languageData, dimensions);
     populateClock("#welsh-clock", languageData, dimensions);
