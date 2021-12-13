@@ -1,0 +1,35 @@
+@use "../base/animators/rotator" as animator;
+@use "../base/layout";
+@use "../base/vars";
+@use "../base/strokes";
+
+$yellow: rgb(236, 236, 126);
+$green: rgb(188, 188, 61);
+$faded-green: rgb(220, 220, 126);
+$orange: rgb(191, 80, 0);
+
+$light-grey: rgb(198, 198, 198);
+$mid-grey: rgb(152, 152, 152);
+$dark-grey: rgb(54, 54, 54);
+
+$stroke-colour: $dark-grey;
+$background-colour: $light-grey;
+$active-colour: $mid-grey;
+$inactive-colour: $mid-grey;
+
+@font-face {
+  font-family: "Cryptid";
+  src: url("../../fonts/Cryptid.otf") format("opentype");
+}
+
+body {
+  font-family: "Cryptid";
+  background: $background-colour;
+  font-size: 8vh;
+  color: $inactive-colour;
+  @include strokes.stroke-width(2px);
+}
+
+animator.$activated-styles: (color: $active-colour, -webkit-text-stroke-color: $stroke-colour);
+
+@include animator.setup(2s);
