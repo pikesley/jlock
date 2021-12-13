@@ -100,10 +100,6 @@ ul {
   background-position: center;
 }
 
-.btn.pending {
-  color: #f2651e;
-}
-
 .btn.selected {
   color: white;
   background-size: 100% 100%;
