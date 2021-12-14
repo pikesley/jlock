@@ -139,10 +139,6 @@ On the Pi, you can force the browser to reload with
 DISPLAY=:0 xdotool key F5
 ```
 
-## Storing CSS artefacts in Github
-
-You may have noticed that [there is a load of generated CSS in this repo](https://github.com/pikesley/jlock/tree/main/static/css). Normally, for a Rails app or whatever, you'd exclude this stuff and run some sort of asset-pipeline at deploy time, but this repo needs to be deployable directly from Github onto a Raspberry Pi, and installing `Sass` and running a load of precompile guff on a Pi seems objectively much worse, so here we are. This does mean that the commit-history of this repo is full of [horrible commits](https://github.com/pikesley/jlock/commit/31c31d350e4745293225877551ee193ef7905aee), and it does make rebasing a massive fucking pain, but I think that's OK.
-
 ## Notes
 
 - This was developed _specifically on and for Chrome/Chromium_. It works OK on Firefox and Safari, and it makes no sense at all on a portrait-orientated phone or tablet, but it was built to work as a kiosk app running on a Pi, which it does very well.
