@@ -15,21 +15,21 @@ controller:
 	python webserver/controller.py
 
 push-code:
-	rsync --archive \
+	@rsync --archive \
 		  --verbose \
 		  --delete \
-			--exclude node_modules \
-			--exclude .git \
-			--exclude coverage \
+		  ${RSYNC_EXCLUSIONS} \
+		  --exclude .git \
+		  --exclude .gitignore \
 		  . \
 		  pi@${PIHOST}:${PROJECT}
 
-		ssh pi@${PIHOST} "cd jlock && ./configure"
+	@ssh pi@${PIHOST} "cd jlock && ./configure"
 
 test: prep-tests js-tests python-tests process-junit
 
 process-junit:
-	xunit-viewer \
+	@xunit-viewer \
 		--results junit \
 		--console \
 		--output static/junit.html \
@@ -45,7 +45,7 @@ js-tests:
 	npm run test
 
 python-tests:
-	PYTHONPATH=$(shell pwd)/webserver \
+	@PYTHONPATH=$(shell pwd)/webserver \
 	PYTHONDONTWRITEBYTECODE=1 \
 		python -m pytest \
 		--random-order \
@@ -75,3 +75,5 @@ black:
 
 isort:
 	isort .
+
+RSYNC_EXCLUSIONS = $(shell cat .gitignore | grep -v "^\#" | grep -v "^\$$" | sed "s:\(.*\):--exclude \1 :g")
