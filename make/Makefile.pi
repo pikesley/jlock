@@ -2,7 +2,7 @@ include make/Makefile.common
 
 default: setup
 
-setup: set-python apt-installs install npm-install link-socketio virtualhost system-install configure-shell
+setup: set-python apt-installs install npm-install link-socketio virtualhost system-install configure-shell compile-sass
 	sudo reboot
 
 update:
@@ -68,3 +68,7 @@ link-socketio:
 	mkdir -p static/js/vendor/
 	ln -sf ../../../node_modules/socket.io-client/dist/socket.io.esm.min.js static/js/vendor/
 	ln -sf ../../../node_modules/socket.io-client/dist/socket.io.esm.min.js.map static/js/vendor/
+
+compile-sass:
+	rm -fr static/css/
+	./node_modules/.bin/sass sass:static/css/ --style compressed
