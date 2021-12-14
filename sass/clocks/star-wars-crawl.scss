@@ -8,8 +8,8 @@ $font: "Libre Franklin";
 @use "../base/vars";
 
 $background-colour: rgba(0, 0, 0, 0.771);
-$active-colour: white;
-$inactive-colour: darken($active-colour, 70%);
+$active-colour: rgb(243, 235, 128);
+$inactive-colour: transparentize($active-colour, 0.7);
 
 body {
   background: url(vars.$background-root + "twinkle-stars-01.gif");

@@ -1,6 +1,8 @@
 // https://codepen.io/maxnguyen/pen/BzneE
+$font: "Fredoka One";
+
 @use "../base/animators/shooter" as animator;
-@use "../base/font" with ($font: "Fredoka One");
+@use "../base/font" with ($font: $font);
 @use "../base/layout";
 @use "../base/vars";
 

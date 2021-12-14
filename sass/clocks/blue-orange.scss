@@ -1,5 +1,7 @@
+$font: "Montserrat";
+
 @use "../base/animators/rotator" as animator;
-@use "../base/font" with ($font: "Montserrat");
+@use "../base/font" with ($font: $font);
 @use "../base/layout";
 @use "../base/vars";
 

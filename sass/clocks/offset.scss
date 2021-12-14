@@ -5,7 +5,7 @@ $font: "Lalezar";
 @use "../base/animators/twirler" as animator;
 @use "../base/font" with ($font: $font);
 @use "../base/layout";
-@use "../base/utils";
+@use "../base/strokes";
 @use "../base/vars";
 
 $orange: rgb(250, 129, 0);
@@ -30,8 +30,8 @@ body {
   background-color: white;
   background-blend-mode: multiply;
 
-  @include utils.stroke-width($stroke-width);
-  @include utils.stroke-colour($stroke-colour);
+  @include strokes.width($stroke-width);
+  @include strokes.colour($stroke-colour);
   text-shadow: $offset $offset $inactive-colour;
 
   color: transparent;

@@ -62,17 +62,17 @@ This contains a few handy default things, particularly `$background-root`:
 background: url(vars.$background-root + "foo.png");
 ```
 
-### `utils`
+### `strokes`
 
 ```scss
-@use "../base/utils";
+@use "../base/strokes";
 ```
 
 Contains a couple of handy `stroke`-related `@mixins`:
 
 ```scss
-@include utils.stroke-width(1px);
-@include utils.stroke-colour(teal);
+@include strokes.width(1px);
+@include strokes.colour(teal);
 ```
 
 ## Defining your styles
@@ -89,8 +89,8 @@ $stroke-width: 1px;
 body {
   background: url(vars.$background-root + "wall.png"), $background-colour;
   font-size: 6vh;
-  @include utils.stroke-width($stroke-width);
-  @include utils.stroke-colour($active-colour);
+  @include strokes.width($stroke-width);
+  @include strokes.colour($active-colour);
   color: transparent;
 }
 ```

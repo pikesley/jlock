@@ -1,7 +1,9 @@
+$font: "Press Start 2P";
+
 @use "../base/animators/rotator" as animator;
-@use "../base/font" with ($font: "Press Start 2P");
+@use "../base/font" with ($font: $font);
 @use "../base/layout";
-@use "../base/utils";
+@use "../base/strokes";
 @use "../base/vars";
 
 $green: rgb(102, 255, 0);
@@ -17,8 +19,8 @@ body {
   background: url(vars.$background-root + "scanlines.png"),
     radial-gradient($gradient-colour, $background-colour);
   font-size: 3.5vh;
-  @include utils.stroke-colour($inactive-colour);
-  @include utils.stroke-width(1px);
+  @include strokes.colour($inactive-colour);
+  @include strokes.width(1px);
   color: transparent;
 }
 

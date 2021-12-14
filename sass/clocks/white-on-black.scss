@@ -1,7 +1,9 @@
+$font: "Saira";
+
 @use "../base/animators/rotator" as animator;
-@use "../base/font" with ($font: "Saira");
+@use "../base/font" with ($font: $font);
 @use "../base/layout";
-@use "../base/utils";
+@use "../base/strokes";
 @use "../base/vars";
 
 $active-colour: white;
@@ -13,8 +15,8 @@ $stroke-colour: transparentize($active-colour, 0.6);
 
 body {
   background: url(vars.$background-root + "texture.png"), $background-colour;
-  @include utils.stroke-width($stroke-width);
-  @include utils.stroke-colour($stroke-colour);
+  @include strokes.width($stroke-width);
+  @include strokes.colour($stroke-colour);
   color: $inactive-colour;
 }
 

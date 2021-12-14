@@ -3,13 +3,8 @@ from unittest import TestCase
 
 from redis import StrictRedis
 
-from webserver.redis_manager import (
-    RedisManager,
-    find_languages,
-    find_styles,
-    get_defaults,
-    pull_from_js,
-)
+from webserver.redis_manager import (RedisManager, find_languages, find_styles,
+                                     get_defaults, pull_from_js)
 
 FIXTURE_ROOT = Path(Path(__file__).resolve().parent, "fixtures")
 

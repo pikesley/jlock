@@ -3,15 +3,15 @@ $font: "Dokdo";
 @use "../base/layout";
 @use "../base/font" with ($font: $font);
 @use "../base/animators/disappear" as animator;
-@use "../base/utils";
+@use "../base/strokes";
 @use "../base/vars";
 
 $background-colour: rgb(104, 70, 35);
 $active-colour: rgb(221, 206, 174);
 
 body {
-  @include utils.stroke-width(1px);
-  @include utils.stroke-colour($active-colour);
+  @include strokes.width(1px);
+  @include strokes.colour($active-colour);
   background-image: url(vars.$background-root + "navy.png");
   background-color: $background-colour;
   background-blend-mode: hard-light;

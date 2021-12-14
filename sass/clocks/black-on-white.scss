@@ -1,7 +1,9 @@
+$font: "Righteous";
+
 @use "../base/animators/rotator" as animator;
-@use "../base/font" with ($font: "Righteous");
+@use "../base/font" with ($font: $font);
 @use "../base/layout";
-@use "../base/utils";
+@use "../base/strokes";
 @use "../base/vars";
 
 $grey: rgba(4, 4, 4, 0.445);
@@ -13,8 +15,8 @@ $stroke-width: 1px;
 body {
   background: url(vars.$background-root + "wall.png"), $background-colour;
   font-size: 6vh;
-  @include utils.stroke-width($stroke-width);
-  @include utils.stroke-colour($active-colour);
+  @include strokes.width($stroke-width);
+  @include strokes.colour($active-colour);
   color: transparent;
 }
 
