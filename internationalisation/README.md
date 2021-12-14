@@ -4,7 +4,7 @@ I was asked by my partner (who is half-Welsh) if I could make it tell the time i
 
 ## `language` files
 
-The language data files live in the `internationalisation/languages/` directory, named using their [_ISO 639-1_](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code:
+The language data files live in the [`internationalisation/languages/`](https://github.com/pikesley/jlock/tree/main/internationalisation/languages) directory, named using their [_ISO 639-1_](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code:
 
 ```
 cy.json
@@ -23,7 +23,7 @@ These are unused, filler strings. An object like
 
 ```json
 {
-  "text": "asampm";
+  "text": "asampm"
 }
 ```
 
