@@ -2,7 +2,7 @@ include make/Makefile.common
 
 default: setup
 
-setup: set-python apt-installs install npm-install link-socketio virtualhost system-install configure-shell compile-sass
+setup: set-python apt-installs install npm-install link-socketio compile-sass virtualhost system-install configure-shell 
 	sudo reboot
 
 update:
