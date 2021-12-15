@@ -93,7 +93,7 @@ then there should be a control interface at [http://localhost:8000/controller/](
 
 ### Tests
 
-Install the node dependencies (these are not needed to run the actual clock)
+Install the node dev dependencies
 
 ```bash
 npm install
@@ -123,7 +123,7 @@ make sass
 
 ### Languages
 
-jlock [supports multiple languages](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/languages), I wrote about how to implement a new one [here](https://github.com/pikesley/jlock/tree/main/static/js/internationalisation/README.md)
+jlock [supports multiple languages](https://github.com/pikesley/jlock/tree/main/internationalisation/languages), I wrote about how to implement a new one [here](https://github.com/pikesley/jlock/blob/main/internationalisation/README.md)
 
 ### Push changes to the Pi
 
