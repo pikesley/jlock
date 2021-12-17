@@ -17,17 +17,18 @@
         <ul>
           {% for style in styles %}
           <li>
-            <button
+            <div
               id="style-{{style}}"
               class="btn"
               data-type="style"
               data-name="{{style}}"
             >
               {{style | replace("-", " ")}}
-            </button>
+            </div>
           </li>
           {% endfor %}
         </ul>
+        <div id="style-indicator" class="indicator"></div>
       </section>
 
       <section id="language">
@@ -36,17 +37,18 @@
         <ul>
           {% for id, data in languages.items() | sort %}
           <li>
-            <button
+            <div
               id="language-{{id}}"
               class="btn"
               data-type="language"
               data-name="{{id}}"
             >
               {{data.name}}
-            </button>
+            </div>
           </li>
           {% endfor %}
         </ul>
+        <div id="language-indicator" class="indicator"></div>
       </section>
     </main>
     {% include "components/git-metadata.html" %}
