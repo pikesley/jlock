@@ -20,7 +20,8 @@ $big-padding: 2em;
 $grid-gap: 1em;
 $border-thickess: 1px;
 
-$curvature: 1em;
+$curvature: 3em;
+$button-radius: 2em;
 
 $style-columns: 2;
 $style-font-size: 1rem;
@@ -30,14 +31,17 @@ $language-font-size: 1rem;
 
 $modal-fade-time: 0.5s;
 
-// fonts 
+$indicator-border: 0.5em;
+$indicator-bezier: cubic-bezier(0.47, 1.64, 0.41, 0.8);
+
+// fonts
 $font: "Montserrat Alternates";
 @import url("https://fonts.googleapis.com/css2?family=#{$font}");
 
 $monofont: "Anonymous Pro";
 @import url("https://fonts.googleapis.com/css2?family=#{$monofont}");
 
-/// 
+///
 
 @mixin backdrop {
   margin: 0;
@@ -50,6 +54,10 @@ $monofont: "Anonymous Pro";
 @mixin unpad {
   padding: 0;
   margin: 0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html,
@@ -124,40 +132,44 @@ ul {
 }
 
 .identifier {
-  font-size: 2em;
+  font-size: 0.8em;
 }
 
 .btn {
   color: $highlight;
   border-color: $contrast;
-  background-image: linear-gradient($active, $active);
-  background-repeat: no-repeat;
   background-color: $inactive;
 
-  font-size: 3em;
-  font-family: $font;
-  text-transform: lowercase;
+  font-size: 2em;
 
   margin: 0;
   padding: 0.5em;
-  width: 100%;
-  border-width: 4px;
-  border-style: solid;
-  border-radius: 0.3em;
+  // border-width: 4px;
+  // border-style: solid;
+  border-radius: $button-radius;
 
-  transition: background-size 1s ease-in-out, color 2s;
-
-  background-size: 0% 30%;
-  background-position: center;
+  transition: color 2s 500ms, background-color 1s 250ms;
 }
 
 .btn.selected {
   color: $light;
-  background-size: 100% 100%;
-  background-position: center;
+  background-color: $active;
 }
 
-// git metadata modal 
+.indicator {
+  position: absolute;
+  background-color: transparent;
+  transition-property: all;
+  transition-duration: 700ms;
+  transition-timing-function: $indicator-bezier;
+  border-radius: $button-radius * 3;
+  border-width: $indicator-border;
+  border-color: $active;
+  border-style: solid;
+  box-shadow: 0 0 20px $active;
+}
+
+// git metadata modal
 #git-metadata {
   font-family: $monofont;
   font-size: 2vh;
