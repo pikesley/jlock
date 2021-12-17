@@ -144,11 +144,9 @@ ul {
 
   margin: 0;
   padding: 0.5em;
-  // border-width: 4px;
-  // border-style: solid;
   border-radius: $button-radius;
 
-  transition: color 2s 500ms, background-color 1s 250ms;
+  transition: color 2s 500ms, background-color 1s;
 }
 
 .btn.selected {
