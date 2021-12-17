@@ -37,7 +37,10 @@ let selectify = function (parameter, id) {
     document
       .getElementById(makeID(parameter, currents[parameter]))
       .classList.remove("selected");
-  } catch (TypeError) {}
+  } catch (TypeError) {
+    /* eslint-disable no-empty */
+  }
+
   document.getElementById(makeID(parameter, id)).classList.add("selected");
 };
 
