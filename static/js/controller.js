@@ -58,10 +58,12 @@ let resizeIndicator = function (parameter, id) {
 };
 
 let locateIndicator = function (parameter, id) {
-  ["top", "left"].forEach(function (attribute) {
-    setAttribute(parameter, id, attribute);
-  });
+  indicators[parameter].style.left = addUnits(window.screen.width / 2);
+  indicators[parameter].style.top = 0;
+  indicators[parameter].style.height = 0;
+  indicators[parameter].style.width = 0;
 
+  yeetIndicator(parameter, id);
   resizeIndicator(parameter, id);
   selectify(parameter, id);
 };
