@@ -4,7 +4,7 @@
   "author": "pikesley",
   "license": "MIT",
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.5",
     "@testing-library/jest-dom": "^5.16.1",
     "babel-cli": "^6.26.0",
     "braces": "^3.0.2",
