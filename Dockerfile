@@ -16,7 +16,7 @@ RUN npm install
 RUN npm completion >> /root/.bashrc
 
 RUN python -m pip install --upgrade pip
-RUN python -m pip install -r requirements-dev.txt
+RUN python -m pip install --ignore-installed -r requirements-dev.txt
 
 RUN ln -sf /opt/${PROJECT}/nginx/dev-site.conf /etc/nginx/sites-enabled/default
 
