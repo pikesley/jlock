@@ -2,7 +2,7 @@ include make/Makefile.common
 
 default: setup
 
-setup: set-python apt-installs install npm-install link-socketio compile-sass virtualhost system-install configure-shell 
+setup: set-python apt-installs uninstall install npm-install link-socketio compile-sass virtualhost system-install configure-shell 
 	sudo reboot
 
 update:
@@ -72,3 +72,7 @@ link-socketio:
 compile-sass:
 	rm -fr static/css/
 	./node_modules/.bin/sass sass:static/css/ --style compressed
+
+# in case pip gets broken
+uninstall:
+	python -m pip uninstall -y -r requirements.txt
