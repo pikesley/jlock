@@ -1,9 +1,10 @@
+appdirs==1.4.4
 asn1crypto==1.4.0
 astroid==2.9.3
 attrs==21.4.0
 backcall==0.2.0
 bidict==0.21.4
-black==21.12b0
+black==21.6b0
 cffi==1.15.0
 click==8.0.3
 coverage==6.2
@@ -70,7 +71,7 @@ six==1.16.0
 smmap==5.0.0
 snowballstemmer==2.2.0
 toml==0.10.2
-tomli==1.2.3
+tomli==2.0.0
 traitlets==5.1.1
 typed-ast==1.5.1
 typing_extensions==4.0.1
