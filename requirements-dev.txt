@@ -7,7 +7,7 @@ bidict==0.21.4
 black==21.6b0
 cffi==1.15.0
 click==8.0.3
-coverage==6.2
+coverage==6.3
 cryptography==36.0.1
 decorator==5.1.1
 Deprecated==1.2.13
@@ -56,7 +56,7 @@ Pygments==2.11.2
 PyGObject==3.42.0
 pylama==8.3.7
 pylint==2.12.2
-pyparsing==3.0.6
+pyparsing==3.0.7
 pytest==6.2.5
 pytest-cov==3.0.0
 pytest-random-order==1.0.4
@@ -65,7 +65,7 @@ python-socketio==5.5.1
 pyxdg==0.27
 PyYAML==6.0
 redis==4.1.1
-regex==2021.11.10
+regex==2022.1.18
 SecretStorage==3.3.1
 six==1.16.0
 smmap==5.0.0
@@ -73,7 +73,7 @@ snowballstemmer==2.2.0
 toml==0.10.2
 tomli==2.0.0
 traitlets==5.1.1
-typed-ast==1.5.1
+typed-ast==1.5.2
 typing_extensions==4.0.1
 wcwidth==0.2.5
 Werkzeug==2.0.2
