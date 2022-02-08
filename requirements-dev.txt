@@ -7,11 +7,11 @@ bidict==0.21.4
 black==21.6b0
 cffi==1.15.0
 click==8.0.3
-coverage==6.3
+coverage==6.3.1
 cryptography==36.0.1
 decorator==5.1.1
 Deprecated==1.2.13
-entrypoints==0.3
+entrypoints==0.4
 Flask==2.0.2
 Flask-Cors==3.0.10
 Flask-SocketIO==5.1.1
@@ -71,7 +71,7 @@ six==1.16.0
 smmap==5.0.0
 snowballstemmer==2.2.0
 toml==0.10.2
-tomli==2.0.0
+tomli==2.0.1
 traitlets==5.1.1
 typed-ast==1.5.2
 typing_extensions==4.0.1
