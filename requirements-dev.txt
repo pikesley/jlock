@@ -6,7 +6,7 @@ backcall==0.2.0
 bidict==0.21.4
 black==22.1.0
 cffi==1.15.0
-click==8.0.3
+click==8.0.4
 coverage==6.3.2
 cryptography==36.0.1
 decorator==5.1.1
