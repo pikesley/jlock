@@ -26,7 +26,7 @@ isort==5.10.1
 itsdangerous==2.1.0
 jedi==0.18.1
 jeepney==0.7.1
-Jinja2==3.0.3
+Jinja2==3.1.0
 keyring==23.5.0
 keyrings.alt==4.1.0
 lazy-object-proxy==1.7.1
@@ -64,7 +64,7 @@ python-engineio==4.3.1
 python-socketio==5.5.2
 pyxdg==0.27
 PyYAML==6.0
-redis==4.1.4
+redis==4.2.0
 regex==2022.3.2
 SecretStorage==3.3.1
 six==1.16.0
