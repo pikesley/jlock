@@ -1,9 +1,9 @@
 appdirs==1.4.4
-asn1crypto==1.5.0
+asn1crypto==1.5.1
 astroid==2.9.3
 attrs==21.4.0
 backcall==0.2.0
-bidict==0.21.4
+bidict==0.22.0
 black==22.1.0
 cffi==1.15.0
 click==8.0.4
@@ -26,7 +26,7 @@ isort==5.10.1
 itsdangerous==2.1.0
 jedi==0.18.1
 jeepney==0.7.1
-Jinja2==3.0.3
+Jinja2==3.1.0
 keyring==23.5.0
 keyrings.alt==4.1.0
 lazy-object-proxy==1.7.1
@@ -54,10 +54,10 @@ pydocstyle==6.1.1
 pyflakes==2.4.0
 Pygments==2.11.2
 PyGObject==3.42.0
-pylama==8.3.7
+pylama==8.3.8
 pylint==2.12.2
 pyparsing==3.0.7
-pytest==7.0.1
+pytest==7.1.1
 pytest-cov==3.0.0
 pytest-random-order==1.0.4
 python-engineio==4.3.1
