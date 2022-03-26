@@ -1,4 +1,4 @@
-bidict==0.21.4
+bidict==0.22.0
 certifi==2020.6.20
 chardet==4.0.0
 click==8.0.4
