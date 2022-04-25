@@ -19,7 +19,7 @@ idna==3.3
 itsdangerous==2.1.2
 Jinja2==3.1.1
 MarkupSafe==2.1.1
-python-engineio==4.3.1
+python-engineio==4.3.2
 python-socketio==5.5.2
 redis==4.2.2
 requests==2.27.1
