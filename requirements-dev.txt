@@ -26,7 +26,7 @@ isort==5.10.1
 itsdangerous==2.1.2
 jedi==0.18.1
 jeepney==0.8.0
-Jinja2==3.1.1
+Jinja2==3.1.2
 keyring==23.5.0
 keyrings.alt==4.1.0
 lazy-object-proxy==1.7.1
@@ -56,12 +56,12 @@ Pygments==2.12.0
 PyGObject==3.42.1
 pylama==8.3.8
 pylint==2.12.2
-pyparsing==3.0.8
+pyparsing==3.0.9
 pytest==7.1.2
 pytest-cov==3.0.0
 pytest-random-order==1.0.4
 python-engineio==4.3.2
-python-socketio==5.5.2
+python-socketio==5.6.0
 pyxdg==0.27
 PyYAML==6.0
 redis==4.2.2
