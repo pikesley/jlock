@@ -10,7 +10,7 @@
     "braces": "^3.0.2",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "glob": "^8.0.3",
     "glob-parent": "^6.0.2",
     "jest": "^27.5.1",
