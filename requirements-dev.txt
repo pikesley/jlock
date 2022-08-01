@@ -1,7 +1,7 @@
 appdirs==1.4.4
 asn1crypto==1.5.1
 astroid==2.9.3
-attrs==21.4.0
+attrs==22.1.0
 backcall==0.2.0
 bidict==0.22.0
 black==22.6.0
