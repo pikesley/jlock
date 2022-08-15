@@ -27,7 +27,7 @@ itsdangerous==2.1.2
 jedi==0.18.1
 jeepney==0.8.0
 Jinja2==3.1.2
-keyring==23.7.0
+keyring==23.8.2
 keyrings.alt==4.1.1
 lazy-object-proxy==1.7.1
 Mako==1.2.1
@@ -47,7 +47,7 @@ prompt-toolkit==3.0.30
 ptyprocess==0.7.0
 py==1.11.0
 pycairo==1.21.0
-pycodestyle==2.8.0
+pycodestyle==2.9.1
 pycparser==2.21
 pycrypto==2.6.1
 pydocstyle==6.1.1
@@ -76,6 +76,6 @@ traitlets==5.3.0
 typed-ast==1.5.4
 typing_extensions==4.3.0
 wcwidth==0.2.5
-Werkzeug==2.2.0
+Werkzeug==2.2.2
 wrapt==1.13.3
 zipp==3.8.1
