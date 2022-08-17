@@ -60,7 +60,7 @@ pyparsing==3.0.9
 pytest==7.1.2
 pytest-cov==3.0.0
 pytest-random-order==1.0.4
-python-engineio==4.3.3
+python-engineio==4.3.4
 python-socketio==5.7.1
 pyxdg==0.28
 PyYAML==6.0
