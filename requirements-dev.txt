@@ -43,7 +43,7 @@ pexpect==4.8.0
 pickleshare==0.7.5
 platformdirs==2.5.4
 pluggy==1.0.0
-prompt-toolkit==3.0.31
+prompt-toolkit==3.0.33
 ptyprocess==0.7.0
 py==1.11.0
 pycairo==1.21.0
