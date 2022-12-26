@@ -20,7 +20,7 @@ GitPython==3.1.29
 hiredis==2.0.0
 importlib-metadata==4.12.0
 iniconfig==1.1.1
-ipdb==0.13.9
+ipdb==0.13.11
 ipython==7.31.1
 isort==5.10.1
 itsdangerous==2.1.2
