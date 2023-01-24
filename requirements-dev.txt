@@ -52,7 +52,7 @@ pycparser==2.21
 pycrypto==2.6.1
 pydocstyle==6.1.1
 pyflakes==2.4.0
-Pygments==2.13.0
+Pygments==2.14.0
 PyGObject==3.42.2
 pylama==8.3.8
 pylint==2.12.2
