@@ -98,7 +98,6 @@ let selectItIs = function (time, language) {
           }
       }
 
-    // eslint-disable no-fallthrough
     default:
       return [".it", ".is"];
   }
