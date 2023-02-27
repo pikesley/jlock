@@ -3,7 +3,7 @@ asn1crypto==1.5.1
 astroid==2.9.3
 attrs==22.1.0
 backcall==0.2.0
-bidict==0.22.0
+bidict==0.22.1
 black==23.1.0
 cffi==1.15.1
 click==8.1.3
