@@ -1,5 +1,5 @@
 async-timeout==4.0.2
-bidict==0.22.0
+bidict==0.22.1
 certifi==2022.12.7
 chardet==5.1.0
 charset-normalizer==3.0.1
