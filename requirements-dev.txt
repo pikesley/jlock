@@ -50,7 +50,7 @@ pycairo==1.23.0
 pycodestyle==2.10.0
 pycparser==2.21
 pycrypto==2.6.1
-pydocstyle==6.1.1
+pydocstyle==6.3.0
 pyflakes==2.4.0
 Pygments==2.14.0
 PyGObject==3.42.2
