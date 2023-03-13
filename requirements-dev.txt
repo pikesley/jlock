@@ -77,5 +77,5 @@ typed-ast==1.5.4
 typing_extensions==4.4.0
 wcwidth==0.2.5
 Werkzeug==2.2.3
-wrapt==1.13.3
+wrapt==1.15.0
 zipp==3.11.0
