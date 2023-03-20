@@ -27,7 +27,7 @@ itsdangerous==2.1.2
 jedi==0.18.1
 jeepney==0.8.0
 Jinja2==3.1.2
-keyring==23.9.3
+keyring==23.13.1
 keyrings.alt==4.2.0
 lazy-object-proxy==1.9.0
 Mako==1.2.4
