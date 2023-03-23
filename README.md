@@ -73,7 +73,7 @@ jlock runs a [cronjob](https://github.com/pikesley/jlock/tree/main/etc/cron.d/up
 
 ## Development
 
-This was all developed on a Docker container. To run it:
+This was all developed on a podman container. To run it:
 
 ```
 git clone https://github.com/pikesley/jlock

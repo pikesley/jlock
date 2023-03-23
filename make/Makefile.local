@@ -3,11 +3,11 @@ include make/Makefile.common
 ID = pikesley/${PROJECT}
 
 build:
-	docker build \
+	podman build \
 		--tag ${ID} .
 
 run:
-	docker run \
+	podman run \
 		--name ${PROJECT} \
 		--hostname ${PROJECT}-dev \
 		--volume $(shell pwd):/opt/${PROJECT} \
@@ -22,14 +22,14 @@ run:
 		bash
 
 exec:
-	docker exec \
+	podman exec \
 		--interactive \
 		--tty \
 		${PROJECT} \
 		bash
 
 ci:
-		docker run --rm ${ID} test
+		podman run --rm ${ID} test
 
 capture-changes:
 	@tar \
