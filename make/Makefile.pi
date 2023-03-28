@@ -39,7 +39,7 @@ apt-installs:
 		xdotool \
 		python3-pip \
 		redis \
-		node
+		nodejs 
 
 prepare-logs:
 	sudo mkdir -p /var/log/controller/
