@@ -23,6 +23,7 @@ set-python:
 	sudo update-alternatives --install /usr/local/bin/python python /usr/bin/python3 2
 
 apt-installs:
+	curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 	sudo apt update
 	sudo apt install \
 		--no-install-recommends \
@@ -38,7 +39,7 @@ apt-installs:
 		xdotool \
 		python3-pip \
 		redis \
-		npm
+		nodejs 
 
 prepare-logs:
 	sudo mkdir -p /var/log/controller/
