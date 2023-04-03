@@ -18,7 +18,7 @@ Flask-SocketIO==5.3.3
 gitdb==4.0.10
 GitPython==3.1.30
 hiredis==2.2.2
-importlib-metadata==4.12.0
+importlib-metadata==6.1.0
 iniconfig==2.0.0
 ipdb==0.13.11
 ipython==7.31.1
