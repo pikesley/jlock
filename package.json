@@ -8,7 +8,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "babel-cli": "^6.26.0",
     "braces": "^3.0.2",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "glob": "^10.2.2",
