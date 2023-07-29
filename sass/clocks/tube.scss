@@ -1,0 +1,35 @@
+// https://codepen.io/markmead/pen/YjQKeZ
+@use "../base/animators/disappear" as animator;
+@use "../base/layout";
+@use "../base/vars";
+
+$orange: rgb(240, 133, 26);
+$yellow: rgb(237, 234, 166);
+$off-white: rgb(56, 55, 55);
+$black: rgb(0, 0, 0);
+
+$active-colour: $orange;
+$background-colour: $black;
+$inactive-colour: $off-white;
+
+@font-face {
+  font-family: "Underground";
+  src: url("../../fonts/london-underground-heavy.ttf") format("truetype");
+}
+
+body {
+  font-family: "Underground";
+  background: $background-colour;
+  font-size: 6vh;
+  color: $inactive-colour;
+}
+
+animator.$activated-styles: (
+  color: $active-colour,
+);
+animator.$deactivated-styles: (color: $inactive-colour);
+animator.$axis: X;
+animator.$shoot-distance: 50vh;
+animator.$perspective: 10vh;
+
+@include animator.setup(1s);
