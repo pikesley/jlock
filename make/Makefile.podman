@@ -7,7 +7,7 @@ sass:
 	sass --watch sass:static/css
 
 controller:
-	mkdir -p static/js
+	mkdir -p static/js/vendor
 	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js static/js/vendor/
 	ln -sf ../../../node_modules/socket.io/client-dist/socket.io.esm.min.js.map static/js/vendor/
 
