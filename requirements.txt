@@ -38,6 +38,6 @@ typing-extensions==4.7.1
 urllib3==1.26.13
 Werkzeug==2.2.3
 wrapt==1.14.1
-zipp==3.11.0
+zipp==3.16.2
 zope.event==5.0
 zope.interface==5.5.2
