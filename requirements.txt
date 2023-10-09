@@ -35,7 +35,7 @@ smmap==5.0.0
 spidev==3.6
 ssh-import-id==5.11
 typing-extensions==4.7.1
-urllib3==1.26.13
+urllib3==2.0.6
 Werkzeug==2.2.3
 wrapt==1.14.1
 zipp==3.11.0
