@@ -28,7 +28,7 @@ python-apt==1.8.4.3
 python-engineio==4.8.2
 python-socketio==5.7.2
 redis==5.0.1
-requests==2.31.0
+requests==2.32.4
 RPi.GPIO==0.7.1
 six==1.16.0
 smmap==5.0.0
